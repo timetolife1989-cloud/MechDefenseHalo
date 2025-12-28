@@ -29,6 +29,7 @@ window/handheld/orientation=1
 [autoload]
 
 EventBus="*res://_Core/EventBus.cs"
+GameManager="*res://_Core/GameManager.cs"
 
 [dotnet]
 
