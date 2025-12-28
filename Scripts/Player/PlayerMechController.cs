@@ -85,17 +85,7 @@ public partial class PlayerMechController : CharacterBody3D
         // Mouse motion
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
-            // Horizontal rotation (body)
-            RotateY(-mouseMotion.Relative.X * MouseSensitivity);
-            
-            // Vertical rotation (camera mount)
-            var cameraMount = GetNode<Node3D>("CameraMount");
-            cameraMount.RotateX(-mouseMotion.Relative.Y * MouseSensitivity);
-            
-            // Clamp vertical angle
-            var rotation = cameraMount.Rotation;
-            rotation.X = Mathf.Clamp(rotation.X, Mathf.DegToRad(-60), Mathf.DegToRad(60));
-            cameraMount.Rotation = rotation;
+            HandleCameraRotation(mouseMotion.Relative);
         }
     }
     
