@@ -1,0 +1,44 @@
+# Ensure LF line endings for all text files
+* text=auto eol=lf
+
+# Godot scene and resource files are text, not binary
+*.tscn text eol=lf
+*.tres text eol=lf
+*.gd text eol=lf
+
+# C# source files
+*.cs text eol=lf diff=csharp
+*.csx text eol=lf
+*.csproj text eol=lf
+*.sln text eol=lf
+
+# Configuration files
+*.config text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.fbx binary
+*.blend binary
+*.obj binary
+*.gltf binary
+*.glb binary
+*.ttf binary
+*.otf binary

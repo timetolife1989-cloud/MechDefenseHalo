@@ -1,0 +1,2 @@
+# This file tells Godot to ignore this directory during import.
+# C# scripts will be compiled by the .NET build system.
