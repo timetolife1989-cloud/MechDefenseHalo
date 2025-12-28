@@ -1,0 +1,203 @@
+[gd_scene load_steps=2 format=3 uid="uid://d9lk0p1q2r3s4"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MobileControlsUI.cs" id="1_mobile"]
+
+[node name="MobileControls" type="CanvasLayer"]
+script = ExtResource("1_mobile")
+
+[node name="LeftSide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 2400.0
+
+[node name="VirtualJoystick" type="Panel" parent="LeftSide"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -280.0
+offset_right = 280.0
+offset_bottom = -30.0
+grow_vertical = 0
+
+[node name="JoystickBase" type="TextureRect" parent="LeftSide/VirtualJoystick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoystickThumb" type="Panel" parent="LeftSide/VirtualJoystick"]
+modulate = Color(1, 0.843, 0, 0.8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightSide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 540.0
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="TouchArea" type="Panel" parent="RightSide"]
+modulate = Color(1, 1, 1, 0.1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -450.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="FireButton" type="Button" parent="ActionButtons"]
+modulate = Color(1, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+text = "🔫"
+
+[node name="ShieldButton" type="Button" parent="ActionButtons"]
+modulate = Color(0.2, 0.5, 1, 1)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 120.0
+offset_right = 220.0
+offset_bottom = 100.0
+text = "🛡️"
+
+[node name="AbilityButton" type="Button" parent="ActionButtons"]
+modulate = Color(1, 0.843, 0, 1)
+layout_mode = 1
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 100.0
+offset_bottom = 220.0
+text = "⚡"
+
+[node name="WeaponSwitchButton" type="Button" parent="ActionButtons"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 220.0
+offset_bottom = 220.0
+text = "🔄"
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 50.0
+grow_horizontal = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HUD/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HEALTH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyBar" type="ProgressBar" parent="HUD"]
+modulate = Color(1, 0.843, 0, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = -20.0
+offset_bottom = 90.0
+grow_horizontal = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="HUD/EnergyBar"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ENERGY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crosshair" type="Panel" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -20.0
+offset_right = 2.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrosshairH" type="Panel" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
