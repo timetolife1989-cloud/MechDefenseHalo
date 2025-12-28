@@ -59,30 +59,52 @@ public partial class PlayerMechController : CharacterBody3D
         if (!_isMobilePlatform)
         {
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            GD.Print("PlayerMechController ready - Mouse captured");
         }
-        
-        GD.Print($"PlayerMechController initialized on {osName}");
+        else
+        {
+            GD.Print($"PlayerMechController initialized on {osName}");
+        }
     }
     
-    public override void _UnhandledInput(InputEvent @event)
+    public override void _Input(InputEvent @event)
     {
-        // Handle mouse look on PC
-        if (!_isMobilePlatform && @event is InputEventMouseMotion mouseMotion)
-        {
-            if (Input.MouseMode == Input.MouseModeEnum.Captured)
-            {
-                HandleCameraRotation(mouseMotion.Relative);
-            }
-        }
-        
-        // ESC to release mouse on PC
-        if (@event.IsActionPressed("ui_cancel") && !_isMobilePlatform)
+        // ESC = Release mouse
+        if (Input.IsActionJustPressed("ui_cancel"))
         {
             if (Input.MouseMode == Input.MouseModeEnum.Captured)
             {
                 Input.MouseMode = Input.MouseModeEnum.Visible;
             }
             else
+            {
+                Input.MouseMode = Input.MouseModeEnum.Captured;
+            }
+        }
+        
+        // Mouse motion
+        if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+        {
+            // Horizontal rotation (body)
+            RotateY(-mouseMotion.Relative.X * MouseSensitivity);
+            
+            // Vertical rotation (camera mount)
+            var cameraMount = GetNode<Node3D>("CameraMount");
+            cameraMount.RotateX(-mouseMotion.Relative.Y * MouseSensitivity);
+            
+            // Clamp vertical angle
+            var rotation = cameraMount.Rotation;
+            rotation.X = Mathf.Clamp(rotation.X, Mathf.DegToRad(-60), Mathf.DegToRad(60));
+            cameraMount.Rotation = rotation;
+        }
+    }
+    
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        // Click to recapture mouse
+        if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed)
+        {
+            if (Input.MouseMode == Input.MouseModeEnum.Visible)
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }

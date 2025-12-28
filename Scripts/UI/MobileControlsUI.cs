@@ -23,6 +23,7 @@ public partial class MobileControlsUI : CanvasLayer
     
     private ProgressBar _healthBar;
     private ProgressBar _energyBar;
+    private Label _fpsLabel;
     
     #endregion
     
@@ -74,6 +75,7 @@ public partial class MobileControlsUI : CanvasLayer
         
         _healthBar = GetNode<ProgressBar>("HUD/HealthBar");
         _energyBar = GetNode<ProgressBar>("HUD/EnergyBar");
+        _fpsLabel = GetNode<Label>("HUD/FPSCounter");
         
         // Connect button signals
         _fireButton.Pressed += OnFirePressed;
@@ -129,6 +131,21 @@ public partial class MobileControlsUI : CanvasLayer
         {
             _healthBar.Value = _playerMech.HealthPercent * 100f;
             _energyBar.Value = _playerMech.EnergyPercent * 100f;
+        }
+        
+        // Update FPS counter
+        if (_fpsLabel != null)
+        {
+            int fps = Engine.GetFramesPerSecond();
+            _fpsLabel.Text = $"FPS: {fps}";
+            
+            // Color coding: Green > 50, Yellow 30-50, Red < 30
+            if (fps >= 50)
+                _fpsLabel.Modulate = Colors.LimeGreen;
+            else if (fps >= 30)
+                _fpsLabel.Modulate = Colors.Yellow;
+            else
+                _fpsLabel.Modulate = Colors.Red;
         }
     }
     

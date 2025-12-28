@@ -187,6 +187,17 @@ text = "ENERGY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="FPSCounter" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 150.0
+offset_bottom = 130.0
+text = "FPS: --"
+horizontal_alignment = 0
+vertical_alignment = 1
+
 [node name="Crosshair" type="Panel" parent="HUD"]
 layout_mode = 1
 anchors_preset = 8
@@ -214,3 +225,48 @@ offset_right = 20.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VisorOverlay" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopVignette" type="ColorRect" parent="VisorOverlay"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+color = Color(0.1, 0.3, 0.5, 0.3)
+
+[node name="BottomVignette" type="ColorRect" parent="VisorOverlay"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.05, 0.1, 0.2, 0.4)
+
+[node name="VisorInfo" type="Label" parent="VisorOverlay"]
+modulate = Color(0, 1, 1, 0.7)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 50.0
+grow_horizontal = 0
+text = "UNSC MECH-01 // ONLINE"
+horizontal_alignment = 2
+vertical_alignment = 1
+

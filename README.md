@@ -76,17 +76,21 @@ The game will integrate Firebase for:
 - ⏳ Firebase integration (upcoming)
 - ⏳ Monetization implementation (upcoming)
 
-## 🎮 Tesztelés
+## 🎮 Controls
 
-### PC-n (Godot Editor):
-- **WASD** vagy **Arrow Keys**: Mozgás
-- **Egér mozgás**: Kamera forgás
+### PC (Development/Testing):
+- **WASD**: Movement
+- **Mouse**: Camera look (captured automatically)
 - **Shift**: Sprint
-- **ESC**: Egér feloldása/visszafogása
-- **Q**: Shield (placeholder)
-- **E**: Ability (placeholder)
-- **Tab**: Weapon Switch (placeholder)
-- **Left Mouse**: Fire (placeholder)
+- **ESC**: Release/Capture mouse
+- **Click**: Recapture mouse
+
+### HUD Elements:
+- **Top Left**: Health (red) + Energy (green) bars
+- **Top Right**: Visor info (UNSC MECH-01)
+- **Center**: Crosshair
+- **FPS Counter**: Top left (performance monitoring)
+- **Visor Overlay**: Cyan cockpit frame effect
 
 ### Mobilon:
 - **Bal oldali joystick**: Mozgás (érintéssel aktiválható)
