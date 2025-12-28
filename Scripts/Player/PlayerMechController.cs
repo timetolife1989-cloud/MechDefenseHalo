@@ -69,17 +69,16 @@ public partial class PlayerMechController : CharacterBody3D
     
     public override void _Input(InputEvent @event)
     {
+        // Skip mouse handling on mobile platforms
+        if (_isMobilePlatform)
+            return;
+        
         // ESC = Release mouse
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            if (Input.MouseMode == Input.MouseModeEnum.Captured)
-            {
-                Input.MouseMode = Input.MouseModeEnum.Visible;
-            }
-            else
-            {
-                Input.MouseMode = Input.MouseModeEnum.Captured;
-            }
+            Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured 
+                ? Input.MouseModeEnum.Visible 
+                : Input.MouseModeEnum.Captured;
         }
         
         // Mouse motion
@@ -91,6 +90,10 @@ public partial class PlayerMechController : CharacterBody3D
     
     public override void _UnhandledInput(InputEvent @event)
     {
+        // Skip mouse handling on mobile platforms
+        if (_isMobilePlatform)
+            return;
+        
         // Click to recapture mouse
         if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed)
         {
