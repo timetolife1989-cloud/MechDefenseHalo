@@ -67,6 +67,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SprintButton" type="Button" parent="LeftSide"]
+modulate = Color(0.2, 1, 0.2, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 310.0
+offset_top = -150.0
+offset_right = 460.0
+offset_bottom = -50.0
+grow_vertical = 0
+text = "⚡SPRINT"
+
 [node name="ActionButtons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 3

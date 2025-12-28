@@ -19,6 +19,7 @@ public partial class MobileControlsUI : CanvasLayer
     private Button _shieldButton;
     private Button _abilityButton;
     private Button _weaponSwitchButton;
+    private Button _sprintButton;
     
     private ProgressBar _healthBar;
     private ProgressBar _energyBar;
@@ -29,6 +30,7 @@ public partial class MobileControlsUI : CanvasLayer
     
     private bool _isMobilePlatform = false;
     private PlayerMechController _playerMech;
+    private bool _isSprinting = false;
     
     // Joystick state
     private bool _joystickActive = false;
@@ -36,6 +38,10 @@ public partial class MobileControlsUI : CanvasLayer
     private int _joystickTouchIndex = -1;
     private const float JoystickRadius = 100f;
     private const float JoystickDeadZone = 0.1f;
+    private const float JoystickPanelSize = 250f;
+    private const float JoystickPanelHalfSize = 125f;
+    private const float JoystickThumbSize = 80f;
+    private const float JoystickThumbHalfSize = 40f;
     
     // Camera touch state
     private bool _cameraTouchActive = false;
@@ -60,6 +66,7 @@ public partial class MobileControlsUI : CanvasLayer
         _shieldButton = GetNode<Button>("ActionButtons/ShieldButton");
         _abilityButton = GetNode<Button>("ActionButtons/AbilityButton");
         _weaponSwitchButton = GetNode<Button>("ActionButtons/WeaponSwitchButton");
+        _sprintButton = GetNode<Button>("LeftSide/SprintButton");
         
         _healthBar = GetNode<ProgressBar>("HUD/HealthBar");
         _energyBar = GetNode<ProgressBar>("HUD/EnergyBar");
@@ -69,6 +76,7 @@ public partial class MobileControlsUI : CanvasLayer
         _shieldButton.Pressed += OnShieldPressed;
         _abilityButton.Pressed += OnAbilityPressed;
         _weaponSwitchButton.Pressed += OnWeaponSwitchPressed;
+        _sprintButton.Pressed += OnSprintPressed;
         
         // Platform detection
         string osName = OS.GetName();
@@ -196,7 +204,7 @@ public partial class MobileControlsUI : CanvasLayer
         _joystickCenter = touchPos;
         
         // Move joystick to touch position
-        _virtualJoystick.Position = touchPos - new Vector2(125, 125); // Center the 250x250 panel
+        _virtualJoystick.Position = touchPos - new Vector2(JoystickPanelHalfSize, JoystickPanelHalfSize);
         
         GD.Print($"Joystick started at {touchPos}");
     }
@@ -216,7 +224,7 @@ public partial class MobileControlsUI : CanvasLayer
         }
         
         // Update thumb position
-        _joystickThumb.Position = new Vector2(125, 125) + delta - new Vector2(40, 40); // Center the 80x80 thumb
+        _joystickThumb.Position = new Vector2(JoystickPanelHalfSize, JoystickPanelHalfSize) + delta - new Vector2(JoystickThumbHalfSize, JoystickThumbHalfSize);
         
         // Calculate input vector
         Vector2 inputVector = delta / JoystickRadius;
@@ -240,7 +248,7 @@ public partial class MobileControlsUI : CanvasLayer
         _joystickTouchIndex = -1;
         
         // Reset thumb position
-        _joystickThumb.Position = new Vector2(125 - 40, 125 - 40); // Center the thumb
+        _joystickThumb.Position = new Vector2(JoystickPanelHalfSize - JoystickThumbHalfSize, JoystickPanelHalfSize - JoystickThumbHalfSize);
         
         // Stop movement
         if (_playerMech != null)
@@ -313,6 +321,28 @@ public partial class MobileControlsUI : CanvasLayer
     {
         GD.Print("Weapon switch button pressed!");
         // TODO: Implement weapon switch action
+    }
+    
+    private void OnSprintPressed()
+    {
+        _isSprinting = !_isSprinting;
+        
+        if (_playerMech != null)
+        {
+            _playerMech.SetMobileSprint(_isSprinting);
+        }
+        
+        // Update button appearance
+        if (_isSprinting)
+        {
+            _sprintButton.Modulate = new Color(0.2f, 1f, 0.2f, 1f); // Bright green when active
+            GD.Print("Sprint activated!");
+        }
+        else
+        {
+            _sprintButton.Modulate = new Color(0.5f, 0.8f, 0.5f, 0.6f); // Dimmed when inactive
+            GD.Print("Sprint deactivated!");
+        }
     }
     
     #endregion

@@ -32,6 +32,7 @@ public partial class PlayerMechController : CharacterBody3D
     private Vector2 _mobileMovementInput = Vector2.Zero;
     private Vector2 _mobileCameraDelta = Vector2.Zero;
     private bool _isMobilePlatform = false;
+    private bool _mobileSprint = false;
     
     #endregion
     
@@ -100,8 +101,9 @@ public partial class PlayerMechController : CharacterBody3D
         // Calculate movement direction relative to camera
         Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
         
-        // Apply movement speed
-        float currentSpeed = Input.IsActionPressed("sprint") && !_isMobilePlatform ? SprintSpeed : WalkSpeed;
+        // Apply movement speed - handle sprint for both PC and mobile
+        bool isSprinting = _isMobilePlatform ? _mobileSprint : Input.IsActionPressed("sprint");
+        float currentSpeed = isSprinting ? SprintSpeed : WalkSpeed;
         
         if (direction != Vector3.Zero)
         {
@@ -192,6 +194,14 @@ public partial class PlayerMechController : CharacterBody3D
     public void SetMobileCameraDelta(Vector2 delta)
     {
         _mobileCameraDelta = delta;
+    }
+    
+    /// <summary>
+    /// Called by MobileControlsUI to toggle sprint on mobile
+    /// </summary>
+    public void SetMobileSprint(bool sprint)
+    {
+        _mobileSprint = sprint;
     }
     
     #endregion
