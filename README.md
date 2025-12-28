@@ -2,6 +2,11 @@
 
 **Tagline:** A realistic mech tower defense game with Halo UNSC military sci-fi aesthetic
 
+## 📖 Documentation
+
+- [Game Design Document](docs/GDD.md) - Teljes játékvízió
+- [Architecture](ARCHITECTURE.md) - Kód architektúra
+
 ## Game Concept
 
 MechDefenseHalo combines immersive first-person cockpit gameplay with strategic top-down tower defense mechanics. Players experience the thrill of piloting a UNSC-style mech from a first-person cockpit view, then transition to a tactical top-down perspective to strategically defend against waves of enemies.
