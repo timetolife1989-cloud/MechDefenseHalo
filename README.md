@@ -68,10 +68,45 @@ The game will integrate Firebase for:
 **Current Phase:** Layer 0 - Foundation
 - ✅ Project structure established
 - ✅ Core configuration files created
-- 🚧 Basic scene setup
+- ✅ Basic scene setup
+- ✅ First-person mech controller (PC + Mobile)
+- ✅ Virtual joystick and touch controls
+- ✅ Mobile UI with HUD elements
 - ⏳ Gameplay systems (upcoming)
 - ⏳ Firebase integration (upcoming)
 - ⏳ Monetization implementation (upcoming)
+
+## 🎮 Tesztelés
+
+### PC-n (Godot Editor):
+- **WASD** vagy **Arrow Keys**: Mozgás
+- **Egér mozgás**: Kamera forgás
+- **Shift**: Sprint
+- **ESC**: Egér feloldása/visszafogása
+- **Q**: Shield (placeholder)
+- **E**: Ability (placeholder)
+- **Tab**: Weapon Switch (placeholder)
+- **Left Mouse**: Fire (placeholder)
+
+### Mobilon:
+- **Bal oldali joystick**: Mozgás (érintéssel aktiválható)
+- **Jobb oldali érintés + húzás**: Kamera forgás
+- **Action gombok**: Fire 🔫, Shield 🛡️, Ability ⚡, Weapon Switch 🔄
+- **HUD**: Health bar (piros), Energy bar (sárga), Crosshair (középen)
+
+### APK Build:
+1. Project → Export → Android
+2. Telepítsd a telefonra
+3. Tesztelj!
+
+### Jelenlegi funkciók:
+- ✅ First-person mech mozgás gravitációval
+- ✅ Kamera forgás pitch/yaw limitekkel
+- ✅ Platform detektálás (PC vs Mobile)
+- ✅ Virtual joystick implementáció
+- ✅ Touch camera implementáció
+- ✅ Multi-touch támogatás
+- ✅ HUD megjelenítés (HP, Energy, Crosshair)
 
 ## Architecture
 

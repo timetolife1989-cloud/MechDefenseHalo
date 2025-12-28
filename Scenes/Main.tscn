@@ -1,10 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7yqxvj1jn3wv"]
+[gd_scene load_steps=7 format=3 uid="uid://b7yqxvj1jn3wv"]
+
+[ext_resource type="PackedScene" uid="uid://c8kj9m2n3o4p5" path="res://Scenes/Mech/PlayerMech.tscn" id="1_mech"]
+[ext_resource type="PackedScene" uid="uid://d9lk0p1q2r3s4" path="res://UI/MobileControls.tscn" id="2_mobile"]
 
 [sub_resource type="Environment" id="Environment_w8r2d"]
 background_mode = 1
 background_color = Color(0.25098, 0.25098, 0.25098, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+metallic = 0.0
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+material = SubResource("StandardMaterial3D_ground")
+size = Vector3(50, 1, 50)
 
 [node name="Main" type="Node3D"]
 
@@ -14,30 +29,19 @@ light_color = Color(1, 0.956863, 0.878431, 1)
 light_energy = 1.5
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10)
-fov = 75.0
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w8r2d")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -50.0
-offset_right = 250.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.8, 0.9, 0.8, 1)
-theme_override_font_sizes/font_size = 32
-text = "MechDefenseHalo
-Project Initialized"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_ground")
+
+[node name="PlayerMech" parent="." instance=ExtResource("1_mech")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MobileControls" parent="." instance=ExtResource("2_mobile")]
