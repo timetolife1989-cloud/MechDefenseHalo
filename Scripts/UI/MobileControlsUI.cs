@@ -49,6 +49,10 @@ public partial class MobileControlsUI : CanvasLayer
     private Vector2 _lastCameraTouchPosition = Vector2.Zero;
     private float _touchCameraSensitivity = 0.5f;
     
+    // UI color constants
+    private static readonly Color SprintActiveColor = new Color(0.2f, 1f, 0.2f, 1f);
+    private static readonly Color SprintInactiveColor = new Color(0.5f, 0.8f, 0.5f, 0.6f);
+    
     #endregion
     
     #region Godot Lifecycle Methods
@@ -335,12 +339,12 @@ public partial class MobileControlsUI : CanvasLayer
         // Update button appearance
         if (_isSprinting)
         {
-            _sprintButton.Modulate = new Color(0.2f, 1f, 0.2f, 1f); // Bright green when active
+            _sprintButton.Modulate = SprintActiveColor;
             GD.Print("Sprint activated!");
         }
         else
         {
-            _sprintButton.Modulate = new Color(0.5f, 0.8f, 0.5f, 0.6f); // Dimmed when inactive
+            _sprintButton.Modulate = SprintInactiveColor;
             GD.Print("Sprint deactivated!");
         }
     }

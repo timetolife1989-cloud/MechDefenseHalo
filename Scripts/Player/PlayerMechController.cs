@@ -21,7 +21,7 @@ public partial class PlayerMechController : CharacterBody3D
     
     private Node3D _cameraMount;
     private Camera3D _camera;
-    private float _gravity = 9.8f;
+    private float _gravity;
     private float _cameraPitch = 0f;
     private const float MaxPitchAngle = 1.0472f; // ~60 degrees in radians
     
@@ -47,6 +47,9 @@ public partial class PlayerMechController : CharacterBody3D
         // Initialize stats
         _currentHealth = MaxHealth;
         _currentEnergy = MaxEnergy;
+        
+        // Get gravity from project settings
+        _gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
         
         // Detect platform
         string osName = OS.GetName();
