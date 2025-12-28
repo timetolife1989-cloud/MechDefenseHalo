@@ -59,30 +59,45 @@ public partial class PlayerMechController : CharacterBody3D
         if (!_isMobilePlatform)
         {
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            GD.Print("PlayerMechController ready - Mouse captured");
+        }
+        else
+        {
+            GD.Print($"PlayerMechController initialized on {osName}");
+        }
+    }
+    
+    public override void _Input(InputEvent @event)
+    {
+        // Skip mouse handling on mobile platforms
+        if (_isMobilePlatform)
+            return;
+        
+        // ESC = Release mouse
+        if (Input.IsActionJustPressed("ui_cancel"))
+        {
+            Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured 
+                ? Input.MouseModeEnum.Visible 
+                : Input.MouseModeEnum.Captured;
         }
         
-        GD.Print($"PlayerMechController initialized on {osName}");
+        // Mouse motion
+        if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+        {
+            HandleCameraRotation(mouseMotion.Relative);
+        }
     }
     
     public override void _UnhandledInput(InputEvent @event)
     {
-        // Handle mouse look on PC
-        if (!_isMobilePlatform && @event is InputEventMouseMotion mouseMotion)
-        {
-            if (Input.MouseMode == Input.MouseModeEnum.Captured)
-            {
-                HandleCameraRotation(mouseMotion.Relative);
-            }
-        }
+        // Skip mouse handling on mobile platforms
+        if (_isMobilePlatform)
+            return;
         
-        // ESC to release mouse on PC
-        if (@event.IsActionPressed("ui_cancel") && !_isMobilePlatform)
+        // Click to recapture mouse
+        if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed)
         {
-            if (Input.MouseMode == Input.MouseModeEnum.Captured)
-            {
-                Input.MouseMode = Input.MouseModeEnum.Visible;
-            }
-            else
+            if (Input.MouseMode == Input.MouseModeEnum.Visible)
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }
