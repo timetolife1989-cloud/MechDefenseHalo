@@ -22,6 +22,8 @@ namespace MechDefenseHalo.Debug
 
         private const float MAX_DAMAGE_AMOUNT = 999999f;
         private const float MAX_HEAL_AMOUNT = 999999f;
+        private const int XP_MULTIPLIER_FOR_LEVEL_DEBUG = 2; // Extra multiplier to ensure level ups
+        private const string ENEMY_SCENE_PATH_TEMPLATE = "res://Scenes/Enemies/{0}.tscn";
 
         #endregion
 
@@ -150,7 +152,7 @@ namespace MechDefenseHalo.Debug
                 // Add enough XP to level up the desired number of times
                 // Note: This is a simplified approach that gives a lot of XP
                 // For proper implementation, we'd need to calculate exact XP requirements
-                int xpToAdd = PlayerLevelManager.Instance.XPToNextLevel * levels * 2; // Extra to ensure level ups
+                int xpToAdd = PlayerLevelManager.Instance.XPToNextLevel * levels * XP_MULTIPLIER_FOR_LEVEL_DEBUG;
                 PlayerLevelManager.AddXP(xpToAdd, "debug");
                 GD.Print($"Added XP for approximately {levels} level(s)");
             }
@@ -172,7 +174,7 @@ namespace MechDefenseHalo.Debug
             Vector3 spawnPos = GetPlayerPosition() + Vector3.Forward * 10;
             
             // Load enemy scene based on type
-            string scenePath = $"res://Scenes/Enemies/{enemyType}.tscn";
+            string scenePath = string.Format(ENEMY_SCENE_PATH_TEMPLATE, enemyType);
             
             if (!ResourceLoader.Exists(scenePath))
             {
