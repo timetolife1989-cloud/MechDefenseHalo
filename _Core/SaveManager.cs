@@ -2,9 +2,7 @@ using Godot;
 using System;
 using System.Text.Json;
 using System.Collections.Generic;
-using MechDefenseHalo.SaveSystem;
-using MechDefenseHalo.Economy;
-using MechDefenseHalo.Inventory;
+using MechDefenseHalo.Notifications;
 
 namespace MechDefenseHalo.Core
 {
@@ -550,6 +548,97 @@ namespace MechDefenseHalo.Core
                 SFXVolume = data.Settings?.SFXVolume ?? 1f
             };
         }
+        
+        /// <summary>
+        /// Get a boolean value from player data
+        /// </summary>
+        /// <param name="key">Key to retrieve</param>
+        /// <returns>Boolean value</returns>
+        public static bool GetBool(string key)
+        {
+            if (Instance?.CurrentPlayerData == null) return false;
+            
+            return key switch
+            {
+                "tutorial_completed" => Instance.CurrentPlayerData.TutorialCompleted,
+                "is_first_launch" => Instance.CurrentPlayerData.IsFirstLaunch,
+                _ => false
+            };
+        }
+        
+        /// <summary>
+        /// Set a boolean value in player data
+        /// </summary>
+        /// <param name="key">Key to set</param>
+        /// <param name="value">Value to set</param>
+        public static void SetBool(string key, bool value)
+        {
+            if (Instance?.CurrentPlayerData == null) return;
+            
+            switch (key)
+            {
+                case "tutorial_completed":
+                    Instance.CurrentPlayerData.TutorialCompleted = value;
+                    break;
+                case "is_first_launch":
+                    Instance.CurrentPlayerData.IsFirstLaunch = value;
+                    break;
+            }
+            
+            Instance.SaveGame();
+        }
+
+        #endregion
+
+        #region Daily Missions Methods
+
+        /// <summary>
+        /// Get daily missions from save data
+        /// </summary>
+        public static List<Mission> GetDailyMissions()
+        {
+            return Instance?.CurrentPlayerData?.DailyMissions ?? new List<Mission>();
+        }
+
+        /// <summary>
+        /// Set daily missions in save data
+        /// </summary>
+        public static void SetDailyMissions(List<Mission> missions)
+        {
+            if (Instance?.CurrentPlayerData != null)
+            {
+                Instance.CurrentPlayerData.DailyMissions = missions;
+                Instance.SaveGame();
+            }
+        }
+
+        /// <summary>
+        /// Get a DateTime value from storage
+        /// </summary>
+        public static DateTime GetDateTime(string key)
+        {
+            if (Instance?.CurrentPlayerData?.DateTimeStore != null && 
+                Instance.CurrentPlayerData.DateTimeStore.ContainsKey(key))
+            {
+                if (DateTime.TryParse(Instance.CurrentPlayerData.DateTimeStore[key], out DateTime result))
+                {
+                    return result;
+                }
+            }
+            return DateTime.MinValue;
+        }
+
+        /// <summary>
+        /// Set a DateTime value in storage
+        /// </summary>
+        public static void SetDateTime(string key, DateTime value)
+        {
+            if (Instance?.CurrentPlayerData?.DateTimeStore != null)
+            {
+                Instance.CurrentPlayerData.DateTimeStore[key] = value.ToString("o");
+                Instance.SaveGame();
+            }
+        }
 
         #endregion
     }
@@ -597,6 +686,11 @@ namespace MechDefenseHalo.Core
         public float MasterVolume { get; set; } = 1f;
         public float MusicVolume { get; set; } = 0.7f;
         public float SFXVolume { get; set; } = 1f;
+        
+        // Tutorial
+        public bool TutorialCompleted { get; set; } = false;
+        public bool IsFirstLaunch { get; set; } = true;
+        public int LastCompletedTutorialStep { get; set; } = 0;
     }
 
     #endregion
