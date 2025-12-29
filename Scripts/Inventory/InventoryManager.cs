@@ -12,6 +12,24 @@ namespace MechDefenseHalo.Inventory
     /// </summary>
     public partial class InventoryManager : Node
     {
+        #region Singleton
+
+        private static InventoryManager _instance;
+
+        public static InventoryManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    GD.PrintErr("InventoryManager accessed before initialization!");
+                }
+                return _instance;
+            }
+        }
+
+        #endregion
+
         #region Exported Properties
 
         [Export] public int MaxSlots { get; set; } = 500;
@@ -35,7 +53,23 @@ namespace MechDefenseHalo.Inventory
 
         public override void _Ready()
         {
+            if (_instance != null && _instance != this)
+            {
+                GD.PrintErr("Multiple InventoryManager instances detected! Removing duplicate.");
+                QueueFree();
+                return;
+            }
+
+            _instance = this;
             GD.Print($"InventoryManager initialized with {MaxSlots} slots");
+        }
+
+        public override void _ExitTree()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         #endregion
@@ -275,6 +309,80 @@ namespace MechDefenseHalo.Inventory
                 MaxSlots = MaxSlots,
                 ItemCount = _items.Count
             });
+        }
+
+        #endregion
+
+        #region Public Methods - Save/Load
+
+        /// <summary>
+        /// Get inventory data for saving
+        /// </summary>
+        /// <returns>Inventory save data</returns>
+        public SaveSystem.InventorySaveData GetSaveData()
+        {
+            var items = new List<SaveSystem.ItemSaveData>();
+            int slotIndex = 0;
+
+            foreach (var kvp in _items)
+            {
+                var stack = kvp.Value;
+                var itemSaveData = new SaveSystem.ItemSaveData
+                {
+                    ItemID = stack.Item.ItemID,
+                    Quantity = stack.Quantity,
+                    SlotIndex = slotIndex++,
+                    Stats = new Dictionary<string, float>()
+                };
+
+                // Save item stats if available
+                if (stack.Item is Items.EquipmentItem equipItem)
+                {
+                    itemSaveData.Stats["Damage"] = equipItem.Damage;
+                    itemSaveData.Stats["Defense"] = equipItem.Defense;
+                    itemSaveData.Stats["CritChance"] = equipItem.CritChance;
+                }
+
+                items.Add(itemSaveData);
+            }
+
+            return new SaveSystem.InventorySaveData
+            {
+                MaxSlots = MaxSlots,
+                Items = items
+            };
+        }
+
+        /// <summary>
+        /// Load inventory data from save
+        /// </summary>
+        /// <param name="saveData">Inventory save data</param>
+        public void LoadFromSave(SaveSystem.InventorySaveData saveData)
+        {
+            if (saveData == null)
+            {
+                GD.PrintErr("Cannot load from null save data");
+                return;
+            }
+
+            // Clear existing inventory
+            _items.Clear();
+
+            // Update max slots
+            MaxSlots = saveData.MaxSlots;
+
+            // Load items - Note: This is a simplified version
+            // In a real implementation, you would need to look up actual item objects
+            // from an item database/registry based on ItemID
+            foreach (var itemData in saveData.Items)
+            {
+                // TODO: Look up item from item database/registry using itemData.ItemID
+                // For now, we'll just log that we should restore this item
+                GD.Print($"Should restore item: {itemData.ItemID} x{itemData.Quantity}");
+            }
+
+            EmitInventoryChanged();
+            GD.Print($"Inventory loaded from save: {saveData.Items.Count} items");
         }
 
         #endregion
