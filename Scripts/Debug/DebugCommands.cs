@@ -18,6 +18,13 @@ namespace MechDefenseHalo.Debug
     /// </summary>
     public partial class DebugCommands : Node
     {
+        #region Constants
+
+        private const float MAX_DAMAGE_AMOUNT = 999999f;
+        private const float MAX_HEAL_AMOUNT = 999999f;
+
+        #endregion
+
         #region Private Fields
 
         private Dictionary<string, Action<string[]>> _commands;
@@ -140,10 +147,12 @@ namespace MechDefenseHalo.Debug
             
             if (PlayerLevelManager.Instance != null)
             {
-                // Calculate XP needed for levels
-                int xpNeeded = PlayerLevelManager.Instance.XPToNextLevel * levels;
-                PlayerLevelManager.AddXP(xpNeeded, "debug");
-                GD.Print($"Added {levels} level(s)");
+                // Add enough XP to level up the desired number of times
+                // Note: This is a simplified approach that gives a lot of XP
+                // For proper implementation, we'd need to calculate exact XP requirements
+                int xpToAdd = PlayerLevelManager.Instance.XPToNextLevel * levels * 2; // Extra to ensure level ups
+                PlayerLevelManager.AddXP(xpToAdd, "debug");
+                GD.Print($"Added XP for approximately {levels} level(s)");
             }
             else
             {
@@ -319,7 +328,7 @@ namespace MechDefenseHalo.Debug
                     var health = enemy3D.GetNodeOrNull<HealthComponent>("HealthComponent");
                     if (health != null)
                     {
-                        health.TakeDamage(999999, null);
+                        health.TakeDamage(MAX_DAMAGE_AMOUNT, null);
                         count++;
                     }
                 }
@@ -362,7 +371,7 @@ namespace MechDefenseHalo.Debug
                 var health = player.GetNodeOrNull<HealthComponent>("HealthComponent");
                 if (health != null)
                 {
-                    health.Heal(999999);
+                    health.Heal(MAX_HEAL_AMOUNT);
                     GD.Print("Player healed to full");
                 }
                 else
