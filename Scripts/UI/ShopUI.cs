@@ -210,25 +210,6 @@ namespace MechDefenseHalo.UI
             return card;
         }
 
-        private bool CanAffordItem(ShopItem item)
-        {
-            if (item.PriceCredits > 0 && item.PriceCores == 0)
-            {
-                return CurrencyManager.HasCredits(item.PriceCredits);
-            }
-            else if (item.PriceCores > 0 && item.PriceCredits == 0)
-            {
-                return CurrencyManager.HasCores(item.PriceCores);
-            }
-            else if (item.PriceCredits > 0 && item.PriceCores > 0)
-            {
-                return CurrencyManager.HasCredits(item.PriceCredits) &&
-                       CurrencyManager.HasCores(item.PriceCores);
-            }
-
-            return false;
-        }
-
         #endregion
 
         #region Event Handlers

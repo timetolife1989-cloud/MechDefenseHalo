@@ -207,11 +207,10 @@ namespace MechDefenseHalo.UI
             {
                 if (WeaponSlots[i] != null)
                 {
-                    var slot = (EquipmentSlot)((int)EquipmentSlot.Weapon1 + i);
-                    _slotUIMap[slot] = WeaponSlots[i];
+                    var equipSlot = (EquipmentSlot)((int)EquipmentSlot.Weapon1 + i);
+                    _slotUIMap[equipSlot] = WeaponSlots[i];
                     WeaponSlots[i].SlotID = $"Weapon{i + 1}";
-                    int index = i; // Capture for lambda
-                    WeaponSlots[i].SlotClicked += (_, button) => OnSlotClicked(slot, button);
+                    WeaponSlots[i].SlotClicked += (_, button) => OnSlotClicked(equipSlot, button);
                 }
             }
 
@@ -220,11 +219,10 @@ namespace MechDefenseHalo.UI
             {
                 if (DroneSlots[i] != null)
                 {
-                    var slot = (EquipmentSlot)((int)EquipmentSlot.Drone1 + i);
-                    _slotUIMap[slot] = DroneSlots[i];
+                    var equipSlot = (EquipmentSlot)((int)EquipmentSlot.Drone1 + i);
+                    _slotUIMap[equipSlot] = DroneSlots[i];
                     DroneSlots[i].SlotID = $"Drone{i + 1}";
-                    int index = i; // Capture for lambda
-                    DroneSlots[i].SlotClicked += (_, button) => OnSlotClicked(slot, button);
+                    DroneSlots[i].SlotClicked += (_, button) => OnSlotClicked(equipSlot, button);
                 }
             }
 
@@ -233,11 +231,10 @@ namespace MechDefenseHalo.UI
             {
                 if (AccessorySlots[i] != null)
                 {
-                    var slot = (EquipmentSlot)((int)EquipmentSlot.Accessory1 + i);
-                    _slotUIMap[slot] = AccessorySlots[i];
+                    var equipSlot = (EquipmentSlot)((int)EquipmentSlot.Accessory1 + i);
+                    _slotUIMap[equipSlot] = AccessorySlots[i];
                     AccessorySlots[i].SlotID = $"Accessory{i + 1}";
-                    int index = i; // Capture for lambda
-                    AccessorySlots[i].SlotClicked += (_, button) => OnSlotClicked(slot, button);
+                    AccessorySlots[i].SlotClicked += (_, button) => OnSlotClicked(equipSlot, button);
                 }
             }
         }

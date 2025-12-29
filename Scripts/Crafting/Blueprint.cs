@@ -67,3 +67,5 @@ namespace MechDefenseHalo.Crafting
         }
 
         #endregion
+    }
+}
