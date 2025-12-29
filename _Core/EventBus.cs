@@ -211,6 +211,16 @@ namespace MechDefenseHalo.Core
         public const string CurrencyChanged = "currency_changed";
         public const string ItemPurchased = "item_purchased";
         public const string ItemSold = "item_sold";
+        
+        // Monetization Events
+        public const string AdOffered = "ad_offered";
+        public const string AdWatched = "ad_watched";
+        public const string AdSkipped = "ad_skipped";
+        public const string ShowVictoryBonusOffer = "show_victory_bonus_offer";
+        public const string ShowMilestoneRewardOffer = "show_milestone_reward_offer";
+        public const string ShowDailyLoginOffer = "show_daily_login_offer";
+        public const string ShowConsentDialog = "show_consent_dialog";
+        public const string ConsentStatusChanged = "consent_status_changed";
 
         #endregion
     }
