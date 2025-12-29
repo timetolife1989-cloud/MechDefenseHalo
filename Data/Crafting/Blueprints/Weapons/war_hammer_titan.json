@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_war_hammer_titan",
+  "display_name": "Titan War Hammer Blueprint",
+  "result_item_id": "weapon_war_hammer_titan",
+  "required_materials": {
+    "alloy_plates": 40,
+    "plasma_core": 10,
+    "quantum_chips": 5
+  },
+  "result_rarity": "Rare",
+  "required_player_level": 19,
+  "crafting_time_seconds": 840,
+  "credit_cost": 2800
+}

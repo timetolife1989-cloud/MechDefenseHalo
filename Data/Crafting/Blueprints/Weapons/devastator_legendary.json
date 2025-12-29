@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_devastator_legendary",
+  "display_name": "Plasma Devastator Blueprint",
+  "result_item_id": "weapon_plasma_devastator_legendary",
+  "required_materials": {
+    "void_crystal": 25,
+    "quantum_chips": 30,
+    "plasma_core": 40
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 40,
+  "crafting_time_seconds": 3600,
+  "credit_cost": 20000,
+  "cores_cost": 75
+}

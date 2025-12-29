@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_void_reaper_legendary",
+  "display_name": "Void Reaper Blueprint",
+  "result_item_id": "weapon_void_reaper_legendary",
+  "required_materials": {
+    "void_crystal": 20,
+    "aether_fragment": 8,
+    "dark_matter": 15
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 35,
+  "crafting_time_seconds": 2400,
+  "credit_cost": 15000,
+  "cores_cost": 50
+}

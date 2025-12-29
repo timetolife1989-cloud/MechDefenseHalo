@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phoenix_helmet",
+  "display_name": "Phoenix Crown Blueprint",
+  "result_item_id": "head_phoenix_legendary",
+  "required_materials": {
+    "aether_fragment": 8,
+    "void_crystal": 15,
+    "quantum_chips": 20
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 35,
+  "crafting_time_seconds": 2400,
+  "credit_cost": 15000,
+  "cores_cost": 45
+}

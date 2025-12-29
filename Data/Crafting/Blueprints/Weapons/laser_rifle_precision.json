@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_laser_rifle_precision",
+  "display_name": "Precision Laser Rifle Blueprint",
+  "result_item_id": "weapon_laser_rifle_precision",
+  "required_materials": {
+    "plasma_core": 12,
+    "quantum_chips": 6,
+    "nanofibers": 20
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 22,
+  "crafting_time_seconds": 1200,
+  "credit_cost": 4500,
+  "cores_cost": 5
+}

@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phantom_legs",
+  "display_name": "Phantom Legs Blueprint",
+  "result_item_id": "legs_phantom_mk1",
+  "required_materials": {
+    "quantum_chips": 9,
+    "power_cells": 28,
+    "nanofibers": 22
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 24,
+  "crafting_time_seconds": 1050,
+  "credit_cost": 4800,
+  "cores_cost": 9
+}

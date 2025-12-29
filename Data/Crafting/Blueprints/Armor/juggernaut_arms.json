@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_juggernaut_arms",
+  "display_name": "Juggernaut Arms Blueprint",
+  "result_item_id": "arms_juggernaut_mk1",
+  "required_materials": {
+    "alloy_plates": 28,
+    "circuits": 20,
+    "power_cells": 12
+  },
+  "result_rarity": "Rare",
+  "required_player_level": 16,
+  "crafting_time_seconds": 450,
+  "credit_cost": 1800
+}

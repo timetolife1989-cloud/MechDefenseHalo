@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phoenix_cannon_legendary",
+  "display_name": "Phoenix Flame Cannon Blueprint",
+  "result_item_id": "weapon_phoenix_cannon_legendary",
+  "required_materials": {
+    "aether_fragment": 10,
+    "void_crystal": 18,
+    "quantum_chips": 25
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 38,
+  "crafting_time_seconds": 3000,
+  "credit_cost": 18000,
+  "cores_cost": 60
+}

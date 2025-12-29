@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_chain_gun_basic",
+  "display_name": "Chain Gun Blueprint",
+  "result_item_id": "weapon_chain_gun_basic",
+  "required_materials": {
+    "scrap_metal": 18,
+    "circuits": 10,
+    "weapon_parts": 2
+  },
+  "result_rarity": "Common",
+  "required_player_level": 5,
+  "crafting_time_seconds": 90,
+  "credit_cost": 250
+}

@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phoenix_legs",
+  "display_name": "Phoenix Flight Legs Blueprint",
+  "result_item_id": "legs_phoenix_legendary",
+  "required_materials": {
+    "aether_fragment": 10,
+    "void_crystal": 18,
+    "power_cells": 65
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 37,
+  "crafting_time_seconds": 2800,
+  "credit_cost": 18000,
+  "cores_cost": 55
+}

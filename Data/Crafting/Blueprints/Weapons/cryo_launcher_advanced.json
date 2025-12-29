@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_cryo_launcher_advanced",
+  "display_name": "Advanced Cryo Launcher Blueprint",
+  "result_item_id": "weapon_cryo_launcher_advanced",
+  "required_materials": {
+    "quantum_chips": 8,
+    "plasma_core": 15,
+    "power_cells": 30
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 25,
+  "crafting_time_seconds": 1800,
+  "credit_cost": 5000,
+  "cores_cost": 10
+}

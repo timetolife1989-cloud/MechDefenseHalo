@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_cryo_arms",
+  "display_name": "Cryo Arms Blueprint",
+  "result_item_id": "arms_cryo_mk1",
+  "required_materials": {
+    "quantum_chips": 10,
+    "plasma_core": 24,
+    "circuits": 36
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 25,
+  "crafting_time_seconds": 1150,
+  "credit_cost": 5100,
+  "cores_cost": 11
+}

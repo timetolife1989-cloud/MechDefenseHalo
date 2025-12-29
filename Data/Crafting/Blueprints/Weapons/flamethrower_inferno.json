@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_flamethrower_inferno",
+  "display_name": "Inferno Flamethrower Blueprint",
+  "result_item_id": "weapon_flamethrower_inferno",
+  "required_materials": {
+    "plasma_core": 8,
+    "alloy_plates": 12,
+    "power_cells": 10
+  },
+  "result_rarity": "Uncommon",
+  "required_player_level": 12,
+  "crafting_time_seconds": 360,
+  "credit_cost": 1000
+}

@@ -1,0 +1,32 @@
+{
+  "set_id": "phoenix_rebirth",
+  "description": "Legendary fire set with resurrection capability",
+  "two_piece_bonus": {
+    "description": "Rising Flames: +40% Fire Damage, +30% Fire Resistance, +10 HP/sec regeneration",
+    "stat_bonuses": {
+      "FireDamage": 0.4,
+      "FireResist": 0.3,
+      "Regeneration": 10
+    },
+    "bonus_name": "Rising Flames"
+  },
+  "four_piece_bonus": {
+    "description": "Phoenix Resurrection: Revive at full HP on death once per battle with 5 seconds immunity",
+    "stat_bonuses": {
+      "FireDamage": 0.7,
+      "FireResist": 0.5,
+      "Regeneration": 20,
+      "HP": 1500
+    },
+    "special_ability_id": "phoenix_resurrection",
+    "bonus_name": "Phoenix Resurrection"
+  },
+  "set_name": "Phoenix Rebirth",
+  "required_item_ids": [
+    "head_phoenix_legendary",
+    "torso_phoenix_legendary",
+    "arms_phoenix_legendary",
+    "legs_phoenix_legendary"
+  ],
+  "minimum_rarity": "Legendary"
+}

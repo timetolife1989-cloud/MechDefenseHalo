@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_plasma_cannon_mk1",
+  "display_name": "Plasma Cannon Mk1 Blueprint",
+  "result_item_id": "weapon_plasma_cannon_mk1",
+  "required_materials": {
+    "plasma_core": 10,
+    "nanofibers": 15,
+    "alloy_plates": 25
+  },
+  "result_rarity": "Rare",
+  "required_player_level": 15,
+  "crafting_time_seconds": 600,
+  "credit_cost": 2000
+}

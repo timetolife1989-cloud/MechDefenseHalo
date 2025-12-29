@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phantom_arms",
+  "display_name": "Phantom Arms Blueprint",
+  "result_item_id": "arms_phantom_mk1",
+  "required_materials": {
+    "quantum_chips": 10,
+    "nanofibers": 25,
+    "circuits": 35
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 25,
+  "crafting_time_seconds": 1200,
+  "credit_cost": 5000,
+  "cores_cost": 10
+}

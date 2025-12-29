@@ -1,0 +1,30 @@
+{
+  "set_id": "inferno_warlord",
+  "description": "Fire-based offensive armor set for maximum burn damage",
+  "two_piece_bonus": {
+    "description": "Burning Soul: +25% Fire Damage and +20% Fire Resistance",
+    "stat_bonuses": {
+      "FireDamage": 0.25,
+      "FireResist": 0.2
+    },
+    "bonus_name": "Burning Soul"
+  },
+  "four_piece_bonus": {
+    "description": "Eternal Flame: All attacks ignite enemies for 5 seconds, burn damage increased by 50%",
+    "stat_bonuses": {
+      "FireDamage": 0.5,
+      "FireResist": 0.4,
+      "Damage": 0.15
+    },
+    "special_ability_id": "eternal_flame",
+    "bonus_name": "Eternal Flame"
+  },
+  "set_name": "Inferno Warlord",
+  "required_item_ids": [
+    "head_inferno_mk1",
+    "torso_inferno_mk1",
+    "arms_inferno_mk1",
+    "legs_inferno_mk1"
+  ],
+  "minimum_rarity": "Epic"
+}

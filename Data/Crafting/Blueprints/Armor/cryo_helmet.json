@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_cryo_helmet",
+  "display_name": "Cryo Helmet Blueprint",
+  "result_item_id": "head_cryo_mk1",
+  "required_materials": {
+    "quantum_chips": 8,
+    "plasma_core": 16,
+    "nanofibers": 19
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 23,
+  "crafting_time_seconds": 800,
+  "credit_cost": 4400,
+  "cores_cost": 8
+}

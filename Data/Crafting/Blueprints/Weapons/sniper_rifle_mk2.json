@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_sniper_rifle_mk2",
+  "display_name": "Sniper Rifle Mk2 Blueprint",
+  "result_item_id": "weapon_sniper_rifle_mk2",
+  "required_materials": {
+    "alloy_plates": 15,
+    "circuits": 12,
+    "weapon_parts": 5
+  },
+  "result_rarity": "Uncommon",
+  "required_player_level": 10,
+  "crafting_time_seconds": 240,
+  "credit_cost": 800
+}

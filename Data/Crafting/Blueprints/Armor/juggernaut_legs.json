@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_juggernaut_legs",
+  "display_name": "Juggernaut Legs Blueprint",
+  "result_item_id": "legs_juggernaut_mk1",
+  "required_materials": {
+    "alloy_plates": 32,
+    "power_cells": 18,
+    "nanofibers": 10
+  },
+  "result_rarity": "Rare",
+  "required_player_level": 17,
+  "crafting_time_seconds": 540,
+  "credit_cost": 1900
+}

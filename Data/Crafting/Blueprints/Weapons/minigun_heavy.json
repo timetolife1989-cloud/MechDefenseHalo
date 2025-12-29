@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_minigun_heavy",
+  "display_name": "Heavy Minigun Blueprint",
+  "result_item_id": "weapon_minigun_heavy",
+  "required_materials": {
+    "alloy_plates": 50,
+    "circuits": 40,
+    "power_cells": 35
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 28,
+  "crafting_time_seconds": 1500,
+  "credit_cost": 6000,
+  "cores_cost": 15
+}

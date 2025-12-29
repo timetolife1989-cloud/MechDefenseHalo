@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phantom_torso",
+  "display_name": "Phantom Torso Blueprint",
+  "result_item_id": "torso_phantom_mk1",
+  "required_materials": {
+    "quantum_chips": 12,
+    "nanofibers": 30,
+    "plasma_core": 15
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 26,
+  "crafting_time_seconds": 1350,
+  "credit_cost": 5500,
+  "cores_cost": 12
+}

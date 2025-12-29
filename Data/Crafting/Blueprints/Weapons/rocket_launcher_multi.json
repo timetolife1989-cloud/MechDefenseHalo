@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_rocket_launcher_multi",
+  "display_name": "Multi-Rocket Launcher Blueprint",
+  "result_item_id": "weapon_rocket_launcher_multi",
+  "required_materials": {
+    "alloy_plates": 35,
+    "circuits": 28,
+    "power_cells": 18
+  },
+  "result_rarity": "Rare",
+  "required_player_level": 20,
+  "crafting_time_seconds": 900,
+  "credit_cost": 3000
+}

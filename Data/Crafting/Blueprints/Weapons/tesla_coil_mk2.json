@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_tesla_coil_mk2",
+  "display_name": "Tesla Coil Mk2 Blueprint",
+  "result_item_id": "weapon_tesla_coil_mk2",
+  "required_materials": {
+    "quantum_chips": 10,
+    "plasma_core": 20,
+    "power_cells": 38
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 26,
+  "crafting_time_seconds": 1650,
+  "credit_cost": 5500,
+  "cores_cost": 12
+}

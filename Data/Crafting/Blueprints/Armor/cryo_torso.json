@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_cryo_torso",
+  "display_name": "Cryo Torso Blueprint",
+  "result_item_id": "torso_cryo_mk1",
+  "required_materials": {
+    "quantum_chips": 11,
+    "plasma_core": 30,
+    "alloy_plates": 42
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 26,
+  "crafting_time_seconds": 1400,
+  "credit_cost": 5800,
+  "cores_cost": 14
+}

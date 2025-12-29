@@ -1,0 +1,30 @@
+{
+  "set_id": "phantom_striker",
+  "description": "Stealth and assassination focused armor set",
+  "two_piece_bonus": {
+    "description": "+15% Crit Chance and +10% Dodge",
+    "stat_bonuses": {
+      "CritChance": 0.15,
+      "Dodge": 0.1
+    },
+    "bonus_name": "Two Piece Bonus"
+  },
+  "four_piece_bonus": {
+    "description": "Deadly Shadows: Attacks from stealth deal 300% damage, leave afterimages that confuse enemies",
+    "stat_bonuses": {
+      "CritChance": 0.25,
+      "CritDamage": 0.6,
+      "Dodge": 0.2
+    },
+    "special_ability_id": "deadly_shadows",
+    "bonus_name": "Deadly Shadows"
+  },
+  "set_name": "Phantom Striker",
+  "required_item_ids": [
+    "head_phantom_mk1",
+    "torso_phantom_mk1",
+    "arms_phantom_mk1",
+    "legs_phantom_mk1"
+  ],
+  "minimum_rarity": "Epic"
+}

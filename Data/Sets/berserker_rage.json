@@ -1,0 +1,30 @@
+{
+  "set_id": "berserker_rage",
+  "description": "High risk, high reward damage set for aggressive play",
+  "two_piece_bonus": {
+    "description": "Bloodlust: +30% Damage and +15% Attack Speed",
+    "stat_bonuses": {
+      "Damage": 0.3,
+      "FireRate": 0.15
+    },
+    "bonus_name": "Bloodlust"
+  },
+  "four_piece_bonus": {
+    "description": "Unstoppable Fury: Below 50% HP gain additional +100% damage and immunity to crowd control",
+    "stat_bonuses": {
+      "Damage": 0.6,
+      "FireRate": 0.3,
+      "CritChance": 0.2
+    },
+    "special_ability_id": "unstoppable_fury",
+    "bonus_name": "Unstoppable Fury"
+  },
+  "set_name": "Berserker's Rage",
+  "required_item_ids": [
+    "head_berserker_mk1",
+    "torso_berserker_mk1",
+    "arms_berserker_mk1",
+    "legs_berserker_mk1"
+  ],
+  "minimum_rarity": "Epic"
+}

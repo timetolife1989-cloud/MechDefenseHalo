@@ -1,0 +1,13 @@
+{
+  "blueprint_id": "bp_assault_rifle_mk1",
+  "display_name": "Assault Rifle Mk1 Blueprint",
+  "result_item_id": "weapon_assault_rifle_mk1",
+  "required_materials": {
+    "scrap_metal": 10,
+    "circuits": 5
+  },
+  "result_rarity": "Common",
+  "required_player_level": 1,
+  "crafting_time_seconds": 60,
+  "credit_cost": 100
+}

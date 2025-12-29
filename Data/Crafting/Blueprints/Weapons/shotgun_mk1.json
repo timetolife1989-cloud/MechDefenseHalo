@@ -1,0 +1,13 @@
+{
+  "blueprint_id": "bp_shotgun_mk1",
+  "display_name": "Combat Shotgun Mk1 Blueprint",
+  "result_item_id": "weapon_shotgun_mk1",
+  "required_materials": {
+    "scrap_metal": 15,
+    "circuits": 8
+  },
+  "result_rarity": "Common",
+  "required_player_level": 3,
+  "crafting_time_seconds": 120,
+  "credit_cost": 200
+}

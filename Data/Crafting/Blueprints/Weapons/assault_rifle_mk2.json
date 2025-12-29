@@ -1,0 +1,14 @@
+{
+  "blueprint_id": "bp_assault_rifle_mk2",
+  "display_name": "Assault Rifle Mk2 Blueprint",
+  "result_item_id": "weapon_assault_rifle_mk2",
+  "required_materials": {
+    "alloy_plates": 10,
+    "circuits": 5,
+    "weapon_parts": 3
+  },
+  "result_rarity": "Uncommon",
+  "required_player_level": 8,
+  "crafting_time_seconds": 180,
+  "credit_cost": 500
+}

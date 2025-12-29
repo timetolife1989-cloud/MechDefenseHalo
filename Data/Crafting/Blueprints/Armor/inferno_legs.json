@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_inferno_legs",
+  "display_name": "Inferno Legs Blueprint",
+  "result_item_id": "legs_inferno_mk1",
+  "required_materials": {
+    "plasma_core": 25,
+    "power_cells": 35,
+    "nanofibers": 20
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 24,
+  "crafting_time_seconds": 1000,
+  "credit_cost": 4900,
+  "cores_cost": 10
+}

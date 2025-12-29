@@ -1,0 +1,35 @@
+{
+  "set_id": "void_walker",
+  "description": "Exotic void set with reality manipulation powers",
+  "two_piece_bonus": {
+    "description": "Void Touch: +35% Void Damage, +25% All Resistance, 20% chance to phase through attacks",
+    "stat_bonuses": {
+      "VoidDamage": 0.35,
+      "PhysicalResist": 0.25,
+      "FireResist": 0.25,
+      "IceResist": 0.25,
+      "Dodge": 0.2
+    },
+    "bonus_name": "Void Touch"
+  },
+  "four_piece_bonus": {
+    "description": "Reality Breach: Walk between dimensions, ignore all terrain and phase through enemies at will",
+    "stat_bonuses": {
+      "VoidDamage": 0.6,
+      "PhysicalResist": 0.4,
+      "FireResist": 0.4,
+      "IceResist": 0.4,
+      "Dodge": 0.5
+    },
+    "special_ability_id": "reality_breach",
+    "bonus_name": "Reality Breach"
+  },
+  "set_name": "Void Walker",
+  "required_item_ids": [
+    "head_void_exotic",
+    "torso_void_exotic",
+    "arms_void_exotic",
+    "legs_void_exotic"
+  ],
+  "minimum_rarity": "Exotic"
+}

@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phoenix_torso",
+  "display_name": "Phoenix Eternal Core Blueprint",
+  "result_item_id": "torso_phoenix_legendary",
+  "required_materials": {
+    "aether_fragment": 12,
+    "void_crystal": 20,
+    "plasma_core": 45
+  },
+  "result_rarity": "Legendary",
+  "required_player_level": 38,
+  "crafting_time_seconds": 3000,
+  "credit_cost": 20000,
+  "cores_cost": 60
+}

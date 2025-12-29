@@ -1,0 +1,13 @@
+{
+  "blueprint_id": "bp_juggernaut_helmet",
+  "display_name": "Juggernaut Helmet Blueprint",
+  "result_item_id": "head_juggernaut_mk1",
+  "required_materials": {
+    "alloy_plates": 15,
+    "circuits": 10
+  },
+  "result_rarity": "Uncommon",
+  "required_player_level": 8,
+  "crafting_time_seconds": 300,
+  "credit_cost": 600
+}

@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_phantom_helmet",
+  "display_name": "Phantom Helmet Blueprint",
+  "result_item_id": "head_phantom_mk1",
+  "required_materials": {
+    "quantum_chips": 8,
+    "nanofibers": 20,
+    "circuits": 30
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 23,
+  "crafting_time_seconds": 900,
+  "credit_cost": 4500,
+  "cores_cost": 8
+}

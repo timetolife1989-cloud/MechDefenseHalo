@@ -1,0 +1,15 @@
+{
+  "blueprint_id": "bp_inferno_torso",
+  "display_name": "Inferno Torso Blueprint",
+  "result_item_id": "torso_inferno_mk1",
+  "required_materials": {
+    "plasma_core": 32,
+    "quantum_chips": 12,
+    "alloy_plates": 45
+  },
+  "result_rarity": "Epic",
+  "required_player_level": 27,
+  "crafting_time_seconds": 1500,
+  "credit_cost": 6000,
+  "cores_cost": 15
+}
