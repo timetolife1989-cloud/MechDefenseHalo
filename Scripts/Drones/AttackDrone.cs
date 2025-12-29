@@ -13,7 +13,7 @@ namespace MechDefenseHalo.Drones
 
         [Export] public float Damage { get; set; } = 15f;
         [Export] public float FireRate { get; set; } = 0.5f;
-        [Export] public float AttackRange { get; set; } = 25f;
+        [Export] public float AttackRange { get; set; } = 20f;
 
         #endregion
 
@@ -31,7 +31,6 @@ namespace MechDefenseHalo.Drones
             DroneName = "Attack Drone";
             EnergyCost = 10f;
             Lifetime = 30f;
-            AttackRange = 20f;
         }
 
         #endregion

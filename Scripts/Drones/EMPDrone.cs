@@ -11,7 +11,7 @@ namespace MechDefenseHalo.Drones
     {
         #region Exported Properties
 
-        [Export] public float EMPRange { get; set; } = 15f;
+        [Export] public float EMPRange { get; set; } = 10f;
         [Export] public float SlowAmount { get; set; } = 0.5f; // 50% slow
         [Export] public float PulseInterval { get; set; } = 2f; // Seconds between pulses
 
@@ -30,7 +30,6 @@ namespace MechDefenseHalo.Drones
             DroneName = "EMP Drone";
             EnergyCost = 20f;
             Lifetime = 30f;
-            EMPRange = 10f;
         }
 
         #endregion
