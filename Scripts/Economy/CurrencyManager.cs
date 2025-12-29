@@ -282,7 +282,12 @@ namespace MechDefenseHalo.Economy
             Instance._credits = Mathf.Max(0, saveData.Credits);
             Instance._cores = Mathf.Max(0, saveData.Cores);
             
-            Instance.EmitCurrencyChanged("both", 0, 0);
+            // Calculate the change from current to loaded values
+            int creditChange = Instance._credits;
+            int coreChange = Instance._cores;
+            
+            Instance.EmitCurrencyChanged("credits", creditChange, Instance._credits);
+            Instance.EmitCurrencyChanged("cores", coreChange, Instance._cores);
             GD.Print($"Currency loaded from save: {Instance._credits} credits, {Instance._cores} cores");
         }
 

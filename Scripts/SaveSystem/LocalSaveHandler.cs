@@ -12,7 +12,8 @@ namespace MechDefenseHalo.SaveSystem
         
         public LocalSaveHandler()
         {
-            _saveDirectory = OS.GetUserDataDir() + "/saves/";
+            string userDataDir = OS.GetUserDataDir();
+            _saveDirectory = System.IO.Path.Combine(userDataDir, "saves");
             
             if (!DirAccess.DirExistsAbsolute(_saveDirectory))
             {
@@ -31,7 +32,7 @@ namespace MechDefenseHalo.SaveSystem
         {
             try
             {
-                string filePath = _saveDirectory + fileName;
+                string filePath = System.IO.Path.Combine(_saveDirectory, fileName);
                 
                 using var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
                 if (file == null)
@@ -59,7 +60,7 @@ namespace MechDefenseHalo.SaveSystem
         {
             try
             {
-                string filePath = _saveDirectory + fileName;
+                string filePath = System.IO.Path.Combine(_saveDirectory, fileName);
                 
                 if (!FileAccess.FileExists(filePath))
                 {
@@ -89,7 +90,7 @@ namespace MechDefenseHalo.SaveSystem
         /// <returns>True if file exists</returns>
         public bool SaveExists(string fileName)
         {
-            return FileAccess.FileExists(_saveDirectory + fileName);
+            return FileAccess.FileExists(System.IO.Path.Combine(_saveDirectory, fileName));
         }
         
         /// <summary>
@@ -101,7 +102,7 @@ namespace MechDefenseHalo.SaveSystem
         {
             try
             {
-                string filePath = _saveDirectory + fileName;
+                string filePath = System.IO.Path.Combine(_saveDirectory, fileName);
                 
                 if (FileAccess.FileExists(filePath))
                 {

@@ -112,9 +112,7 @@ namespace MechDefenseHalo.Core
                 CurrentSaveData.LastSaved = DateTime.Now;
 
                 // Update total playtime
-                float currentTime = Time.GetTicksMsec() / 1000f;
-                CurrentSaveData.TotalPlaytime += currentTime - _sessionStartTime;
-                _sessionStartTime = currentTime;
+                UpdateTotalPlaytime();
 
                 // Serialize to JSON
                 string json = JsonSerializer.Serialize(CurrentSaveData, new JsonSerializerOptions { WriteIndented = true });
@@ -277,6 +275,16 @@ namespace MechDefenseHalo.Core
         }
 
         /// <summary>
+        /// Update total playtime with current session time
+        /// </summary>
+        private void UpdateTotalPlaytime()
+        {
+            float currentTime = Time.GetTicksMsec() / 1000f;
+            CurrentSaveData.TotalPlaytime += currentTime - _sessionStartTime;
+            _sessionStartTime = currentTime;
+        }
+
+        /// <summary>
         /// Create backup of current save file
         /// </summary>
         private void CreateBackup()
@@ -398,7 +406,7 @@ namespace MechDefenseHalo.Core
             var currencyManager = CurrencyManager.Instance;
             if (currencyManager != null)
             {
-                return CurrencyManager.GetSaveData();
+                return currencyManager.GetSaveData();
             }
 
             return CurrentSaveData?.Currency ?? new CurrencySaveData
@@ -494,7 +502,11 @@ namespace MechDefenseHalo.Core
             // Apply currency data
             if (data.Currency != null)
             {
-                CurrencyManager.LoadFromSave(data.Currency);
+                var currencyManager = CurrencyManager.Instance;
+                if (currencyManager != null)
+                {
+                    CurrencyManager.LoadFromSave(data.Currency);
+                }
             }
 
             // Apply game state

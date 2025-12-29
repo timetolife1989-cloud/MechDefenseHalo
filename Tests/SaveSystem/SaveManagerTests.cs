@@ -68,7 +68,7 @@ namespace MechDefenseHalo.Tests.SaveSystem
         public void SaveLoad_ShouldPreservePlayerData()
         {
             // Arrange - Create save data with specific values
-            var saveData = new MechDefenseHalo.SaveSystem.SaveData
+            var saveData = new SaveData
             {
                 Version = "1.0.0",
                 Player = new PlayerSaveData

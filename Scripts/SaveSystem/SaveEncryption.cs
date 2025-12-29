@@ -6,9 +6,17 @@ namespace MechDefenseHalo.SaveSystem
     /// <summary>
     /// Provides encryption/decryption for save files
     /// Uses simple XOR encryption (can be upgraded to AES for production)
+    /// 
+    /// NOTE: The encryption key is currently hard-coded for simplicity.
+    /// For production use, consider:
+    /// 1. Generating the key dynamically based on device/user ID
+    /// 2. Storing the key in a secure keychain/keystore
+    /// 3. Using environment-specific keys
+    /// 4. Upgrading to AES encryption with proper key management
     /// </summary>
     public static class SaveEncryption
     {
+        // TODO: Move to secure storage or generate dynamically
         private const string ENCRYPTION_KEY = "MechDefenseHalo2025SecretKey!@#";
         
         /// <summary>
