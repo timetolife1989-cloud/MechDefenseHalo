@@ -64,7 +64,7 @@
   },
   {
     "ID": "boss_no_hit",
-    "Name": "Untouchable",
+    "Name": "Flawless Boss",
     "Description": "Defeat a boss without taking any damage",
     "RequiredProgress": 1,
     "Rewards": {

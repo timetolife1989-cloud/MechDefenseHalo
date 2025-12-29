@@ -75,6 +75,18 @@ EventBus.Emit(EventBus.WaveCompleted, waveNumber);
 EventBus.Emit(EventBus.BossDefeated, bossName);
 ```
 
+### Level and Wave Milestone Tracking
+
+Level-based achievements (Novice, Expert, Master) and wave milestones (Wave Breaker, Endgame) use threshold checking instead of incremental progress:
+
+```csharp
+// Check level achievements when player levels up
+AchievementManager.Instance.CheckLevelAchievements(playerLevel);
+
+// Check wave achievements when wave is completed
+AchievementManager.Instance.CheckWaveAchievements(waveNumber);
+```
+
 ### Manual Achievement Unlocking
 
 For special conditions not covered by events:

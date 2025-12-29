@@ -101,9 +101,24 @@ namespace MechDefenseHalo.Achievements
         private void OnEntityDied(object data)
         {
             // Track enemy kills (exclude player)
-            if (data != null && !data.ToString().Contains("Player"))
+            // Data should be a Dictionary with entity type information
+            if (data is Godot.Collections.Dictionary dict)
             {
-                _achievementManager.TrackEvent("enemy_kill", 1);
+                // Check if this is an enemy kill (not player death)
+                bool isPlayer = dict.ContainsKey("is_player") && (bool)dict["is_player"];
+                if (!isPlayer)
+                {
+                    _achievementManager.TrackEvent("enemy_kill", 1);
+                }
+            }
+            else if (data != null)
+            {
+                // Fallback: check string representation (less reliable)
+                string dataStr = data.ToString().ToLower();
+                if (!dataStr.Contains("player"))
+                {
+                    _achievementManager.TrackEvent("enemy_kill", 1);
+                }
             }
         }
 
@@ -147,8 +162,11 @@ namespace MechDefenseHalo.Achievements
 
         private void OnWaveCompleted(object data)
         {
-            // Track wave completion
+            // Track wave completion (for total count)
             _achievementManager.TrackEvent("wave_completed", 1);
+
+            // Check wave-based milestone achievements (25, 50)
+            _achievementManager.CheckWaveAchievements(_currentWave);
 
             // Check for no damage wave
             if (!_tookDamageThisWave)

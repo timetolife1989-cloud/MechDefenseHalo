@@ -140,6 +140,75 @@ namespace MechDefenseHalo.Achievements
         }
 
         /// <summary>
+        /// Check level-based achievements against a threshold (non-incremental)
+        /// </summary>
+        /// <param name="currentLevel">Current player level</param>
+        public void CheckLevelAchievements(int currentLevel)
+        {
+            // Check novice (level 10)
+            if (currentLevel >= 10)
+            {
+                var novice = GetAchievement("novice");
+                if (novice != null && !novice.IsCompleted && novice.Progress < novice.RequiredProgress)
+                {
+                    novice.Progress = novice.RequiredProgress;
+                    UnlockAchievement("novice");
+                }
+            }
+
+            // Check expert (level 50)
+            if (currentLevel >= 50)
+            {
+                var expert = GetAchievement("expert");
+                if (expert != null && !expert.IsCompleted && expert.Progress < expert.RequiredProgress)
+                {
+                    expert.Progress = expert.RequiredProgress;
+                    UnlockAchievement("expert");
+                }
+            }
+
+            // Check master (level 100)
+            if (currentLevel >= 100)
+            {
+                var master = GetAchievement("master");
+                if (master != null && !master.IsCompleted && master.Progress < master.RequiredProgress)
+                {
+                    master.Progress = master.RequiredProgress;
+                    UnlockAchievement("master");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check wave-based achievements against completed wave count (non-incremental)
+        /// </summary>
+        /// <param name="waveNumber">Highest wave completed</param>
+        public void CheckWaveAchievements(int waveNumber)
+        {
+            // Check wave breaker (wave 25)
+            if (waveNumber >= 25)
+            {
+                var waveBreaker = GetAchievement("wave_breaker");
+                if (waveBreaker != null && !waveBreaker.IsCompleted && waveBreaker.Progress < waveBreaker.RequiredProgress)
+                {
+                    waveBreaker.Progress = waveBreaker.RequiredProgress;
+                    UnlockAchievement("wave_breaker");
+                }
+            }
+
+            // Check endgame (wave 50)
+            if (waveNumber >= 50)
+            {
+                var endgame = GetAchievement("endgame");
+                if (endgame != null && !endgame.IsCompleted && endgame.Progress < endgame.RequiredProgress)
+                {
+                    endgame.Progress = endgame.RequiredProgress;
+                    UnlockAchievement("endgame");
+                }
+            }
+        }
+
+        /// <summary>
         /// Manually unlock an achievement (for special conditions)
         /// </summary>
         public bool UnlockAchievement(string achievementID)
@@ -359,11 +428,11 @@ namespace MechDefenseHalo.Achievements
                 case "drone_unlocked":
                     AddIfExists(results, "drone_commander");
                     break;
-                case "level_reached":
-                    AddIfExists(results, "novice", "expert", "master");
-                    break;
+                // Note: level_reached achievements are handled by CheckLevelAchievements() method
+                // Note: wave_completed milestones (25, 50) are handled by CheckWaveAchievements() method
                 case "wave_completed":
-                    AddIfExists(results, "wave_breaker", "endgame");
+                    // Only track total wave count for veteran achievement
+                    AddIfExists(results, "veteran");
                     break;
                 case "boss_defeated":
                     AddIfExists(results, "titan_slayer", "flawless_victory", "speed_run", "all_weak_points", "boss_rush");
