@@ -139,6 +139,9 @@ namespace MechDefenseHalo.Tests.Enemies
 
         #region Archetype Tests
 
+        private const float GLASS_CANNON_DAMAGE_TO_HP_RATIO = 10f;
+        private const float TANK_HP_TO_DAMAGE_RATIO = 10f;
+
         [TestCase]
         public void GenerateStats_Archetype_AffectsStatDistribution()
         {
@@ -151,13 +154,13 @@ namespace MechDefenseHalo.Tests.Enemies
                 var stats = _statMixer.GenerateStats(EnemyRarity.Common);
                 
                 // Look for glass cannon (high damage relative to HP)
-                if (stats.Damage > stats.HP / 10)
+                if (stats.Damage > stats.HP / GLASS_CANNON_DAMAGE_TO_HP_RATIO)
                 {
                     glassCannonLike = stats;
                 }
                 
                 // Look for tank (high HP relative to damage)
-                if (stats.HP > stats.Damage * 10)
+                if (stats.HP > stats.Damage * TANK_HP_TO_DAMAGE_RATIO)
                 {
                     tankLike = stats;
                 }
