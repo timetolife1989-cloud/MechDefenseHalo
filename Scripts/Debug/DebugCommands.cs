@@ -20,10 +20,12 @@ namespace MechDefenseHalo.Debug
     {
         #region Constants
 
+        // Using large float values instead of float.MaxValue to avoid overflow issues with damage calculations
         private const float MAX_DAMAGE_AMOUNT = 999999f;
         private const float MAX_HEAL_AMOUNT = 999999f;
         private const int XP_MULTIPLIER_FOR_LEVEL_DEBUG = 2; // Extra multiplier to ensure level ups
         private const string ENEMY_SCENE_PATH_TEMPLATE = "res://Scenes/Enemies/{0}.tscn";
+        private const int PLAYER_COLLISION_LAYER = 1;
 
         #endregion
 
@@ -150,11 +152,11 @@ namespace MechDefenseHalo.Debug
             if (PlayerLevelManager.Instance != null)
             {
                 // Add enough XP to level up the desired number of times
-                // Note: This is a simplified approach that gives a lot of XP
-                // For proper implementation, we'd need to calculate exact XP requirements
+                // Using multiplier approach for simplicity in debug context
+                // Note: This may result in slightly more levels than requested due to XP curve
                 int xpToAdd = PlayerLevelManager.Instance.XPToNextLevel * levels * XP_MULTIPLIER_FOR_LEVEL_DEBUG;
                 PlayerLevelManager.AddXP(xpToAdd, "debug");
-                GD.Print($"Added XP for approximately {levels} level(s)");
+                GD.Print($"Added {xpToAdd} XP (approximately {levels} level(s))");
             }
             else
             {
@@ -295,7 +297,7 @@ namespace MechDefenseHalo.Debug
             if (player is CharacterBody3D playerBody)
             {
                 // Disable collision when noclip is on
-                playerBody.SetCollisionMaskValue(1, !_noClip);
+                playerBody.SetCollisionMaskValue(PLAYER_COLLISION_LAYER, !_noClip);
                 GD.Print($"Noclip: {_noClip}");
             }
             else

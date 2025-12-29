@@ -106,7 +106,8 @@ namespace MechDefenseHalo.Debug
             {
                 // Spawn a random enemy type
                 string[] enemyTypes = { "Grunt", "Tank", "Flyer", "Swarm", "Shooter" };
-                string randomType = enemyTypes[GD.Randi() % enemyTypes.Length];
+                int randomIndex = GD.RandRange(0, enemyTypes.Length - 1);
+                string randomType = enemyTypes[randomIndex];
                 commands.Execute($"spawn {randomType}");
             }
         }

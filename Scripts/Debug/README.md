@@ -205,7 +205,7 @@ To add a new debug command:
 
 ## Security
 
-✅ **Passed CodeQL Security Scan** - No vulnerabilities detected  
 ✅ **Conditional Compilation** - Removed from release builds  
 ✅ **No Secrets** - No hardcoded credentials or sensitive data  
-✅ **Input Validation** - Commands validate arguments before execution
+✅ **Input Validation** - Commands validate arguments before execution  
+✅ **Safe Damage Values** - Uses large but safe float values (not float.MaxValue to avoid overflow)
