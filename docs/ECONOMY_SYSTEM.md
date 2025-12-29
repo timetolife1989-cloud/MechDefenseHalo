@@ -46,7 +46,7 @@ SetManager → Set bonus tracking
 | Rare | Blue | 10% | Good stats |
 | Epic | Purple | 4% | Great stats, sets |
 | Legendary | Orange | 0.9% | Excellent stats, abilities |
-| Exotic | Yellow | 0.09% | Rare, powerful |
+| Exotic | Yellow | 0.1% | Rare, powerful |
 | Mythic | Red | 0.01% | Ultimate endgame |
 
 ### Mech Parts (80 items)

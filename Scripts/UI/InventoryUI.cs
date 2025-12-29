@@ -230,8 +230,10 @@ namespace MechDefenseHalo.UI
             // Set background color based on rarity
             slot.Modulate = GetRarityColor(stack.Item.Rarity);
             
-            // TODO: Add icon texture and quantity label
-            // This would be implemented with TextureRect and Label child nodes
+            // TODO: Add TextureRect and Label child nodes in .tscn file for:
+            // - Item icon (TextureRect with stack.Item.Icon)
+            // - Quantity label (Label showing stack.Quantity)
+            // This will be implemented when creating the .tscn scene file
         }
         
         private void ClearSlot(Panel slot)
@@ -241,17 +243,7 @@ namespace MechDefenseHalo.UI
         
         private Color GetRarityColor(ItemRarity rarity)
         {
-            return rarity switch
-            {
-                ItemRarity.Common => new Color(0.7f, 0.7f, 0.7f),
-                ItemRarity.Uncommon => new Color(0.1f, 0.8f, 0.1f),
-                ItemRarity.Rare => new Color(0.2f, 0.5f, 1.0f),
-                ItemRarity.Epic => new Color(0.6f, 0.2f, 0.9f),
-                ItemRarity.Legendary => new Color(1.0f, 0.5f, 0.0f),
-                ItemRarity.Exotic => new Color(1.0f, 0.9f, 0.0f),
-                ItemRarity.Mythic => new Color(1.0f, 0.2f, 0.2f),
-                _ => new Color(0.5f, 0.5f, 0.5f)
-            };
+            return RarityConfig.GetColor(rarity);
         }
         
         #endregion

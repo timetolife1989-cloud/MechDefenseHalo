@@ -280,17 +280,7 @@ namespace MechDefenseHalo.UI
         
         private Color GetRarityColor(ItemRarity rarity)
         {
-            return rarity switch
-            {
-                ItemRarity.Common => new Color(0.7f, 0.7f, 0.7f),
-                ItemRarity.Uncommon => new Color(0.1f, 0.8f, 0.1f),
-                ItemRarity.Rare => new Color(0.2f, 0.5f, 1.0f),
-                ItemRarity.Epic => new Color(0.6f, 0.2f, 0.9f),
-                ItemRarity.Legendary => new Color(1.0f, 0.5f, 0.0f),
-                ItemRarity.Exotic => new Color(1.0f, 0.9f, 0.0f),
-                ItemRarity.Mythic => new Color(1.0f, 0.2f, 0.2f),
-                _ => new Color(0.5f, 0.5f, 0.5f)
-            };
+            return RarityConfig.GetColor(rarity);
         }
         
         #endregion
