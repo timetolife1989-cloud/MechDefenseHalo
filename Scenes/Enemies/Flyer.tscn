@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://flyer_enemy_001"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Flyer.cs" id="1_flyer"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" path="res://Components/DamageComponent.cs" id="3_damage"]
+[ext_resource type="Script" path="res://Components/MovementComponent.cs" id="4_movement"]
+[ext_resource type="Script" path="res://Scripts/Loot/LootDropComponent.cs" id="5_loot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_flyer"]
+radius = 0.4
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flyer"]
+albedo_color = Color(0.6, 0.2, 0.8, 1)
+metallic = 0.3
+roughness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_flyer"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 1.2
+
+[node name="Flyer" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_flyer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_flyer")
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="ModelMount"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.75, 0)
+mesh = SubResource("CylinderMesh_flyer")
+surface_material_override/0 = SubResource("StandardMaterial3D_flyer")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+MaxHealth = 60.0
+RegenerationRate = 0.0
+RegenerationDelay = 3.0
+IsInvulnerable = false
+
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("3_damage")
+BaseDamage = 15.0
+ElementType = 0
+CanCrit = true
+CritChance = 0.15
+CritMultiplier = 2.0
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("4_movement")
+MaxSpeed = 5.0
+Acceleration = 22.0
+Deceleration = 18.0
+RotationSpeed = 6.0
+UseGravity = false
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.6)
+
+[node name="LootDropComponent" type="Node" parent="."]
+script = ExtResource("5_loot")
+LootTableID = "Flyer"
+LuckModifier = 1.1
+AutoPickup = false
+DropRadius = 2.0

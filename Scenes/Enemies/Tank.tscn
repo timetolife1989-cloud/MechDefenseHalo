@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://tank_enemy_001"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Tank.cs" id="1_tank"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" path="res://Components/DamageComponent.cs" id="3_damage"]
+[ext_resource type="Script" path="res://Components/MovementComponent.cs" id="4_movement"]
+[ext_resource type="Script" path="res://Scripts/Loot/LootDropComponent.cs" id="5_loot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tank"]
+radius = 0.8
+height = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tank"]
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+metallic = 0.6
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_tank"]
+size = Vector3(1.4, 2.0, 1.2)
+
+[node name="Tank" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_tank")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("CapsuleShape3D_tank")
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="ModelMount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+mesh = SubResource("BoxMesh_tank")
+surface_material_override/0 = SubResource("StandardMaterial3D_tank")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+MaxHealth = 200.0
+RegenerationRate = 0.0
+RegenerationDelay = 3.0
+IsInvulnerable = false
+
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("3_damage")
+BaseDamage = 25.0
+ElementType = 0
+CanCrit = false
+CritChance = 0.15
+CritMultiplier = 2.0
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("4_movement")
+MaxSpeed = 2.0
+Acceleration = 15.0
+Deceleration = 12.0
+RotationSpeed = 3.0
+UseGravity = true
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 1.0)
+
+[node name="LootDropComponent" type="Node" parent="."]
+script = ExtResource("5_loot")
+LootTableID = "Tank"
+LuckModifier = 1.2
+AutoPickup = false
+DropRadius = 2.5

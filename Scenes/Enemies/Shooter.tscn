@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://shooter_enemy_001"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Shooter.cs" id="1_shooter"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" path="res://Components/DamageComponent.cs" id="3_damage"]
+[ext_resource type="Script" path="res://Components/MovementComponent.cs" id="4_movement"]
+[ext_resource type="Script" path="res://Scripts/Loot/LootDropComponent.cs" id="5_loot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_shooter"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shooter"]
+albedo_color = Color(0.2, 0.4, 0.8, 1)
+metallic = 0.2
+roughness = 0.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shooter"]
+top_radius = 0.35
+bottom_radius = 0.35
+height = 1.5
+
+[node name="Shooter" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_shooter")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_shooter")
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="ModelMount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CylinderMesh_shooter")
+surface_material_override/0 = SubResource("StandardMaterial3D_shooter")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+MaxHealth = 80.0
+RegenerationRate = 0.0
+RegenerationDelay = 3.0
+IsInvulnerable = false
+
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("3_damage")
+BaseDamage = 12.0
+ElementType = 0
+CanCrit = true
+CritChance = 0.15
+CritMultiplier = 2.0
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("4_movement")
+MaxSpeed = 3.5
+Acceleration = 18.0
+Deceleration = 15.0
+RotationSpeed = 5.0
+UseGravity = true
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.5)
+
+[node name="LootDropComponent" type="Node" parent="."]
+script = ExtResource("5_loot")
+LootTableID = "Shooter"
+LuckModifier = 1.0
+AutoPickup = false
+DropRadius = 2.0
