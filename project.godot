@@ -33,6 +33,7 @@ GameManager="*res://_Core/GameManager.cs"
 ItemDatabase="*res://Scripts/Items/ItemDatabase.cs"
 LootTableManager="*res://Scripts/Loot/LootTableManager.cs"
 CurrencyManager="*res://Scripts/Economy/CurrencyManager.cs"
+StatisticsManager="*res://Scripts/Statistics/StatisticsManager.cs"
 
 [dotnet]
 
