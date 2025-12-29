@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1droneshield001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blue"]
+albedo_color = Color(0.3, 0.5, 0.8, 1)
+emission_enabled = true
+emission = Color(0.3, 0.5, 0.9, 1)
+emission_energy_multiplier = 0.5
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ring"]
+albedo_color = Color(0.4, 0.6, 0.9, 0.5)
+transparency = 1
+emission_enabled = true
+emission = Color(0.4, 0.7, 1, 1)
+emission_energy_multiplier = 0.3
+metallic = 0.3
+roughness = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_shield"]
+radius = 0.3
+
+[node name="ShieldDroneModel" type="Node3D"]
+
+[node name="CoreShape" type="CSGSphere3D" parent="."]
+radius = 0.3
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="ShieldRing" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+inner_radius = 0.4
+outer_radius = 0.5
+material = SubResource("StandardMaterial3D_ring")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_shield")

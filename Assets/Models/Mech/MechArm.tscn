@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1mecharm001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grey"]
+albedo_color = Color(0.69, 0.69, 0.69, 1)
+metallic = 0.3
+roughness = 0.7
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_arm"]
+radius = 0.2
+height = 1.0
+
+[node name="MechArm" type="Node3D"]
+
+[node name="ArmShape" type="CSGCylinder3D" parent="."]
+radius = 0.2
+height = 1.0
+material = SubResource("StandardMaterial3D_grey")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_arm")

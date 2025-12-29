@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1enemyshoot001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blue"]
+albedo_color = Color(0.2, 0.4, 0.8, 1)
+metallic = 0.2
+roughness = 0.6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_shooter"]
+radius = 0.4
+height = 1.5
+
+[node name="ShooterModel" type="Node3D"]
+
+[node name="BodyShape" type="CSGCylinder3D" parent="."]
+radius = 0.4
+height = 1.5
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_shooter")

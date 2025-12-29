@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1droneattack001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grey"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+emission_enabled = true
+emission = Color(0.8, 0.2, 0.2, 1)
+emission_energy_multiplier = 0.5
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_attack"]
+size = Vector3(0.4, 0.3, 0.4)
+
+[node name="AttackDroneModel" type="Node3D"]
+
+[node name="BodyShape" type="CSGBox3D" parent="."]
+size = Vector3(0.4, 0.3, 0.4)
+material = SubResource("StandardMaterial3D_grey")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_attack")

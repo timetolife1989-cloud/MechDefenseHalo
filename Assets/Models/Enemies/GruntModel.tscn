@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1enemygrunt001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red"]
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+metallic = 0.2
+roughness = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grunt"]
+size = Vector3(1, 1, 1)
+
+[node name="GruntModel" type="Node3D"]
+
+[node name="BodyShape" type="CSGBox3D" parent="."]
+size = Vector3(1, 1, 1)
+material = SubResource("StandardMaterial3D_red")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_grunt")
