@@ -158,7 +158,7 @@ namespace MechDefenseHalo.Tests.Drones
                 var modelMount = drone.GetNodeOrNull<Node3D>("ModelMount");
                 var detectionRange = drone.GetNodeOrNull<Area3D>("DetectionRange");
                 var attackPoint = drone.GetNodeOrNull<Node3D>("AttackPoint");
-                var controller = drone.GetNodeOrNull<Node>("DroneControllerComponent");
+                var controller = drone.GetNodeOrNull<MechDefenseHalo.Components.DroneControllerComponent>("DroneControllerComponent");
                 var orbitCenter = drone.GetNodeOrNull<Marker3D>("OrbitCenter");
 
                 AssertObject(modelMount).IsNotNull();
