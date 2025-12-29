@@ -158,9 +158,14 @@ namespace MechDefenseHalo.Analytics
         private void LoadRetentionData()
         {
             // TODO: Integrate with save system when available
-            // For now, simulate a new player to allow system testing
-            // Save system should load: _firstSessionDate, _lastSessionDate, _totalSessions, 
-            // _totalPlaytimeMinutes, _dayRetention dictionary
+            // Expected interface: SaveManager.GetData<RetentionData>("retention_metrics")
+            // Expected structure:
+            // class RetentionData {
+            //   DateTime firstSessionDate, lastSessionDate;
+            //   int totalSessions, totalPlaytimeMinutes;
+            //   Dictionary<int, bool> dayRetention;
+            // }
+            // Serialization: JSON or MessagePack for dictionary support
             _firstSessionDate = DateTime.Today;
             _lastSessionDate = DateTime.Today;
             _totalSessions = 0;
@@ -171,8 +176,9 @@ namespace MechDefenseHalo.Analytics
         private void SaveRetentionData()
         {
             // TODO: Integrate with save system when available
-            // Save system should persist all retention metrics for analytics accuracy
-            // Critical for tracking D1/D7/D30 retention rates
+            // Expected interface: SaveManager.SetData("retention_metrics", new RetentionData {...})
+            // Critical: Must be called on _ExitTree() to ensure data persists on app close
+            // All metrics must be serialized for accurate D1/D7/D30 retention tracking
             GD.Print("Retention data saved (placeholder)");
         }
 

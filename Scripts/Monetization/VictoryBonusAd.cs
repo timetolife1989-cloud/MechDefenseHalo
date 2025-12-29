@@ -186,8 +186,9 @@ namespace MechDefenseHalo.Monetization
             CurrencyManager.AddCores(rewards.Cores, "Boss Victory");
 
             // TODO: Give loot item of specified rarity when loot system integration is complete
+            // Expected interface: LootTableManager.GenerateItem(ItemRarity rarity, string source)
+            // or: LootTableManager.GenerateBossLoot(string bossName, ItemRarity minRarity)
             // This requires LootTableManager to support programmatic item generation
-            // For now, log what would be given
             GD.Print($"Rewards given: {rewards.Credits} Credits, {rewards.Cores} Cores, {rewards.LootRarity} loot");
         }
 

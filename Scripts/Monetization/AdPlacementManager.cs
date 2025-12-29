@@ -155,8 +155,10 @@ namespace MechDefenseHalo.Monetization
 
         private async void SimulateAdPlayback(string adType, Action onComplete)
         {
-            // Simulate 30-second ad playback
-            await ToSignal(GetTree().CreateTimer(1.0), "timeout"); // Reduced for testing
+            // TESTING: Reduced from 30 seconds to 1 second for faster iteration
+            // PRODUCTION: Change to 30.0 when integrating real ad network
+            // Real ad networks will handle their own timing
+            await ToSignal(GetTree().CreateTimer(1.0), "timeout");
 
             IsAdCurrentlyShowing = false;
 

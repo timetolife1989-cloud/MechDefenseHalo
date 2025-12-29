@@ -177,17 +177,19 @@ namespace MechDefenseHalo.Monetization
         private void LoadLoginData()
         {
             // TODO: Integrate with save system when available
+            // Expected interface: SaveManager.GetData<DailyLoginData>("daily_login")
+            // Expected data: { lastLoginDate: DateTime, currentDay: int }
             // For now, use default values to allow system testing
-            // Save system integration should load: _lastLoginDate, _currentLoginDay
-            _lastLoginDate = DateTime.Today.AddDays(-1); // Simulate previous day login
+            _lastLoginDate = DateTime.Today.AddDays(-1);
             _currentLoginDay = 1;
         }
 
         private void SaveLoginData()
         {
-            // TODO: Integrate with save system when available  
-            // Save system should persist: _lastLoginDate, _currentLoginDay
-            // This ensures login streak survives game restarts
+            // TODO: Integrate with save system when available
+            // Expected interface: SaveManager.SetData("daily_login", new DailyLoginData {...})
+            // Data to persist: _lastLoginDate, _currentLoginDay
+            // Format: JSON or binary serialization of DailyLoginData struct
             GD.Print($"Login data saved: Day {_currentLoginDay}, Last login: {_lastLoginDate.ToShortDateString()}");
         }
 
