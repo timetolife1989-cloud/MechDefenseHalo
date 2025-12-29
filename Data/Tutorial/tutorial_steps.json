@@ -43,7 +43,7 @@
     "objective": "Open inventory",
     "objective_type": "ui_opened",
     "objective_value": "inventory",
-    "highlight_key": "I"
+    "highlight_keys": ["I"]
   },
   {
     "step": 6,
@@ -61,7 +61,7 @@
     "objective": "Deploy 1 drone",
     "objective_type": "drone_deployed",
     "objective_value": 1,
-    "highlight_key": "F",
+    "highlight_keys": ["F"],
     "can_skip": false
   },
   {
@@ -81,7 +81,7 @@
     "objective": "Open shop",
     "objective_type": "ui_opened",
     "objective_value": "shop",
-    "highlight_key": "P"
+    "highlight_keys": ["P"]
   },
   {
     "step": 10,
@@ -90,6 +90,6 @@
     "objective": "Start 1 craft",
     "objective_type": "craft_started",
     "objective_value": 1,
-    "highlight_key": "C"
+    "highlight_keys": ["C"]
   }
 ]

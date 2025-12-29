@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Economy;
 using MechDefenseHalo.Inventory;
@@ -636,15 +637,34 @@ namespace MechDefenseHalo.Tutorial
 
         private class TutorialStepData
         {
+            [JsonPropertyName("step")]
             public int Step { get; set; }
+            
+            [JsonPropertyName("title")]
             public string Title { get; set; }
+            
+            [JsonPropertyName("description")]
             public string Description { get; set; }
+            
+            [JsonPropertyName("objective_type")]
             public string ObjectiveType { get; set; }
+            
+            [JsonPropertyName("objective_value")]
             public object ObjectiveValue { get; set; }
+            
+            [JsonPropertyName("highlight_keys")]
             public List<string> HighlightKeys { get; set; }
+            
+            [JsonPropertyName("highlight_ui")]
             public string HighlightUI { get; set; }
+            
+            [JsonPropertyName("spawn_enemies")]
             public List<string> SpawnEnemies { get; set; }
+            
+            [JsonPropertyName("spawn_wave")]
             public int SpawnWave { get; set; }
+            
+            [JsonPropertyName("can_skip")]
             public bool? CanSkip { get; set; }
         }
 
