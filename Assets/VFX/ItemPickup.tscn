@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://item_pickup_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pickup"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -1, 0)
+scale_min = 0.3
+scale_max = 0.6
+color = Color(1, 0.8, 0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_pickup"]
+size = Vector2(0.1, 0.1)
+
+[node name="ItemPickup" type="GpuParticles3D"]
+amount = 24
+lifetime = 1.0
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_pickup")
+draw_pass_1 = SubResource("QuadMesh_pickup")

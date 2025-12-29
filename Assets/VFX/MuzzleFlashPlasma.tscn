@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://muzzle_flash_plasma_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_plasma"]
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 0, -1)
+spread = 35.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.2
+color = Color(0.2, 0.8, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_plasma"]
+size = Vector2(0.15, 0.15)
+
+[node name="MuzzleFlashPlasma" type="GpuParticles3D"]
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.85
+process_material = SubResource("ParticleProcessMaterial_plasma")
+draw_pass_1 = SubResource("QuadMesh_plasma")

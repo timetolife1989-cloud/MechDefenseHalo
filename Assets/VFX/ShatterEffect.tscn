@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://shatter_effect_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shatter"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 1, 0)
+spread = 70.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -9.8, 0)
+scale_min = 0.3
+scale_max = 0.7
+color = Color(0.7, 0.9, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_shatter"]
+size = Vector2(0.1, 0.1)
+
+[node name="ShatterEffect" type="GpuParticles3D"]
+amount = 30
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_shatter")
+draw_pass_1 = SubResource("QuadMesh_shatter")

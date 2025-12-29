@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://shock_effect_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shock"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+color = Color(1, 1, 0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_shock"]
+size = Vector2(0.06, 0.06)
+
+[node name="ShockEffect" type="GpuParticles3D"]
+amount = 40
+lifetime = 0.8
+one_shot = false
+explosiveness = 0.4
+process_material = SubResource("ParticleProcessMaterial_shock")
+draw_pass_1 = SubResource("QuadMesh_shock")
