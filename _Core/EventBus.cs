@@ -221,6 +221,21 @@ namespace MechDefenseHalo.Core
         public const string ShowDailyLoginOffer = "show_daily_login_offer";
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
+        
+        // Audio Events
+        public const string AudioSettingsChanged = "audio_settings_changed";
+        public const string SettingsChanged = "settings_changed";
+        public const string GameStateChanged = "game_state_changed";
+        public const string BossWaveStarted = "boss_wave_started";
+        
+        // UI Events
+        public const string ButtonClicked = "button_clicked";
+        
+        // Player Events
+        public const string PlayerLeveledUp = "player_leveled_up";
+        
+        // Achievement Events
+        public const string AchievementUnlocked = "achievement_unlocked";
 
         // Daily Mission Events
         public const string DailyMissionsRefreshed = "daily_missions_refreshed";
