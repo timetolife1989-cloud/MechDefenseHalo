@@ -34,8 +34,12 @@ namespace MechDefenseHalo.Animation
         {
             if (leftFoot == null || rightFoot == null)
                 return;
+            
+            var parent = GetParent<Node3D>();
+            if (parent == null)
+                return;
                 
-            Vector3 bodyPosition = GetParent<Node3D>().GlobalPosition;
+            Vector3 bodyPosition = parent.GlobalPosition;
             Vector3 bodyVelocity = GetBodyVelocity();
             
             // Only move feet when moving
@@ -59,13 +63,13 @@ namespace MechDefenseHalo.Animation
             if (leftFootProgress < 1.0f)
             {
                 leftFootProgress += delta * stepSpeed;
-                leftFoot.GlobalPosition = CalculateStepPosition(leftFootTarget, leftFootProgress);
+                leftFoot.GlobalPosition = CalculateStepPosition(leftFootTarget, leftFootProgress, bodyPosition);
             }
             
             if (rightFootProgress < 1.0f)
             {
                 rightFootProgress += delta * stepSpeed;
-                rightFoot.GlobalPosition = CalculateStepPosition(rightFootTarget, rightFootProgress);
+                rightFoot.GlobalPosition = CalculateStepPosition(rightFootTarget, rightFootProgress, bodyPosition);
             }
         }
         
@@ -96,10 +100,9 @@ namespace MechDefenseHalo.Animation
             }
         }
         
-        private Vector3 CalculateStepPosition(Vector3 target, float progress)
+        private Vector3 CalculateStepPosition(Vector3 target, float progress, Vector3 bodyPosition)
         {
-            Vector3 currentPos = GetParent<Node3D>().GlobalPosition;
-            Vector3 linearPos = currentPos.Lerp(target, progress);
+            Vector3 linearPos = bodyPosition.Lerp(target, progress);
             
             // Add arc (step up and down)
             float heightOffset = Mathf.Sin(progress * Mathf.Pi) * stepHeight;

@@ -31,9 +31,16 @@ namespace MechDefenseHalo.Animation
         
         public override void _Ready()
         {
-            walkingController = GetNode<ProceduralWalking>("ProceduralWalking");
-            upperBodyIK = GetNode<UpperBodyIK>("UpperBodyIK");
-            secondaryMotion = GetNode<SecondaryMotion>("SecondaryMotion");
+            walkingController = GetNodeOrNull<ProceduralWalking>("ProceduralWalking");
+            upperBodyIK = GetNodeOrNull<UpperBodyIK>("UpperBodyIK");
+            secondaryMotion = GetNodeOrNull<SecondaryMotion>("SecondaryMotion");
+            
+            if (walkingController == null)
+                GD.PrintErr("MechIKController: ProceduralWalking node not found");
+            if (upperBodyIK == null)
+                GD.PrintErr("MechIKController: UpperBodyIK node not found");
+            if (secondaryMotion == null)
+                GD.PrintErr("MechIKController: SecondaryMotion node not found");
             
             InitializeSkeleton();
         }

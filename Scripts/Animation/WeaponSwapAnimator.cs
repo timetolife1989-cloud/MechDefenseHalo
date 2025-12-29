@@ -118,7 +118,12 @@ namespace MechDefenseHalo.Animation
             if (mechBody != null)
             {
                 mechBody.Position = Vector3.Zero;
-                mechBody.Rotation = Vector3.Zero;
+                mechBody.RotationDegrees = Vector3.Zero;
+            }
+            
+            if (rightArm != null)
+            {
+                rightArm.RotationDegrees = Vector3.Zero;
             }
             
             if (camera != null)
