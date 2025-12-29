@@ -222,6 +222,14 @@ namespace MechDefenseHalo.Core
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
 
+        // Progression Events
+        public const string XPGained = "xp_gained";
+        public const string PlayerLeveledUp = "player_leveled_up";
+        public const string LevelRewardGranted = "level_reward_granted";
+        public const string FeatureUnlocked = "feature_unlocked";
+        public const string LegendaryItemReward = "legendary_item_reward";
+        public const string PlayerPrestiged = "player_prestiged";
+
         #endregion
     }
 }

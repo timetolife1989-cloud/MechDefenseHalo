@@ -1,0 +1,78 @@
+{
+  "description": "Prestige system configuration",
+  "max_prestige": 10,
+  "bonus_per_prestige": 0.05,
+  "requirements": {
+    "level": 100,
+    "description": "Player must reach level 100 to unlock prestige"
+  },
+  "prestige_bonuses": [
+    {
+      "prestige_level": 1,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 5,
+      "description": "+5% to all stats"
+    },
+    {
+      "prestige_level": 2,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 10,
+      "description": "+10% to all stats"
+    },
+    {
+      "prestige_level": 3,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 15,
+      "description": "+15% to all stats"
+    },
+    {
+      "prestige_level": 4,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 20,
+      "description": "+20% to all stats"
+    },
+    {
+      "prestige_level": 5,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 25,
+      "description": "+25% to all stats"
+    },
+    {
+      "prestige_level": 6,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 30,
+      "description": "+30% to all stats"
+    },
+    {
+      "prestige_level": 7,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 35,
+      "description": "+35% to all stats"
+    },
+    {
+      "prestige_level": 8,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 40,
+      "description": "+40% to all stats"
+    },
+    {
+      "prestige_level": 9,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 45,
+      "description": "+45% to all stats"
+    },
+    {
+      "prestige_level": 10,
+      "stat_bonus_percent": 5,
+      "total_bonus_percent": 50,
+      "description": "+50% to all stats (MAX)"
+    }
+  ],
+  "notes": [
+    "Prestige resets level to 1 but keeps all items and currency",
+    "Each prestige grants permanent +5% bonus to all stats",
+    "Maximum of 10 prestiges for a total of +50% all stats",
+    "Prestige level is displayed as [P1], [P2], etc. in UI",
+    "Players can continue to earn XP at level 100 while deciding to prestige"
+  ]
+}
