@@ -6,6 +6,8 @@
 
 - [Game Design Document](docs/GDD.md) - Teljes játékvízió
 - [Architecture](ARCHITECTURE.md) - Kód architektúra
+- [Project Analysis (Hungarian)](PROJECT_ANALYSIS_HU.md) - Részletes projekt elemzés és javítási javaslatok
+- [Improvement Guide](IMPROVEMENT_GUIDE.md) - Quick-start guide for improvements
 
 ## Game Concept
 
