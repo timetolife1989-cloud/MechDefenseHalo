@@ -1,0 +1,1645 @@
+{
+  "wave_1": {
+    "wave_number": 1,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 5,
+        "delay": 2.0,
+        "spawn_pattern": "Circle"
+      }
+    ]
+  },
+  "wave_2": {
+    "wave_number": 2,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 9,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 4,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_3": {
+    "wave_number": 3,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 11,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 5,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_4": {
+    "wave_number": 4,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 14,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 4,
+        "delay": 2.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 7,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_5": {
+    "wave_number": 5,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 15,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 5,
+        "delay": 2.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 8,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_6": {
+    "wave_number": 6,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 21,
+        "delay": 1.2,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 7,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 2,
+        "delay": 2.0,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 3,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 11,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_7": {
+    "wave_number": 7,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 22,
+        "delay": 1.2,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 8,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 2,
+        "delay": 2.0,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 3,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 12,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_8": {
+    "wave_number": 8,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 23,
+        "delay": 1.2,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 9,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 2,
+        "delay": 2.0,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 4,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 13,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_9": {
+    "wave_number": 9,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 10,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 3,
+        "delay": 2.0,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 4,
+        "delay": 1.5,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 14,
+        "delay": 1.0,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_10": {
+    "wave_number": 10,
+    "is_boss_wave": true,
+    "boss_type": "FrostTitan",
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 10
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 5
+      }
+    ]
+  },
+  "wave_11": {
+    "wave_number": 11,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 31,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 13,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 5,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 8,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 23,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_12": {
+    "wave_number": 12,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 32,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 14,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 6,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 9,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 24,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_13": {
+    "wave_number": 13,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 33,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 14,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 6,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 9,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 25,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_14": {
+    "wave_number": 14,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 34,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 15,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 6,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 9,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 26,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_15": {
+    "wave_number": 15,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 35,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 15,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 6,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 10,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 27,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_16": {
+    "wave_number": 16,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 36,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 16,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 7,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 10,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 28,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_17": {
+    "wave_number": 17,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 37,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 16,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 7,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 10,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 29,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_18": {
+    "wave_number": 18,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 38,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 17,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 7,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 11,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 30,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_19": {
+    "wave_number": 19,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 39,
+        "delay": 1.0,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 17,
+        "delay": 1.3,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 7,
+        "delay": 1.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 11,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 31,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_20": {
+    "wave_number": 20,
+    "is_boss_wave": true,
+    "boss_type": "InfernoColossus",
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 15
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 8
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 3
+      }
+    ]
+  },
+  "wave_21": {
+    "wave_number": 21,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 51,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 22,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 12,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 18,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 41,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_22": {
+    "wave_number": 22,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 52,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 23,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 12,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 19,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 42,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_23": {
+    "wave_number": 23,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 53,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 23,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 12,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 19,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 43,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_24": {
+    "wave_number": 24,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 54,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 13,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 20,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 44,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_25": {
+    "wave_number": 25,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 55,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 13,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 20,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 45,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_26": {
+    "wave_number": 26,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 56,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 25,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 13,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 21,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 46,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_27": {
+    "wave_number": 27,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 57,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 25,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 14,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 21,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 47,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_28": {
+    "wave_number": 28,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 58,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 26,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 14,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 22,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 48,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_29": {
+    "wave_number": 29,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 59,
+        "delay": 0.9,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 26,
+        "delay": 1.2,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 14,
+        "delay": 1.5,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 22,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 49,
+        "delay": 0.7,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_30": {
+    "wave_number": 30,
+    "is_boss_wave": true,
+    "boss_type": "VoidWraith",
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 20
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 12
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 5
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 8
+      }
+    ]
+  },
+  "wave_31": {
+    "wave_number": 31,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 71,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 30,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 18,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 27,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 61,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_32": {
+    "wave_number": 32,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 72,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 31,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 18,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 28,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 62,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_33": {
+    "wave_number": 33,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 73,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 31,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 19,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 28,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 63,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_34": {
+    "wave_number": 34,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 74,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 32,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 19,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 29,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 64,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_35": {
+    "wave_number": 35,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 75,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 32,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 19,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 29,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 65,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_36": {
+    "wave_number": 36,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 76,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 33,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 20,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 30,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 66,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_37": {
+    "wave_number": 37,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 77,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 33,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 20,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 30,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 67,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_38": {
+    "wave_number": 38,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 78,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 34,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 20,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 31,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 68,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_39": {
+    "wave_number": 39,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 79,
+        "delay": 0.8,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 34,
+        "delay": 1.0,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 21,
+        "delay": 1.3,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 31,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 69,
+        "delay": 0.6,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_40": {
+    "wave_number": 40,
+    "is_boss_wave": true,
+    "boss_type": "StormLord",
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 25
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 15
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 8
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 12
+      }
+    ]
+  },
+  "wave_41": {
+    "wave_number": 41,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 91,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 40,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 23,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 35,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 81,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_42": {
+    "wave_number": 42,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 92,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 41,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 36,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 82,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_43": {
+    "wave_number": 43,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 93,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 41,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 36,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 83,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_44": {
+    "wave_number": 44,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 94,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 42,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 24,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 37,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 84,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_45": {
+    "wave_number": 45,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 95,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 42,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 25,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 37,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 85,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_46": {
+    "wave_number": 46,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 96,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 43,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 25,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 38,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 86,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_47": {
+    "wave_number": 47,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 97,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 43,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 25,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 38,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 87,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_48": {
+    "wave_number": 48,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 98,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 44,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 26,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 39,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 88,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_49": {
+    "wave_number": 49,
+    "is_boss_wave": false,
+    "spawn_groups": [
+      {
+        "enemy_type": "Grunt",
+        "count": 99,
+        "delay": 0.7,
+        "spawn_pattern": "Surround"
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 44,
+        "delay": 0.9,
+        "spawn_pattern": "Circle"
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 26,
+        "delay": 1.2,
+        "spawn_pattern": "Line"
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 39,
+        "delay": 0.8,
+        "spawn_pattern": "Random"
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 89,
+        "delay": 0.5,
+        "spawn_pattern": "Random"
+      }
+    ]
+  },
+  "wave_50": {
+    "wave_number": 50,
+    "is_boss_wave": true,
+    "boss_type": "ChaosBringer",
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 30
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 20
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 10
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 15
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 25
+      }
+    ]
+  }
+}

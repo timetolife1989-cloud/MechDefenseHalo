@@ -1,0 +1,172 @@
+{
+  "wave_10": {
+    "wave_number": 10,
+    "boss_name": "Frost Titan",
+    "boss_type": "FrostTitan",
+    "description": "A massive ice elemental with freezing attacks",
+    "health_multiplier": 1.0,
+    "damage_multiplier": 1.0,
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 10,
+        "spawn_delay": 5.0
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 5,
+        "spawn_delay": 10.0
+      }
+    ],
+    "music_track": "boss_fight",
+    "rewards": {
+      "credits": 1000,
+      "xp": 2000,
+      "guaranteed_loot": "rare"
+    }
+  },
+  "wave_20": {
+    "wave_number": 20,
+    "boss_name": "Inferno Colossus",
+    "boss_type": "InfernoColossus",
+    "description": "A towering fire giant with devastating flame attacks",
+    "health_multiplier": 1.5,
+    "damage_multiplier": 1.3,
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 15,
+        "spawn_delay": 5.0
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 8,
+        "spawn_delay": 8.0
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 3,
+        "spawn_delay": 12.0
+      }
+    ],
+    "music_track": "boss_fight",
+    "rewards": {
+      "credits": 2000,
+      "xp": 4000,
+      "guaranteed_loot": "epic"
+    }
+  },
+  "wave_30": {
+    "wave_number": 30,
+    "boss_name": "Void Wraith",
+    "boss_type": "VoidWraith",
+    "description": "A spectral entity that phases through dimensions",
+    "health_multiplier": 2.0,
+    "damage_multiplier": 1.6,
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 20,
+        "spawn_delay": 4.0
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 12,
+        "spawn_delay": 6.0
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 5,
+        "spawn_delay": 10.0
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 8,
+        "spawn_delay": 8.0
+      }
+    ],
+    "music_track": "boss_fight",
+    "rewards": {
+      "credits": 3000,
+      "xp": 6000,
+      "guaranteed_loot": "epic"
+    }
+  },
+  "wave_40": {
+    "wave_number": 40,
+    "boss_name": "Storm Lord",
+    "boss_type": "StormLord",
+    "description": "Master of thunder and lightning, commands the skies",
+    "health_multiplier": 2.5,
+    "damage_multiplier": 2.0,
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 25,
+        "spawn_delay": 3.0
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 15,
+        "spawn_delay": 5.0
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 8,
+        "spawn_delay": 8.0
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 12,
+        "spawn_delay": 6.0
+      }
+    ],
+    "music_track": "boss_fight",
+    "rewards": {
+      "credits": 4000,
+      "xp": 8000,
+      "guaranteed_loot": "legendary"
+    }
+  },
+  "wave_50": {
+    "wave_number": 50,
+    "boss_name": "Chaos Bringer",
+    "boss_type": "ChaosBringer",
+    "description": "The ultimate challenge - harbinger of destruction",
+    "health_multiplier": 3.0,
+    "damage_multiplier": 2.5,
+    "support_enemies": [
+      {
+        "enemy_type": "Grunt",
+        "count": 30,
+        "spawn_delay": 3.0
+      },
+      {
+        "enemy_type": "Shooter",
+        "count": 20,
+        "spawn_delay": 4.0
+      },
+      {
+        "enemy_type": "Tank",
+        "count": 10,
+        "spawn_delay": 6.0
+      },
+      {
+        "enemy_type": "Flyer",
+        "count": 15,
+        "spawn_delay": 5.0
+      },
+      {
+        "enemy_type": "Swarm",
+        "count": 25,
+        "spawn_delay": 2.0
+      }
+    ],
+    "music_track": "boss_fight",
+    "rewards": {
+      "credits": 5000,
+      "xp": 10000,
+      "guaranteed_loot": "legendary"
+    }
+  }
+}
