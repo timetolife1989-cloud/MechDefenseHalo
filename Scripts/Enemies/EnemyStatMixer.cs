@@ -8,6 +8,12 @@ namespace MechDefenseHalo.Enemies
     /// </summary>
     public partial class EnemyStatMixer : Node
     {
+        // Stat generation constants
+        private const float MIN_ATTACK_RANGE = 3f;
+        private const float MAX_ATTACK_RANGE = 20f;
+        private const float MIN_SIZE = 0.8f;
+        private const float MAX_SIZE = 1.5f;
+        
         public EnemyStats GenerateStats(EnemyRarity rarity)
         {
             // Base stats
@@ -46,8 +52,8 @@ namespace MechDefenseHalo.Enemies
                 HP = Mathf.RoundToInt(baseHP * hpMultiplier * rarityMult * variance),
                 Damage = Mathf.RoundToInt(baseDamage * damageMultiplier * rarityMult * variance),
                 Speed = baseSpeed * speedMultiplier * variance,
-                Range = GD.RandfRange(3f, 20f),
-                Size = Mathf.Lerp(0.8f, 1.5f, archetype),
+                Range = GD.RandfRange(MIN_ATTACK_RANGE, MAX_ATTACK_RANGE),
+                Size = Mathf.Lerp(MIN_SIZE, MAX_SIZE, archetype),
                 Archetype = archetype
             };
         }

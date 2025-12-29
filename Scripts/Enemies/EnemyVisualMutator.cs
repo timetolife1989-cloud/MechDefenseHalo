@@ -8,6 +8,8 @@ namespace MechDefenseHalo.Enemies
     /// </summary>
     public partial class EnemyVisualMutator : Node
     {
+        private const int MAX_RARITY_VALUE = 5; // Number of rarity tiers (Common to Legendary)
+        
         private ShaderMaterial colorVariationShader;
         private ShaderMaterial heatmapShader;
         private ShaderMaterial eliteGlowShader;
@@ -60,7 +62,7 @@ namespace MechDefenseHalo.Enemies
             Color baseColor = ColorFromArchetype(archetype);
             
             // Rarity adds saturation/brightness
-            float rarityBrightness = (float)rarity / 5f;
+            float rarityBrightness = (float)rarity / MAX_RARITY_VALUE;
             baseColor = baseColor.Lightened(rarityBrightness * 0.3f);
             
             // Convert Color to Vector3 for shader parameter
