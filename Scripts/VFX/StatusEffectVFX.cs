@@ -156,7 +156,7 @@ namespace MechDefenseHalo.VFX
             var effectNode = entityEffects[elementType];
             if (effectNode != null && Node.IsInstanceValid(effectNode))
             {
-                // Stop emission
+                // Stop emission immediately
                 if (effectNode is GpuParticles3D gpuParticles)
                 {
                     gpuParticles.Emitting = false;
@@ -166,8 +166,16 @@ namespace MechDefenseHalo.VFX
                     cpuParticles.Emitting = false;
                 }
 
-                // Queue for deletion
-                effectNode.QueueFree();
+                // Reparent to VFXContainer - the VFXManager's timer will handle pool return
+                // Don't use QueueFree as it destroys the pooled instance
+                if (VFXManager.Instance != null)
+                {
+                    var vfxContainer = VFXManager.Instance.GetNode<Node3D>("VFXContainer");
+                    if (vfxContainer != null && Node.IsInstanceValid(vfxContainer))
+                    {
+                        effectNode.Reparent(vfxContainer);
+                    }
+                }
             }
 
             // Remove from tracking

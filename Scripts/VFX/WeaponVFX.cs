@@ -45,6 +45,16 @@ namespace MechDefenseHalo.VFX
     /// </summary>
     public static class WeaponVFX
     {
+        #region Constants
+
+        /// <summary>
+        /// Default length of laser beam prefab in world units.
+        /// Used for calculating scale when spawning laser beams.
+        /// </summary>
+        private const float LaserBeamPrefabLength = 10f;
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -220,7 +230,7 @@ namespace MechDefenseHalo.VFX
 
             // Calculate scale based on distance
             float distance = startPosition.DistanceTo(endPosition);
-            float scale = distance / 10f; // Assuming beam prefab is 10 units long
+            float scale = distance / LaserBeamPrefabLength;
 
             VFXManager.Instance.PlayEffect(
                 "laser_beam",

@@ -245,7 +245,7 @@ namespace MechDefenseHalo.VFX
                 
                 if (prefab == null)
                 {
-                    GD.PrintErr($"Failed to load VFX prefab: {prefabPath}");
+                    GD.PrintErr($"Failed to load VFX prefab for effect '{effectName}': {prefabPath}");
                     // Don't create a pool for missing prefabs - return null to fail fast
                     return null;
                 }
