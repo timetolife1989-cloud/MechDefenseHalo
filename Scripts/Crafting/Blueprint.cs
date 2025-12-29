@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using MechDefenseHalo.Items;
 
 namespace MechDefenseHalo.Crafting
@@ -12,13 +13,38 @@ namespace MechDefenseHalo.Crafting
     {
         #region Exported Properties
 
-        [Export] public string BlueprintID { get; set; } = "";
-        [Export] public string DisplayName { get; set; } = "";
-        [Export] public string ResultItemID { get; set; } = "";
-        [Export] public ItemRarity ResultRarity { get; set; } = ItemRarity.Common;
-        [Export] public int CreditCost { get; set; } = 0;
-        [Export] public int CraftingTimeSeconds { get; set; } = 60;
-        [Export] public int RequiredPlayerLevel { get; set; } = 1;
+        [Export]
+        [JsonPropertyName("blueprint_id")]
+        public string BlueprintID { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("display_name")]
+        public string DisplayName { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("result_item_id")]
+        public string ResultItemID { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("result_rarity")]
+        public ItemRarity ResultRarity { get; set; } = ItemRarity.Common;
+        
+        [Export]
+        [JsonPropertyName("credit_cost")]
+        public int CreditCost { get; set; } = 0;
+        
+        [Export]
+        [JsonPropertyName("cores_cost")]
+        public int CoresCost { get; set; } = 0;
+        
+        [Export]
+        [JsonPropertyName("crafting_time_seconds")]
+        public int CraftingTimeSeconds { get; set; } = 60;
+        
+        [Export]
+        [JsonPropertyName("required_player_level")]
+        public int RequiredPlayerLevel { get; set; } = 1;
+        
         [Export] public bool IsClanResearch { get; set; } = false;
 
         #endregion
@@ -28,6 +54,7 @@ namespace MechDefenseHalo.Crafting
         /// <summary>
         /// Materials required to craft (itemID -> quantity)
         /// </summary>
+        [JsonPropertyName("required_materials")]
         public Dictionary<string, int> RequiredMaterials { get; set; } = new();
 
         /// <summary>

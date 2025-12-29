@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace MechDefenseHalo.Items.Sets
 {
@@ -11,10 +12,21 @@ namespace MechDefenseHalo.Items.Sets
     {
         #region Exported Properties
 
-        [Export] public string SetID { get; set; } = "";
-        [Export] public string SetName { get; set; } = "";
-        [Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
-        [Export] public ItemRarity MinimumRarity { get; set; } = ItemRarity.Common;
+        [Export]
+        [JsonPropertyName("set_id")]
+        public string SetID { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("set_name")]
+        public string SetName { get; set; } = "";
+        
+        [Export(PropertyHint.MultilineText)]
+        [JsonPropertyName("description")]
+        public string Description { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("minimum_rarity")]
+        public ItemRarity MinimumRarity { get; set; } = ItemRarity.Common;
 
         #endregion
 
@@ -23,21 +35,25 @@ namespace MechDefenseHalo.Items.Sets
         /// <summary>
         /// Item IDs that are part of this set
         /// </summary>
+        [JsonPropertyName("required_item_ids")]
         public List<string> RequiredItemIDs { get; set; } = new();
 
         /// <summary>
         /// Bonus for wearing 2 pieces
         /// </summary>
+        [JsonPropertyName("two_piece_bonus")]
         public SetBonus TwoPieceBonus { get; set; }
 
         /// <summary>
         /// Bonus for wearing 4 pieces
         /// </summary>
+        [JsonPropertyName("four_piece_bonus")]
         public SetBonus FourPieceBonus { get; set; }
 
         /// <summary>
         /// Bonus for wearing 6 pieces (optional)
         /// </summary>
+        [JsonPropertyName("six_piece_bonus")]
         public SetBonus SixPieceBonus { get; set; }
 
         #endregion
@@ -83,9 +99,17 @@ namespace MechDefenseHalo.Items.Sets
     {
         #region Exported Properties
 
-        [Export] public string BonusName { get; set; } = "";
-        [Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
-        [Export] public string SpecialAbilityID { get; set; } = ""; // e.g., "immovable", "vanish"
+        [Export]
+        [JsonPropertyName("bonus_name")]
+        public string BonusName { get; set; } = "";
+        
+        [Export(PropertyHint.MultilineText)]
+        [JsonPropertyName("description")]
+        public string Description { get; set; } = "";
+        
+        [Export]
+        [JsonPropertyName("special_ability_id")]
+        public string SpecialAbilityID { get; set; } = ""; // e.g., "immovable", "vanish"
 
         #endregion
 
@@ -94,6 +118,7 @@ namespace MechDefenseHalo.Items.Sets
         /// <summary>
         /// Stat bonuses provided by this set bonus
         /// </summary>
+        [JsonPropertyName("stat_bonuses")]
         public Dictionary<StatType, float> StatBonuses { get; set; } = new();
 
         #endregion
