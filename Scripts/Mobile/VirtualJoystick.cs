@@ -65,18 +65,25 @@ namespace MechDefenseHalo.Mobile
         {
             if (background == null || knob == null)
                 return;
-                
+            
+            // Transform from global screen coordinates to joystick-local coordinates
+            // touchPosition is in screen space, GlobalPosition is joystick's screen position
+            // knobCenter is the center point of the background in local space
             Vector2 localPos = touchPosition - GlobalPosition - knobCenter;
             float distance = localPos.Length();
             
+            // Clamp the knob position to stay within the max radius
             if (distance > MaxDistance)
             {
                 localPos = localPos.Normalized() * MaxDistance;
             }
             
+            // Update knob visual position
             knob.Position = knobCenter + localPos - knob.Size / 2;
             
-            Vector2 direction = localPos.Normalized();
+            // Calculate direction and strength for input
+            // Handle case where touch is exactly at center (distance == 0)
+            Vector2 direction = distance > 0 ? localPos.Normalized() : Vector2.Zero;
             float strength = Mathf.Clamp(distance / MaxDistance, 0f, 1f);
             
             EmitSignal(SignalName.JoystickMoved, direction * strength);

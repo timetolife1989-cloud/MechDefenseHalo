@@ -13,6 +13,9 @@ namespace MechDefenseHalo.Mobile
         private Label drawCallsLabel;
         
         [Export] public bool ShowMonitor { get; set; } = true;
+        [Export] public float UpdateInterval { get; set; } = 0.5f; // Update twice per second
+        
+        private float timeSinceLastUpdate = 0f;
         
         public override void _Ready()
         {
@@ -32,7 +35,19 @@ namespace MechDefenseHalo.Mobile
         {
             if (!Visible || !ShowMonitor)
                 return;
-                
+            
+            timeSinceLastUpdate += (float)delta;
+            
+            // Update at configured interval to reduce performance impact
+            if (timeSinceLastUpdate >= UpdateInterval)
+            {
+                UpdateStats();
+                timeSinceLastUpdate = 0f;
+            }
+        }
+        
+        private void UpdateStats()
+        {
             if (fpsLabel != null)
             {
                 fpsLabel.Text = $"FPS: {Engine.GetFramesPerSecond()}";

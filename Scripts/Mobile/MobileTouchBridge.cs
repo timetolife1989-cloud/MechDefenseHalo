@@ -11,6 +11,7 @@ public partial class MobileTouchBridge : Node
 {
     [Export] public NodePath PlayerControllerPath;
     [Export] public NodePath WeaponManagerPath;
+    [Export] public string TouchControlsNodeName = "TouchControls";
     
     private TouchController touchController;
     private PlayerMechController playerController;
@@ -51,8 +52,8 @@ public partial class MobileTouchBridge : Node
     
     private void SetupTouchControls()
     {
-        // Look for existing touch controller
-        touchController = GetTree().Root.GetNodeOrNull<TouchController>("TouchControls");
+        // Look for existing touch controller by configured name
+        touchController = GetTree().Root.GetNodeOrNull<TouchController>(TouchControlsNodeName);
         
         // If not found, create it
         if (touchController == null)
@@ -83,16 +84,19 @@ public partial class MobileTouchBridge : Node
         }
         
         // Handle weapon firing
+        // Note: WeaponManager.FireCurrentWeapon() already respects weapon fire rate
+        // and handles automatic vs semi-automatic behavior internally
         if (weaponManager != null)
         {
             bool currentFireState = touchController.IsFirePressed;
             
-            // Fire on press (for semi-auto)
+            // Fire on initial press (for semi-auto weapons)
             if (currentFireState && !lastFireState)
             {
                 weaponManager.FireCurrentWeapon();
             }
-            // Continue firing while pressed (for full-auto)
+            // Continue calling FireCurrentWeapon for full-auto weapons
+            // The WeaponManager/WeaponBase will handle fire rate limiting
             else if (currentFireState && weaponManager.CurrentWeapon != null && weaponManager.CurrentWeapon.IsAutomatic)
             {
                 weaponManager.FireCurrentWeapon();
