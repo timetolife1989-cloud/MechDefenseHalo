@@ -187,6 +187,30 @@ namespace MechDefenseHalo.Core
         // Resources
         public const string EnergyChanged = "energy_changed";
         public const string AmmoChanged = "ammo_changed";
+        
+        // Loot Events
+        public const string LootDropped = "loot_dropped";
+        public const string LootPickedUp = "loot_picked_up";
+        public const string RareItemDropped = "rare_item_dropped"; // Legendary+
+        
+        // Inventory Events
+        public const string InventoryChanged = "inventory_changed";
+        public const string ItemEquipped = "item_equipped";
+        public const string ItemUnequipped = "item_unequipped";
+        
+        // Crafting Events
+        public const string CraftStarted = "craft_started";
+        public const string CraftCompleted = "craft_completed";
+        public const string BlueprintUnlocked = "blueprint_unlocked";
+        
+        // Set Events
+        public const string SetBonusActivated = "set_bonus_activated";
+        public const string SetBonusDeactivated = "set_bonus_deactivated";
+        
+        // Economy Events
+        public const string CurrencyChanged = "currency_changed";
+        public const string ItemPurchased = "item_purchased";
+        public const string ItemSold = "item_sold";
 
         #endregion
     }

@@ -1,0 +1,22 @@
+{
+  "enemy_type": "Tank",
+  "loot_pools": [
+    {
+      "pool_name": "uncommon_drops",
+      "weight": 40,
+      "items": ["alloy_plates", "power_cells", "uncommon_armor_part"]
+    },
+    {
+      "pool_name": "rare_drops",
+      "weight": 40,
+      "items": ["plasma_core", "nanofibers", "rare_mech_part"]
+    },
+    {
+      "pool_name": "epic_drops",
+      "weight": 20,
+      "items": ["quantum_chips", "dark_matter", "epic_armor_part"]
+    }
+  ],
+  "guaranteed_drops": ["credits_large"],
+  "drop_count_range": [2, 4]
+}

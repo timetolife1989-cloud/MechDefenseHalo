@@ -1,0 +1,22 @@
+{
+  "enemy_type": "Shooter",
+  "loot_pools": [
+    {
+      "pool_name": "common_drops",
+      "weight": 50,
+      "items": ["scrap_metal", "circuits", "power_cells"]
+    },
+    {
+      "pool_name": "uncommon_drops",
+      "weight": 35,
+      "items": ["alloy_plates", "power_cells", "uncommon_weapon_mod"]
+    },
+    {
+      "pool_name": "rare_drops",
+      "weight": 15,
+      "items": ["plasma_core", "nanofibers", "rare_weapon_mod"]
+    }
+  ],
+  "guaranteed_drops": ["credits_small"],
+  "drop_count_range": [1, 3]
+}
