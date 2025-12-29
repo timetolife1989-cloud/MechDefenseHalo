@@ -1,6 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8kj9m2n3frost"]
-
-[ext_resource type="Script" path="res://Components/WeakPointComponent.cs" id="1_weakpoint"]
+[gd_scene load_steps=4 format=3 uid="uid://b8kj9m2n3frost"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
 albedo_color = Color(0.3, 0.7, 1, 1)
@@ -23,16 +21,6 @@ emission_enabled = true
 emission = Color(1, 0.2, 0.2, 1)
 emission_energy_multiplier = 1.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_knee"]
-radius = 0.5
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_core"]
-radius = 0.8
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_weakpoint"]
-radius = 0.5
-height = 1.0
-
 [node name="FrostTitanModel" type="Node3D"]
 
 [node name="Body" type="CSGBox3D" parent="."]
@@ -40,56 +28,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 size = Vector3(3, 5, 3)
 material = SubResource("StandardMaterial3D_body")
 
-[node name="LeftKnee" type="Node3D" parent="."]
+[node name="LeftKnee" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.5, 0)
-script = ExtResource("1_weakpoint")
-DamageMultiplier = 1.5
-MaxHealth = 1000.0
-WeakPointName = "Left Knee"
-
-[node name="Visual" type="CSGSphere3D" parent="LeftKnee"]
 radius = 0.5
 material = SubResource("StandardMaterial3D_weakpoint")
 
-[node name="HitArea" type="Area3D" parent="LeftKnee"]
-collision_layer = 2
-collision_mask = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftKnee/HitArea"]
-shape = SubResource("SphereShape3D_knee")
-
-[node name="RightKnee" type="Node3D" parent="."]
+[node name="RightKnee" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.5, 0)
-script = ExtResource("1_weakpoint")
-DamageMultiplier = 1.5
-MaxHealth = 1000.0
-WeakPointName = "Right Knee"
-
-[node name="Visual" type="CSGSphere3D" parent="RightKnee"]
 radius = 0.5
 material = SubResource("StandardMaterial3D_weakpoint")
 
-[node name="HitArea" type="Area3D" parent="RightKnee"]
-collision_layer = 2
-collision_mask = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RightKnee/HitArea"]
-shape = SubResource("SphereShape3D_knee")
-
-[node name="BackCore" type="Node3D" parent="."]
+[node name="BackCore" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1.8)
-script = ExtResource("1_weakpoint")
-DamageMultiplier = 3.0
-MaxHealth = 2000.0
-WeakPointName = "Back Energy Core"
-
-[node name="Visual" type="CSGSphere3D" parent="BackCore"]
 radius = 0.8
 material = SubResource("StandardMaterial3D_core")
-
-[node name="HitArea" type="Area3D" parent="BackCore"]
-collision_layer = 2
-collision_mask = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BackCore/HitArea"]
-shape = SubResource("SphereShape3D_core")

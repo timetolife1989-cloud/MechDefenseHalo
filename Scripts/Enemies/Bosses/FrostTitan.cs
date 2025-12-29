@@ -70,8 +70,8 @@ namespace MechDefenseHalo.Enemies.Bosses
                 AddChild(_statusEffect);
             }
 
-            // Create weak points (knees and back core)
-            CreateWeakPoints();
+            // Weak points are defined in the scene structure and will be
+            // automatically detected by BossBase.FindWeakPoints()
         }
 
         protected override void Phase1Behavior(float delta)
@@ -192,36 +192,6 @@ namespace MechDefenseHalo.Enemies.Bosses
         #endregion
 
         #region Private Methods
-
-        private void CreateWeakPoints()
-        {
-            // Left Knee
-            var leftKnee = new WeakPointComponent();
-            leftKnee.Name = "LeftKnee";
-            leftKnee.WeakPointName = "Left Knee";
-            leftKnee.MaxHealth = 5000f;
-            leftKnee.DamageMultiplier = 1.5f;
-            leftKnee.Position = new Vector3(-0.5f, 1f, 0);
-            AddChild(leftKnee);
-
-            // Right Knee
-            var rightKnee = new WeakPointComponent();
-            rightKnee.Name = "RightKnee";
-            rightKnee.WeakPointName = "Right Knee";
-            rightKnee.MaxHealth = 5000f;
-            rightKnee.DamageMultiplier = 1.5f;
-            rightKnee.Position = new Vector3(0.5f, 1f, 0);
-            AddChild(rightKnee);
-
-            // Back Energy Core
-            var core = new WeakPointComponent();
-            core.Name = "BackCore";
-            core.WeakPointName = "Back Energy Core";
-            core.MaxHealth = 8000f;
-            core.DamageMultiplier = 3f; // 3x damage
-            core.Position = new Vector3(0, 2f, 1f);
-            AddChild(core);
-        }
 
         private void UpdateSpecialAttacks(float delta)
         {
