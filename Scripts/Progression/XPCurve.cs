@@ -5,11 +5,12 @@ using System.Collections.Generic;
 namespace MechDefenseHalo.Progression
 {
     /// <summary>
-    /// Calculates XP requirements for each level using an exponential curve.
-    /// Level 1-10: Linear (100 XP per level)
-    /// Level 11-30: 1.15x multiplier per level
-    /// Level 31-60: 1.20x multiplier per level
-    /// Level 61-100: 1.25x multiplier per level
+    /// Calculates XP requirements for each level using a balanced quadratic curve.
+    /// Level 1-10: Linear progression (100 XP per level)
+    /// Level 11-30: Quadratic growth with moderate scaling
+    /// Level 31-60: Steeper quadratic growth for mid-game
+    /// Level 61-100: Very steep quadratic growth for endgame challenge
+    /// Total XP to level 100: ~2.4 million
     /// </summary>
     public static class XPCurve
     {

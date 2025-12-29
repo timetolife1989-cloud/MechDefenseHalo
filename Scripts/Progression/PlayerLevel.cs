@@ -159,8 +159,9 @@ namespace MechDefenseHalo.Progression
         /// </summary>
         private void LevelUp()
         {
+            int xpForCurrentLevel = XPToNextLevel; // Store XP requirement before incrementing level
             CurrentLevel++;
-            CurrentXP -= XPToNextLevel;
+            CurrentXP -= xpForCurrentLevel; // Subtract the XP cost for the level we just completed
 
             // Ensure XP doesn't go negative
             if (CurrentXP < 0)

@@ -152,14 +152,18 @@ namespace MechDefenseHalo.Progression
                 _animationPlayer.Play("level_up");
             }
 
-            // Auto-hide after 3 seconds
-            GetTree().CreateTimer(3.0).Timeout += () =>
+            // Auto-hide after 3 seconds using async/await
+            HideLevelUpPanelAfterDelay();
+        }
+
+        private async void HideLevelUpPanelAfterDelay()
+        {
+            await ToSignal(GetTree().CreateTimer(3.0), SceneTreeTimer.SignalName.Timeout);
+            
+            if (_levelUpPanel != null && IsInstanceValid(_levelUpPanel))
             {
-                if (_levelUpPanel != null)
-                {
-                    _levelUpPanel.Visible = false;
-                }
-            };
+                _levelUpPanel.Visible = false;
+            }
         }
 
         /// <summary>
