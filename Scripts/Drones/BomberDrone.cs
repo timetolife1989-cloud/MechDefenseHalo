@@ -12,7 +12,7 @@ namespace MechDefenseHalo.Drones
     {
         #region Exported Properties
 
-        [Export] public float ExplosionDamage { get; set; } = 75f;
+        [Export] public float ExplosionDamage { get; set; } = 100f;
         [Export] public float ExplosionRadius { get; set; } = 8f;
         [Export] public float BombInterval { get; set; } = 3f; // Seconds between bombs
 
@@ -30,8 +30,8 @@ namespace MechDefenseHalo.Drones
         public BomberDrone()
         {
             DroneName = "Bomber Drone";
-            EnergyCost = 35f;
-            Lifetime = 15f;
+            EnergyCost = 25f;
+            Lifetime = 30f;
         }
 
         #endregion

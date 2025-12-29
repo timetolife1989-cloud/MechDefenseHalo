@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4emp4drone4"]
+
+[ext_resource type="Script" path="res://Scripts/Drones/EMPDrone.cs" id="1_emp"]
+[ext_resource type="Script" path="res://Components/DroneControllerComponent.cs" id="2_controller"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(1, 1, 0.3, 1)
+metallic = 0.7
+roughness = 0.2
+emission_enabled = true
+emission = Color(0.5, 0.5, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_drone"]
+size = Vector3(0.5, 0.3, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_detection"]
+radius = 10.0
+
+[node name="EMPDrone" type="Node3D"]
+script = ExtResource("1_emp")
+DroneName = "EMP Drone"
+EnergyCost = 20.0
+Lifetime = 30.0
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+EMPRange = 10.0
+SlowAmount = 0.5
+PulseInterval = 3.0
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="ModelMount"]
+mesh = SubResource("BoxMesh_drone")
+surface_material_override/0 = SubResource("StandardMaterial3D_body")
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+shape = SubResource("SphereShape3D_detection")
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="DroneControllerComponent" type="Node" parent="."]
+script = ExtResource("2_controller")
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+DetectionRange = 10.0
+AttackRange = 10.0
+MoveSpeed = 8.0
+
+[node name="OrbitCenter" type="Marker3D" parent="."]

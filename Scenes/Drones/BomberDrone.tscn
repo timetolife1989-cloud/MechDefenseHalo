@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5bomber5drone5"]
+
+[ext_resource type="Script" path="res://Scripts/Drones/BomberDrone.cs" id="1_bomber"]
+[ext_resource type="Script" path="res://Components/DroneControllerComponent.cs" id="2_controller"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(1, 0.5, 0, 1)
+metallic = 0.6
+roughness = 0.4
+emission_enabled = true
+emission = Color(1, 0.5, 0, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_drone"]
+size = Vector3(0.6, 0.4, 0.6)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_detection"]
+radius = 8.0
+
+[node name="BomberDrone" type="Node3D"]
+script = ExtResource("1_bomber")
+DroneName = "Bomber Drone"
+EnergyCost = 25.0
+Lifetime = 30.0
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+ExplosionDamage = 100.0
+ExplosionRadius = 8.0
+BombInterval = 3.0
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="ModelMount"]
+mesh = SubResource("BoxMesh_drone")
+surface_material_override/0 = SubResource("StandardMaterial3D_body")
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+shape = SubResource("SphereShape3D_detection")
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+
+[node name="DroneControllerComponent" type="Node" parent="."]
+script = ExtResource("2_controller")
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+DetectionRange = 30.0
+AttackRange = 8.0
+MoveSpeed = 8.0
+
+[node name="OrbitCenter" type="Marker3D" parent="."]

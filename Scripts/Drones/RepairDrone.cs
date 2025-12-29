@@ -12,7 +12,7 @@ namespace MechDefenseHalo.Drones
         #region Exported Properties
 
         [Export] public float HealRate { get; set; } = 10f; // HP per second
-        [Export] public float HealRange { get; set; } = 10f;
+        [Export] public float HealRange { get; set; } = 8f;
 
         #endregion
 
@@ -21,8 +21,8 @@ namespace MechDefenseHalo.Drones
         public RepairDrone()
         {
             DroneName = "Repair Drone";
-            EnergyCost = 20f;
-            Lifetime = 25f;
+            EnergyCost = 12f;
+            Lifetime = 30f;
         }
 
         #endregion
