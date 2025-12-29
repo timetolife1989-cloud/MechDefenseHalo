@@ -59,7 +59,10 @@ You've earned:
 • 500 Credits
 • 50 Cores
 • 200 XP
-• Starter items"
+• Starter items
+
+Note: Actual rewards are configured in tutorial_rewards.json
+This text is for display purposes only."
 autowrap_mode = 2
 
 [node name="ContinueButton" type="Button" parent="Panel"]

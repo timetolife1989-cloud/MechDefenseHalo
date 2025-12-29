@@ -9,6 +9,14 @@ namespace MechDefenseHalo.Tutorial
     /// </summary>
     public partial class TutorialHighlight : Control
     {
+        #region Constants
+
+        private const int KeyIndicatorBorderWidth = 2;
+        private const int KeyIndicatorCornerRadius = 5;
+        private const int KeyIndicatorMinSize = 60;
+
+        #endregion
+
         #region Node References
 
         private ColorRect _overlay;
@@ -176,10 +184,10 @@ namespace MechDefenseHalo.Tutorial
             var styleBox = new StyleBoxFlat();
             styleBox.BgColor = new Color(0.2f, 0.2f, 0.2f, 0.8f);
             styleBox.BorderColor = new Color(1, 1, 0, 1);
-            styleBox.BorderWidthAll = 2;
-            styleBox.CornerRadiusAll = 5;
+            styleBox.BorderWidthAll = KeyIndicatorBorderWidth;
+            styleBox.CornerRadiusAll = KeyIndicatorCornerRadius;
             panel.AddThemeStyleboxOverride("panel", styleBox);
-            panel.CustomMinimumSize = new Vector2(60, 60);
+            panel.CustomMinimumSize = new Vector2(KeyIndicatorMinSize, KeyIndicatorMinSize);
             
             keyLabel.HorizontalAlignment = HorizontalAlignment.Center;
             keyLabel.VerticalAlignment = VerticalAlignment.Center;
