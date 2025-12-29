@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://s2h3o4p5i6t7e8"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ShopItemCardUI.cs" id="1_shopcard"]
+
+[node name="ShopItemCardUI" type="Panel"]
+custom_minimum_size = Vector2(160, 220)
+script = ExtResource("1_shopcard")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="IconPanel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/IconPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Item Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ItemDescLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.7, 0.7, 0.7, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Description"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PriceRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreditsPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/PriceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0 ¢"
+
+[node name="CoresPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/PriceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0 ◆"
+horizontal_alignment = 2
+
+[node name="PurchaseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase"

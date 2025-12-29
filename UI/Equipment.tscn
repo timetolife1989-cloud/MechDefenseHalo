@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1c2d3e4f5g6h7"]
+[gd_scene load_steps=4 format=3 uid="uid://b1c2d3e4f5g6h7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/EquipmentUI.cs" id="1_equipment"]
+[ext_resource type="PackedScene" uid="uid://i1t2e3m4s5l6o7" path="res://UI/ItemSlot.tscn" id="2_itemslot"]
+[ext_resource type="PackedScene" uid="uid://s1e2t3b4o5n6u7" path="res://UI/SetBonusPanel.tscn" id="3_setbonus"]
 
 [node name="EquipmentUI" type="Control"]
 layout_mode = 3
@@ -66,19 +68,19 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="HeadSlot" type="Panel" parent="Background/MainContainer/LeftPanel/ArmorSlots"]
+[node name="HeadSlot" parent="Background/MainContainer/LeftPanel/ArmorSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="TorsoSlot" type="Panel" parent="Background/MainContainer/LeftPanel/ArmorSlots"]
+[node name="TorsoSlot" parent="Background/MainContainer/LeftPanel/ArmorSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="ArmsSlot" type="Panel" parent="Background/MainContainer/LeftPanel/ArmorSlots"]
+[node name="ArmsSlot" parent="Background/MainContainer/LeftPanel/ArmorSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="LegsSlot" type="Panel" parent="Background/MainContainer/LeftPanel/ArmorSlots"]
+[node name="LegsSlot" parent="Background/MainContainer/LeftPanel/ArmorSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
@@ -93,19 +95,19 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Weapon1Slot" type="Panel" parent="Background/MainContainer/LeftPanel/WeaponSlots"]
+[node name="Weapon1Slot" parent="Background/MainContainer/LeftPanel/WeaponSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Weapon2Slot" type="Panel" parent="Background/MainContainer/LeftPanel/WeaponSlots"]
+[node name="Weapon2Slot" parent="Background/MainContainer/LeftPanel/WeaponSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Weapon3Slot" type="Panel" parent="Background/MainContainer/LeftPanel/WeaponSlots"]
+[node name="Weapon3Slot" parent="Background/MainContainer/LeftPanel/WeaponSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Weapon4Slot" type="Panel" parent="Background/MainContainer/LeftPanel/WeaponSlots"]
+[node name="Weapon4Slot" parent="Background/MainContainer/LeftPanel/WeaponSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
@@ -120,23 +122,23 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="Drone1Slot" type="Panel" parent="Background/MainContainer/LeftPanel/DroneSlots"]
+[node name="Drone1Slot" parent="Background/MainContainer/LeftPanel/DroneSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Drone2Slot" type="Panel" parent="Background/MainContainer/LeftPanel/DroneSlots"]
+[node name="Drone2Slot" parent="Background/MainContainer/LeftPanel/DroneSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Drone3Slot" type="Panel" parent="Background/MainContainer/LeftPanel/DroneSlots"]
+[node name="Drone3Slot" parent="Background/MainContainer/LeftPanel/DroneSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Drone4Slot" type="Panel" parent="Background/MainContainer/LeftPanel/DroneSlots"]
+[node name="Drone4Slot" parent="Background/MainContainer/LeftPanel/DroneSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Drone5Slot" type="Panel" parent="Background/MainContainer/LeftPanel/DroneSlots"]
+[node name="Drone5Slot" parent="Background/MainContainer/LeftPanel/DroneSlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
@@ -149,11 +151,11 @@ theme_override_font_sizes/font_size = 20
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Accessory1Slot" type="Panel" parent="Background/MainContainer/LeftPanel/AccessorySlots"]
+[node name="Accessory1Slot" parent="Background/MainContainer/LeftPanel/AccessorySlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Accessory2Slot" type="Panel" parent="Background/MainContainer/LeftPanel/AccessorySlots"]
+[node name="Accessory2Slot" parent="Background/MainContainer/LeftPanel/AccessorySlots" instance=ExtResource("2_itemslot")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
@@ -205,7 +207,7 @@ layout_mode = 2
 text = "Crit: 0.0% / 0%"
 theme_override_font_sizes/font_size = 18
 
-[node name="SetBonusPanel" type="Panel" parent="Background/MainContainer/RightPanel"]
+[node name="SetBonusPanel" parent="Background/MainContainer/RightPanel" instance=ExtResource("3_setbonus")]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
