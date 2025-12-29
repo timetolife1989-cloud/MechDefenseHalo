@@ -40,3 +40,9 @@ bld/
 # Visual Studio cache/options
 .vs/
 *.userprefs
+
+# One-Button Deploy build artifacts
+build/
+builds/
+*.apk
+*.aab
