@@ -176,35 +176,25 @@ namespace MechDefenseHalo.Tests.Drones
         public void AllDroneScenes_HaveCorrectScriptTypes()
         {
             // Verify each scene has the correct script type attached
-            var scenePath = DRONE_SCENE_PATH + "AttackDrone.tscn";
-            var scene = GD.Load<PackedScene>(scenePath);
-            var drone = scene.Instantiate();
-            AssertBool(drone is AttackDrone).IsTrue();
-            drone.Free();
+            var droneTestData = new[]
+            {
+                ("AttackDrone.tscn", typeof(AttackDrone)),
+                ("ShieldDrone.tscn", typeof(ShieldDrone)),
+                ("RepairDrone.tscn", typeof(RepairDrone)),
+                ("EMPDrone.tscn", typeof(EMPDrone)),
+                ("BomberDrone.tscn", typeof(BomberDrone))
+            };
 
-            scenePath = DRONE_SCENE_PATH + "ShieldDrone.tscn";
-            scene = GD.Load<PackedScene>(scenePath);
-            drone = scene.Instantiate();
-            AssertBool(drone is ShieldDrone).IsTrue();
-            drone.Free();
-
-            scenePath = DRONE_SCENE_PATH + "RepairDrone.tscn";
-            scene = GD.Load<PackedScene>(scenePath);
-            drone = scene.Instantiate();
-            AssertBool(drone is RepairDrone).IsTrue();
-            drone.Free();
-
-            scenePath = DRONE_SCENE_PATH + "EMPDrone.tscn";
-            scene = GD.Load<PackedScene>(scenePath);
-            drone = scene.Instantiate();
-            AssertBool(drone is EMPDrone).IsTrue();
-            drone.Free();
-
-            scenePath = DRONE_SCENE_PATH + "BomberDrone.tscn";
-            scene = GD.Load<PackedScene>(scenePath);
-            drone = scene.Instantiate();
-            AssertBool(drone is BomberDrone).IsTrue();
-            drone.Free();
+            foreach (var (sceneName, expectedType) in droneTestData)
+            {
+                var scenePath = DRONE_SCENE_PATH + sceneName;
+                var scene = GD.Load<PackedScene>(scenePath);
+                var drone = scene.Instantiate();
+                
+                AssertBool(drone.GetType() == expectedType).IsTrue();
+                
+                drone.Free();
+            }
         }
     }
 }
