@@ -184,11 +184,12 @@ namespace MechDefenseHalo.Statistics
             EventBus.On(EventBus.DroneDeployed, OnDroneDeployed);
             
             // Economy events
-            EventBus.On("currency_changed", OnCurrencyChanged);
+            // Note: Using string literals where EventBus constants don't exist yet
+            EventBus.On("currency_changed", OnCurrencyChanged); // CurrencyManager emits string
             EventBus.On(EventBus.ItemPurchased, OnItemPurchased);
             
             // Loot events
-            EventBus.On("loot_dropped", OnLootDropped);
+            EventBus.On("loot_dropped", OnLootDropped); // LootDropComponent emits string
             
             // Crafting events
             EventBus.On(EventBus.CraftCompleted, OnCraftCompleted);
@@ -373,9 +374,9 @@ namespace MechDefenseHalo.Statistics
 
         private void OnLootDropped(object data)
         {
-            // Track when loot is dropped
-            // Note: This tracks loot generation, not pickup
-            // May want to track actual pickup separately when player collects it
+            // Note: This tracks loot DROP events when items are generated
+            // Counts items when dropped by enemies. If tracking actual player collection
+            // is desired, consider adding a separate "loot_picked_up" event
             if (data is LootDroppedData lootData)
             {
                 Economy.ItemsLooted += lootData.ItemIDs?.Count ?? 0;

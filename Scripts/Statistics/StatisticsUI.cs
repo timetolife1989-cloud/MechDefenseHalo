@@ -271,10 +271,7 @@ namespace MechDefenseHalo.Statistics
 
             if (_fastestBossLabel != null)
             {
-                string fastestBoss = combat.FastestBossKill == CombatStats.NO_BOSS_KILL_RECORDED 
-                    ? "N/A" 
-                    : FormatTime(combat.FastestBossKill);
-                _fastestBossLabel.Text = $"Fastest Boss Kill: {fastestBoss}";
+                _fastestBossLabel.Text = $"Fastest Boss Kill: {combat.GetFormattedBossKillTime()}";
             }
             
             if (_longestStreakLabel != null)

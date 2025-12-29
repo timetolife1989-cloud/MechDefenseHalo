@@ -67,5 +67,26 @@ namespace MechDefenseHalo.Statistics
                 AccuracyPercentage = (float)ShotsHit / ShotsFired * 100f;
             }
         }
+
+        /// <summary>
+        /// Check if fastest boss kill has been recorded
+        /// </summary>
+        public bool HasBossKillRecord()
+        {
+            return FastestBossKill != NO_BOSS_KILL_RECORDED;
+        }
+
+        /// <summary>
+        /// Get fastest boss kill time in a formatted string
+        /// </summary>
+        public string GetFormattedBossKillTime()
+        {
+            if (!HasBossKillRecord())
+                return "N/A";
+            
+            int minutes = (int)(FastestBossKill / 60);
+            int seconds = (int)(FastestBossKill % 60);
+            return $"{minutes}:{seconds:D2}";
+        }
     }
 }
