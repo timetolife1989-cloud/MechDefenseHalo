@@ -63,7 +63,8 @@ namespace MechDefenseHalo.Enemies
             float rarityBrightness = (float)rarity / 5f;
             baseColor = baseColor.Lightened(rarityBrightness * 0.3f);
             
-            material.SetShaderParameter("base_color", baseColor);
+            // Convert Color to Vector3 for shader parameter
+            material.SetShaderParameter("base_color", new Vector3(baseColor.R, baseColor.G, baseColor.B));
             material.SetShaderParameter("variation_amount", GD.Randf());
             
             meshInstance.MaterialOverride = material;
