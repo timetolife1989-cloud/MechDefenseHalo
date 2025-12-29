@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://testmodels001"]
+
+[ext_resource type="PackedScene" uid="uid://b1mechhead001" path="res://Assets/Models/Mech/MechHead.tscn" id="1_mechhead"]
+[ext_resource type="PackedScene" uid="uid://b1mechtorso001" path="res://Assets/Models/Mech/MechTorso.tscn" id="2_mechtorso"]
+[ext_resource type="PackedScene" uid="uid://b1mecharm001" path="res://Assets/Models/Mech/MechArm.tscn" id="3_mecharm"]
+[ext_resource type="PackedScene" uid="uid://b1mechleg001" path="res://Assets/Models/Mech/MechLeg.tscn" id="4_mechleg"]
+[ext_resource type="PackedScene" uid="uid://b1enemygrunt001" path="res://Assets/Models/Enemies/GruntModel.tscn" id="5_grunt"]
+[ext_resource type="PackedScene" uid="uid://b1enemyshoot001" path="res://Assets/Models/Enemies/ShooterModel.tscn" id="6_shooter"]
+[ext_resource type="PackedScene" uid="uid://b1enemytank001" path="res://Assets/Models/Enemies/TankModel.tscn" id="7_tank"]
+[ext_resource type="PackedScene" uid="uid://b1enemyswarm001" path="res://Assets/Models/Enemies/SwarmModel.tscn" id="8_swarm"]
+[ext_resource type="PackedScene" uid="uid://b1enemyflyer001" path="res://Assets/Models/Enemies/FlyerModel.tscn" id="9_flyer"]
+[ext_resource type="PackedScene" uid="uid://b1bossfrost001" path="res://Assets/Models/Bosses/FrostTitanModel.tscn" id="10_boss"]
+[ext_resource type="PackedScene" uid="uid://b1droneattack001" path="res://Assets/Models/Drones/AttackDroneModel.tscn" id="11_attack"]
+[ext_resource type="PackedScene" uid="uid://b1droneshield001" path="res://Assets/Models/Drones/ShieldDroneModel.tscn" id="12_shield"]
+[ext_resource type="PackedScene" uid="uid://b1dronerepair001" path="res://Assets/Models/Drones/RepairDroneModel.tscn" id="13_repair"]
+[ext_resource type="PackedScene" uid="uid://b1droneemp001" path="res://Assets/Models/Drones/EMPDroneModel.tscn" id="14_emp"]
+[ext_resource type="PackedScene" uid="uid://b1dronebomber001" path="res://Assets/Models/Drones/BomberDroneModel.tscn" id="15_bomber"]
+
+[node name="ModelShowcase" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 15)
+fov = 75.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="MechParts" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="MechHead" parent="MechParts" instance=ExtResource("1_mechhead")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MechTorso" parent="MechParts" instance=ExtResource("2_mechtorso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="MechArm" parent="MechParts" instance=ExtResource("3_mecharm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+
+[node name="MechLeg" parent="MechParts" instance=ExtResource("4_mechleg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.6, 0)
+
+[node name="Label3D_Mech" type="Label3D" parent="MechParts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "MECH PARTS"
+font_size = 32
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Grunt" parent="Enemies" instance=ExtResource("5_grunt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 0)
+
+[node name="Shooter" parent="Enemies" instance=ExtResource("6_shooter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.75, 0)
+
+[node name="Tank" parent="Enemies" instance=ExtResource("7_tank")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Swarm" parent="Enemies" instance=ExtResource("8_swarm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+
+[node name="Flyer" parent="Enemies" instance=ExtResource("9_flyer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 0)
+
+[node name="Label3D_Enemies" type="Label3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "ENEMIES"
+font_size = 32
+
+[node name="Boss" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="FrostTitan" parent="Boss" instance=ExtResource("10_boss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Label3D_Boss" type="Label3D" parent="Boss"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+text = "BOSS"
+font_size = 32
+
+[node name="Drones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="AttackDrone" parent="Drones" instance=ExtResource("11_attack")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 0)
+
+[node name="ShieldDrone" parent="Drones" instance=ExtResource("12_shield")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+
+[node name="RepairDrone" parent="Drones" instance=ExtResource("13_repair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="EMPDrone" parent="Drones" instance=ExtResource("14_emp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+
+[node name="BomberDrone" parent="Drones" instance=ExtResource("15_bomber")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 0)
+
+[node name="Label3D_Drones" type="Label3D" parent="Drones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "DRONES"
+font_size = 32
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(30, 0.2, 20)
