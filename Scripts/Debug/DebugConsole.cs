@@ -22,10 +22,12 @@ namespace MechDefenseHalo.Debug
 
         public override void _Ready()
         {
-            // Only enable in debug builds
-            #if !DEBUG && !TOOLS
+            // Only enable in debug/editor builds
+            #if !DEBUG
+            #if !TOOLS
             QueueFree();
             return;
+            #endif
             #endif
 
             _commandInput = GetNode<LineEdit>("Panel/VBoxContainer/CommandInput");

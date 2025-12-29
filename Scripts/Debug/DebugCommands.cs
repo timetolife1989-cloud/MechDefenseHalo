@@ -6,10 +6,10 @@ using MechDefenseHalo.Player;
 using MechDefenseHalo.WaveSystem;
 using MechDefenseHalo.Inventory;
 using MechDefenseHalo.Economy;
-using MechDefenseHalo.Progression;
 using MechDefenseHalo.Enemies;
 using MechDefenseHalo.Items;
 using MechDefenseHalo.Components;
+using PlayerLevelManager = MechDefenseHalo.Progression.PlayerLevel;
 
 namespace MechDefenseHalo.Debug
 {
@@ -138,11 +138,11 @@ namespace MechDefenseHalo.Debug
         {
             int levels = args.Length > 0 ? int.Parse(args[0]) : 1;
             
-            if (PlayerLevel.Instance != null)
+            if (PlayerLevelManager.Instance != null)
             {
                 // Calculate XP needed for levels
-                int xpNeeded = PlayerLevel.Instance.XPToNextLevel * levels;
-                PlayerLevel.AddXP(xpNeeded, "debug");
+                int xpNeeded = PlayerLevelManager.Instance.XPToNextLevel * levels;
+                PlayerLevelManager.AddXP(xpNeeded, "debug");
                 GD.Print($"Added {levels} level(s)");
             }
             else
@@ -175,7 +175,15 @@ namespace MechDefenseHalo.Debug
             if (enemyScene != null)
             {
                 var enemy = enemyScene.Instantiate<Node3D>();
-                GetTree().Root.GetNode("Main").AddChild(enemy);
+                
+                // Try to find an appropriate parent node
+                Node parentNode = GetTree().CurrentScene;
+                if (parentNode == null)
+                {
+                    parentNode = GetTree().Root;
+                }
+                
+                parentNode.AddChild(enemy);
                 enemy.GlobalPosition = spawnPos;
                 GD.Print($"Spawned {enemyType} at {spawnPos}");
             }
@@ -400,7 +408,18 @@ namespace MechDefenseHalo.Debug
 
         private Node GetWaveManager()
         {
-            return GetTree().Root.GetNodeOrNull("Main/WaveManager");
+            // Try multiple common paths
+            Node waveManager = GetTree().CurrentScene?.GetNodeOrNull("WaveManager");
+            if (waveManager != null) return waveManager;
+            
+            waveManager = GetTree().Root.GetNodeOrNull("Main/WaveManager");
+            if (waveManager != null) return waveManager;
+            
+            // Try to find in groups
+            var nodes = GetTree().GetNodesInGroup("wave_manager");
+            if (nodes.Count > 0) return nodes[0] as Node;
+            
+            return null;
         }
 
         #endregion
