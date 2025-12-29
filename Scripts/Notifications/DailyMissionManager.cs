@@ -235,6 +235,7 @@ namespace MechDefenseHalo.Notifications
             EventBus.On("loot_picked_up", OnItemLooted);
             EventBus.On("damage_dealt", OnDamageDealt);
             EventBus.On("currency_changed", OnCurrencyChanged);
+            EventBus.On("survive_time_tick", OnSurviveTimeTick);
         }
 
         private void OnEnemyKilled(object data)
@@ -285,6 +286,15 @@ namespace MechDefenseHalo.Notifications
             if (data is CurrencyChangedData currencyData && currencyData.Change < 0)
             {
                 UpdateMissionProgress(MissionType.SpendCurrency, Math.Abs(currencyData.Change));
+            }
+        }
+
+        private void OnSurviveTimeTick(object data)
+        {
+            // Track survive time missions
+            if (data is int seconds)
+            {
+                UpdateMissionProgress(MissionType.SurviveTime, seconds);
             }
         }
 

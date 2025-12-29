@@ -213,6 +213,9 @@ namespace MechDefenseHalo.Enemies
             {
                 OnDeath();
                 
+                // Emit enemy killed event for mission tracking
+                EventBus.Emit(EventBus.EnemyKilled, EnemyName);
+                
                 // Remove from group
                 RemoveFromGroup("enemies");
 

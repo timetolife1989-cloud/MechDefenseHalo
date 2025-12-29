@@ -11,8 +11,8 @@ namespace MechDefenseHalo.Notifications
     {
         #region Private Fields
 
-        private DailyMissionManager missionManager;
         private float surviveTimeAccumulator = 0f;
+        private bool isGameActive = false;
 
         #endregion
 
@@ -20,17 +20,26 @@ namespace MechDefenseHalo.Notifications
 
         public override void _Ready()
         {
-            missionManager = GetParent<DailyMissionManager>();
-            if (missionManager == null)
-            {
-                GD.PrintErr("MissionProgressTracker must be a child of DailyMissionManager!");
-            }
+            // Subscribe to game state events
+            Core.EventBus.On(Core.EventBus.GameStarted, OnGameStarted);
+            Core.EventBus.On(Core.EventBus.GameOver, OnGameOver);
+            Core.EventBus.On(Core.EventBus.GamePaused, OnGamePaused);
+        }
+
+        public override void _ExitTree()
+        {
+            Core.EventBus.Off(Core.EventBus.GameStarted, OnGameStarted);
+            Core.EventBus.Off(Core.EventBus.GameOver, OnGameOver);
+            Core.EventBus.Off(Core.EventBus.GamePaused, OnGamePaused);
         }
 
         public override void _Process(double delta)
         {
-            // Track survive time missions
-            TrackSurviveTime((float)delta);
+            // Track survive time missions only during active gameplay
+            if (isGameActive)
+            {
+                TrackSurviveTime((float)delta);
+            }
         }
 
         #endregion
@@ -49,6 +58,25 @@ namespace MechDefenseHalo.Notifications
 
                 // Emit event for survive time tracking
                 Core.EventBus.Emit("survive_time_tick", secondsElapsed);
+            }
+        }
+
+        private void OnGameStarted(object data)
+        {
+            isGameActive = true;
+            surviveTimeAccumulator = 0f;
+        }
+
+        private void OnGameOver(object data)
+        {
+            isGameActive = false;
+        }
+
+        private void OnGamePaused(object data)
+        {
+            if (data is bool isPaused)
+            {
+                isGameActive = !isPaused;
             }
         }
 
