@@ -1,0 +1,112 @@
+[
+  {
+    "item_id": "alloy_plates",
+    "display_name": "Alloy Plates",
+    "description": "Reinforced metal alloy panels with enhanced durability",
+    "rarity": "Uncommon",
+    "item_level": 5,
+    "sell_value": 25,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "armor"]
+  },
+  {
+    "item_id": "power_cells",
+    "display_name": "Power Cells",
+    "description": "Compact energy storage units for weapons and shields",
+    "rarity": "Uncommon",
+    "item_level": 5,
+    "sell_value": 30,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "energy"]
+  },
+  {
+    "item_id": "titanium_rods",
+    "display_name": "Titanium Rods",
+    "description": "High-strength structural components",
+    "rarity": "Uncommon",
+    "item_level": 8,
+    "sell_value": 35,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "armor"]
+  },
+  {
+    "item_id": "advanced_circuits",
+    "display_name": "Advanced Circuits",
+    "description": "Complex electronic boards with enhanced processing",
+    "rarity": "Uncommon",
+    "item_level": 10,
+    "sell_value": 28,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "electronic"]
+  },
+  {
+    "item_id": "servo_motors",
+    "display_name": "Servo Motors",
+    "description": "Precision actuators for mechanical systems",
+    "rarity": "Uncommon",
+    "item_level": 7,
+    "sell_value": 32,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "mechanical"]
+  },
+  {
+    "item_id": "kevlar_fabric",
+    "display_name": "Kevlar Fabric",
+    "description": "Ballistic-resistant textile material",
+    "rarity": "Uncommon",
+    "item_level": 6,
+    "sell_value": 26,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "armor"]
+  },
+  {
+    "item_id": "synthetic_oils",
+    "display_name": "Synthetic Oils",
+    "description": "High-performance lubricants for joints and servos",
+    "rarity": "Uncommon",
+    "item_level": 5,
+    "sell_value": 22,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "mechanical"]
+  },
+  {
+    "item_id": "optical_lenses",
+    "display_name": "Optical Lenses",
+    "description": "Precision-ground glass for targeting systems",
+    "rarity": "Uncommon",
+    "item_level": 9,
+    "sell_value": 29,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "optics"]
+  },
+  {
+    "item_id": "carbon_fiber",
+    "display_name": "Carbon Fiber",
+    "description": "Lightweight yet strong composite material",
+    "rarity": "Uncommon",
+    "item_level": 10,
+    "sell_value": 34,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "armor"]
+  },
+  {
+    "item_id": "coolant_fluid",
+    "display_name": "Coolant Fluid",
+    "description": "Advanced heat dissipation liquid for weapon systems",
+    "rarity": "Uncommon",
+    "item_level": 8,
+    "sell_value": 24,
+    "max_stack_size": 999,
+    "material_tier": "Uncommon",
+    "tags": ["material", "crafting", "uncommon", "cooling"]
+  }
+]

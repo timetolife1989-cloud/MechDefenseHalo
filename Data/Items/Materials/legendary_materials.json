@@ -1,0 +1,145 @@
+[
+  {
+    "item_id": "quantum_chips",
+    "display_name": "Quantum Chips",
+    "description": "Quantum computing processors for AI and targeting systems",
+    "rarity": "Epic",
+    "item_level": 25,
+    "sell_value": 800,
+    "max_stack_size": 999,
+    "material_tier": "Epic",
+    "tags": ["material", "crafting", "epic", "electronic"]
+  },
+  {
+    "item_id": "dark_matter",
+    "display_name": "Dark Matter",
+    "description": "Exotic matter with unusual gravitational properties",
+    "rarity": "Epic",
+    "item_level": 28,
+    "sell_value": 1000,
+    "max_stack_size": 999,
+    "material_tier": "Epic",
+    "tags": ["material", "crafting", "epic", "exotic"]
+  },
+  {
+    "item_id": "antimatter_particles",
+    "display_name": "Antimatter Particles",
+    "description": "Contained antimatter for devastating weapons",
+    "rarity": "Epic",
+    "item_level": 30,
+    "sell_value": 1200,
+    "max_stack_size": 999,
+    "material_tier": "Epic",
+    "tags": ["material", "crafting", "epic", "energy", "weapon"]
+  },
+  {
+    "item_id": "neutronium_plates",
+    "display_name": "Neutronium Plates",
+    "description": "Impossibly dense armor material from neutron stars",
+    "rarity": "Epic",
+    "item_level": 32,
+    "sell_value": 1500,
+    "max_stack_size": 999,
+    "material_tier": "Epic",
+    "tags": ["material", "crafting", "epic", "armor"]
+  },
+  {
+    "item_id": "void_crystal",
+    "display_name": "Void Crystal",
+    "description": "Crystallized void energy from dimensional rifts",
+    "rarity": "Legendary",
+    "item_level": 35,
+    "sell_value": 4000,
+    "max_stack_size": 999,
+    "material_tier": "Legendary",
+    "tags": ["material", "crafting", "legendary", "void", "exotic"]
+  },
+  {
+    "item_id": "aether_fragment",
+    "display_name": "Aether Fragment",
+    "description": "Pure concentrated energy from the ethereal plane",
+    "rarity": "Legendary",
+    "item_level": 38,
+    "sell_value": 5000,
+    "max_stack_size": 999,
+    "material_tier": "Legendary",
+    "tags": ["material", "crafting", "legendary", "energy"]
+  },
+  {
+    "item_id": "stellar_core",
+    "display_name": "Stellar Core",
+    "description": "Fragment of a collapsed star's core",
+    "rarity": "Legendary",
+    "item_level": 40,
+    "sell_value": 6000,
+    "max_stack_size": 999,
+    "material_tier": "Legendary",
+    "tags": ["material", "crafting", "legendary", "energy"]
+  },
+  {
+    "item_id": "phoenix_feather",
+    "display_name": "Phoenix Feather",
+    "description": "Legendary material from the mythical Phoenix, radiates intense heat",
+    "rarity": "Exotic",
+    "item_level": 45,
+    "sell_value": 20000,
+    "max_stack_size": 999,
+    "material_tier": "Exotic",
+    "tags": ["material", "crafting", "exotic", "fire", "boss_drop"]
+  },
+  {
+    "item_id": "titan_heart",
+    "display_name": "Titan Heart",
+    "description": "Core essence of a defeated Titan, pulsing with immense power",
+    "rarity": "Exotic",
+    "item_level": 48,
+    "sell_value": 25000,
+    "max_stack_size": 999,
+    "material_tier": "Exotic",
+    "tags": ["material", "crafting", "exotic", "boss_drop"]
+  },
+  {
+    "item_id": "cosmic_essence",
+    "display_name": "Cosmic Essence",
+    "description": "Pure essence of cosmic energy from the universe itself",
+    "rarity": "Exotic",
+    "item_level": 50,
+    "sell_value": 30000,
+    "max_stack_size": 999,
+    "material_tier": "Exotic",
+    "tags": ["material", "crafting", "exotic", "energy"]
+  },
+  {
+    "item_id": "temporal_dust",
+    "display_name": "Temporal Dust",
+    "description": "Time-warped particles that exist outside normal causality",
+    "rarity": "Legendary",
+    "item_level": 42,
+    "sell_value": 7000,
+    "max_stack_size": 999,
+    "material_tier": "Legendary",
+    "tags": ["material", "crafting", "legendary", "time"]
+  },
+  {
+    "item_id": "crystallized_energy",
+    "display_name": "Crystallized Energy",
+    "description": "Pure energy frozen in crystal form",
+    "rarity": "Epic",
+    "item_level": 26,
+    "sell_value": 900,
+    "max_stack_size": 999,
+    "material_tier": "Epic",
+    "tags": ["material", "crafting", "epic", "energy"]
+  },
+  {
+    "item_id": "adaptive_nanites",
+    "display_name": "Adaptive Nanites",
+    "description": "Self-replicating microscopic machines for repairs and enhancements",
+    "rarity": "Legendary",
+    "item_level": 36,
+    "sell_value": 4500,
+    "max_stack_size": 999,
+    "material_tier": "Legendary",
+    "tags": ["material", "crafting", "legendary", "nano"]
+  }
+]
