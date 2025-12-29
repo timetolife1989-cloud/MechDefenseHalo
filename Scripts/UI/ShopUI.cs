@@ -11,91 +11,100 @@ using MechDefenseHalo.Core;
 namespace MechDefenseHalo.UI
 {
     /// <summary>
-    /// Shop UI system with categories, featured items, and purchase confirmation
+    /// Shop UI with 3 categories, featured items, and purchase confirmation.
+    /// 
+    /// REQUIRED SCENE STRUCTURE (create manually in Godot):
+    /// 
+    /// Control (ShopUI) - Script: ShopUI.cs
+    /// ├─ Panel (Background)
+    /// │  ├─ Label (Title) - text: "SHOP"
+    /// │  ├─ HBoxContainer (CurrencyBar)
+    /// │  │  ├─ Label (CreditsLabel) - text: "💰 Credits: 0"
+    /// │  │  └─ Label (CoresLabel) - text: "💎 Cores: 0"
+    /// │  ├─ Panel (FeaturedPanel) - Daily Rotation
+    /// │  │  ├─ Label - text: "Featured Today"
+    /// │  │  └─ HBoxContainer (FeaturedContainer)
+    /// │  ├─ TabContainer (CategoryTabs)
+    /// │  │  ├─ ScrollContainer (CosmeticsTab) - name: "Cosmetics"
+    /// │  │  │  └─ GridContainer (CosmeticsGrid) - columns: 4
+    /// │  │  ├─ ScrollContainer (ConvenienceTab) - name: "Convenience"
+    /// │  │  │  └─ GridContainer (ConvenienceGrid) - columns: 4
+    /// │  │  └─ ScrollContainer (MaterialsTab) - name: "Materials"
+    /// │  │     └─ GridContainer (MaterialsGrid) - columns: 4
+    /// │  ├─ Button (CloseButton) - text: "Close"
+    /// │  └─ ConfirmationDialog (PurchaseConfirm) - title: "Confirm Purchase"
     /// </summary>
     public partial class ShopUI : Control
     {
-        #region Nodes
-        
+        #region Export Variables (Wire these in Godot Editor)
+
         [Export] public TabContainer CategoryTabs { get; set; }
         [Export] public GridContainer CosmeticsGrid { get; set; }
         [Export] public GridContainer ConvenienceGrid { get; set; }
         [Export] public GridContainer MaterialsGrid { get; set; }
-        [Export] public HBoxContainer FeaturedPanel { get; set; }
+        [Export] public HBoxContainer FeaturedContainer { get; set; }
         [Export] public Label CreditsLabel { get; set; }
         [Export] public Label CoresLabel { get; set; }
         [Export] public Button CloseButton { get; set; }
         [Export] public ConfirmationDialog PurchaseConfirm { get; set; }
-        
+        [Export] public PackedScene ShopItemCardPrefab { get; set; } // Reference to ShopItemCard.tscn
+
         #endregion
-        
+
         #region Private Fields
-        
+
         private ShopManager _shopManager;
         private InventoryManager _inventoryManager;
         private ShopItem _pendingPurchase;
-        
+        private List<ShopItemCardUI> _itemCards = new();
+
         #endregion
-        
+
         #region Godot Lifecycle
-        
+
         public override void _Ready()
         {
-            // Initially hidden
-            Visible = false;
-            
+            // Get manager references
+            _shopManager = GetNode<ShopManager>("/root/ShopManager");
+            _inventoryManager = GetNode<InventoryManager>("/root/InventoryManager");
+
             // Connect signals
             if (CloseButton != null)
-            {
                 CloseButton.Pressed += OnClosePressed;
-            }
-            
+
             if (PurchaseConfirm != null)
             {
                 PurchaseConfirm.Confirmed += OnPurchaseConfirmed;
                 PurchaseConfirm.Canceled += OnPurchaseCanceled;
             }
-            
-            // Listen for currency changes
-            EventBus.On("credits_changed", OnCurrencyChanged);
-            EventBus.On("cores_changed", OnCurrencyChanged);
-            EventBus.On(EventBus.ItemPurchased, OnItemPurchased);
-            
+
+            // Listen for currency and purchase events
+            EventBus.On(EventBus.CurrencyChanged, OnCurrencyChangedEvent);
+            EventBus.On(EventBus.ItemPurchased, OnItemPurchasedEvent);
+
+            // Initial display
+            RefreshDisplay();
+
+            // Hide by default
+            Hide();
+
             GD.Print("ShopUI initialized");
         }
-        
+
         public override void _Input(InputEvent @event)
         {
-            if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
+            // Toggle with 'S' key
+            if (@event is InputEventKey keyEvent && keyEvent.Pressed && keyEvent.Keycode == Key.S)
             {
-                if (keyEvent.Keycode == Key.S)
-                {
-                    ToggleVisibility();
-                }
-                else if (keyEvent.Keycode == Key.Escape && Visible)
-                {
-                    Hide();
-                }
+                ToggleVisibility();
+                GetViewport().SetInputAsHandled();
             }
         }
-        
+
         #endregion
-        
+
         #region Public Methods
-        
-        /// <summary>
-        /// Initialize with manager references
-        /// </summary>
-        public void Initialize(ShopManager shopManager, InventoryManager inventoryManager)
-        {
-            _shopManager = shopManager;
-            _inventoryManager = inventoryManager;
-            RefreshDisplay();
-        }
-        
-        /// <summary>
-        /// Toggle shop UI visibility
-        /// </summary>
+
         public void ToggleVisibility()
         {
             Visible = !Visible;
@@ -104,158 +113,103 @@ namespace MechDefenseHalo.UI
                 RefreshDisplay();
             }
         }
-        
-        /// <summary>
-        /// Refresh the entire shop display
-        /// </summary>
+
         public void RefreshDisplay()
         {
             if (_shopManager == null) return;
-            
+
             UpdateCurrencyDisplay();
             UpdateFeaturedItems();
             UpdateShopGrids();
         }
-        
+
         #endregion
-        
+
         #region Private Methods - Display Update
-        
+
         private void UpdateCurrencyDisplay()
         {
             if (CreditsLabel != null)
             {
-                CreditsLabel.Text = $"💰 Credits: {CurrencyManager.Credits:N0}";
+                CreditsLabel.Text = $"💰 Credits: {CurrencyManager.CurrentCredits:N0}";
             }
-            
+
             if (CoresLabel != null)
             {
-                CoresLabel.Text = $"💎 Cores: {CurrencyManager.Cores:N0}";
+                CoresLabel.Text = $"💎 Cores: {CurrencyManager.CurrentCores:N0}";
             }
         }
-        
+
         private void UpdateFeaturedItems()
         {
-            if (FeaturedPanel == null || _shopManager == null) return;
-            
-            // Clear existing
-            foreach (var child in FeaturedPanel.GetChildren())
+            if (FeaturedContainer == null || _shopManager == null) return;
+
+            // Clear existing cards
+            foreach (var child in FeaturedContainer.GetChildren())
             {
                 child.QueueFree();
             }
-            
+
             var featuredIDs = _shopManager.GetFeaturedItems();
-            
-            foreach (var itemID in featuredIDs)
+
+            if (ShopItemCardPrefab != null)
             {
-                var shopItem = _shopManager.GetShopItem(itemID);
-                if (shopItem != null)
+                foreach (var itemID in featuredIDs)
                 {
-                    var card = CreateShopItemCard(shopItem);
-                    FeaturedPanel.AddChild(card);
+                    var shopItem = _shopManager.GetShopItem(itemID);
+                    if (shopItem != null)
+                    {
+                        var card = CreateShopItemCard(shopItem);
+                        FeaturedContainer.AddChild(card);
+                    }
                 }
             }
         }
-        
+
         private void UpdateShopGrids()
         {
             if (_shopManager == null) return;
-            
+
             UpdateShopGrid(CosmeticsGrid, ShopCategory.Cosmetic);
             UpdateShopGrid(ConvenienceGrid, ShopCategory.Convenience);
             UpdateShopGrid(MaterialsGrid, ShopCategory.Material);
         }
-        
+
         private void UpdateShopGrid(GridContainer grid, ShopCategory category)
         {
             if (grid == null) return;
-            
-            // Clear existing
+
+            // Clear existing cards
             foreach (var child in grid.GetChildren())
             {
                 child.QueueFree();
             }
-            
+
             var items = _shopManager.GetItemsByCategory(category);
-            
-            foreach (var shopItem in items)
+
+            if (ShopItemCardPrefab != null)
             {
-                var card = CreateShopItemCard(shopItem);
-                grid.AddChild(card);
-            }
-        }
-        
-        private Panel CreateShopItemCard(ShopItem shopItem)
-        {
-            var card = new Panel();
-            card.CustomMinimumSize = new Vector2(150, 200);
-            
-            var vbox = new VBoxContainer();
-            card.AddChild(vbox);
-            
-            // Item icon (placeholder)
-            var icon = new ColorRect();
-            icon.CustomMinimumSize = new Vector2(100, 100);
-            icon.Color = GetRarityColor(shopItem.Rarity);
-            vbox.AddChild(icon);
-            
-            // Item name
-            var nameLabel = new Label();
-            nameLabel.Text = shopItem.DisplayName;
-            nameLabel.HorizontalAlignment = HorizontalAlignment.Center;
-            nameLabel.AutowrapMode = TextServer.AutowrapMode.Word;
-            vbox.AddChild(nameLabel);
-            
-            // Price
-            var priceLabel = new Label();
-            if (shopItem.PriceCredits > 0)
-            {
-                priceLabel.Text = $"💰 {shopItem.PriceCredits:N0}";
-            }
-            else if (shopItem.PriceCores > 0)
-            {
-                priceLabel.Text = $"💎 {shopItem.PriceCores:N0}";
-            }
-            priceLabel.HorizontalAlignment = HorizontalAlignment.Center;
-            vbox.AddChild(priceLabel);
-            
-            // Owned indicator (for cosmetics)
-            if (shopItem.Category == ShopCategory.Cosmetic && _inventoryManager != null)
-            {
-                if (_inventoryManager.HasItem(shopItem.ItemID))
+                foreach (var shopItem in items)
                 {
-                    var ownedLabel = new Label();
-                    ownedLabel.Text = "✓ OWNED";
-                    ownedLabel.Modulate = Colors.Green;
-                    ownedLabel.HorizontalAlignment = HorizontalAlignment.Center;
-                    vbox.AddChild(ownedLabel);
+                    var card = CreateShopItemCard(shopItem);
+                    grid.AddChild(card);
                 }
             }
-            
-            // Purchase button
-            var buyButton = new Button();
-            bool canPurchase = CanAffordItem(shopItem);
-            bool alreadyOwned = shopItem.Category == ShopCategory.Cosmetic && 
-                              _inventoryManager != null && 
-                              _inventoryManager.HasItem(shopItem.ItemID);
-            
-            if (alreadyOwned)
-            {
-                buyButton.Text = "OWNED";
-                buyButton.Disabled = true;
-            }
-            else
-            {
-                buyButton.Text = "BUY";
-                buyButton.Disabled = !canPurchase;
-                buyButton.Pressed += () => OnPurchaseItemPressed(shopItem);
-            }
-            
-            vbox.AddChild(buyButton);
-            
+        }
+
+        private ShopItemCardUI CreateShopItemCard(ShopItem shopItem)
+        {
+            var card = ShopItemCardPrefab.Instantiate<ShopItemCardUI>();
+            card.SetShopItem(shopItem);
+            card.UpdateAffordability(CurrencyManager.CurrentCredits, CurrencyManager.CurrentCores);
+
+            // Connect purchase event
+            card.PurchaseRequested += OnPurchaseItemPressed;
+
+            _itemCards.Add(card);
             return card;
         }
-        
+
         private bool CanAffordItem(ShopItem item)
         {
             if (item.PriceCredits > 0 && item.PriceCores == 0)
@@ -268,33 +222,33 @@ namespace MechDefenseHalo.UI
             }
             else if (item.PriceCredits > 0 && item.PriceCores > 0)
             {
-                return CurrencyManager.HasCredits(item.PriceCredits) && 
+                return CurrencyManager.HasCredits(item.PriceCredits) &&
                        CurrencyManager.HasCores(item.PriceCores);
             }
-            
+
             return false;
         }
-        
-        private Color GetRarityColor(ItemRarity rarity)
-        {
-            return RarityConfig.GetColor(rarity);
-        }
-        
+
         #endregion
-        
+
         #region Event Handlers
-        
-        private void OnPurchaseItemPressed(ShopItem item)
+
+        private void OnPurchaseItemPressed(string shopItemID)
         {
-            _pendingPurchase = item;
-            
+            if (_shopManager == null) return;
+
+            var shopItem = _shopManager.GetShopItem(shopItemID);
+            if (shopItem == null) return;
+
+            _pendingPurchase = shopItem;
+
             if (PurchaseConfirm != null)
             {
-                string price = item.PriceCredits > 0 ? 
-                    $"{item.PriceCredits:N0} Credits" : 
-                    $"{item.PriceCores:N0} Cores";
-                
-                PurchaseConfirm.DialogText = $"Purchase {item.DisplayName} for {price}?";
+                string price = shopItem.PriceCredits > 0 ?
+                    $"{shopItem.PriceCredits:N0} Credits" :
+                    $"{shopItem.PriceCores:N0} Cores";
+
+                PurchaseConfirm.DialogText = $"Purchase {shopItem.DisplayName} for {price}?";
                 PurchaseConfirm.PopupCentered();
             }
             else
@@ -303,26 +257,26 @@ namespace MechDefenseHalo.UI
                 ProcessPurchase();
             }
         }
-        
+
         private void OnPurchaseConfirmed()
         {
             ProcessPurchase();
         }
-        
+
         private void OnPurchaseCanceled()
         {
             _pendingPurchase = null;
         }
-        
+
         private void ProcessPurchase()
         {
             if (_pendingPurchase == null || _shopManager == null || _inventoryManager == null)
             {
                 return;
             }
-            
+
             bool success = _shopManager.PurchaseItem(_pendingPurchase.ShopItemID, _inventoryManager);
-            
+
             if (success)
             {
                 GD.Print($"Successfully purchased: {_pendingPurchase.DisplayName}");
@@ -332,25 +286,31 @@ namespace MechDefenseHalo.UI
             {
                 GD.PrintErr($"Failed to purchase: {_pendingPurchase.DisplayName}");
             }
-            
+
             _pendingPurchase = null;
         }
-        
+
         private void OnClosePressed()
         {
             Hide();
         }
-        
-        private void OnCurrencyChanged(object data)
+
+        private void OnCurrencyChangedEvent(object data)
         {
             UpdateCurrencyDisplay();
+
+            // Update affordability of all cards
+            foreach (var card in _itemCards)
+            {
+                card.UpdateAffordability(CurrencyManager.CurrentCredits, CurrencyManager.CurrentCores);
+            }
         }
-        
-        private void OnItemPurchased(object data)
+
+        private void OnItemPurchasedEvent(object data)
         {
             RefreshDisplay();
         }
-        
+
         #endregion
     }
 }
