@@ -94,29 +94,23 @@ namespace MechDefenseHalo.Progression
             {
                 return 100;
             }
-            // Level 11-30: 1.15x multiplier per level
+            // Level 11-30: Quadratic growth starting at 150 XP
             else if (level <= 30)
             {
-                int baseXP = 100;
-                float multiplier = 1.15f;
                 int levelsAbove10 = level - 10;
-                return (int)(baseXP * Mathf.Pow(multiplier, levelsAbove10));
+                return 150 + (levelsAbove10 * levelsAbove10 * 10);
             }
-            // Level 31-60: 1.20x multiplier per level
+            // Level 31-60: Steeper quadratic growth
             else if (level <= 60)
             {
-                int baseXP = CalculateXPForLevel(30);
-                float multiplier = 1.20f;
                 int levelsAbove30 = level - 30;
-                return (int)(baseXP * Mathf.Pow(multiplier, levelsAbove30));
+                return 2250 + (levelsAbove30 * levelsAbove30 * 25);
             }
-            // Level 61-100: 1.25x multiplier per level
+            // Level 61-100: Very steep growth for endgame
             else
             {
-                int baseXP = CalculateXPForLevel(60);
-                float multiplier = 1.25f;
                 int levelsAbove60 = level - 60;
-                return (int)(baseXP * Mathf.Pow(multiplier, levelsAbove60));
+                return 24750 + (levelsAbove60 * levelsAbove60 * 50);
             }
         }
 
