@@ -1,0 +1,547 @@
+{
+  "mission_templates": [
+    {
+      "type": "KillEnemies",
+      "title": "Extermination",
+      "description": "Kill {0} enemies",
+      "progressRange": [20, 50],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 200,
+        "XP": 100
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Bug Hunt",
+      "description": "Eliminate {0} hostiles",
+      "progressRange": [30, 60],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 250,
+        "XP": 120
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Pest Control",
+      "description": "Destroy {0} enemy units",
+      "progressRange": [25, 45],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 220,
+        "XP": 110
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Wave Breaker",
+      "description": "Complete {0} waves",
+      "progressRange": [3, 5],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 300,
+        "XP": 150
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Defensive Stand",
+      "description": "Survive {0} waves",
+      "progressRange": [2, 4],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 280,
+        "XP": 140
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Salvage Operation",
+      "description": "Collect {0} loot items",
+      "progressRange": [10, 20],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 200,
+        "XP": 100
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Resource Gathering",
+      "description": "Gather {0} resources",
+      "progressRange": [12, 18],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 230,
+        "XP": 115
+      }
+    },
+    {
+      "type": "DeployDrones",
+      "title": "Drone Operator",
+      "description": "Deploy {0} drones",
+      "progressRange": [5, 10],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 250,
+        "XP": 130
+      }
+    },
+    {
+      "type": "DeployDrones",
+      "title": "Support Commander",
+      "description": "Deploy {0} support drones",
+      "progressRange": [10, 20],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 400,
+        "XP": 200,
+        "Cores": 10
+      }
+    },
+    {
+      "type": "DeployDrones",
+      "title": "Tactical Deployment",
+      "description": "Deploy {0} tactical drones",
+      "progressRange": [8, 15],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 380,
+        "XP": 190,
+        "Cores": 8
+      }
+    },
+    {
+      "type": "CraftItems",
+      "title": "Master Craftsman",
+      "description": "Craft {0} items",
+      "progressRange": [3, 5],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 500,
+        "XP": 250,
+        "Cores": 15
+      }
+    },
+    {
+      "type": "CraftItems",
+      "title": "Workshop Warrior",
+      "description": "Create {0} crafted items",
+      "progressRange": [2, 4],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 450,
+        "XP": 225,
+        "Cores": 12
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Heavy Elimination",
+      "description": "Destroy {0} enemies",
+      "progressRange": [50, 100],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 450,
+        "XP": 220,
+        "Cores": 12
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Mass Eradication",
+      "description": "Eliminate {0} enemy forces",
+      "progressRange": [60, 90],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 480,
+        "XP": 240,
+        "Cores": 14
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Defense Expert",
+      "description": "Survive {0} waves",
+      "progressRange": [5, 10],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 500,
+        "XP": 250,
+        "Cores": 15
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Wave Master",
+      "description": "Complete {0} challenging waves",
+      "progressRange": [6, 8],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 520,
+        "XP": 260,
+        "Cores": 16
+      }
+    },
+    {
+      "type": "DealDamage",
+      "title": "Artillery Strike",
+      "description": "Deal {0} damage",
+      "progressRange": [25000, 50000],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 450,
+        "XP": 220,
+        "Cores": 12
+      }
+    },
+    {
+      "type": "DealDamage",
+      "title": "Heavy Bombardment",
+      "description": "Deal {0} total damage",
+      "progressRange": [30000, 45000],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 470,
+        "XP": 235,
+        "Cores": 13
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Treasure Hunter",
+      "description": "Collect {0} rare items",
+      "progressRange": [15, 30],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 400,
+        "XP": 200,
+        "Cores": 10
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Advanced Salvage",
+      "description": "Gather {0} valuable items",
+      "progressRange": [20, 25],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 420,
+        "XP": 210,
+        "Cores": 11
+      }
+    },
+    {
+      "type": "SurviveTime",
+      "title": "Endurance Test",
+      "description": "Survive for {0} seconds",
+      "progressRange": [300, 600],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 500,
+        "XP": 250,
+        "Cores": 15
+      }
+    },
+    {
+      "type": "SurviveTime",
+      "title": "Marathon Defense",
+      "description": "Stay alive for {0} seconds",
+      "progressRange": [400, 500],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 520,
+        "XP": 260,
+        "Cores": 16
+      }
+    },
+    {
+      "type": "DefeatBosses",
+      "title": "Titan Slayer",
+      "description": "Defeat {0} bosses",
+      "progressRange": [1, 2],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "DefeatBosses",
+      "title": "Boss Hunter",
+      "description": "Defeat {0} elite bosses",
+      "progressRange": [2, 3],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1200,
+        "XP": 600,
+        "Cores": 60
+      }
+    },
+    {
+      "type": "DefeatBosses",
+      "title": "Giant Killer",
+      "description": "Destroy {0} boss enemies",
+      "progressRange": [1, 2],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1100,
+        "XP": 550,
+        "Cores": 55
+      }
+    },
+    {
+      "type": "DealDamage",
+      "title": "Destruction Expert",
+      "description": "Deal {0} damage",
+      "progressRange": [50000, 100000],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 800,
+        "XP": 400,
+        "Cores": 30
+      }
+    },
+    {
+      "type": "DealDamage",
+      "title": "Devastator",
+      "description": "Deal {0} total damage",
+      "progressRange": [100000, 200000],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1100,
+        "XP": 550,
+        "Cores": 55
+      }
+    },
+    {
+      "type": "DealDamage",
+      "title": "Apocalypse",
+      "description": "Deal {0} massive damage",
+      "progressRange": [75000, 150000],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 950,
+        "XP": 475,
+        "Cores": 42
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Annihilation",
+      "description": "Eliminate {0} hostiles",
+      "progressRange": [100, 200],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 900,
+        "XP": 450,
+        "Cores": 40
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Total War",
+      "description": "Destroy {0} enemy units",
+      "progressRange": [120, 180],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 950,
+        "XP": 475,
+        "Cores": 45
+      }
+    },
+    {
+      "type": "KillEnemies",
+      "title": "Genocide",
+      "description": "Exterminate {0} enemies",
+      "progressRange": [150, 200],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Ultimate Defense",
+      "description": "Complete {0} waves",
+      "progressRange": [10, 15],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Endless Endurance",
+      "description": "Survive {0} brutal waves",
+      "progressRange": [12, 18],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1100,
+        "XP": 550,
+        "Cores": 55
+      }
+    },
+    {
+      "type": "CompleteWaves",
+      "title": "Iron Will",
+      "description": "Complete {0} consecutive waves",
+      "progressRange": [8, 12],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 950,
+        "XP": 475,
+        "Cores": 45
+      }
+    },
+    {
+      "type": "CraftItems",
+      "title": "Legendary Craftsman",
+      "description": "Craft {0} legendary items",
+      "progressRange": [1, 3],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "CraftItems",
+      "title": "Master Artificer",
+      "description": "Create {0} epic items",
+      "progressRange": [2, 4],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1050,
+        "XP": 525,
+        "Cores": 52
+      }
+    },
+    {
+      "type": "DeployDrones",
+      "title": "Swarm Master",
+      "description": "Deploy {0} drones in battle",
+      "progressRange": [25, 40],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 900,
+        "XP": 450,
+        "Cores": 40
+      }
+    },
+    {
+      "type": "DeployDrones",
+      "title": "Fleet Commander",
+      "description": "Deploy {0} combat drones",
+      "progressRange": [30, 50],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "SurviveTime",
+      "title": "Marathon Runner",
+      "description": "Survive for {0} seconds",
+      "progressRange": [600, 1200],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    },
+    {
+      "type": "SurviveTime",
+      "title": "Immortal",
+      "description": "Stay alive for {0} seconds",
+      "progressRange": [900, 1500],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1200,
+        "XP": 600,
+        "Cores": 60
+      }
+    },
+    {
+      "type": "SurviveTime",
+      "title": "Unstoppable",
+      "description": "Endure {0} seconds of combat",
+      "progressRange": [700, 1000],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1050,
+        "XP": 525,
+        "Cores": 52
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Master Collector",
+      "description": "Collect {0} legendary loot items",
+      "progressRange": [5, 10],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 900,
+        "XP": 450,
+        "Cores": 40
+      }
+    },
+    {
+      "type": "CollectLoot",
+      "title": "Hoarder",
+      "description": "Gather {0} epic items",
+      "progressRange": [8, 15],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 950,
+        "XP": 475,
+        "Cores": 45
+      }
+    },
+    {
+      "type": "SpendCurrency",
+      "title": "Big Spender",
+      "description": "Spend {0} credits",
+      "progressRange": [5000, 10000],
+      "difficulty": "Medium",
+      "rewards": {
+        "Credits": 500,
+        "XP": 250,
+        "Cores": 15
+      }
+    },
+    {
+      "type": "SpendCurrency",
+      "title": "Economic Stimulator",
+      "description": "Spend {0} currency",
+      "progressRange": [3000, 7000],
+      "difficulty": "Easy",
+      "rewards": {
+        "Credits": 300,
+        "XP": 150
+      }
+    },
+    {
+      "type": "SpendCurrency",
+      "title": "Whale",
+      "description": "Spend {0} credits",
+      "progressRange": [10000, 20000],
+      "difficulty": "Hard",
+      "rewards": {
+        "Credits": 1000,
+        "XP": 500,
+        "Cores": 50
+      }
+    }
+  ]
+}

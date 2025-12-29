@@ -1,0 +1,33 @@
+{
+  "mission_pool_config": {
+    "daily_mission_count": 3,
+    "difficulty_distribution": {
+      "easy": 1,
+      "medium": 1,
+      "hard": 1
+    },
+    "reset_time_utc": "00:00:00",
+    "expiration_hours": 24,
+    "mission_type_weights": {
+      "KillEnemies": 25,
+      "CompleteWaves": 20,
+      "DefeatBosses": 10,
+      "CraftItems": 10,
+      "DeployDrones": 15,
+      "CollectLoot": 10,
+      "SpendCurrency": 5,
+      "DealDamage": 15,
+      "SurviveTime": 10
+    },
+    "exclude_consecutive_same_type": true,
+    "min_mission_variety": 2
+  },
+  "progression_scaling": {
+    "player_level_multiplier": 0.1,
+    "difficulty_multiplier": {
+      "easy": 1.0,
+      "medium": 1.5,
+      "hard": 2.0
+    }
+  }
+}

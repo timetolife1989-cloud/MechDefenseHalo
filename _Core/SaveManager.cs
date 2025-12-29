@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Text.Json;
 using System.Collections.Generic;
+using MechDefenseHalo.Notifications;
 
 namespace MechDefenseHalo.Core
 {
@@ -170,6 +171,58 @@ namespace MechDefenseHalo.Core
         }
 
         #endregion
+
+        #region Daily Missions Methods
+
+        /// <summary>
+        /// Get daily missions from save data
+        /// </summary>
+        public static List<Mission> GetDailyMissions()
+        {
+            return Instance?.CurrentPlayerData?.DailyMissions ?? new List<Mission>();
+        }
+
+        /// <summary>
+        /// Set daily missions in save data
+        /// </summary>
+        public static void SetDailyMissions(List<Mission> missions)
+        {
+            if (Instance?.CurrentPlayerData != null)
+            {
+                Instance.CurrentPlayerData.DailyMissions = missions;
+                Instance.SaveGame();
+            }
+        }
+
+        /// <summary>
+        /// Get a DateTime value from storage
+        /// </summary>
+        public static DateTime GetDateTime(string key)
+        {
+            if (Instance?.CurrentPlayerData?.DateTimeStore != null && 
+                Instance.CurrentPlayerData.DateTimeStore.ContainsKey(key))
+            {
+                if (DateTime.TryParse(Instance.CurrentPlayerData.DateTimeStore[key], out DateTime result))
+                {
+                    return result;
+                }
+            }
+            return DateTime.MinValue;
+        }
+
+        /// <summary>
+        /// Set a DateTime value in storage
+        /// </summary>
+        public static void SetDateTime(string key, DateTime value)
+        {
+            if (Instance?.CurrentPlayerData?.DateTimeStore != null)
+            {
+                Instance.CurrentPlayerData.DateTimeStore[key] = value.ToString("o");
+                Instance.SaveGame();
+            }
+        }
+
+        #endregion
     }
 
     #region Data Structures
@@ -215,6 +268,11 @@ namespace MechDefenseHalo.Core
         public float MasterVolume { get; set; } = 1f;
         public float MusicVolume { get; set; } = 0.7f;
         public float SFXVolume { get; set; } = 1f;
+
+        // Daily Missions
+        public List<Mission> DailyMissions { get; set; } = new List<Mission>();
+        public string LastDailyReset { get; set; } = "";
+        public Dictionary<string, string> DateTimeStore { get; set; } = new Dictionary<string, string>();
     }
 
     #endregion
