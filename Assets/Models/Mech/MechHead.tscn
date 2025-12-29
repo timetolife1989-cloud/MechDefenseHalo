@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1mechhead001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grey"]
+albedo_color = Color(0.69, 0.69, 0.69, 1)
+metallic = 0.3
+roughness = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yellow"]
+albedo_color = Color(1, 0.843, 0, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_head"]
+radius = 0.4
+
+[node name="MechHead" type="Node3D"]
+
+[node name="HeadShape" type="CSGSphere3D" parent="."]
+radius = 0.4
+material = SubResource("StandardMaterial3D_grey")
+
+[node name="AccentShape" type="CSGSphere3D" parent="HeadShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35)
+radius = 0.15
+material = SubResource("StandardMaterial3D_yellow")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_head")

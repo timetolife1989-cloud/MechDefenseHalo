@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1mechleg001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grey"]
+albedo_color = Color(0.69, 0.69, 0.69, 1)
+metallic = 0.3
+roughness = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_leg"]
+size = Vector3(0.3, 1.2, 0.3)
+
+[node name="MechLeg" type="Node3D"]
+
+[node name="LegShape" type="CSGBox3D" parent="."]
+size = Vector3(0.3, 1.2, 0.3)
+material = SubResource("StandardMaterial3D_grey")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_leg")

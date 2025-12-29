@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1bossfrost001"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyan"]
+albedo_color = Color(0.2, 0.7, 0.9, 1)
+metallic = 0.4
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_weakpoint"]
+albedo_color = Color(0.9, 0.3, 0.2, 1)
+emission_enabled = true
+emission = Color(1, 0.3, 0.2, 1)
+emission_energy_multiplier = 1.5
+metallic = 0.2
+roughness = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(3, 5, 3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_knee"]
+radius = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_core"]
+radius = 0.8
+
+[node name="FrostTitanModel" type="Node3D"]
+
+[node name="Body" type="CSGBox3D" parent="."]
+size = Vector3(3, 5, 3)
+material = SubResource("StandardMaterial3D_cyan")
+
+[node name="LeftKnee" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, 0.5)
+
+[node name="WeakPointShape" type="CSGSphere3D" parent="LeftKnee"]
+radius = 0.5
+material = SubResource("StandardMaterial3D_weakpoint")
+
+[node name="Area3D" type="Area3D" parent="LeftKnee"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftKnee/Area3D"]
+shape = SubResource("SphereShape3D_knee")
+
+[node name="RightKnee" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.5, 0.5)
+
+[node name="WeakPointShape" type="CSGSphere3D" parent="RightKnee"]
+radius = 0.5
+material = SubResource("StandardMaterial3D_weakpoint")
+
+[node name="Area3D" type="Area3D" parent="RightKnee"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightKnee/Area3D"]
+shape = SubResource("SphereShape3D_knee")
+
+[node name="BackCore" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6)
+
+[node name="WeakPointShape" type="CSGSphere3D" parent="BackCore"]
+radius = 0.8
+material = SubResource("StandardMaterial3D_weakpoint")
+
+[node name="Area3D" type="Area3D" parent="BackCore"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackCore/Area3D"]
+shape = SubResource("SphereShape3D_core")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_body")
