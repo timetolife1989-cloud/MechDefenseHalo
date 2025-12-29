@@ -14,9 +14,24 @@ namespace MechDefenseHalo.Enemies
         
         public override void _Ready()
         {
+            // Load shaders with null checks
             colorVariationShader = ResourceLoader.Load<ShaderMaterial>("res://Shaders/enemy_color_variation.tres");
+            if (colorVariationShader == null)
+            {
+                GD.PrintErr("Failed to load enemy_color_variation.tres");
+            }
+            
             heatmapShader = ResourceLoader.Load<ShaderMaterial>("res://Shaders/enemy_heatmap.tres");
+            if (heatmapShader == null)
+            {
+                GD.PrintErr("Failed to load enemy_heatmap.tres");
+            }
+            
             eliteGlowShader = ResourceLoader.Load<ShaderMaterial>("res://Shaders/elite_glow.tres");
+            if (eliteGlowShader == null)
+            {
+                GD.PrintErr("Failed to load elite_glow.tres");
+            }
         }
         
         public void MutateVisuals(Node3D enemy, EnemyStats stats, EnemyRarity rarity)
@@ -37,7 +52,7 @@ namespace MechDefenseHalo.Enemies
         private void ApplyColorVariation(Node3D enemy, float archetype, EnemyRarity rarity)
         {
             var meshInstance = enemy.FindChild("MeshInstance3D") as MeshInstance3D;
-            if (meshInstance == null) return;
+            if (meshInstance == null || colorVariationShader == null) return;
             
             var material = colorVariationShader.Duplicate() as ShaderMaterial;
             
@@ -56,18 +71,18 @@ namespace MechDefenseHalo.Enemies
         
         private Color ColorFromArchetype(float archetype)
         {
-            // Smooth gradient across spectrum
+            // Smooth gradient across spectrum - clamp values to [0,1] range
             return new Color(
-                Mathf.Sin(archetype * Mathf.Pi),
-                Mathf.Cos(archetype * Mathf.Pi * 0.5f),
-                Mathf.Sin(archetype * Mathf.Pi * 1.5f)
+                Mathf.Clamp(Mathf.Sin(archetype * Mathf.Pi) * 0.5f + 0.5f, 0f, 1f),
+                Mathf.Clamp(Mathf.Cos(archetype * Mathf.Pi * 0.5f) * 0.5f + 0.5f, 0f, 1f),
+                Mathf.Clamp(Mathf.Sin(archetype * Mathf.Pi * 1.5f) * 0.5f + 0.5f, 0f, 1f)
             );
         }
         
         private void ApplyEliteGlow(Node3D enemy, EnemyRarity rarity)
         {
             var meshInstance = enemy.FindChild("MeshInstance3D") as MeshInstance3D;
-            if (meshInstance == null) return;
+            if (meshInstance == null || eliteGlowShader == null) return;
             
             var glowMaterial = eliteGlowShader.Duplicate() as ShaderMaterial;
             

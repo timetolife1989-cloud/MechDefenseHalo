@@ -27,15 +27,43 @@ namespace MechDefenseHalo.Enemies
         private void LoadBaseMeshes()
         {
             // 5 base enemy meshes (will be placeholders initially)
-            baseMeshes.Add(ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Base/enemy_type_a.tscn"));
-            baseMeshes.Add(ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Base/enemy_type_b.tscn"));
-            baseMeshes.Add(ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Base/enemy_type_c.tscn"));
-            baseMeshes.Add(ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Base/enemy_type_d.tscn"));
-            baseMeshes.Add(ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Base/enemy_type_e.tscn"));
+            var meshPaths = new[]
+            {
+                "res://Entities/Enemies/Base/enemy_type_a.tscn",
+                "res://Entities/Enemies/Base/enemy_type_b.tscn",
+                "res://Entities/Enemies/Base/enemy_type_c.tscn",
+                "res://Entities/Enemies/Base/enemy_type_d.tscn",
+                "res://Entities/Enemies/Base/enemy_type_e.tscn"
+            };
+
+            foreach (var path in meshPaths)
+            {
+                var scene = ResourceLoader.Load<PackedScene>(path);
+                if (scene == null)
+                {
+                    GD.PrintErr($"Failed to load enemy mesh: {path}");
+                }
+                else
+                {
+                    baseMeshes.Add(scene);
+                }
+            }
+
+            if (baseMeshes.Count == 0)
+            {
+                GD.PrintErr("ProceduralEnemyGenerator: No base meshes loaded! Cannot generate enemies.");
+            }
         }
         
         public Node3D GenerateEnemy(EnemyRarity rarity = EnemyRarity.Common)
         {
+            // Check if we have meshes loaded
+            if (baseMeshes.Count == 0)
+            {
+                GD.PrintErr("ProceduralEnemyGenerator: No base meshes available!");
+                return null;
+            }
+
             // Pick random base mesh
             var baseMesh = baseMeshes[GD.RandRange(0, baseMeshes.Count - 1)];
             var enemy = baseMesh.Instantiate<Node3D>();
