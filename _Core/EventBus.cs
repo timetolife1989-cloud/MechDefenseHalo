@@ -222,6 +222,15 @@ namespace MechDefenseHalo.Core
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
 
+        // Daily Mission Events
+        public const string DailyMissionsRefreshed = "daily_missions_refreshed";
+        public const string MissionProgressUpdated = "mission_progress_updated";
+        public const string MissionCompleted = "mission_completed";
+        public const string MissionRewardClaimed = "mission_reward_claimed";
+        public const string EnemyKilled = "enemy_killed";
+        public const string ItemCrafted = "item_crafted";
+        public const string SurviveTimeTick = "survive_time_tick";
+
         #endregion
     }
 }
