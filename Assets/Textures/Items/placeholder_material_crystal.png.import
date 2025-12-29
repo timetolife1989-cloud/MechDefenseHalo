@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://44444444444444444444"
-path="res://.godot/imported/placeholder_material_crystal.png-76139414.ctex"
+uid="uid://76eb075f07624051af73"
+path="res://.godot/imported/placeholder_material_crystal.png-55246793.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Items/placeholder_material_crystal.png"
-dest_files=["res://.godot/imported/placeholder_material_crystal.png-76139414.ctex"]
+dest_files=["res://.godot/imported/placeholder_material_crystal.png-55246793.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://22222222222222222222"
-path="res://.godot/imported/placeholder_weaponmod.png-86831882.ctex"
+uid="uid://156fb2cafb914a873148"
+path="res://.godot/imported/placeholder_weaponmod.png-32051135.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Items/placeholder_weaponmod.png"
-dest_files=["res://.godot/imported/placeholder_weaponmod.png-86831882.ctex"]
+dest_files=["res://.godot/imported/placeholder_weaponmod.png-32051135.ctex"]
 
 [params]
 

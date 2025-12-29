@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://66666666666666666666"
-path="res://.godot/imported/icon_cosmetic.png-19827016.ctex"
+uid="uid://e4ffa11d930897a3dd33"
+path="res://.godot/imported/icon_cosmetic.png-41599096.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Icons/icon_cosmetic.png"
-dest_files=["res://.godot/imported/icon_cosmetic.png-19827016.ctex"]
+dest_files=["res://.godot/imported/icon_cosmetic.png-41599096.ctex"]
 
 [params]
 

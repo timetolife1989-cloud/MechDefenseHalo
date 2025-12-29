@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://00000000000000000000"
-path="res://.godot/imported/border_mythic.png-24640240.ctex"
+uid="uid://cffcb0f319d265967d87"
+path="res://.godot/imported/border_mythic.png-67695396.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Rarity/border_mythic.png"
-dest_files=["res://.godot/imported/border_mythic.png-24640240.ctex"]
+dest_files=["res://.godot/imported/border_mythic.png-67695396.ctex"]
 
 [params]
 

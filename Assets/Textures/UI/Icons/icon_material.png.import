@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://66666666666666666666"
-path="res://.godot/imported/icon_material.png-86807936.ctex"
+uid="uid://681355d3f0454eeeb29e"
+path="res://.godot/imported/icon_material.png-7267139.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Icons/icon_material.png"
-dest_files=["res://.godot/imported/icon_material.png-86807936.ctex"]
+dest_files=["res://.godot/imported/icon_material.png-7267139.ctex"]
 
 [params]
 

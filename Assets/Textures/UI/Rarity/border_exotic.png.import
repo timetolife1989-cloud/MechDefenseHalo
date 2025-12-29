@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11111111111111111111"
-path="res://.godot/imported/border_exotic.png-8691041.ctex"
+uid="uid://4ca0d1a42044c32397cd"
+path="res://.godot/imported/border_exotic.png-51171588.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Rarity/border_exotic.png"
-dest_files=["res://.godot/imported/border_exotic.png-8691041.ctex"]
+dest_files=["res://.godot/imported/border_exotic.png-51171588.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55555555555555555555"
-path="res://.godot/imported/placeholder_mechpart.png-47884415.ctex"
+uid="uid://f09f6904e4a6fcd7d3b1"
+path="res://.godot/imported/placeholder_mechpart.png-99383374.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Items/placeholder_mechpart.png"
-dest_files=["res://.godot/imported/placeholder_mechpart.png-47884415.ctex"]
+dest_files=["res://.godot/imported/placeholder_mechpart.png-99383374.ctex"]
 
 [params]
 

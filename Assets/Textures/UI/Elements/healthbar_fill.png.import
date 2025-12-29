@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11111111111111111111"
-path="res://.godot/imported/healthbar_fill.png-99787891.ctex"
+uid="uid://109e473e469824b9d11c"
+path="res://.godot/imported/healthbar_fill.png-78910958.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Elements/healthbar_fill.png"
-dest_files=["res://.godot/imported/healthbar_fill.png-99787891.ctex"]
+dest_files=["res://.godot/imported/healthbar_fill.png-78910958.ctex"]
 
 [params]
 

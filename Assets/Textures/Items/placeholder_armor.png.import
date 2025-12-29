@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://00000000000000000000"
-path="res://.godot/imported/placeholder_armor.png-34040450.ctex"
+uid="uid://13538b51960b3ba8b2b4"
+path="res://.godot/imported/placeholder_armor.png-978252.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Items/placeholder_armor.png"
-dest_files=["res://.godot/imported/placeholder_armor.png-34040450.ctex"]
+dest_files=["res://.godot/imported/placeholder_armor.png-978252.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://88888888888888888888"
-path="res://.godot/imported/placeholder_material_tech.png-10342218.ctex"
+uid="uid://f9b22b1969d783cf4e7b"
+path="res://.godot/imported/placeholder_material_tech.png-31923921.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Items/placeholder_material_tech.png"
-dest_files=["res://.godot/imported/placeholder_material_tech.png-10342218.ctex"]
+dest_files=["res://.godot/imported/placeholder_material_tech.png-31923921.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55555555555555555555"
-path="res://.godot/imported/border_epic.png-64498565.ctex"
+uid="uid://813d14b0133d5cdbdabf"
+path="res://.godot/imported/border_epic.png-97935335.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Rarity/border_epic.png"
-dest_files=["res://.godot/imported/border_epic.png-64498565.ctex"]
+dest_files=["res://.godot/imported/border_epic.png-97935335.ctex"]
 
 [params]
 

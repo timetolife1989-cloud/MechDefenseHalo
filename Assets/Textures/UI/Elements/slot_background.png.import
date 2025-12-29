@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11111111111111111111"
-path="res://.godot/imported/slot_background.png-54211801.ctex"
+uid="uid://7726af0192a2bac07636"
+path="res://.godot/imported/slot_background.png-92250279.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Elements/slot_background.png"
-dest_files=["res://.godot/imported/slot_background.png-54211801.ctex"]
+dest_files=["res://.godot/imported/slot_background.png-92250279.ctex"]
 
 [params]
 

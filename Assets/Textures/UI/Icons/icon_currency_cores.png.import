@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://99999999999999999999"
-path="res://.godot/imported/icon_currency_cores.png-94444169.ctex"
+uid="uid://1430e1e7a1ac236e3750"
+path="res://.godot/imported/icon_currency_cores.png-53073571.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Icons/icon_currency_cores.png"
-dest_files=["res://.godot/imported/icon_currency_cores.png-94444169.ctex"]
+dest_files=["res://.godot/imported/icon_currency_cores.png-53073571.ctex"]
 
 [params]
 

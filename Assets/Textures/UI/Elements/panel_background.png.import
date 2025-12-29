@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://33333333333333333333"
-path="res://.godot/imported/panel_background.png-44087423.ctex"
+uid="uid://ea2d117228e5161f9d0a"
+path="res://.godot/imported/panel_background.png-81866119.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Elements/panel_background.png"
-dest_files=["res://.godot/imported/panel_background.png-44087423.ctex"]
+dest_files=["res://.godot/imported/panel_background.png-81866119.ctex"]
 
 [params]
 

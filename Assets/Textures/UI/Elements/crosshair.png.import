@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55555555555555555555"
-path="res://.godot/imported/crosshair.png-76758265.ctex"
+uid="uid://2cf6dc862ac9d0169600"
+path="res://.godot/imported/crosshair.png-59837003.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Elements/crosshair.png"
-dest_files=["res://.godot/imported/crosshair.png-76758265.ctex"]
+dest_files=["res://.godot/imported/crosshair.png-59837003.ctex"]
 
 [params]
 

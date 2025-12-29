@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://00000000000000000000"
-path="res://.godot/imported/button_pressed.png-16664790.ctex"
+uid="uid://d14eaa39752af5a4c43d"
+path="res://.godot/imported/button_pressed.png-72810343.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Elements/button_pressed.png"
-dest_files=["res://.godot/imported/button_pressed.png-16664790.ctex"]
+dest_files=["res://.godot/imported/button_pressed.png-72810343.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55555555555555555555"
-path="res://.godot/imported/icon_armor.png-44926325.ctex"
+uid="uid://f5f94e32e54fa21c0cf8"
+path="res://.godot/imported/icon_armor.png-98651026.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/Icons/icon_armor.png"
-dest_files=["res://.godot/imported/icon_armor.png-44926325.ctex"]
+dest_files=["res://.godot/imported/icon_armor.png-98651026.ctex"]
 
 [params]
 
