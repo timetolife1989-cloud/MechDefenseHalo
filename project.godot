@@ -30,6 +30,9 @@ window/handheld/orientation=1
 
 EventBus="*res://_Core/EventBus.cs"
 GameManager="*res://_Core/GameManager.cs"
+ItemDatabase="*res://Scripts/Items/ItemDatabase.cs"
+LootTableManager="*res://Scripts/Loot/LootTableManager.cs"
+CurrencyManager="*res://Scripts/Economy/CurrencyManager.cs"
 
 [dotnet]
 

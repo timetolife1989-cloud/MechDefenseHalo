@@ -1,0 +1,17 @@
+{
+  "enemy_type": "FrostTitan",
+  "loot_pools": [
+    {
+      "pool_name": "legendary_drops",
+      "weight": 40,
+      "items": ["frost_titan_core", "legendary_ice_weapon", "legendary_armor_set"]
+    },
+    {
+      "pool_name": "epic_drops",
+      "weight": 60,
+      "items": ["quantum_chips", "dark_matter", "epic_weapon_mod"]
+    }
+  ],
+  "guaranteed_drops": ["credits_large", "void_crystal", "frost_titan_trophy"],
+  "drop_count_range": [3, 5]
+}

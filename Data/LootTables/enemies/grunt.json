@@ -1,0 +1,22 @@
+{
+  "enemy_type": "Grunt",
+  "loot_pools": [
+    {
+      "pool_name": "common_drops",
+      "weight": 60,
+      "items": ["scrap_metal", "circuits", "common_armor_part"]
+    },
+    {
+      "pool_name": "uncommon_drops",
+      "weight": 30,
+      "items": ["alloy_plates", "power_cells", "uncommon_weapon_mod"]
+    },
+    {
+      "pool_name": "rare_drops",
+      "weight": 10,
+      "items": ["plasma_core", "nanofibers", "rare_mech_part"]
+    }
+  ],
+  "guaranteed_drops": ["credits_small"],
+  "drop_count_range": [1, 2]
+}
