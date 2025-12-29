@@ -1,0 +1,1 @@
+{"enemy_type": "Flyer", "loot_pools": [{"pool_name": "common_drops", "weight": 65, "items": ["scrap_metal", "circuits", "power_cells"]}, {"pool_name": "uncommon_drops", "weight": 28, "items": ["alloy_plates", "nanofibers"]}, {"pool_name": "rare_drops", "weight": 7, "items": ["plasma_core", "quantum_chips"]}], "guaranteed_drops": ["credits_small"], "drop_count_range": [1, 3]}

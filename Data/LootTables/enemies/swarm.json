@@ -1,0 +1,1 @@
+{"enemy_type": "Swarm", "loot_pools": [{"pool_name": "common_drops", "weight": 70, "items": ["scrap_metal", "circuits"]}, {"pool_name": "uncommon_drops", "weight": 25, "items": ["alloy_plates", "power_cells"]}, {"pool_name": "rare_drops", "weight": 5, "items": ["nanofibers"]}], "guaranteed_drops": ["credits_small"], "drop_count_range": [1, 2]}
