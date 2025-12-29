@@ -19,6 +19,7 @@ namespace MechDefenseHalo.UI.Monetization
         private Button _acceptButton;
         private Button _declineButton;
         private CheckBox _privacyPolicyCheckbox;
+        private Label _errorLabel;
 
         #endregion
 
@@ -39,6 +40,7 @@ namespace MechDefenseHalo.UI.Monetization
             _acceptButton = GetNodeOrNull<Button>("Panel/VBoxContainer/HBoxContainer/AcceptButton");
             _declineButton = GetNodeOrNull<Button>("Panel/VBoxContainer/HBoxContainer/DeclineButton");
             _privacyPolicyCheckbox = GetNodeOrNull<CheckBox>("Panel/VBoxContainer/PrivacyPolicyCheckbox");
+            _errorLabel = GetNodeOrNull<Label>("Panel/VBoxContainer/ErrorLabel");
 
             // Connect button signals
             if (_acceptButton != null)
@@ -86,9 +88,9 @@ namespace MechDefenseHalo.UI.Monetization
             {
                 int age = (int)_ageSpinBox.Value;
                 
-                if (age < 13)
+                if (age < AdConsentManager.MinimumAge)
                 {
-                    ShowError("You must be at least 13 years old to play this game.");
+                    ShowError($"You must be at least {AdConsentManager.MinimumAge} years old for personalized ads.");
                     return;
                 }
 
@@ -193,11 +195,15 @@ namespace MechDefenseHalo.UI.Monetization
 
         private void ShowError(string message)
         {
-            // TODO: Show error message in a label or popup
             GD.PrintErr(message);
             
-            // For now, just print to console
-            // In a real implementation, this would show an error label
+            // Show error in UI if label exists
+            if (_errorLabel != null)
+            {
+                _errorLabel.Text = message;
+                _errorLabel.Modulate = new Color(1, 0.3f, 0.3f); // Red color
+                _errorLabel.Show();
+            }
         }
 
         #endregion

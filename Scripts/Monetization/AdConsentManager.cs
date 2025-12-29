@@ -41,7 +41,10 @@ namespace MechDefenseHalo.Monetization
 
         #region Constants
 
-        private const int COPPA_AGE_LIMIT = 16;
+        // COPPA applies to children under 13 (US law)
+        // GDPR requires parental consent for users under 16 (EU law)
+        // We use 16 as the safe threshold for both regions
+        private const int AGE_LIMIT = 16;
         private const string CONSENT_SAVE_KEY = "ad_consent_status";
         private const string AGE_VERIFIED_KEY = "age_verified";
         private const string USER_REGION_KEY = "user_region";
@@ -55,6 +58,11 @@ namespace MechDefenseHalo.Monetization
         public bool IsUnderAge { get; private set; } = false;
         public string UserRegion { get; private set; } = "Unknown";
         public bool RequiresConsent => IsEURegion() || !IsAgeVerified;
+        
+        /// <summary>
+        /// Minimum age for personalized ads (COPPA/GDPR compliant)
+        /// </summary>
+        public static int MinimumAge => AGE_LIMIT;
 
         #endregion
 
@@ -150,7 +158,7 @@ namespace MechDefenseHalo.Monetization
                 return;
 
             Instance.IsAgeVerified = true;
-            Instance.IsUnderAge = age < COPPA_AGE_LIMIT;
+            Instance.IsUnderAge = age < AGE_LIMIT;
 
             SaveConsentData();
 
