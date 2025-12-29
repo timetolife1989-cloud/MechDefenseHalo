@@ -32,7 +32,7 @@ namespace MechDefenseHalo.Audio
             LoadSoundLibrary();
             SetupAudioBuses();
             
-            EventBus.On("SettingsChanged", Callable.From(ApplyAudioSettings));
+            EventBus.On("SettingsChanged", Callable.From<object>(ApplyAudioSettings));
             
             GD.Print("AudioManager initialized successfully");
         }
