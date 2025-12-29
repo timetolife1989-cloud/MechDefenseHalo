@@ -283,7 +283,7 @@ namespace MechDefenseHalo.Notifications
         private void OnCurrencyChanged(object data)
         {
             // Track currency spending for SpendCurrency missions
-            if (data is CurrencyChangedData currencyData && currencyData.Change < 0)
+            if (data is Economy.CurrencyChangedData currencyData && currencyData.Change < 0)
             {
                 UpdateMissionProgress(MissionType.SpendCurrency, Math.Abs(currencyData.Change));
             }
