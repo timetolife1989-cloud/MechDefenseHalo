@@ -238,6 +238,9 @@ namespace MechDefenseHalo.Core
         public const string LegendaryItemReward = "legendary_item_reward";
         public const string PlayerPrestiged = "player_prestiged";
 
+        // DLC Events
+        public const string DLCUnlocked = "dlc_unlocked";
+
         #endregion
     }
 }
