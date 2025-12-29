@@ -435,8 +435,18 @@ namespace MechDefenseHalo.Achievements
                     AddIfExists(results, "veteran");
                     break;
                 case "boss_defeated":
-                    AddIfExists(results, "titan_slayer", "flawless_victory", "speed_run", "all_weak_points", "boss_rush");
+                    // Incremental boss kill tracking
+                    AddIfExists(results, "colossus_killer", "boss_hunter");
                     break;
+                // Note: Some boss achievements are tracked in AchievementTracker with special conditions:
+                // - flawless_victory: tracked via no deaths during boss fight
+                // - speed_run: tracked via boss fight duration
+                // - boss_no_hit: tracked via no damage during boss fight
+                // - boss_rush: tracked by counting bosses in one session
+                // - titan_slayer: specific boss type
+                // - solo_boss: tracked by checking drone usage
+                // - quick_reflexes: tracked via very fast boss kill
+                // - all_weak_points: tracked by weak point destruction count
                 case "secret_area":
                     AddIfExists(results, "hidden");
                     break;

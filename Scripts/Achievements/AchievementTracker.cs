@@ -19,6 +19,7 @@ namespace MechDefenseHalo.Achievements
         private bool _playerDiedThisWave = false;
         private int _currentWave = 0;
         private DateTime _bossSpawnTime;
+        private System.Collections.Generic.HashSet<string> _bossesDefeatedThisSession = new System.Collections.Generic.HashSet<string>();
 
         #endregion
 
@@ -192,25 +193,80 @@ namespace MechDefenseHalo.Achievements
 
         private void OnBossDefeated(object data)
         {
+            // Track boss defeats (incremental for colossus_killer and boss_hunter)
             _achievementManager.TrackEvent("boss_defeated", 1);
 
-            // Check for speed run (under 3 minutes)
             var fightDuration = (DateTime.Now - _bossSpawnTime).TotalSeconds;
+
+            // Check for speed run (under 3 minutes)
             if (fightDuration < 180)
             {
-                _achievementManager.TrackEvent("speed_run", 1);
+                _achievementManager.UnlockAchievement("speed_run");
+            }
+
+            // Check for quick reflexes (under 1 minute)
+            if (fightDuration < 60)
+            {
+                _achievementManager.UnlockAchievement("quick_reflexes");
             }
 
             // Check for flawless victory (no deaths)
             if (!_playerDiedThisWave)
             {
-                _achievementManager.TrackEvent("flawless_victory", 1);
+                _achievementManager.UnlockAchievement("flawless_victory");
             }
 
-            // Check for specific boss (Frost Titan)
-            if (data is string bossName && bossName.Contains("Frost"))
+            // Check for no damage taken (boss_no_hit)
+            if (!_tookDamageThisWave)
             {
-                _achievementManager.UnlockAchievement("titan_slayer");
+                _achievementManager.UnlockAchievement("boss_no_hit");
+            }
+
+            // Parse boss data if provided as Dictionary
+            if (data is Godot.Collections.Dictionary dict)
+            {
+                // Check for specific boss (Frost Titan)
+                if (dict.ContainsKey("boss_name"))
+                {
+                    string bossName = dict["boss_name"].ToString();
+                    if (bossName.Contains("Frost") || bossName.Contains("Titan"))
+                    {
+                        _achievementManager.UnlockAchievement("titan_slayer");
+                    }
+                }
+
+                // Check for all weak points destroyed
+                if (dict.ContainsKey("all_weak_points") && (bool)dict["all_weak_points"])
+                {
+                    _achievementManager.UnlockAchievement("all_weak_points");
+                }
+
+                // Check for solo boss (no drones used)
+                if (dict.ContainsKey("drones_used") && !(bool)dict["drones_used"])
+                {
+                    _achievementManager.UnlockAchievement("solo_boss");
+                }
+
+                // Track unique bosses for boss_rush achievement
+                if (dict.ContainsKey("boss_id"))
+                {
+                    string bossId = dict["boss_id"].ToString();
+                    _bossesDefeatedThisSession.Add(bossId);
+                    
+                    // Check if 5 different bosses defeated in one session
+                    if (_bossesDefeatedThisSession.Count >= 5)
+                    {
+                        _achievementManager.UnlockAchievement("boss_rush");
+                    }
+                }
+            }
+            else if (data is string bossName)
+            {
+                // Fallback: simple string check for boss name
+                if (bossName.Contains("Frost") || bossName.Contains("Titan"))
+                {
+                    _achievementManager.UnlockAchievement("titan_slayer");
+                }
             }
         }
 

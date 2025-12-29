@@ -144,11 +144,39 @@ Achievements are defined in JSON files in `Data/Achievements/`:
 | `enemy_kill` | First Blood, Soldier, Warrior, Genocide |
 | `weak_point_hit` | Headhunter |
 | `wave_no_damage` | Untouchable |
-| `wave_completed` | Wave Breaker, Endgame |
-| `boss_defeated` | Boss achievements |
+| `wave_completed` | Veteran (total count) |
+| `boss_defeated` | Colossus Killer, Boss Hunter (incremental) |
 | `legendary_obtained` | Legendary Hunter |
 | `set_completed` | Full Set |
 | `drone_unlocked` | Drone Commander |
+
+### Boss Achievement Requirements
+
+Boss achievements require specific data in the EventBus event payload:
+
+```csharp
+// Example boss defeated event with full data
+var bossData = new Godot.Collections.Dictionary
+{
+    ["boss_name"] = "Frost Titan",
+    ["boss_id"] = "frost_titan",  // Unique ID for boss_rush tracking
+    ["all_weak_points"] = true,   // All weak points destroyed
+    ["drones_used"] = false       // No drones used (for solo_boss)
+};
+EventBus.Emit(EventBus.BossDefeated, bossData);
+```
+
+Special boss achievements:
+- **Titan Slayer**: Frost Titan specifically
+- **Flawless Victory**: No player deaths during boss fight
+- **Speed Run**: Boss defeated in < 3 minutes
+- **Quick Reflexes**: Boss defeated in < 1 minute
+- **Boss No Hit**: No damage taken during boss fight
+- **All Weak Points**: All weak points destroyed
+- **Solo Boss**: No drones used during boss fight
+- **Boss Rush**: 5 different bosses in one session
+- **Colossus Killer**: 10 total boss defeats
+- **Boss Hunter**: 50 total boss defeats
 
 ## Persistence
 
