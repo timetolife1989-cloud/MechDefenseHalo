@@ -1,4 +1,5 @@
 using System.IO;
+using System.Collections.Generic;
 
 namespace MechDefenseHalo.Editor
 {
@@ -10,6 +11,17 @@ namespace MechDefenseHalo.Editor
         // - weapon_rifle_laser_v02.blend
         // - texture_metal_rusty_01_diffuse.png
         // - audio_sfx_explosion_01.wav
+        
+        private static readonly HashSet<string> Exceptions = new() 
+        { 
+            "icon", "thumbnail", "preview" 
+        };
+        
+        private static readonly HashSet<string> ValidCategories = new()
+        {
+            "enemy", "weapon", "item", "armor", 
+            "texture", "audio", "vfx", "ui", "environment"
+        };
         
         public bool IsValidName(string filePath)
         {
@@ -36,13 +48,12 @@ namespace MechDefenseHalo.Editor
         private bool IsException(string fileName)
         {
             // Allow certain filenames without convention
-            return fileName.ToLower() is "icon" or "thumbnail" or "preview";
+            return Exceptions.Contains(fileName.ToLower());
         }
         
         private bool IsValidCategory(string category)
         {
-            return category is "enemy" or "weapon" or "item" or "armor" 
-                or "texture" or "audio" or "vfx" or "ui" or "environment";
+            return ValidCategories.Contains(category);
         }
         
         public string SuggestCorrectName(string fileName)

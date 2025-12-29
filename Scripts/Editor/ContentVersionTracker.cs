@@ -59,11 +59,12 @@ namespace MechDefenseHalo.Editor
         }
     }
 
+    [Serializable]
     public class AssetVersion
     {
-        public string Path;
-        public string Hash;
-        public int Version;
-        public DateTime LastModified;
+        public string Path { get; set; }
+        public string Hash { get; set; }
+        public int Version { get; set; }
+        public DateTime LastModified { get; set; }
     }
 }

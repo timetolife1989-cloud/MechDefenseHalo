@@ -12,7 +12,7 @@ namespace MechDefenseHalo.Editor
             return extension switch
             {
                 ".blend" => ValidateBlendFile(filePath),
-                ".png" or ".jpg" => ValidateTexture(filePath),
+                ".png" or ".jpg" or ".jpeg" or ".tga" => ValidateTexture(filePath),
                 ".wav" or ".ogg" => ValidateAudio(filePath),
                 _ => true
             };
