@@ -46,8 +46,9 @@ namespace MechDefenseHalo.Settings
                 {
                     InputMap.ActionEraseEvents(binding.Key);
                     
-                    // Check if this is a mouse button or keyboard key
-                    if (binding.Value >= (int)MouseButton.Left && binding.Value <= (int)MouseButton.Xbutton2)
+                    // Check if this is a mouse button (1-9) or keyboard key
+                    // Mouse buttons are typically in range 1-9, keyboard keys start higher
+                    if (binding.Value >= (int)MouseButton.Left && binding.Value <= 9)
                     {
                         var inputMouse = new InputEventMouseButton();
                         inputMouse.ButtonIndex = (MouseButton)binding.Value;

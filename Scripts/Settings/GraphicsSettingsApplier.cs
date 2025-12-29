@@ -31,15 +31,9 @@ namespace MechDefenseHalo.Settings
             // Quality Preset
             ApplyQualityPreset(settings.QualityLevel);
             
-            // Individual settings
-            if (settings.ShadowQuality >= 0)
-            {
-                RenderingServer.EnvironmentSetSsaoQuality(
-                    settings.ShadowQuality >= 2 
-                        ? RenderingServer.EnvironmentSsaoQuality.High 
-                        : RenderingServer.EnvironmentSsaoQuality.Low
-                );
-            }
+            // Note: Individual quality settings like shadow quality and particle quality
+            // are applied through the quality preset. Additional granular controls
+            // can be added here if needed.
             
             GD.Print($"Applied graphics settings: {settings.ResolutionWidth}x{settings.ResolutionHeight}, " +
                      $"Fullscreen={settings.Fullscreen}, VSync={settings.VSync}, Quality={settings.QualityLevel}");

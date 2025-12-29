@@ -17,13 +17,13 @@ namespace MechDefenseHalo.Tests.Settings
     [TestSuite]
     public class SettingsTests
     {
-        private SettingsManager _settingsManager;
+        // Note: These tests focus on data structures and don't test the singleton SettingsManager
+        // Integration tests should test the actual SettingsManager singleton behavior
         private string _testSettingsPath;
 
         [Before]
         public void Setup()
         {
-            _settingsManager = new SettingsManager();
             _testSettingsPath = OS.GetUserDataDir() + "/test_settings.cfg";
             
             // Clean up any existing test settings
@@ -41,8 +41,6 @@ namespace MechDefenseHalo.Tests.Settings
             {
                 DirAccess.RemoveAbsolute(_testSettingsPath);
             }
-            
-            _settingsManager = null;
         }
 
         [TestCase]

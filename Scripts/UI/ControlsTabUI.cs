@@ -232,8 +232,8 @@ namespace MechDefenseHalo.UI
         
         private string GetKeyName(int keycode)
         {
-            // Check if it's a mouse button
-            if (keycode >= (int)MouseButton.Left && keycode <= (int)MouseButton.Xbutton2)
+            // Check if it's a mouse button (1-9)
+            if (keycode >= (int)MouseButton.Left && keycode <= 9)
             {
                 return ((MouseButton)keycode).ToString();
             }
