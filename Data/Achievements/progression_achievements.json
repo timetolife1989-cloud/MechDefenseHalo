@@ -1,0 +1,92 @@
+[
+  {
+    "ID": "novice",
+    "Name": "Novice",
+    "Description": "Reach Level 10",
+    "RequiredProgress": 10,
+    "Rewards": {
+      "reward_credits": 250
+    }
+  },
+  {
+    "ID": "expert",
+    "Name": "Expert",
+    "Description": "Reach Level 50",
+    "RequiredProgress": 50,
+    "Rewards": {
+      "reward_cores": 100
+    }
+  },
+  {
+    "ID": "master",
+    "Name": "Master",
+    "Description": "Reach Level 100",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_cores": 500
+    }
+  },
+  {
+    "ID": "wave_breaker",
+    "Name": "Wave Breaker",
+    "Description": "Complete Wave 25",
+    "RequiredProgress": 25,
+    "Rewards": {
+      "reward_cores": 200
+    }
+  },
+  {
+    "ID": "endgame",
+    "Name": "Endgame",
+    "Description": "Complete Wave 50",
+    "RequiredProgress": 50,
+    "Rewards": {
+      "reward_cores": 750
+    }
+  },
+  {
+    "ID": "survivor",
+    "Name": "Survivor",
+    "Description": "Complete 10 waves without dying",
+    "RequiredProgress": 10,
+    "Rewards": {
+      "reward_cores": 150
+    }
+  },
+  {
+    "ID": "veteran",
+    "Name": "Veteran",
+    "Description": "Complete 100 total waves",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_cores": 300
+    }
+  },
+  {
+    "ID": "rich",
+    "Name": "Rich",
+    "Description": "Accumulate 100,000 Credits",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 100
+    }
+  },
+  {
+    "ID": "core_collector",
+    "Name": "Core Collector",
+    "Description": "Accumulate 10,000 Cores",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_credits": 5000
+    }
+  },
+  {
+    "ID": "time_played",
+    "Name": "Dedicated",
+    "Description": "Play for 50 hours",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 250
+    }
+  }
+]

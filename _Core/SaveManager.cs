@@ -215,6 +215,9 @@ namespace MechDefenseHalo.Core
         public float MasterVolume { get; set; } = 1f;
         public float MusicVolume { get; set; } = 0.7f;
         public float SFXVolume { get; set; } = 1f;
+
+        // Achievements
+        public Dictionary<string, MechDefenseHalo.Achievements.AchievementProgress> AchievementProgress { get; set; } = new Dictionary<string, MechDefenseHalo.Achievements.AchievementProgress>();
     }
 
     #endregion

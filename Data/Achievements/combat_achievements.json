@@ -1,0 +1,137 @@
+[
+  {
+    "ID": "first_blood",
+    "Name": "First Blood",
+    "Description": "Kill your first enemy",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_xp": 50
+    }
+  },
+  {
+    "ID": "soldier",
+    "Name": "Soldier",
+    "Description": "Kill 100 enemies",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_credits": 500
+    }
+  },
+  {
+    "ID": "warrior",
+    "Name": "Warrior",
+    "Description": "Kill 1,000 enemies",
+    "RequiredProgress": 1000,
+    "Rewards": {
+      "reward_cores": 50
+    }
+  },
+  {
+    "ID": "genocide",
+    "Name": "Genocide",
+    "Description": "Kill 10,000 enemies",
+    "RequiredProgress": 10000,
+    "Rewards": {
+      "reward_cores": 500
+    }
+  },
+  {
+    "ID": "headhunter",
+    "Name": "Headhunter",
+    "Description": "Land 100 weak point hits",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_credits": 300
+    }
+  },
+  {
+    "ID": "no_damage",
+    "Name": "Untouchable",
+    "Description": "Complete a wave without taking damage",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 100
+    }
+  },
+  {
+    "ID": "perfect_wave",
+    "Name": "Perfect",
+    "Description": "Complete wave 10 with no deaths",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_legendary": 1
+    }
+  },
+  {
+    "ID": "executioner",
+    "Name": "Executioner",
+    "Description": "Kill 50 enemies in a single wave",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_credits": 200
+    }
+  },
+  {
+    "ID": "sharpshooter",
+    "Name": "Sharpshooter",
+    "Description": "Achieve 90% accuracy in a wave",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 75
+    }
+  },
+  {
+    "ID": "combo_master",
+    "Name": "Combo Master",
+    "Description": "Achieve a 50x kill combo",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_credits": 400
+    }
+  },
+  {
+    "ID": "critical_strike",
+    "Name": "Critical Strike",
+    "Description": "Deal 100 critical hits",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_credits": 350
+    }
+  },
+  {
+    "ID": "explosive_expert",
+    "Name": "Explosive Expert",
+    "Description": "Kill 500 enemies with explosives",
+    "RequiredProgress": 500,
+    "Rewards": {
+      "reward_cores": 100
+    }
+  },
+  {
+    "ID": "melee_master",
+    "Name": "Melee Master",
+    "Description": "Kill 250 enemies with melee weapons",
+    "RequiredProgress": 250,
+    "Rewards": {
+      "reward_credits": 300
+    }
+  },
+  {
+    "ID": "multi_kill",
+    "Name": "Multi-Kill",
+    "Description": "Kill 5 enemies with one shot",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 50
+    }
+  },
+  {
+    "ID": "overkill",
+    "Name": "Overkill",
+    "Description": "Deal 10,000 damage in a single hit",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 150
+    }
+  }
+]

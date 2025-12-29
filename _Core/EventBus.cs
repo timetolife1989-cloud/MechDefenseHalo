@@ -221,6 +221,10 @@ namespace MechDefenseHalo.Core
         public const string ShowDailyLoginOffer = "show_daily_login_offer";
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
+        
+        // Achievement Events
+        public const string AchievementUnlocked = "achievement_unlocked";
+        public const string AchievementProgressUpdated = "achievement_progress_updated";
 
         #endregion
     }
