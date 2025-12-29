@@ -197,7 +197,8 @@ namespace MechDefenseHalo.Hangar
                     if (entryData != null)
                     {
                         codexEntries[kvp.Key].IsUnlocked = (bool)entryData["unlocked"];
-                        codexEntries[kvp.Key].KillCount = (int)(long)entryData["kills"];
+                        // Safe conversion from Variant to int, handling both int and long
+                        codexEntries[kvp.Key].KillCount = Convert.ToInt32(entryData["kills"]);
                     }
                 }
             }

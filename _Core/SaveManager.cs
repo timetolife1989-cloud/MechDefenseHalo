@@ -649,8 +649,15 @@ namespace MechDefenseHalo.Core
         /// </summary>
         public static Dictionary<string, Godot.Collections.Dictionary> GetDict(string key)
         {
-            if (Instance?.CurrentPlayerData?.DictStore == null) 
+            if (Instance?.CurrentPlayerData == null) 
                 return new Dictionary<string, Godot.Collections.Dictionary>();
+
+            // Initialize DictStore if it's null
+            if (Instance.CurrentPlayerData.DictStore == null)
+            {
+                Instance.CurrentPlayerData.DictStore = new Dictionary<string, Dictionary<string, object>>();
+                return new Dictionary<string, Godot.Collections.Dictionary>();
+            }
             
             if (!Instance.CurrentPlayerData.DictStore.ContainsKey(key))
                 return new Dictionary<string, Godot.Collections.Dictionary>();
@@ -679,7 +686,13 @@ namespace MechDefenseHalo.Core
         /// </summary>
         public static void SetDict(string key, Dictionary<string, Godot.Collections.Dictionary> value)
         {
-            if (Instance?.CurrentPlayerData?.DictStore == null) return;
+            if (Instance?.CurrentPlayerData == null) return;
+
+            // Initialize DictStore if it's null
+            if (Instance.CurrentPlayerData.DictStore == null)
+            {
+                Instance.CurrentPlayerData.DictStore = new Dictionary<string, Dictionary<string, object>>();
+            }
 
             var storeData = new Dictionary<string, object>();
             foreach (var kvp in value)

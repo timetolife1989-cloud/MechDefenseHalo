@@ -10,6 +10,10 @@ namespace MechDefenseHalo.Hangar
     /// </summary>
     public partial class Hangar3DViewer : Control
     {
+        // Model path constants
+        private const string WEAPONS_PATH = "res://Models/Weapons/";
+        private const string ITEMS_PATH = "res://Models/Items/";
+        
         [Export] private SubViewport viewport3D;
         [Export] private Node3D modelContainer;
         [Export] private ViewerCamera viewerCamera;
@@ -140,7 +144,7 @@ namespace MechDefenseHalo.Hangar
         {
             ClearCurrentModel();
             
-            string modelPath = $"res://Models/Weapons/{weaponId}.tscn";
+            string modelPath = $"{WEAPONS_PATH}{weaponId}.tscn";
             LoadModel(modelPath);
             DisplayWeaponStats(weaponId);
         }
@@ -149,7 +153,7 @@ namespace MechDefenseHalo.Hangar
         {
             ClearCurrentModel();
             
-            string modelPath = $"res://Models/Items/{itemId}.tscn";
+            string modelPath = $"{ITEMS_PATH}{itemId}.tscn";
             LoadModel(modelPath);
             DisplayItemStats(itemId);
         }
