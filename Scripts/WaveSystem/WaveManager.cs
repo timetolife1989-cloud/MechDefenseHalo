@@ -499,7 +499,7 @@ namespace MechDefenseHalo.WaveSystem
         }
 
         /// <summary>
-        /// Create enemy instance by type
+        /// Create enemy instance by type with validation
         /// </summary>
         private Node3D CreateEnemy(string enemyType)
         {
@@ -516,7 +516,8 @@ namespace MechDefenseHalo.WaveSystem
             // Validate that enemy is an EnemyBase for proper functionality
             if (enemy != null && enemy is not EnemyBase)
             {
-                GD.PrintErr($"Enemy type {enemyType} does not inherit from EnemyBase! Difficulty scaling will not work.");
+                GD.PrintErr($"CRITICAL: Enemy type {enemyType} does not inherit from EnemyBase! Difficulty scaling will not work. Skipping spawn.");
+                return null; // Return null to prevent spawning invalid enemy
             }
 
             return enemy;
@@ -580,8 +581,8 @@ namespace MechDefenseHalo.WaveSystem
             // Grant credits
             CurrencyManager.AddCredits(creditsReward, "wave_complete");
 
-            // XP would be granted here if XP system exists
-            // PlayerLevel.AddXP(xpReward, "wave_complete");
+            // TODO: Integrate with player level/XP system when implemented
+            // The xpReward is calculated and included in the event for future use
 
             // Emit wave completed event
             EventBus.Emit(EventBus.WaveCompleted, new WaveCompletedEventData
@@ -591,7 +592,7 @@ namespace MechDefenseHalo.WaveSystem
                 XPReward = xpReward
             });
 
-            GD.Print($"Wave {CurrentWave} completed! Credits: +{creditsReward}, XP: +{xpReward}");
+            GD.Print($"Wave {CurrentWave} completed! Credits: +{creditsReward}, XP: +{xpReward} (XP system pending)");
             GD.Print($"Next wave in {WaveBreakTimer} seconds");
         }
 

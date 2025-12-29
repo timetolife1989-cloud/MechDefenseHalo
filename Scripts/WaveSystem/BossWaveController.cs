@@ -77,12 +77,8 @@ namespace MechDefenseHalo.WaveSystem
                 }
             }
 
-            // Start boss music
-            if (MusicPlayer.Instance != null)
-            {
-                // MusicPlayer.Instance.PlayMusic(SoundID.MusicBoss, 2.0f);
-                GD.Print("Boss music would play here (transition to boss_fight)");
-            }
+            // TODO: Start boss music when SoundID enum is extended with boss music tracks
+            // MusicPlayer.Instance.PlayMusic(SoundID.MusicBoss, 2.0f);
 
             // Emit boss wave started event
             EventBus.Emit(EventBus.BossSpawned, new BossSpawnedEventData
@@ -192,7 +188,7 @@ namespace MechDefenseHalo.WaveSystem
         }
 
         /// <summary>
-        /// Create an enemy instance by type name
+        /// Create an enemy instance by type name with validation
         /// </summary>
         private Node3D CreateEnemy(string enemyType)
         {
@@ -209,7 +205,8 @@ namespace MechDefenseHalo.WaveSystem
             // Validate that enemy is an EnemyBase for proper functionality
             if (enemy != null && enemy is not EnemyBase)
             {
-                GD.PrintErr($"Enemy type {enemyType} does not inherit from EnemyBase!");
+                GD.PrintErr($"CRITICAL: Enemy type {enemyType} does not inherit from EnemyBase! Skipping spawn.");
+                return null; // Return null to prevent spawning invalid enemy
             }
 
             return enemy;
