@@ -9,6 +9,7 @@ using MechDefenseHalo.Enemies.Bosses;
 using MechDefenseHalo.GamePlay;
 using MechDefenseHalo.Shop;
 using MechDefenseHalo.Crafting;
+using MechDefenseHalo.Loot;
 
 namespace MechDefenseHalo.Statistics
 {
@@ -183,11 +184,11 @@ namespace MechDefenseHalo.Statistics
             EventBus.On(EventBus.DroneDeployed, OnDroneDeployed);
             
             // Economy events
-            EventBus.On(EventBus.CurrencyChanged, OnCurrencyChanged);
+            EventBus.On("currency_changed", OnCurrencyChanged);
             EventBus.On(EventBus.ItemPurchased, OnItemPurchased);
             
             // Loot events
-            EventBus.On(EventBus.LootPickedUp, OnLootPickedUp);
+            EventBus.On("loot_dropped", OnLootDropped);
             
             // Crafting events
             EventBus.On(EventBus.CraftCompleted, OnCraftCompleted);
@@ -207,9 +208,9 @@ namespace MechDefenseHalo.Statistics
             EventBus.Off(EventBus.BossDefeated, OnBossDefeated);
             EventBus.Off(EventBus.WaveCompleted, OnWaveCompleted);
             EventBus.Off(EventBus.DroneDeployed, OnDroneDeployed);
-            EventBus.Off(EventBus.CurrencyChanged, OnCurrencyChanged);
+            EventBus.Off("currency_changed", OnCurrencyChanged);
             EventBus.Off(EventBus.ItemPurchased, OnItemPurchased);
-            EventBus.Off(EventBus.LootPickedUp, OnLootPickedUp);
+            EventBus.Off("loot_dropped", OnLootDropped);
             EventBus.Off(EventBus.CraftCompleted, OnCraftCompleted);
             EventBus.Off("item_salvaged", OnItemSalvaged);
             EventBus.Off("chest_opened", OnChestOpened);
@@ -370,12 +371,15 @@ namespace MechDefenseHalo.Statistics
 
         #region Event Handlers - Loot
 
-        private void OnLootPickedUp(object data)
+        private void OnLootDropped(object data)
         {
-            Economy.ItemsLooted++;
-            
-            // Note: LootPickedUp event may need enhancement to pass ItemBase data
-            // For now, increment looted count
+            // Track when loot is dropped
+            // Note: This tracks loot generation, not pickup
+            // May want to track actual pickup separately when player collects it
+            if (data is LootDroppedData lootData)
+            {
+                Economy.ItemsLooted += lootData.ItemIDs?.Count ?? 0;
+            }
         }
 
         private void OnChestOpened(object data)
