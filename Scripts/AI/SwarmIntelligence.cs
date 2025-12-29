@@ -112,7 +112,8 @@ namespace MechDefenseHalo.AI
                 // Get player's forward direction (negative Z in Godot)
                 return -player.GlobalTransform.Basis.Z;
             }
-            return Vector3.Forward;
+            // Default to negative Z (Godot's forward direction)
+            return Vector3.Back;
         }
         
         /// <summary>
