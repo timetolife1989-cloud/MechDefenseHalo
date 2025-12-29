@@ -4,8 +4,11 @@
 
 ## 📖 Documentation
 
-- [Game Design Document](docs/GDD.md) - Teljes játékvízió
-- [Architecture](ARCHITECTURE.md) - Kód architektúra
+- [Project Status Summary](PROJECT_STATUS.md) - **START HERE** - Quick visual overview
+- [Project Analysis (Hungarian)](PROJECT_ANALYSIS_HU.md) - Részletes projekt elemzés (1200+ sorok)
+- [Improvement Guide](IMPROVEMENT_GUIDE.md) - Action plan for next steps
+- [Architecture](ARCHITECTURE.md) - Technical architecture & code structure
+- [Game Design Document](docs/GDD.md) - Complete game vision (Hungarian)
 
 ## Game Concept
 
