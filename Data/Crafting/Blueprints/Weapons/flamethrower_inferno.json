@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_flamethrower_inferno",
   "display_name": "Inferno Flamethrower Blueprint",
-  "description": "Scorches enemies with sustained fire damage",
   "result_item_id": "weapon_flamethrower_inferno",
-  "result_quantity": 1,
-  "craft_time_seconds": 360,
-  "rarity": "Uncommon",
-  "level_requirement": 12,
-  "currency_cost": {
-    "Credits": 1000,
-    "Cores": 0
+  "required_materials": {
+    "plasma_core": 8,
+    "alloy_plates": 12,
+    "power_cells": 10
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 8},
-    {"item_id": "material_alloy_plates", "quantity": 12},
-    {"item_id": "material_power_cells", "quantity": 10}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_12"
+  "result_rarity": "Uncommon",
+  "required_player_level": 12,
+  "crafting_time_seconds": 360,
+  "credit_cost": 1000
 }

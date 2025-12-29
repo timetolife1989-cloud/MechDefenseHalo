@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_assault_rifle_mk2",
   "display_name": "Assault Rifle Mk2 Blueprint",
-  "description": "Improved assault rifle with higher fire rate",
   "result_item_id": "weapon_assault_rifle_mk2",
-  "result_quantity": 1,
-  "craft_time_seconds": 180,
-  "rarity": "Uncommon",
-  "level_requirement": 8,
-  "currency_cost": {
-    "Credits": 500,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 10,
+    "circuits": 5,
+    "weapon_parts": 3
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 10},
-    {"item_id": "material_circuits", "quantity": 5},
-    {"item_id": "material_weapon_parts", "quantity": 3}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_5"
+  "result_rarity": "Uncommon",
+  "required_player_level": 8,
+  "crafting_time_seconds": 180,
+  "credit_cost": 500
 }

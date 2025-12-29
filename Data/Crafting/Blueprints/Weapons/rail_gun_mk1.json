@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_rail_gun_mk1",
   "display_name": "Electromagnetic Rail Gun Blueprint",
-  "description": "Penetrates armor with electromagnetic projectiles",
   "result_item_id": "weapon_rail_gun_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 720,
-  "rarity": "Rare",
-  "level_requirement": 18,
-  "currency_cost": {
-    "Credits": 2500,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 30,
+    "circuits": 25,
+    "power_cells": 15
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 30},
-    {"item_id": "material_circuits", "quantity": 25},
-    {"item_id": "material_power_cells", "quantity": 15}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_18"
+  "result_rarity": "Rare",
+  "required_player_level": 18,
+  "crafting_time_seconds": 720,
+  "credit_cost": 2500
 }

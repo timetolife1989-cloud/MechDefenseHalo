@@ -1,20 +1,13 @@
 {
   "blueprint_id": "bp_juggernaut_helmet",
   "display_name": "Juggernaut Helmet Blueprint",
-  "description": "Heavy helmet providing maximum frontal protection",
   "result_item_id": "head_juggernaut_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 300,
-  "rarity": "Uncommon",
-  "level_requirement": 8,
-  "currency_cost": {
-    "Credits": 600,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 15,
+    "circuits": 10
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 15},
-    {"item_id": "material_circuits", "quantity": 10}
-  ],
-  "category": "Armor",
-  "unlock_condition": "level_8"
+  "result_rarity": "Uncommon",
+  "required_player_level": 8,
+  "crafting_time_seconds": 300,
+  "credit_cost": 600
 }

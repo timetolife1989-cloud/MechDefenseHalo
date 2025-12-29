@@ -1,20 +1,13 @@
 {
   "blueprint_id": "bp_assault_rifle_mk1",
   "display_name": "Assault Rifle Mk1 Blueprint",
-  "description": "Basic assault rifle for close-range combat",
   "result_item_id": "weapon_assault_rifle_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 60,
-  "rarity": "Common",
-  "level_requirement": 1,
-  "currency_cost": {
-    "Credits": 100,
-    "Cores": 0
+  "required_materials": {
+    "scrap_metal": 10,
+    "circuits": 5
   },
-  "material_requirements": [
-    {"item_id": "material_scrap_metal", "quantity": 10},
-    {"item_id": "material_circuits", "quantity": 5}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_1"
+  "result_rarity": "Common",
+  "required_player_level": 1,
+  "crafting_time_seconds": 60,
+  "credit_cost": 100
 }

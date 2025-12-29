@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_war_hammer_titan",
   "display_name": "Titan War Hammer Blueprint",
-  "description": "Devastating melee strikes with knockback",
   "result_item_id": "weapon_war_hammer_titan",
-  "result_quantity": 1,
-  "craft_time_seconds": 840,
-  "rarity": "Rare",
-  "level_requirement": 19,
-  "currency_cost": {
-    "Credits": 2800,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 40,
+    "plasma_core": 10,
+    "quantum_chips": 5
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 40},
-    {"item_id": "material_plasma_core", "quantity": 10},
-    {"item_id": "material_quantum_chips", "quantity": 5}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_19"
+  "result_rarity": "Rare",
+  "required_player_level": 19,
+  "crafting_time_seconds": 840,
+  "credit_cost": 2800
 }

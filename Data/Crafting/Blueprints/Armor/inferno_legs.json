@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_inferno_legs",
   "display_name": "Inferno Legs Blueprint",
-  "description": "Blazing legs that leave trails of fire",
   "result_item_id": "legs_inferno_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 1000,
-  "rarity": "Epic",
-  "level_requirement": 24,
-  "currency_cost": {
-    "Credits": 4900,
-    "Cores": 10
+  "required_materials": {
+    "plasma_core": 25,
+    "power_cells": 35,
+    "nanofibers": 20
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 25},
-    {"item_id": "material_power_cells", "quantity": 35},
-    {"item_id": "material_nanofibers", "quantity": 20}
-  ],
-  "category": "Armor",
-  "unlock_condition": "level_24"
+  "result_rarity": "Epic",
+  "required_player_level": 24,
+  "crafting_time_seconds": 1000,
+  "credit_cost": 4900,
+  "cores_cost": 10
 }

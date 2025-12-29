@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_inferno_arms",
   "display_name": "Inferno Arms Blueprint",
-  "description": "Arms that channel scorching flame attacks",
   "result_item_id": "arms_inferno_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 1100,
-  "rarity": "Epic",
-  "level_requirement": 25,
-  "currency_cost": {
-    "Credits": 5200,
-    "Cores": 11
+  "required_materials": {
+    "plasma_core": 28,
+    "quantum_chips": 9,
+    "circuits": 38
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 28},
-    {"item_id": "material_quantum_chips", "quantity": 9},
-    {"item_id": "material_circuits", "quantity": 38}
-  ],
-  "category": "Armor",
-  "unlock_condition": "level_25"
+  "result_rarity": "Epic",
+  "required_player_level": 25,
+  "crafting_time_seconds": 1100,
+  "credit_cost": 5200,
+  "cores_cost": 11
 }

@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_laser_rifle_precision",
   "display_name": "Precision Laser Rifle Blueprint",
-  "description": "Continuous beam weapon with perfect accuracy",
   "result_item_id": "weapon_laser_rifle_precision",
-  "result_quantity": 1,
-  "craft_time_seconds": 1200,
-  "rarity": "Epic",
-  "level_requirement": 22,
-  "currency_cost": {
-    "Credits": 4500,
-    "Cores": 5
+  "required_materials": {
+    "plasma_core": 12,
+    "quantum_chips": 6,
+    "nanofibers": 20
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 12},
-    {"item_id": "material_quantum_chips", "quantity": 6},
-    {"item_id": "material_nanofibers", "quantity": 20}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_22"
+  "result_rarity": "Epic",
+  "required_player_level": 22,
+  "crafting_time_seconds": 1200,
+  "credit_cost": 4500,
+  "cores_cost": 5
 }

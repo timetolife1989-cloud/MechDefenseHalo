@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_juggernaut_torso",
   "display_name": "Juggernaut Torso Blueprint",
-  "description": "Reinforced core plating for tank mechs",
   "result_item_id": "torso_juggernaut_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 600,
-  "rarity": "Rare",
-  "level_requirement": 15,
-  "currency_cost": {
-    "Credits": 2000,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 35,
+    "nanofibers": 12,
+    "plasma_core": 8
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 35},
-    {"item_id": "material_nanofibers", "quantity": 12},
-    {"item_id": "material_plasma_core", "quantity": 8}
-  ],
-  "category": "Armor",
-  "unlock_condition": "level_15"
+  "result_rarity": "Rare",
+  "required_player_level": 15,
+  "crafting_time_seconds": 600,
+  "credit_cost": 2000
 }

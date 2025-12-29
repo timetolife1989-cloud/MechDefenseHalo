@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_pulse_rifle_burst",
   "display_name": "Burst Pulse Rifle Blueprint",
-  "description": "Fires energy pulses in controlled bursts",
   "result_item_id": "weapon_pulse_rifle_burst",
-  "result_quantity": 1,
-  "craft_time_seconds": 300,
-  "rarity": "Uncommon",
-  "level_requirement": 14,
-  "currency_cost": {
-    "Credits": 700,
-    "Cores": 0
+  "required_materials": {
+    "circuits": 15,
+    "power_cells": 10,
+    "alloy_plates": 12
   },
-  "material_requirements": [
-    {"item_id": "material_circuits", "quantity": 15},
-    {"item_id": "material_power_cells", "quantity": 10},
-    {"item_id": "material_alloy_plates", "quantity": 12}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_14"
+  "result_rarity": "Uncommon",
+  "required_player_level": 14,
+  "crafting_time_seconds": 300,
+  "credit_cost": 700
 }

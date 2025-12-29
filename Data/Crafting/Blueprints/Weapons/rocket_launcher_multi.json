@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_rocket_launcher_multi",
   "display_name": "Multi-Rocket Launcher Blueprint",
-  "description": "Fires multiple homing rockets in a salvo",
   "result_item_id": "weapon_rocket_launcher_multi",
-  "result_quantity": 1,
-  "craft_time_seconds": 900,
-  "rarity": "Rare",
-  "level_requirement": 20,
-  "currency_cost": {
-    "Credits": 3000,
-    "Cores": 0
+  "required_materials": {
+    "alloy_plates": 35,
+    "circuits": 28,
+    "power_cells": 18
   },
-  "material_requirements": [
-    {"item_id": "material_alloy_plates", "quantity": 35},
-    {"item_id": "material_circuits", "quantity": 28},
-    {"item_id": "material_power_cells", "quantity": 18}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_20"
+  "result_rarity": "Rare",
+  "required_player_level": 20,
+  "crafting_time_seconds": 900,
+  "credit_cost": 3000
 }

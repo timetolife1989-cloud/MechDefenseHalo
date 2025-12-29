@@ -1,21 +1,14 @@
 {
   "blueprint_id": "bp_plasma_cannon_mk1",
   "display_name": "Plasma Cannon Mk1 Blueprint",
-  "description": "High-damage energy weapon with splash damage",
   "result_item_id": "weapon_plasma_cannon_mk1",
-  "result_quantity": 1,
-  "craft_time_seconds": 600,
-  "rarity": "Rare",
-  "level_requirement": 15,
-  "currency_cost": {
-    "Credits": 2000,
-    "Cores": 0
+  "required_materials": {
+    "plasma_core": 10,
+    "nanofibers": 15,
+    "alloy_plates": 25
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 10},
-    {"item_id": "material_nanofibers", "quantity": 15},
-    {"item_id": "material_alloy_plates", "quantity": 25}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_15"
+  "result_rarity": "Rare",
+  "required_player_level": 15,
+  "crafting_time_seconds": 600,
+  "credit_cost": 2000
 }

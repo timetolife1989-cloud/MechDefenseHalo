@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_energy_sword_plasma",
   "display_name": "Plasma Energy Sword Blueprint",
-  "description": "Melee weapon that cuts through anything",
   "result_item_id": "weapon_energy_sword_plasma",
-  "result_quantity": 1,
-  "craft_time_seconds": 1350,
-  "rarity": "Epic",
-  "level_requirement": 24,
-  "currency_cost": {
-    "Credits": 4800,
-    "Cores": 8
+  "required_materials": {
+    "plasma_core": 18,
+    "quantum_chips": 8,
+    "nanofibers": 22
   },
-  "material_requirements": [
-    {"item_id": "material_plasma_core", "quantity": 18},
-    {"item_id": "material_quantum_chips", "quantity": 8},
-    {"item_id": "material_nanofibers", "quantity": 22}
-  ],
-  "category": "Weapons",
-  "unlock_condition": "level_24"
+  "result_rarity": "Epic",
+  "required_player_level": 24,
+  "crafting_time_seconds": 1350,
+  "credit_cost": 4800,
+  "cores_cost": 8
 }

@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_phoenix_helmet",
   "display_name": "Phoenix Crown Blueprint",
-  "description": "Legendary helmet with resurrection capabilities",
   "result_item_id": "head_phoenix_legendary",
-  "result_quantity": 1,
-  "craft_time_seconds": 2400,
-  "rarity": "Legendary",
-  "level_requirement": 35,
-  "currency_cost": {
-    "Credits": 15000,
-    "Cores": 45
+  "required_materials": {
+    "aether_fragment": 8,
+    "void_crystal": 15,
+    "quantum_chips": 20
   },
-  "material_requirements": [
-    {"item_id": "material_aether_fragment", "quantity": 8},
-    {"item_id": "material_void_crystal", "quantity": 15},
-    {"item_id": "material_quantum_chips", "quantity": 20}
-  ],
-  "category": "Armor",
-  "unlock_condition": "boss_phoenix_lord"
+  "result_rarity": "Legendary",
+  "required_player_level": 35,
+  "crafting_time_seconds": 2400,
+  "credit_cost": 15000,
+  "cores_cost": 45
 }

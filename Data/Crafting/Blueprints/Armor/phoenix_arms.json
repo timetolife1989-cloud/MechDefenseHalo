@@ -1,21 +1,15 @@
 {
   "blueprint_id": "bp_phoenix_arms",
   "display_name": "Phoenix Ascension Arms Blueprint",
-  "description": "Legendary arms with burning power",
   "result_item_id": "arms_phoenix_legendary",
-  "result_quantity": 1,
-  "craft_time_seconds": 2600,
-  "rarity": "Legendary",
-  "level_requirement": 36,
-  "currency_cost": {
-    "Credits": 17000,
-    "Cores": 50
+  "required_materials": {
+    "aether_fragment": 9,
+    "void_crystal": 16,
+    "quantum_chips": 24
   },
-  "material_requirements": [
-    {"item_id": "material_aether_fragment", "quantity": 9},
-    {"item_id": "material_void_crystal", "quantity": 16},
-    {"item_id": "material_quantum_chips", "quantity": 24}
-  ],
-  "category": "Armor",
-  "unlock_condition": "boss_phoenix_lord"
+  "result_rarity": "Legendary",
+  "required_player_level": 36,
+  "crafting_time_seconds": 2600,
+  "credit_cost": 17000,
+  "cores_cost": 50
 }
