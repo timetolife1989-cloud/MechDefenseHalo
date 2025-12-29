@@ -19,6 +19,8 @@ namespace MechDefenseHalo.Audio
     /// </summary>
     public partial class AudioSettings : Node
     {
+        private const float SILENCE_DB = -80f;
+        
         public static AudioSettings Instance { get; private set; }
 
         #region Constants
@@ -182,7 +184,7 @@ namespace MechDefenseHalo.Audio
         private float LinearToDb(float linear)
         {
             if (linear <= 0f)
-                return -80f; // Silence
+                return SILENCE_DB; // Silence
             
             return Mathf.LinearToDb(linear);
         }

@@ -17,6 +17,9 @@ namespace MechDefenseHalo.Audio
     /// </summary>
     public partial class MusicPlayer : Node
     {
+        private const float SILENCE_VOLUME_DB = -80f;
+        private const float DEFAULT_VOLUME_DB = 0f;
+        
         public static MusicPlayer Instance { get; private set; }
 
         [Export] public AudioStreamPlayer Player1 { get; set; }
@@ -89,13 +92,13 @@ namespace MechDefenseHalo.Audio
             _crossfadeTween.SetParallel(true);
 
             // Fade out current
-            _crossfadeTween.TweenProperty(_currentPlayer, "volume_db", -80f, duration);
+            _crossfadeTween.TweenProperty(_currentPlayer, "volume_db", SILENCE_VOLUME_DB, duration);
 
             // Fade in new
             _otherPlayer.Stream = newStream;
-            _otherPlayer.VolumeDb = -80f;
+            _otherPlayer.VolumeDb = SILENCE_VOLUME_DB;
             _otherPlayer.Play();
-            _crossfadeTween.TweenProperty(_otherPlayer, "volume_db", 0f, duration);
+            _crossfadeTween.TweenProperty(_otherPlayer, "volume_db", DEFAULT_VOLUME_DB, duration);
 
             _crossfadeTween.Chain().TweenCallback(Callable.From(() =>
             {
@@ -107,7 +110,7 @@ namespace MechDefenseHalo.Audio
         private void FadeOut(AudioStreamPlayer player, float duration)
         {
             var tween = CreateTween();
-            tween.TweenProperty(player, "volume_db", -80f, duration);
+            tween.TweenProperty(player, "volume_db", SILENCE_VOLUME_DB, duration);
             tween.TweenCallback(Callable.From(() => player.Stop()));
         }
 

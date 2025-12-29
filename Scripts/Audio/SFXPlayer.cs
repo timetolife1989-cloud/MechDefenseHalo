@@ -22,7 +22,7 @@ namespace MechDefenseHalo.Audio
 
         [Export] public int MaxSimultaneousSounds { get; set; } = 32;
         [Export] public float DefaultMaxDistance { get; set; } = 50f;
-        [Export] public float DefaultAttenuationFactor { get; set; } = 1.5f;
+        [Export] public float DefaultUnitSize { get; set; } = 10f;
 
         private Node _audioRoot;
 
@@ -61,7 +61,7 @@ namespace MechDefenseHalo.Audio
             player.GlobalPosition = position;
             player.MaxDistance = DefaultMaxDistance;
             player.AttenuationModel = AudioStreamPlayer3D.AttenuationModelEnum.InverseDistance;
-            player.AttenuationFilterDb = DefaultAttenuationFactor;
+            player.UnitSize = DefaultUnitSize;
             player.Bus = "SFX";
             
             _audioRoot.AddChild(player);
