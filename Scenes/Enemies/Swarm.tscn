@@ -64,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
 
 [node name="LootDropComponent" type="Node" parent="."]
 script = ExtResource("5_loot")
-LootTableID = "basic_enemy"
+LootTableID = "Swarm"
 LuckModifier = 0.7
 AutoPickup = false
 DropRadius = 1.5

@@ -62,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.5)
 
 [node name="LootDropComponent" type="Node" parent="."]
 script = ExtResource("5_loot")
-LootTableID = "basic_enemy"
+LootTableID = "Shooter"
 LuckModifier = 1.0
 AutoPickup = false
 DropRadius = 2.0
