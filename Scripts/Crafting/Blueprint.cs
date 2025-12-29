@@ -45,7 +45,9 @@ namespace MechDefenseHalo.Crafting
         [JsonPropertyName("required_player_level")]
         public int RequiredPlayerLevel { get; set; } = 1;
         
-        [Export] public bool IsClanResearch { get; set; } = false;
+        [Export]
+        [JsonPropertyName("is_clan_research")]
+        public bool IsClanResearch { get; set; } = false;
 
         #endregion
 
