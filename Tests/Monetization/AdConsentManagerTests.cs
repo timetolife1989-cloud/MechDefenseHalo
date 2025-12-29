@@ -67,10 +67,9 @@ namespace MechDefenseHalo.Tests.Monetization
             // Act
             bool canShow = AdConsentManager.CanShowAds();
 
-            // Assert - Unknown status in non-EU region typically allows non-personalized ads
-            // But for strict compliance, we return false
-            // (Implementation may vary based on requirements)
-            AssertBool(canShow).IsNotNull();
+            // Assert
+            // Unknown status should prevent ads in strict compliance mode
+            AssertBool(canShow).IsFalse();
         }
 
         [TestCase]

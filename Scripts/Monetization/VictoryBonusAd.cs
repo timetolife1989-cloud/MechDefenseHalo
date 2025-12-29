@@ -22,7 +22,7 @@ namespace MechDefenseHalo.Monetization
 
         #region Private Fields
 
-        private bool _bossDefeatedWithoutDeath = false;
+        private bool _playerDied = false;
 
         #endregion
 
@@ -52,9 +52,10 @@ namespace MechDefenseHalo.Monetization
             if (data is Enemies.Bosses.BossDefeatedData bossData)
             {
                 // Only show if player didn't die (no continues used)
-                if (_bossDefeatedWithoutDeath)
+                if (_playerDied)
                 {
                     GD.Print("Boss defeated but player died - no victory bonus offer");
+                    _playerDied = false; // Reset for next boss
                     return;
                 }
 
@@ -65,7 +66,7 @@ namespace MechDefenseHalo.Monetization
 
         private void OnPlayerDied(object data)
         {
-            _bossDefeatedWithoutDeath = true;
+            _playerDied = true;
         }
 
         #endregion
