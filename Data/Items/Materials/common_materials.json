@@ -1,0 +1,112 @@
+[
+  {
+    "item_id": "scrap_metal",
+    "display_name": "Scrap Metal",
+    "description": "Salvaged metal pieces useful for basic repairs",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 5,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common"]
+  },
+  {
+    "item_id": "circuits",
+    "display_name": "Circuits",
+    "description": "Basic electronic components from salvaged equipment",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 8,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common", "electronic"]
+  },
+  {
+    "item_id": "wire_coils",
+    "display_name": "Wire Coils",
+    "description": "Standard copper wiring for electrical systems",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 6,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common", "electronic"]
+  },
+  {
+    "item_id": "steel_plates",
+    "display_name": "Steel Plates",
+    "description": "Flat steel panels for armor construction",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 7,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common", "armor"]
+  },
+  {
+    "item_id": "plastic_polymers",
+    "display_name": "Plastic Polymers",
+    "description": "Synthetic materials for component housing",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 4,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common"]
+  },
+  {
+    "item_id": "rubber_gaskets",
+    "display_name": "Rubber Gaskets",
+    "description": "Sealing components for joints and connections",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 3,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common"]
+  },
+  {
+    "item_id": "glass_fragments",
+    "display_name": "Glass Fragments",
+    "description": "Transparent material for sensors and displays",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 5,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common"]
+  },
+  {
+    "item_id": "copper_wiring",
+    "display_name": "Copper Wiring",
+    "description": "Conductive cables for power distribution",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 6,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common", "electronic"]
+  },
+  {
+    "item_id": "iron_bolts",
+    "display_name": "Iron Bolts",
+    "description": "Standard fasteners for assembly",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 2,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common"]
+  },
+  {
+    "item_id": "aluminum_scraps",
+    "display_name": "Aluminum Scraps",
+    "description": "Lightweight metal fragments for frame construction",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 7,
+    "max_stack_size": 999,
+    "material_tier": "Common",
+    "tags": ["material", "crafting", "common", "armor"]
+  }
+]

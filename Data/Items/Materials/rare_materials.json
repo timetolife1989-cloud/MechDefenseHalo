@@ -1,0 +1,79 @@
+[
+  {
+    "item_id": "plasma_cores",
+    "display_name": "Plasma Cores",
+    "description": "Superheated plasma containment units for energy weapons",
+    "rarity": "Rare",
+    "item_level": 15,
+    "sell_value": 150,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "energy", "weapon"]
+  },
+  {
+    "item_id": "nanofibers",
+    "display_name": "Nanofibers",
+    "description": "Molecularly engineered fibers with exceptional strength",
+    "rarity": "Rare",
+    "item_level": 18,
+    "sell_value": 175,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "armor"]
+  },
+  {
+    "item_id": "fusion_cells",
+    "display_name": "Fusion Cells",
+    "description": "Miniature fusion reactors for high-output power needs",
+    "rarity": "Rare",
+    "item_level": 20,
+    "sell_value": 200,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "energy"]
+  },
+  {
+    "item_id": "smart_alloys",
+    "display_name": "Smart Alloys",
+    "description": "Shape-memory alloys that adapt to stress",
+    "rarity": "Rare",
+    "item_level": 17,
+    "sell_value": 165,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "armor"]
+  },
+  {
+    "item_id": "photonic_crystals",
+    "display_name": "Photonic Crystals",
+    "description": "Advanced optical materials for beam weapons",
+    "rarity": "Rare",
+    "item_level": 19,
+    "sell_value": 180,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "optics", "weapon"]
+  },
+  {
+    "item_id": "graviton_stabilizers",
+    "display_name": "Graviton Stabilizers",
+    "description": "Exotic particles for anti-gravity systems",
+    "rarity": "Rare",
+    "item_level": 22,
+    "sell_value": 210,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "mechanical"]
+  },
+  {
+    "item_id": "cryogenic_gel",
+    "display_name": "Cryogenic Gel",
+    "description": "Ultra-cold substance for cooling and freezing effects",
+    "rarity": "Rare",
+    "item_level": 16,
+    "sell_value": 155,
+    "max_stack_size": 999,
+    "material_tier": "Rare",
+    "tags": ["material", "crafting", "rare", "cooling", "ice"]
+  }
+]
