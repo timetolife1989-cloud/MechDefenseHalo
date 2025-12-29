@@ -93,15 +93,18 @@ namespace MechDefenseHalo.Editor
         
         private async Task<bool> ExportAPK()
         {
-            var exportPath = "build/MechDefenseHalo.apk";
+            var exportPath = System.IO.Path.Combine("build", "MechDefenseHalo.apk");
             
             GD.Print($"Exporting to: {exportPath}");
+            
+            // Determine the correct Godot executable name based on platform
+            string godotExecutable = GetGodotExecutable();
             
             // Note: Godot 4.x EditorExportPlatform API has changed
             // This is a placeholder - actual export would need to use EditorExportPlatform API
             // For now, we'll use external godot command
             var process = new Process();
-            process.StartInfo.FileName = "godot";
+            process.StartInfo.FileName = godotExecutable;
             process.StartInfo.Arguments = $"--headless --export-release \"Android\" {exportPath}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -143,9 +146,11 @@ namespace MechDefenseHalo.Editor
         
         private async Task<bool> InstallToDevice()
         {
+            var apkPath = System.IO.Path.Combine("build", "MechDefenseHalo.apk");
+            
             var process = new Process();
-            process.StartInfo.FileName = "adb";
-            process.StartInfo.Arguments = "install -r build/MechDefenseHalo.apk";
+            process.StartInfo.FileName = GetAdbExecutable();
+            process.StartInfo.Arguments = $"install -r {apkPath}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
@@ -187,7 +192,7 @@ namespace MechDefenseHalo.Editor
         private async Task LaunchApp()
         {
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = "shell am start -n com.mechdefense.halo/.GodotApp";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -221,6 +226,30 @@ namespace MechDefenseHalo.Editor
             {
                 GD.PrintErr($"Launch exception: {ex.Message}");
             }
+        }
+        
+        /// <summary>
+        /// Get the correct Godot executable name based on platform
+        /// </summary>
+        private string GetGodotExecutable()
+        {
+            if (OS.HasFeature("windows"))
+            {
+                return "godot.exe";
+            }
+            return "godot";
+        }
+        
+        /// <summary>
+        /// Get the correct ADB executable name based on platform
+        /// </summary>
+        private string GetAdbExecutable()
+        {
+            if (OS.HasFeature("windows"))
+            {
+                return "adb.exe";
+            }
+            return "adb";
         }
     }
 }

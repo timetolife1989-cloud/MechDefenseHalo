@@ -22,7 +22,7 @@ namespace MechDefenseHalo.Editor
             var devices = new List<string>();
             
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = "devices";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -72,7 +72,7 @@ namespace MechDefenseHalo.Editor
         public static async Task<bool> ClearAppData(string packageName)
         {
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = $"shell pm clear {packageName}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -111,7 +111,7 @@ namespace MechDefenseHalo.Editor
         public static void ShowLogcat()
         {
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = "logcat -s Godot:* GodotEngine:*";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -136,7 +136,7 @@ namespace MechDefenseHalo.Editor
         public static async Task<bool> UninstallApp(string packageName)
         {
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = $"uninstall {packageName}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -175,7 +175,7 @@ namespace MechDefenseHalo.Editor
         public static async Task<bool> KillApp(string packageName)
         {
             var process = new Process();
-            process.StartInfo.FileName = "adb";
+            process.StartInfo.FileName = GetAdbExecutable();
             process.StartInfo.Arguments = $"shell am force-stop {packageName}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -222,7 +222,7 @@ namespace MechDefenseHalo.Editor
             foreach (string prop in properties)
             {
                 var process = new Process();
-                process.StartInfo.FileName = "adb";
+                process.StartInfo.FileName = GetAdbExecutable();
                 process.StartInfo.Arguments = $"shell getprop {prop}";
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardOutput = true;
@@ -246,6 +246,18 @@ namespace MechDefenseHalo.Editor
             }
             
             return info;
+        }
+        
+        /// <summary>
+        /// Get the correct ADB executable name based on platform
+        /// </summary>
+        private static string GetAdbExecutable()
+        {
+            if (OS.HasFeature("windows"))
+            {
+                return "adb.exe";
+            }
+            return "adb";
         }
     }
 }

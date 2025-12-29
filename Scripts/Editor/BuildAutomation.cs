@@ -56,7 +56,7 @@ namespace MechDefenseHalo.Editor
         private static async Task<bool> ExportPlatform(string platform, string outputPath)
         {
             var process = new Process();
-            process.StartInfo.FileName = "godot";
+            process.StartInfo.FileName = GetGodotExecutable();
             process.StartInfo.Arguments = $"--headless --export-release \"{platform}\" {outputPath}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -93,13 +93,13 @@ namespace MechDefenseHalo.Editor
         public static async Task<bool> ExportAndroid(bool debug = true)
         {
             string buildType = debug ? "debug" : "release";
-            string outputPath = $"build/MechDefenseHalo_{buildType}.apk";
+            string outputPath = System.IO.Path.Combine("build", $"MechDefenseHalo_{buildType}.apk");
             string exportArg = debug ? "--export-debug" : "--export-release";
             
             GD.Print($"Exporting Android ({buildType})...");
             
             var process = new Process();
-            process.StartInfo.FileName = "godot";
+            process.StartInfo.FileName = GetGodotExecutable();
             process.StartInfo.Arguments = $"--headless {exportArg} \"Android\" {outputPath}";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -165,6 +165,18 @@ namespace MechDefenseHalo.Editor
             {
                 GD.PrintErr($"Clean failed: {ex.Message}");
             }
+        }
+        
+        /// <summary>
+        /// Get the correct Godot executable name based on platform
+        /// </summary>
+        private static string GetGodotExecutable()
+        {
+            if (OS.HasFeature("windows"))
+            {
+                return "godot.exe";
+            }
+            return "godot";
         }
     }
 }
