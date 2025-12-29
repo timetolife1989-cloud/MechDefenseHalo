@@ -55,7 +55,8 @@ namespace MechDefenseHalo.Mobile
             
             if (memoryLabel != null)
             {
-                long memoryBytes = (long)OS.GetStaticMemoryUsage();
+                // Use Performance monitor for more accurate memory tracking on mobile
+                long memoryBytes = (long)Performance.GetMonitor(Performance.Monitor.MemoryStatic);
                 float memoryMB = memoryBytes / 1048576.0f;
                 memoryLabel.Text = $"MEM: {memoryMB:F1} MB";
             }

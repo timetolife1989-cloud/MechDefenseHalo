@@ -17,7 +17,6 @@ public partial class MobileTouchBridge : Node
     private PlayerMechController playerController;
     private WeaponManager weaponManager;
     private bool isMobilePlatform;
-    private bool lastFireState = false;
     
     public override void _Ready()
     {
@@ -53,7 +52,8 @@ public partial class MobileTouchBridge : Node
     private void SetupTouchControls()
     {
         // Look for existing touch controller by configured name
-        touchController = GetTree().Root.GetNodeOrNull<TouchController>(TouchControlsNodeName);
+        // Search recursively in case it's not a direct child of Root
+        touchController = GetTree().Root.FindChild(TouchControlsNodeName, true, false) as TouchController;
         
         // If not found, create it
         if (touchController == null)
@@ -85,24 +85,10 @@ public partial class MobileTouchBridge : Node
         
         // Handle weapon firing
         // Note: WeaponManager.FireCurrentWeapon() already respects weapon fire rate
-        // and handles automatic vs semi-automatic behavior internally
-        if (weaponManager != null)
+        // and handles automatic vs semi-automatic behavior internally via WeaponBase.TryFire()
+        if (weaponManager != null && touchController.IsFirePressed)
         {
-            bool currentFireState = touchController.IsFirePressed;
-            
-            // Fire on initial press (for semi-auto weapons)
-            if (currentFireState && !lastFireState)
-            {
-                weaponManager.FireCurrentWeapon();
-            }
-            // Continue calling FireCurrentWeapon for full-auto weapons
-            // The WeaponManager/WeaponBase will handle fire rate limiting
-            else if (currentFireState && weaponManager.CurrentWeapon != null && weaponManager.CurrentWeapon.IsAutomatic)
-            {
-                weaponManager.FireCurrentWeapon();
-            }
-            
-            lastFireState = currentFireState;
+            weaponManager.FireCurrentWeapon();
         }
     }
 }

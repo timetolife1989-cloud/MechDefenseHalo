@@ -66,9 +66,10 @@ namespace MechDefenseHalo.Mobile
             if (background == null || knob == null)
                 return;
             
-            // Transform from global screen coordinates to joystick-local coordinates
-            // touchPosition is in screen space, GlobalPosition is joystick's screen position
-            // knobCenter is the center point of the background in local space
+            // Convert from global screen coordinates to center-relative joystick coordinates:
+            // 1. Subtract GlobalPosition to get position relative to joystick's top-left
+            // 2. Subtract knobCenter to make coordinates relative to joystick center
+            // Result: (0,0) is joystick center, positive X is right, positive Y is down
             Vector2 localPos = touchPosition - GlobalPosition - knobCenter;
             float distance = localPos.Length();
             
