@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://p9q8r7s6t5u4v3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CraftingUI.cs" id="1_crafting"]
+
+[node name="CraftingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_crafting")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -1000.0
+offset_right = 500.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "CRAFTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="LeftPanel" type="VBoxContainer" parent="Background/MainContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="FilterBar" type="HBoxContainer" parent="Background/MainContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FilterLabel" type="Label" parent="Background/MainContainer/LeftPanel/FilterBar"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+text = "Filter:"
+vertical_alignment = 1
+
+[node name="FilterDropdown" type="OptionButton" parent="Background/MainContainer/LeftPanel/FilterBar"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BlueprintList" type="ItemList" parent="Background/MainContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddlePanel" type="VBoxContainer" parent="Background/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="BlueprintName" type="Label" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Select a Blueprint"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+
+[node name="MaterialsTitle" type="Label" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+text = "Materials Required:"
+theme_override_font_sizes/font_size = 18
+
+[node name="MaterialRequirements" type="VBoxContainer" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="HSeparator2" type="HSeparator" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+
+[node name="CreditCost" type="Label" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+text = "Cost: 0 Credits"
+theme_override_font_sizes/font_size = 16
+
+[node name="CraftTime" type="Label" parent="Background/MainContainer/MiddlePanel"]
+layout_mode = 2
+text = "Time: 0s"
+theme_override_font_sizes/font_size = 16
+
+[node name="CraftButton" type="Button" parent="Background/MainContainer/MiddlePanel"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "CRAFT"
+
+[node name="RightPanel" type="VBoxContainer" parent="Background/MainContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="QueueCountLabel" type="Label" parent="Background/MainContainer/RightPanel"]
+layout_mode = 2
+text = "Crafting Queue (0/3)"
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Background/MainContainer/RightPanel"]
+layout_mode = 2
+
+[node name="CraftQueueContainer" type="VBoxContainer" parent="Background/MainContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CloseButton" type="Button" parent="Background"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -90.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"

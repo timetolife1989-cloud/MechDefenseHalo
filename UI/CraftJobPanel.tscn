@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1r2a3f4t5j6o7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CraftJobPanelUI.cs" id="1_craftjob"]
+
+[node name="CraftJobPanelUI" type="Panel"]
+custom_minimum_size = Vector2(280, 100)
+script = ExtResource("1_craftjob")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/TopRow"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+expand_mode = 1
+
+[node name="InfoContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Item Name"
+
+[node name="TimeRemainingLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow/InfoContainer"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Time: 0s"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+show_percentage = true
+
+[node name="ButtonRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="InstantFinishButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+text = "⚡ Instant (X Cores)"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "✖ Cancel"
