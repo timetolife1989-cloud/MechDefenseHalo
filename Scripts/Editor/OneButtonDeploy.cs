@@ -100,12 +100,13 @@ namespace MechDefenseHalo.Editor
             // Determine the correct Godot executable name based on platform
             string godotExecutable = GetGodotExecutable();
             
-            // Note: Godot 4.x EditorExportPlatform API has changed
-            // This is a placeholder - actual export would need to use EditorExportPlatform API
-            // For now, we'll use external godot command
+            // Note: Godot 4.x EditorExportPlatform API has changed significantly
+            // The proper way would be to use EditorExportPlatform.ExportProject() method
+            // However, this requires access to EditorExportPreset which is not straightforward
+            // For now, we use external godot command which is reliable and cross-platform
             var process = new Process();
             process.StartInfo.FileName = godotExecutable;
-            process.StartInfo.Arguments = $"--headless --export-release \"Android\" {exportPath}";
+            process.StartInfo.Arguments = $"--headless --export-release \"Android\" \"{exportPath}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
@@ -150,7 +151,7 @@ namespace MechDefenseHalo.Editor
             
             var process = new Process();
             process.StartInfo.FileName = GetAdbExecutable();
-            process.StartInfo.Arguments = $"install -r {apkPath}";
+            process.StartInfo.Arguments = $"install -r \"{apkPath}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;

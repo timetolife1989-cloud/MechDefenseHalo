@@ -57,7 +57,7 @@ namespace MechDefenseHalo.Editor
         {
             var process = new Process();
             process.StartInfo.FileName = GetGodotExecutable();
-            process.StartInfo.Arguments = $"--headless --export-release \"{platform}\" {outputPath}";
+            process.StartInfo.Arguments = $"--headless --export-release \"{platform}\" \"{outputPath}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
@@ -100,7 +100,7 @@ namespace MechDefenseHalo.Editor
             
             var process = new Process();
             process.StartInfo.FileName = GetGodotExecutable();
-            process.StartInfo.Arguments = $"--headless {exportArg} \"Android\" {outputPath}";
+            process.StartInfo.Arguments = $"--headless {exportArg} \"Android\" \"{outputPath}\"";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
