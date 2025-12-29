@@ -1,0 +1,392 @@
+[
+  {
+    "item_id": "torso_mk1_common",
+    "display_name": "MK-I Combat Chassis",
+    "description": "Standard issue torso armor with basic shielding",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 75,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 150,
+      "Shield": 75
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.05
+    },
+    "tags": ["equipment", "mech_part", "torso"]
+  },
+  {
+    "item_id": "torso_reinforced_uncommon",
+    "display_name": "Reinforced Chassis Mk-II",
+    "description": "Enhanced armor plating with improved durability",
+    "rarity": "Uncommon",
+    "item_level": 5,
+    "sell_value": 250,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 300,
+      "Shield": 150
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.08,
+      "HealthRegen": 1
+    },
+    "tags": ["equipment", "mech_part", "torso"]
+  },
+  {
+    "item_id": "torso_assault_uncommon",
+    "display_name": "Assault Frame",
+    "description": "Balanced chassis for aggressive combat",
+    "rarity": "Uncommon",
+    "item_level": 8,
+    "sell_value": 300,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 280,
+      "Shield": 140
+    },
+    "secondary_stats": {
+      "Damage": 0.05,
+      "Speed": 0.03
+    },
+    "tags": ["equipment", "mech_part", "torso"]
+  },
+  {
+    "item_id": "torso_heavy_rare",
+    "display_name": "Heavy Duty Torso Plate",
+    "description": "Maximum protection at the cost of mobility",
+    "rarity": "Rare",
+    "item_level": 15,
+    "sell_value": 800,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 600,
+      "Shield": 250
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.15,
+      "ExplosiveResist": 0.10,
+      "Speed": -0.05
+    },
+    "tags": ["equipment", "mech_part", "torso", "heavy"]
+  },
+  {
+    "item_id": "torso_shield_rare",
+    "display_name": "Aegis Shield Core",
+    "description": "Energy-focused chassis with enhanced shielding",
+    "rarity": "Rare",
+    "item_level": 18,
+    "sell_value": 900,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 400,
+      "Shield": 400
+    },
+    "secondary_stats": {
+      "ShieldRegen": 3,
+      "EnergyResist": 0.12
+    },
+    "tags": ["equipment", "mech_part", "torso", "shield"]
+  },
+  {
+    "item_id": "torso_mobility_rare",
+    "display_name": "Scout Lightweight Frame",
+    "description": "Agile chassis sacrificing armor for speed",
+    "rarity": "Rare",
+    "item_level": 16,
+    "sell_value": 750,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 350,
+      "Shield": 175
+    },
+    "secondary_stats": {
+      "Speed": 0.15,
+      "Dodge": 0.08
+    },
+    "tags": ["equipment", "mech_part", "torso", "mobility"]
+  },
+  {
+    "item_id": "torso_juggernaut_epic",
+    "display_name": "Juggernaut Core Plating",
+    "description": "Massive defensive core for frontline assault",
+    "rarity": "Epic",
+    "item_level": 25,
+    "sell_value": 3500,
+    "part_type": "Torso",
+    "set_id": "juggernaut_bulwark",
+    "primary_stats": {
+      "HP": 1200,
+      "Shield": 500
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.20,
+      "ExplosiveResist": 0.15,
+      "AllResist": 0.10
+    },
+    "tags": ["equipment", "mech_part", "torso", "set"]
+  },
+  {
+    "item_id": "torso_inferno_epic",
+    "display_name": "Inferno Reactor Core",
+    "description": "Plasma-powered core radiating intense heat",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 3800,
+    "part_type": "Torso",
+    "set_id": "inferno_warlord",
+    "primary_stats": {
+      "HP": 800,
+      "Shield": 350
+    },
+    "secondary_stats": {
+      "FireResist": 0.30,
+      "FireDamage": 0.25,
+      "EnergyRegen": 2
+    },
+    "tags": ["equipment", "mech_part", "torso", "set", "fire"]
+  },
+  {
+    "item_id": "torso_cryo_epic",
+    "display_name": "Cryo-Core Chassis",
+    "description": "Subzero reactor for ice-based warfare",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 3800,
+    "part_type": "Torso",
+    "set_id": "cryo_guardian",
+    "primary_stats": {
+      "HP": 850,
+      "Shield": 380
+    },
+    "secondary_stats": {
+      "IceResist": 0.30,
+      "IceDamage": 0.25,
+      "HealthRegen": 4
+    },
+    "tags": ["equipment", "mech_part", "torso", "set", "ice"]
+  },
+  {
+    "item_id": "torso_volt_epic",
+    "display_name": "Volt Arc Reactor",
+    "description": "High-voltage core crackling with electricity",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 3800,
+    "part_type": "Torso",
+    "set_id": "volt_striker",
+    "primary_stats": {
+      "HP": 750,
+      "Shield": 400
+    },
+    "secondary_stats": {
+      "LightningResist": 0.30,
+      "LightningDamage": 0.25,
+      "Speed": 0.08
+    },
+    "tags": ["equipment", "mech_part", "torso", "set", "lightning"]
+  },
+  {
+    "item_id": "torso_phantom_epic",
+    "display_name": "Phantom Stealth Core",
+    "description": "Cloaking-enabled chassis for covert operations",
+    "rarity": "Epic",
+    "item_level": 28,
+    "sell_value": 4000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 650,
+      "Shield": 325
+    },
+    "secondary_stats": {
+      "Dodge": 0.15,
+      "Speed": 0.12,
+      "CritDamage": 0.20
+    },
+    "special_ability_id": "phantom_cloak",
+    "special_description": "Become invisible for 8 seconds (60s cooldown)",
+    "tags": ["equipment", "mech_part", "torso", "stealth"]
+  },
+  {
+    "item_id": "torso_titan_legendary",
+    "display_name": "Titan Fortress Core",
+    "description": "Legendary defensive core of unstoppable titans",
+    "rarity": "Legendary",
+    "item_level": 35,
+    "sell_value": 12000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 2000,
+      "Shield": 800
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.25,
+      "ExplosiveResist": 0.20,
+      "AllResist": 0.15,
+      "HealthRegen": 8
+    },
+    "special_ability_id": "titan_endurance",
+    "special_description": "Gain immunity to damage over time effects",
+    "tags": ["equipment", "mech_part", "torso", "legendary"]
+  },
+  {
+    "item_id": "torso_phoenix_legendary",
+    "display_name": "Phoenix Eternal Core",
+    "description": "Self-regenerating core that rises from ashes",
+    "rarity": "Legendary",
+    "item_level": 38,
+    "sell_value": 15000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 1500,
+      "Shield": 700
+    },
+    "secondary_stats": {
+      "FireResist": 0.50,
+      "HealthRegen": 12,
+      "ShieldRegen": 6
+    },
+    "special_ability_id": "eternal_flame",
+    "special_description": "Regenerate 2% max HP per second in combat",
+    "tags": ["equipment", "mech_part", "torso", "legendary", "fire"]
+  },
+  {
+    "item_id": "torso_void_exotic",
+    "display_name": "Void Singularity Core",
+    "description": "Core containing a miniature black hole",
+    "rarity": "Exotic",
+    "item_level": 45,
+    "sell_value": 40000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 2500,
+      "Shield": 1000
+    },
+    "secondary_stats": {
+      "AllResist": 0.25,
+      "Damage": 0.15,
+      "HealthRegen": 10,
+      "ShieldRegen": 8
+    },
+    "special_ability_id": "gravity_well",
+    "special_description": "Create gravity well pulling enemies in (90s cooldown)",
+    "tags": ["equipment", "mech_part", "torso", "exotic", "void"]
+  },
+  {
+    "item_id": "torso_sentinel_exotic",
+    "display_name": "Sentinel Prime Core",
+    "description": "Ancient guardian core with adaptive defenses",
+    "rarity": "Exotic",
+    "item_level": 48,
+    "sell_value": 45000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 3000,
+      "Shield": 1200
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.30,
+      "ExplosiveResist": 0.25,
+      "AllResist": 0.20
+    },
+    "special_ability_id": "adaptive_armor",
+    "special_description": "Adapt to incoming damage type, gaining 50% resistance",
+    "tags": ["equipment", "mech_part", "torso", "exotic"]
+  },
+  {
+    "item_id": "torso_berserker_epic",
+    "display_name": "Berserker War Core",
+    "description": "Rage-fueled core increasing power at low health",
+    "rarity": "Epic",
+    "item_level": 30,
+    "sell_value": 4200,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 900,
+      "Shield": 300
+    },
+    "secondary_stats": {
+      "Damage": 0.15,
+      "CritChance": 0.10
+    },
+    "special_ability_id": "berserker_rage",
+    "special_description": "Below 30% HP, gain 50% damage bonus",
+    "tags": ["equipment", "mech_part", "torso", "berserker"]
+  },
+  {
+    "item_id": "torso_support_epic",
+    "display_name": "Medical Support Frame",
+    "description": "Field medic chassis with built-in repair systems",
+    "rarity": "Epic",
+    "item_level": 32,
+    "sell_value": 4500,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 1000,
+      "Shield": 450
+    },
+    "secondary_stats": {
+      "HealthRegen": 6,
+      "ShieldRegen": 4,
+      "HealingPower": 0.25
+    },
+    "tags": ["equipment", "mech_part", "torso", "support"]
+  },
+  {
+    "item_id": "torso_engineer_rare",
+    "display_name": "Engineer Tech Frame",
+    "description": "Utility chassis with tool integration",
+    "rarity": "Rare",
+    "item_level": 20,
+    "sell_value": 1000,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 500,
+      "Shield": 250
+    },
+    "secondary_stats": {
+      "RepairSpeed": 0.20,
+      "CraftSpeed": 0.15,
+      "EnergyRegen": 3
+    },
+    "tags": ["equipment", "mech_part", "torso", "engineer"]
+  },
+  {
+    "item_id": "torso_sniper_rare",
+    "display_name": "Marksman Stabilizer Core",
+    "description": "Precision chassis with weapon stabilization",
+    "rarity": "Rare",
+    "item_level": 22,
+    "sell_value": 1100,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 450,
+      "Shield": 225
+    },
+    "secondary_stats": {
+      "Accuracy": 0.30,
+      "CritDamage": 0.25,
+      "Recoil": -0.40
+    },
+    "tags": ["equipment", "mech_part", "torso", "sniper"]
+  },
+  {
+    "item_id": "torso_balanced_uncommon",
+    "display_name": "Balanced Combat Frame",
+    "description": "Well-rounded chassis for versatile combat",
+    "rarity": "Uncommon",
+    "item_level": 12,
+    "sell_value": 350,
+    "part_type": "Torso",
+    "primary_stats": {
+      "HP": 380,
+      "Shield": 190
+    },
+    "secondary_stats": {
+      "AllResist": 0.05,
+      "Damage": 0.03
+    },
+    "tags": ["equipment", "mech_part", "torso"]
+  }
+]
