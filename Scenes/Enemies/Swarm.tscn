@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://swarm_enemy_001"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Swarm.cs" id="1_swarm"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" path="res://Components/DamageComponent.cs" id="3_damage"]
+[ext_resource type="Script" path="res://Components/MovementComponent.cs" id="4_movement"]
+[ext_resource type="Script" path="res://Scripts/Loot/LootDropComponent.cs" id="5_loot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swarm"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swarm"]
+albedo_color = Color(0.9, 0.9, 0.2, 1)
+metallic = 0.0
+roughness = 0.7
+emission_enabled = true
+emission = Color(0.9, 0.9, 0.2, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_swarm"]
+radius = 0.35
+height = 0.7
+
+[node name="Swarm" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_swarm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_swarm")
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="ModelMount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_swarm")
+surface_material_override/0 = SubResource("StandardMaterial3D_swarm")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+MaxHealth = 30.0
+RegenerationRate = 0.0
+RegenerationDelay = 3.0
+IsInvulnerable = false
+
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("3_damage")
+BaseDamage = 5.0
+ElementType = 0
+CanCrit = false
+CritChance = 0.15
+CritMultiplier = 2.0
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("4_movement")
+MaxSpeed = 6.0
+Acceleration = 25.0
+Deceleration = 20.0
+RotationSpeed = 7.0
+UseGravity = true
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
+
+[node name="LootDropComponent" type="Node" parent="."]
+script = ExtResource("5_loot")
+LootTableID = "basic_enemy"
+LuckModifier = 0.7
+AutoPickup = false
+DropRadius = 1.5
