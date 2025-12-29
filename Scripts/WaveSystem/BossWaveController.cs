@@ -42,13 +42,16 @@ namespace MechDefenseHalo.WaveSystem
 
         /// <summary>
         /// Spawn a boss wave with support enemies
+        /// Returns list of all spawned enemies for tracking
         /// </summary>
-        public void SpawnBossWave(int waveNumber, WaveDefinition waveDefinition)
+        public List<Node3D> SpawnBossWave(int waveNumber, WaveDefinition waveDefinition)
         {
+            var spawnedEnemies = new List<Node3D>();
+            
             if (waveDefinition == null || !waveDefinition.IsBossWave)
             {
                 GD.PrintErr("Invalid boss wave definition!");
-                return;
+                return spawnedEnemies;
             }
 
             string bossType = waveDefinition.BossType ?? GetBossForWave(waveNumber);
@@ -59,15 +62,18 @@ namespace MechDefenseHalo.WaveSystem
             if (_spawnedBoss == null)
             {
                 GD.PrintErr($"Failed to spawn boss: {bossType}");
-                return;
+                return spawnedEnemies;
             }
+
+            spawnedEnemies.Add(_spawnedBoss);
 
             // Spawn support enemies
             if (waveDefinition.SupportEnemies != null)
             {
                 foreach (var supportEnemy in waveDefinition.SupportEnemies)
                 {
-                    SpawnSupportEnemies(supportEnemy.EnemyType, supportEnemy.Count);
+                    var supportEnemyList = SpawnSupportEnemies(supportEnemy.EnemyType, supportEnemy.Count);
+                    spawnedEnemies.AddRange(supportEnemyList);
                 }
             }
 
@@ -85,7 +91,9 @@ namespace MechDefenseHalo.WaveSystem
                 WaveNumber = waveNumber
             });
 
-            GD.Print($"Boss wave {waveNumber} started: {bossType}");
+            GD.Print($"Boss wave {waveNumber} started: {bossType} with {spawnedEnemies.Count} total enemies");
+            
+            return spawnedEnemies;
         }
 
         /// <summary>
@@ -146,9 +154,12 @@ namespace MechDefenseHalo.WaveSystem
 
         /// <summary>
         /// Spawn support enemies during boss wave
+        /// Returns list of spawned enemies
         /// </summary>
-        private void SpawnSupportEnemies(string enemyType, int count)
+        private List<Node3D> SpawnSupportEnemies(string enemyType, int count)
         {
+            var spawnedEnemies = new List<Node3D>();
+            
             for (int i = 0; i < count; i++)
             {
                 Node3D enemy = CreateEnemy(enemyType);
@@ -172,9 +183,12 @@ namespace MechDefenseHalo.WaveSystem
                 enemy.GlobalPosition = spawnPos;
 
                 _supportEnemies.Add(enemy);
+                spawnedEnemies.Add(enemy);
             }
 
-            GD.Print($"Spawned {count} {enemyType} as support enemies");
+            GD.Print($"Spawned {spawnedEnemies.Count} {enemyType} as support enemies");
+            
+            return spawnedEnemies;
         }
 
         /// <summary>
@@ -182,7 +196,7 @@ namespace MechDefenseHalo.WaveSystem
         /// </summary>
         private Node3D CreateEnemy(string enemyType)
         {
-            return enemyType switch
+            Node3D enemy = enemyType switch
             {
                 "Grunt" => new Grunt(),
                 "Shooter" => new Shooter(),
@@ -191,6 +205,14 @@ namespace MechDefenseHalo.WaveSystem
                 "Flyer" => new Flyer(),
                 _ => null
             };
+
+            // Validate that enemy is an EnemyBase for proper functionality
+            if (enemy != null && enemy is not EnemyBase)
+            {
+                GD.PrintErr($"Enemy type {enemyType} does not inherit from EnemyBase!");
+            }
+
+            return enemy;
         }
 
         /// <summary>

@@ -161,25 +161,29 @@ namespace MechDefenseHalo.WaveSystem
             // Get wave definition
             WaveDefinition waveDef = LoadWaveDefinition(CurrentWave);
 
+            int totalEnemies = 0;
+            bool isBossWave = waveDef.IsBossWave || CurrentWave % 10 == 0;
+
             // Check if this is a boss wave
-            if (waveDef.IsBossWave || CurrentWave % 10 == 0)
+            if (isBossWave)
             {
-                SpawnBossWave(waveDef);
+                totalEnemies = SpawnBossWave(waveDef);
             }
             else
             {
                 SpawnNormalWave(waveDef);
+                totalEnemies = _spawnQueue.Count;
             }
 
             // Emit wave started event
             EventBus.Emit(EventBus.WaveStarted, new WaveStartedEventData
             {
                 WaveNumber = CurrentWave,
-                TotalEnemies = _spawnQueue.Count,
-                IsBossWave = waveDef.IsBossWave
+                TotalEnemies = totalEnemies,
+                IsBossWave = isBossWave
             });
 
-            GD.Print($"Wave {CurrentWave} started! Enemies: {_spawnQueue.Count}");
+            GD.Print($"Wave {CurrentWave} started! Enemies: {totalEnemies}");
         }
 
         /// <summary>
@@ -441,11 +445,22 @@ namespace MechDefenseHalo.WaveSystem
 
         /// <summary>
         /// Spawn a boss wave
+        /// Returns the total number of enemies (boss + support)
         /// </summary>
-        private void SpawnBossWave(WaveDefinition def)
+        private int SpawnBossWave(WaveDefinition def)
         {
             _spawnQueue.Clear();
-            _bossWaveController.SpawnBossWave(CurrentWave, def);
+            
+            // Get boss and support enemies from boss wave controller
+            var bossEnemies = _bossWaveController.SpawnBossWave(CurrentWave, def);
+            
+            // Track all boss wave enemies
+            foreach (var enemy in bossEnemies)
+            {
+                _activeEnemies.Add(enemy);
+            }
+            
+            return bossEnemies.Count;
         }
 
         /// <summary>
@@ -488,7 +503,7 @@ namespace MechDefenseHalo.WaveSystem
         /// </summary>
         private Node3D CreateEnemy(string enemyType)
         {
-            return enemyType switch
+            Node3D enemy = enemyType switch
             {
                 "Grunt" => new Grunt(),
                 "Shooter" => new Shooter(),
@@ -497,6 +512,14 @@ namespace MechDefenseHalo.WaveSystem
                 "Flyer" => new Flyer(),
                 _ => null
             };
+
+            // Validate that enemy is an EnemyBase for proper functionality
+            if (enemy != null && enemy is not EnemyBase)
+            {
+                GD.PrintErr($"Enemy type {enemyType} does not inherit from EnemyBase! Difficulty scaling will not work.");
+            }
+
+            return enemy;
         }
 
         /// <summary>
