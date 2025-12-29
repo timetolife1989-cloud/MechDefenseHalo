@@ -168,12 +168,11 @@ namespace MechDefenseHalo.VFX
 
                 // Reparent to VFXContainer - the VFXManager's timer will handle pool return
                 // Don't use QueueFree as it destroys the pooled instance
-                if (VFXManager.Instance != null)
+                if (VFXManager.Instance != null && VFXManager.Instance.VFXContainer != null)
                 {
-                    var vfxContainer = VFXManager.Instance.GetNode<Node3D>("VFXContainer");
-                    if (vfxContainer != null && Node.IsInstanceValid(vfxContainer))
+                    if (Node.IsInstanceValid(VFXManager.Instance.VFXContainer))
                     {
-                        effectNode.Reparent(vfxContainer);
+                        effectNode.Reparent(VFXManager.Instance.VFXContainer);
                     }
                 }
             }

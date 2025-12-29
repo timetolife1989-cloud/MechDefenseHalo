@@ -30,9 +30,27 @@ namespace MechDefenseHalo.VFX
     /// </summary>
     public partial class VFXManager : Node
     {
+        #region Constants
+
+        /// <summary>
+        /// Name of the container node for all VFX effects.
+        /// </summary>
+        public const string VFXContainerNodeName = "VFXContainer";
+
+        #endregion
+
         #region Singleton
 
         public static VFXManager Instance { get; private set; }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Get the VFX container node that holds all pooled effects.
+        /// </summary>
+        public Node3D VFXContainer => _effectsContainer;
 
         #endregion
 
@@ -59,7 +77,7 @@ namespace MechDefenseHalo.VFX
             Instance = this;
             
             // Create container for all effects
-            _effectsContainer = new Node3D { Name = "VFXContainer" };
+            _effectsContainer = new Node3D { Name = VFXContainerNodeName };
             AddChild(_effectsContainer);
 
             // Load VFX library
@@ -147,9 +165,9 @@ namespace MechDefenseHalo.VFX
         /// </summary>
         /// <param name="effectName">Name of the effect from VFXLibrary</param>
         /// <param name="parent">Parent node to attach effect to</param>
-        /// <param name="localOffset">Local position offset from parent</param>
+        /// <param name="localOffset">Local position offset from parent (defaults to Vector3.Zero)</param>
         /// <returns>The spawned effect node, or null if failed</returns>
-        public Node3D PlayEffectAttached(string effectName, Node3D parent, Vector3 localOffset)
+        public Node3D PlayEffectAttached(string effectName, Node3D parent, Vector3? localOffset = null)
         {
             if (!_library.HasEffect(effectName))
             {
@@ -181,7 +199,7 @@ namespace MechDefenseHalo.VFX
 
             // Attach to parent
             parent.AddChild(effect);
-            effect.Position = localOffset;
+            effect.Position = localOffset ?? Vector3.Zero;
 
             // Restart particle emission
             if (effect is GpuParticles3D particles)
