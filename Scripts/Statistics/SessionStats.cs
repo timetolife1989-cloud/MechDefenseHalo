@@ -40,18 +40,27 @@ namespace MechDefenseHalo.Statistics
             }
 
             // Update daily login streak
-            if (LastLoginDate.Date < now.Date)
+            if (LastLoginDate == DateTime.MinValue)
+            {
+                // First time login
+                DailyLoginStreak = 1;
+                LastLoginDate = now;
+            }
+            else if (LastLoginDate.Date < now.Date)
             {
                 if ((now.Date - LastLoginDate.Date).Days == 1)
                 {
+                    // Consecutive day
                     DailyLoginStreak++;
                 }
                 else if ((now.Date - LastLoginDate.Date).Days > 1)
                 {
+                    // Streak broken
                     DailyLoginStreak = 1;
                 }
                 LastLoginDate = now;
             }
+            // else: Same day login, no change to streak
         }
 
         public void UpdateSession(float deltaTime)

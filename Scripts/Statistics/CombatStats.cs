@@ -31,7 +31,8 @@ namespace MechDefenseHalo.Statistics
         
         // Records
         public int HighestWaveReached { get; set; } = 0;
-        public float FastestBossKill { get; set; } = float.MaxValue;
+        public const float NO_BOSS_KILL_RECORDED = float.MaxValue;
+        public float FastestBossKill { get; set; } = NO_BOSS_KILL_RECORDED;
         public int LongestKillStreak { get; set; } = 0;
 
         // Helper methods

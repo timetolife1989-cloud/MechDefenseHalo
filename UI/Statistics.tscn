@@ -199,3 +199,4 @@ text = "Close"
 
 [connection signal="pressed" from="Background/ButtonBar/RefreshButton" to="." method="RefreshDisplay"]
 [connection signal="pressed" from="Background/ButtonBar/ExportButton" to="." method="OnExportButtonPressed"]
+[connection signal="pressed" from="Background/ButtonBar/CloseButton" to="." method="OnCloseButtonPressed"]

@@ -58,6 +58,15 @@ namespace MechDefenseHalo.Statistics
         #region Public Methods
 
         /// <summary>
+        /// Close button handler
+        /// </summary>
+        public void OnCloseButtonPressed()
+        {
+            // Hide the statistics UI
+            Visible = false;
+        }
+
+        /// <summary>
         /// Refresh all statistics displays
         /// </summary>
         public void RefreshDisplay()
@@ -96,11 +105,11 @@ namespace MechDefenseHalo.Statistics
 
         private void InitializeNodes()
         {
-            _tabContainer = GetNodeOrNull<TabContainer>("TabContainer");
+            _tabContainer = GetNodeOrNull<TabContainer>("Background/TabContainer");
             
             if (_tabContainer == null)
             {
-                GD.PrintErr("TabContainer not found in StatisticsUI");
+                GD.PrintErr("TabContainer not found in StatisticsUI at path: Background/TabContainer");
                 return;
             }
 
@@ -262,7 +271,7 @@ namespace MechDefenseHalo.Statistics
 
             if (_fastestBossLabel != null)
             {
-                string fastestBoss = combat.FastestBossKill == float.MaxValue 
+                string fastestBoss = combat.FastestBossKill == CombatStats.NO_BOSS_KILL_RECORDED 
                     ? "N/A" 
                     : FormatTime(combat.FastestBossKill);
                 _fastestBossLabel.Text = $"Fastest Boss Kill: {fastestBoss}";
