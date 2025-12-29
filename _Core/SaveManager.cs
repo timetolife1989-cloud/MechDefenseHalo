@@ -367,12 +367,7 @@ namespace MechDefenseHalo.Core
             var inventoryManager = InventoryManager.Instance;
             if (inventoryManager != null)
             {
-                // TODO: Call inventoryManager.GetSaveData() when implemented
-                return CurrentSaveData?.Inventory ?? new InventorySaveData
-                {
-                    MaxSlots = inventoryManager.MaxSlots,
-                    Items = new List<ItemSaveData>()
-                };
+                return inventoryManager.GetSaveData();
             }
 
             return CurrentSaveData?.Inventory ?? new InventorySaveData
@@ -384,7 +379,12 @@ namespace MechDefenseHalo.Core
 
         private EquipmentSaveData CollectEquipmentData()
         {
-            // TODO: Get from EquipmentManager when GetSaveData is implemented
+            var equipmentManager = EquipmentManager.Instance;
+            if (equipmentManager != null)
+            {
+                return equipmentManager.GetSaveData();
+            }
+
             return CurrentSaveData?.Equipment ?? new EquipmentSaveData
             {
                 EquippedItems = new Dictionary<string, string>(),
@@ -398,11 +398,7 @@ namespace MechDefenseHalo.Core
             var currencyManager = CurrencyManager.Instance;
             if (currencyManager != null)
             {
-                return new CurrencySaveData
-                {
-                    Credits = currencyManager.Credits,
-                    Cores = currencyManager.Cores
-                };
+                return CurrencyManager.GetSaveData();
             }
 
             return CurrentSaveData?.Currency ?? new CurrencySaveData
@@ -481,27 +477,24 @@ namespace MechDefenseHalo.Core
                 var inventoryManager = InventoryManager.Instance;
                 if (inventoryManager != null)
                 {
-                    // TODO: Call inventoryManager.LoadFromSave() when implemented
+                    inventoryManager.LoadFromSave(data.Inventory);
                 }
             }
 
             // Apply equipment data
             if (data.Equipment != null)
             {
-                // TODO: Apply to EquipmentManager when LoadFromSave is implemented
+                var equipmentManager = EquipmentManager.Instance;
+                if (equipmentManager != null)
+                {
+                    equipmentManager.LoadFromSave(data.Equipment);
+                }
             }
 
             // Apply currency data
             if (data.Currency != null)
             {
-                var currencyManager = CurrencyManager.Instance;
-                if (currencyManager != null)
-                {
-                    // TODO: Call currencyManager.LoadFromSave() when implemented
-                    // For now, we need to add these currencies
-                    currencyManager.AddCredits(data.Currency.Credits);
-                    currencyManager.AddCores(data.Currency.Cores);
-                }
+                CurrencyManager.LoadFromSave(data.Currency);
             }
 
             // Apply game state

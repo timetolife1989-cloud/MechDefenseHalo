@@ -251,6 +251,43 @@ namespace MechDefenseHalo.Economy
 
         #endregion
 
+        #region Public Methods - Save/Load
+
+        /// <summary>
+        /// Get currency data for saving
+        /// </summary>
+        /// <returns>Currency save data</returns>
+        public static SaveSystem.CurrencySaveData GetSaveData()
+        {
+            if (Instance == null)
+            {
+                return new SaveSystem.CurrencySaveData { Credits = 0, Cores = 0 };
+            }
+
+            return new SaveSystem.CurrencySaveData
+            {
+                Credits = Instance._credits,
+                Cores = Instance._cores
+            };
+        }
+
+        /// <summary>
+        /// Load currency data from save
+        /// </summary>
+        /// <param name="saveData">Currency save data</param>
+        public static void LoadFromSave(SaveSystem.CurrencySaveData saveData)
+        {
+            if (Instance == null || saveData == null) return;
+
+            Instance._credits = Mathf.Max(0, saveData.Credits);
+            Instance._cores = Mathf.Max(0, saveData.Cores);
+            
+            Instance.EmitCurrencyChanged("both", 0, 0);
+            GD.Print($"Currency loaded from save: {Instance._credits} credits, {Instance._cores} cores");
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void EmitCurrencyChanged(string currencyType, int change, int newTotal)
