@@ -13,7 +13,7 @@ namespace MechDefenseHalo.Drones
 
         [Export] public float EMPRange { get; set; } = 10f;
         [Export] public float SlowAmount { get; set; } = 0.5f; // 50% slow
-        [Export] public float PulseInterval { get; set; } = 2f; // Seconds between pulses
+        [Export] public float PulseInterval { get; set; } = 3f; // Seconds between pulses
 
         #endregion
 
