@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Economy;
 using MechDefenseHalo.Items;
+using MechDefenseHalo.Components;
+using MechDefenseHalo.Enemies.Bosses;
+using MechDefenseHalo.GamePlay;
+using MechDefenseHalo.Shop;
+using MechDefenseHalo.Crafting;
 
 namespace MechDefenseHalo.Statistics
 {
@@ -164,7 +169,7 @@ namespace MechDefenseHalo.Statistics
             // Combat events
             EventBus.On(EventBus.EntityDied, OnEntityDied);
             EventBus.On(EventBus.PlayerDied, OnPlayerDied);
-            EventBus.On(EventBus.DamageDealt, OnDamageDealt);
+            EventBus.On(EventBus.HealthChanged, OnDamageDealt);
             EventBus.On(EventBus.WeaponFired, OnWeaponFired);
             
             // Boss events
@@ -196,7 +201,7 @@ namespace MechDefenseHalo.Statistics
         {
             EventBus.Off(EventBus.EntityDied, OnEntityDied);
             EventBus.Off(EventBus.PlayerDied, OnPlayerDied);
-            EventBus.Off(EventBus.DamageDealt, OnDamageDealt);
+            EventBus.Off(EventBus.HealthChanged, OnDamageDealt);
             EventBus.Off(EventBus.WeaponFired, OnWeaponFired);
             EventBus.Off(EventBus.BossSpawned, OnBossSpawned);
             EventBus.Off(EventBus.BossDefeated, OnBossDefeated);
@@ -225,15 +230,8 @@ namespace MechDefenseHalo.Statistics
                     string weaponType = null;
                     bool isDroneKill = false;
 
-                    // Try to determine weapon type from killer
-                    if (diedData.Killer != null)
-                    {
-                        if (diedData.Killer.IsInGroup("drones"))
-                        {
-                            isDroneKill = true;
-                        }
-                        weaponType = diedData.Killer.Name;
-                    }
+                    // Note: Weapon type tracking would require additional data in EntityDiedData
+                    // For now, we track kills by enemy type only
 
                     Combat.RecordKill(enemyType, weaponType, isDroneKill);
                     Session.CurrentSessionKills++;
@@ -256,17 +254,17 @@ namespace MechDefenseHalo.Statistics
 
         private void OnDamageDealt(object data)
         {
-            if (data is DamageData damageData)
+            if (data is HealthChangedData healthData)
             {
-                // Track damage dealt by player
-                if (damageData.Attacker != null && damageData.Attacker.IsInGroup("player"))
+                // Track damage dealt TO enemies (player dealt damage)
+                if (healthData.Entity != null && healthData.Entity.IsInGroup("enemies") && healthData.DamageAmount > 0)
                 {
-                    Combat.TotalDamageDealt += (long)damageData.Amount;
+                    Combat.TotalDamageDealt += (long)healthData.DamageAmount;
                 }
                 // Track damage taken by player
-                else if (damageData.Victim != null && damageData.Victim.IsInGroup("player"))
+                else if (healthData.Entity != null && healthData.Entity.IsInGroup("player") && healthData.DamageAmount > 0)
                 {
-                    Combat.TotalDamageTaken += (long)damageData.Amount;
+                    Combat.TotalDamageTaken += (long)healthData.DamageAmount;
                 }
             }
         }
@@ -362,9 +360,9 @@ namespace MechDefenseHalo.Statistics
         {
             Economy.ShopPurchases++;
             
-            if (data is ItemPurchaseData purchaseData)
+            if (data is ItemPurchasedData purchaseData)
             {
-                Economy.TotalSpentInShop += purchaseData.Price;
+                Economy.TotalSpentInShop += purchaseData.PriceCredits + purchaseData.PriceCores;
             }
         }
 
@@ -376,10 +374,8 @@ namespace MechDefenseHalo.Statistics
         {
             Economy.ItemsLooted++;
             
-            if (data is LootPickedUpData lootData && lootData.Item != null)
-            {
-                Economy.RecordItemObtained(lootData.Item.Rarity);
-            }
+            // Note: LootPickedUp event may need enhancement to pass ItemBase data
+            // For now, increment looted count
         }
 
         private void OnChestOpened(object data)
@@ -395,9 +391,10 @@ namespace MechDefenseHalo.Statistics
         {
             Economy.ItemsCrafted++;
             
-            if (data is CraftCompletedData craftData && craftData.Item != null)
+            if (data is CraftEventData craftData)
             {
-                Economy.RecordItemObtained(craftData.Item.Rarity);
+                // Note: May need ItemDatabase lookup to get item rarity from ResultItemID
+                // For now, just increment crafted count
             }
         }
 
@@ -424,59 +421,12 @@ namespace MechDefenseHalo.Statistics
         #endregion
     }
 
-    #region Data Structures
-
-    /// <summary>
-    /// Data for entity died event
-    /// </summary>
-    public class EntityDiedData
-    {
-        public Node3D Entity { get; set; }
-        public Node3D Killer { get; set; }
-    }
-
-    /// <summary>
-    /// Data for damage event
-    /// </summary>
-    public class DamageData
-    {
-        public Node Attacker { get; set; }
-        public Node Victim { get; set; }
-        public float Amount { get; set; }
-    }
-
-    /// <summary>
-    /// Data for wave completed event
-    /// </summary>
-    public class WaveCompletedData
-    {
-        public int WaveNumber { get; set; }
-    }
-
-    /// <summary>
-    /// Data for item purchase event
-    /// </summary>
-    public class ItemPurchaseData
-    {
-        public ItemBase Item { get; set; }
-        public int Price { get; set; }
-    }
-
-    /// <summary>
-    /// Data for loot picked up event
-    /// </summary>
-    public class LootPickedUpData
-    {
-        public ItemBase Item { get; set; }
-    }
-
-    /// <summary>
-    /// Data for craft completed event
-    /// </summary>
-    public class CraftCompletedData
-    {
-        public ItemBase Item { get; set; }
-    }
-
-    #endregion
+    // Note: Event data structures are defined in their respective component files:
+    // - EntityDiedData: Components/HealthComponent.cs
+    // - HealthChangedData: Components/HealthComponent.cs
+    // - WaveCompletedData: Scripts/GamePlay/WaveSpawner.cs
+    // - BossDefeatedData: Scripts/Enemies/Bosses/BossBase.cs
+    // - ItemPurchasedData: Scripts/Shop/ShopManager.cs
+    // - CraftEventData: Scripts/Crafting/CraftingManager.cs
+    // - CurrencyChangedData: Scripts/Economy/CurrencyManager.cs
 }
