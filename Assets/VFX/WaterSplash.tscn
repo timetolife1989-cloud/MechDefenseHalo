@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://water_splash_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_water"]
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 1, 0)
+spread = 50.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -9.8, 0)
+scale_min = 0.3
+scale_max = 0.6
+color = Color(0.3, 0.5, 0.9, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_water"]
+size = Vector2(0.1, 0.1)
+
+[node name="WaterSplash" type="GpuParticles3D"]
+amount = 32
+lifetime = 1.0
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_water")
+draw_pass_1 = SubResource("QuadMesh_water")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://hit_metal_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_metal"]
+emission_shape = 1
+emission_sphere_radius = 0.12
+direction = Vector3(0, 1, 0)
+spread = 50.0
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, -9.8, 0)
+scale_min = 0.4
+scale_max = 0.7
+color = Color(0.8, 0.8, 0.9, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_metal"]
+size = Vector2(0.1, 0.1)
+
+[node name="HitMetal" type="GpuParticles3D"]
+amount = 28
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_metal")
+draw_pass_1 = SubResource("QuadMesh_metal")

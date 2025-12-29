@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://explosion_energy_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_explosion_energy"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -3, 0)
+scale_min = 0.6
+scale_max = 1.2
+color = Color(0.4, 0.7, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_explosion_energy"]
+size = Vector2(0.18, 0.18)
+
+[node name="ExplosionEnergy" type="GpuParticles3D"]
+amount = 40
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_explosion_energy")
+draw_pass_1 = SubResource("QuadMesh_explosion_energy")

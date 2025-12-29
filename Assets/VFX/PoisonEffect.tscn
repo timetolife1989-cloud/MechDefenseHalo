@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://poison_effect_001"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_poison"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 1.5, 0)
+scale_min = 0.4
+scale_max = 0.7
+color = Color(0.2, 0.8, 0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_poison"]
+size = Vector2(0.1, 0.1)
+
+[node name="PoisonEffect" type="GpuParticles3D"]
+amount = 32
+lifetime = 1.2
+one_shot = false
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_poison")
+draw_pass_1 = SubResource("QuadMesh_poison")
