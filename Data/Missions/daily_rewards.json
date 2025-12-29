@@ -1,0 +1,46 @@
+{
+  "daily_rewards": {
+    "easy": {
+      "credits_range": [200, 300],
+      "xp_range": [100, 150],
+      "cores_range": [0, 0]
+    },
+    "medium": {
+      "credits_range": [400, 600],
+      "xp_range": [200, 300],
+      "cores_range": [10, 20]
+    },
+    "hard": {
+      "credits_range": [800, 1200],
+      "xp_range": [400, 600],
+      "cores_range": [30, 60]
+    }
+  },
+  "bonus_multipliers": {
+    "all_completed": 1.5,
+    "weekend": 1.25,
+    "special_event": 2.0
+  },
+  "streak_rewards": {
+    "3_days": {
+      "Credits": 500,
+      "Cores": 25,
+      "XP": 250
+    },
+    "7_days": {
+      "Credits": 1000,
+      "Cores": 50,
+      "XP": 500
+    },
+    "14_days": {
+      "Credits": 2000,
+      "Cores": 100,
+      "XP": 1000
+    },
+    "30_days": {
+      "Credits": 5000,
+      "Cores": 250,
+      "XP": 2500
+    }
+  }
+}

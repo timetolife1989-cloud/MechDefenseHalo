@@ -1,0 +1,25 @@
+{
+  "currentVersion": "1.0.0",
+  "minimumSupportedVersion": "1.0.0",
+  "versionHistory": [
+    {
+      "version": "1.0.0",
+      "releaseDate": "2025-01-01",
+      "changes": [
+        "Initial save system implementation",
+        "Player progression tracking",
+        "Inventory and equipment persistence",
+        "Currency management",
+        "Statistics tracking",
+        "Settings persistence"
+      ],
+      "breakingChanges": false
+    }
+  ],
+  "migrationPaths": {
+    "1.0.0": {
+      "canMigrateFrom": [],
+      "notes": "Initial version - no migrations available"
+    }
+  }
+}

@@ -222,10 +222,10 @@ namespace MechDefenseHalo.Core
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
         
-        // Settings Events
-        public const string SettingsSaved = "settings_saved";
-        public const string SettingsApplied = "settings_applied";
-        public const string SettingsReset = "settings_reset";
+        // Save System Events
+        public const string GameSaved = "game_saved";
+        public const string GameLoaded = "game_loaded";
+        public const string AutoSaveTriggered = "auto_save_notification";
 
         #endregion
     }
