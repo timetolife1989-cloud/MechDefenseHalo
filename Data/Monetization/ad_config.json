@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "description": "Ethical Victory Monetization System Configuration",
+  "ad_limits": {
+    "max_ads_per_day": 5,
+    "ad_cooldown_seconds": 300,
+    "min_time_between_same_type": 600
+  },
+  "reward_multipliers": {
+    "victory_bonus_credit_multiplier": 2.0,
+    "victory_bonus_core_multiplier": 2.0,
+    "milestone_bonus_credit_multiplier": 2.5,
+    "daily_login_multiplier": 3.0
+  },
+  "milestone_config": {
+    "wave_interval": 5,
+    "base_chest_items": 3,
+    "bonus_chest_items": 5,
+    "base_credits": 200,
+    "bonus_credits": 500
+  },
+  "daily_login_rewards": [100, 150, 200, 300, 500, 750, 1000],
+  "day_7_bonus": {
+    "cores": 50,
+    "special_message": "Week Complete! Here's a bonus!"
+  },
+  "ad_networks": {
+    "primary": "AdMob",
+    "fallback": ["Unity Ads", "IronSource"],
+    "test_mode": true
+  },
+  "compliance": {
+    "coppa_age_limit": 16,
+    "gdpr_regions": ["EU", "UK", "EEA"],
+    "requires_explicit_consent": true,
+    "data_retention_days": 90
+  },
+  "analytics": {
+    "enabled": true,
+    "ecpm_target_usd": 10.0,
+    "track_conversion_rates": true,
+    "track_retention": true,
+    "anonymous_mode": false
+  },
+  "ui_settings": {
+    "ad_duration_display": 30,
+    "show_countdown_timer": true,
+    "allow_skip_after_seconds": 5,
+    "celebration_effects_enabled": true
+  },
+  "feature_flags": {
+    "victory_bonus_enabled": true,
+    "milestone_rewards_enabled": true,
+    "daily_login_enabled": true,
+    "consent_flow_enabled": true,
+    "analytics_enabled": true
+  }
+}
