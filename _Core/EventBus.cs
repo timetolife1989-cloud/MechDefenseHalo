@@ -230,6 +230,14 @@ namespace MechDefenseHalo.Core
         public const string GameLoaded = "game_loaded";
         public const string AutoSaveTriggered = "auto_save_notification";
 
+        // Progression Events
+        public const string XPGained = "xp_gained";
+        public const string PlayerLeveledUp = "player_leveled_up";
+        public const string LevelRewardGranted = "level_reward_granted";
+        public const string FeatureUnlocked = "feature_unlocked";
+        public const string LegendaryItemReward = "legendary_item_reward";
+        public const string PlayerPrestiged = "player_prestiged";
+
         #endregion
     }
 }

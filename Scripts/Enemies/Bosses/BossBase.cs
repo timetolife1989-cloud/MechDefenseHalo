@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Components;
+using MechDefenseHalo.Progression;
 
 namespace MechDefenseHalo.Enemies.Bosses
 {
@@ -15,6 +16,7 @@ namespace MechDefenseHalo.Enemies.Bosses
         #region Exported Properties
 
         [Export] public int PhaseCount { get; set; } = 3;
+        [Export] public int BossTier { get; set; } = 1;
         [Export] public bool HasWeakPoints { get; set; } = true;
 
         #endregion
@@ -97,6 +99,10 @@ namespace MechDefenseHalo.Enemies.Bosses
 
         protected override void OnDeath()
         {
+            // Grant XP for boss defeat (500 XP * boss tier)
+            int xpAmount = 500 * BossTier;
+            PlayerLevel.AddXP(xpAmount, $"{EnemyName} (Boss) defeat");
+
             EventBus.Emit(EventBus.BossDefeated, new BossDefeatedData
             {
                 Boss = this,

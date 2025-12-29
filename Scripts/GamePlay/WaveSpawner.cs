@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Enemies;
+using MechDefenseHalo.Progression;
 
 namespace MechDefenseHalo.GamePlay
 {
@@ -293,6 +294,10 @@ namespace MechDefenseHalo.GamePlay
         {
             IsWaveActive = false;
             _waveTimer = TimeBetweenWaves;
+
+            // Grant XP for wave completion (100 XP * wave number)
+            int xpAmount = 100 * CurrentWave;
+            PlayerLevel.AddXP(xpAmount, $"Wave {CurrentWave} completion");
 
             EventBus.Emit(EventBus.WaveCompleted, new WaveCompletedData
             {

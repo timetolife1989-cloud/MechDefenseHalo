@@ -1,0 +1,33 @@
+{
+  "description": "XP curve for player progression system",
+  "levels": {
+    "1_to_10": {
+      "description": "Linear progression",
+      "xp_per_level": 100,
+      "total_xp": 900
+    },
+    "11_to_30": {
+      "description": "Exponential 1.15x multiplier",
+      "base_xp": 100,
+      "multiplier": 1.15,
+      "total_xp": 23664
+    },
+    "31_to_60": {
+      "description": "Exponential 1.20x multiplier",
+      "multiplier": 1.20,
+      "total_xp": 382891
+    },
+    "61_to_100": {
+      "description": "Exponential 1.25x multiplier",
+      "multiplier": 1.25,
+      "total_xp": 2440045
+    }
+  },
+  "total_xp_to_level_100": 2847500,
+  "notes": [
+    "XP requirements are calculated programmatically in XPCurve.cs",
+    "This file serves as documentation of the curve design",
+    "Estimated time: 1-2 hours per 10 levels in early game",
+    "Level 100 achievable in ~80-120 hours of gameplay"
+  ]
+}

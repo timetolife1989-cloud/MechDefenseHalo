@@ -1,0 +1,73 @@
+{
+  "description": "Level rewards configuration",
+  "every_level": {
+    "credits": 100,
+    "cores": 5,
+    "description": "Base reward for every level up"
+  },
+  "every_5_levels": {
+    "inventory_slots": 10,
+    "cores_bonus": 25,
+    "description": "Additional rewards every 5 levels (at 5, 10, 15, 20, etc.)"
+  },
+  "milestones": {
+    "10": {
+      "unlock": "second_weapon_slot",
+      "description": "Second Weapon Slot Unlocked",
+      "icon": "weapon_slot"
+    },
+    "20": {
+      "unlock": "third_drone_slot",
+      "description": "Third Drone Slot Unlocked",
+      "icon": "drone_slot"
+    },
+    "30": {
+      "unlock": "crafting_speed_boost_10%",
+      "description": "Crafting Speed +10%",
+      "icon": "crafting_boost"
+    },
+    "50": {
+      "unlock": "fourth_weapon_slot",
+      "cores": 500,
+      "description": "Fourth Weapon Slot + 500 Cores",
+      "icon": "epic_reward"
+    },
+    "100": {
+      "unlock": "prestige_system",
+      "legendary_item": 1,
+      "description": "Prestige System + Legendary Item",
+      "icon": "prestige"
+    }
+  },
+  "xp_sources": {
+    "enemy_kill": {
+      "base_xp": 10,
+      "multiplier": "enemy_level",
+      "description": "XP = 10 * enemy level"
+    },
+    "wave_complete": {
+      "base_xp": 100,
+      "multiplier": "wave_number",
+      "description": "XP = 100 * wave number"
+    },
+    "boss_defeat": {
+      "base_xp": 500,
+      "multiplier": "boss_tier",
+      "description": "XP = 500 * boss tier"
+    },
+    "achievement": {
+      "min_xp": 50,
+      "max_xp": 500,
+      "description": "Variable based on achievement difficulty"
+    },
+    "daily_mission": {
+      "min_xp": 100,
+      "max_xp": 300,
+      "description": "Variable based on mission complexity"
+    },
+    "crafting": {
+      "xp_per_item": 20,
+      "description": "20 XP per item crafted"
+    }
+  }
+}

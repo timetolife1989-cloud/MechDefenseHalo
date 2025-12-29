@@ -6,6 +6,7 @@ using MechDefenseHalo.Core;
 using MechDefenseHalo.Items;
 using MechDefenseHalo.Inventory;
 using MechDefenseHalo.Economy;
+using MechDefenseHalo.Progression;
 
 namespace MechDefenseHalo.Crafting
 {
@@ -208,6 +209,9 @@ namespace MechDefenseHalo.Crafting
             _activeJobs.Remove(job);
 
             GD.Print($"Craft completed: {job.Blueprint.DisplayName}");
+
+            // Grant XP for crafting (20 XP per item)
+            PlayerLevel.AddXP(20, "Crafting");
 
             EventBus.Emit(EventBus.CraftCompleted, new CraftEventData
             {
