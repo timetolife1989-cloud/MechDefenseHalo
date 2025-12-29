@@ -1,0 +1,85 @@
+[
+  {
+    "step": 1,
+    "title": "Welcome, Commander",
+    "description": "Use WASD to move around the training ground",
+    "objective_type": "distance_moved",
+    "objective_value": 10,
+    "highlight_keys": ["W", "A", "S", "D"],
+    "can_skip": false
+  },
+  {
+    "step": 2,
+    "title": "Combat Systems",
+    "description": "Click LEFT MOUSE to fire your weapon",
+    "objective_type": "shots_fired",
+    "objective_value": 10,
+    "highlight_ui": "crosshair"
+  },
+  {
+    "step": 3,
+    "title": "Eliminate Hostiles",
+    "description": "Destroy 3 training dummies",
+    "objective_type": "enemy_kills",
+    "objective_value": 3,
+    "spawn_enemies": ["Grunt", "Grunt", "Grunt"],
+    "can_skip": false
+  },
+  {
+    "step": 4,
+    "title": "Loot Collection",
+    "description": "Walk over the dropped loot to collect it",
+    "objective_type": "items_collected",
+    "objective_value": 3
+  },
+  {
+    "step": 5,
+    "title": "Inventory Management",
+    "description": "Press I to open your inventory",
+    "objective_type": "ui_opened",
+    "objective_value": "inventory",
+    "highlight_keys": ["I"]
+  },
+  {
+    "step": 6,
+    "title": "Equipment Upgrade",
+    "description": "Right-click an item and select 'Equip'",
+    "objective_type": "item_equipped",
+    "objective_value": 1,
+    "highlight_ui": "inventory_grid"
+  },
+  {
+    "step": 7,
+    "title": "Drone Systems",
+    "description": "Press F to deploy an Attack Drone",
+    "objective_type": "drone_deployed",
+    "objective_value": 1,
+    "highlight_keys": ["F"],
+    "can_skip": false
+  },
+  {
+    "step": 8,
+    "title": "Wave Defense",
+    "description": "Survive Wave 1 using your new skills",
+    "objective_type": "wave_completed",
+    "objective_value": 1,
+    "spawn_wave": 1,
+    "can_skip": false
+  },
+  {
+    "step": 9,
+    "title": "Shop Access",
+    "description": "Press P to open the shop and browse items",
+    "objective_type": "ui_opened",
+    "objective_value": "shop",
+    "highlight_keys": ["P"]
+  },
+  {
+    "step": 10,
+    "title": "Crafting Basics",
+    "description": "Press C to open crafting and queue an item",
+    "objective_type": "craft_started",
+    "objective_value": 1,
+    "highlight_keys": ["C"]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "completion_rewards": {
+    "credits": 500,
+    "cores": 50,
+    "experience": 200,
+    "items": [
+      {
+        "item_id": "weapon_assault_rifle_mk1",
+        "quantity": 1
+      },
+      {
+        "item_id": "consumable_health_potion_small",
+        "quantity": 5
+      }
+    ]
+  },
+  "step_rewards": {
+    "1": {
+      "credits": 10
+    },
+    "3": {
+      "credits": 25
+    },
+    "5": {
+      "credits": 15
+    },
+    "7": {
+      "credits": 30
+    },
+    "8": {
+      "credits": 50
+    },
+    "10": {
+      "credits": 100
+    }
+  }
+}

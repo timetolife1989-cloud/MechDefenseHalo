@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://tutorial_dialog_scene"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial/TutorialDialog.cs" id="1_tutorial_dialog"]
+
+[node name="TutorialDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+script = ExtResource("1_tutorial_dialog")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 100.0
+offset_top = 20.0
+offset_right = -100.0
+offset_bottom = 180.0
+grow_horizontal = 2
+
+[node name="StepTitle" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Step 1: Welcome, Commander"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = -20.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Use WASD to move around the training ground"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 95.0
+offset_right = -20.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Objective: 0/10"
+horizontal_alignment = 1
+
+[node name="ObjectiveProgress" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 120.0
+offset_right = -50.0
+offset_bottom = 135.0
+grow_horizontal = 2
+max_value = 100.0
+show_percentage = false
+
+[node name="Buttons" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 140.0
+offset_right = -50.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SkipStep" type="Button" parent="Panel/Buttons"]
+layout_mode = 2
+text = "Skip Step"
+
+[node name="SkipTutorial" type="Button" parent="Panel/Buttons"]
+layout_mode = 2
+text = "Skip Tutorial"

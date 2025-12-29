@@ -169,6 +169,45 @@ namespace MechDefenseHalo.Core
 
             CurrentPlayerData = new PlayerData();
         }
+        
+        /// <summary>
+        /// Get a boolean value from player data
+        /// </summary>
+        /// <param name="key">Key to retrieve</param>
+        /// <returns>Boolean value</returns>
+        public static bool GetBool(string key)
+        {
+            if (Instance?.CurrentPlayerData == null) return false;
+            
+            return key switch
+            {
+                "tutorial_completed" => Instance.CurrentPlayerData.TutorialCompleted,
+                "is_first_launch" => Instance.CurrentPlayerData.IsFirstLaunch,
+                _ => false
+            };
+        }
+        
+        /// <summary>
+        /// Set a boolean value in player data
+        /// </summary>
+        /// <param name="key">Key to set</param>
+        /// <param name="value">Value to set</param>
+        public static void SetBool(string key, bool value)
+        {
+            if (Instance?.CurrentPlayerData == null) return;
+            
+            switch (key)
+            {
+                case "tutorial_completed":
+                    Instance.CurrentPlayerData.TutorialCompleted = value;
+                    break;
+                case "is_first_launch":
+                    Instance.CurrentPlayerData.IsFirstLaunch = value;
+                    break;
+            }
+            
+            Instance.SaveGame();
+        }
 
         #endregion
 
@@ -268,11 +307,11 @@ namespace MechDefenseHalo.Core
         public float MasterVolume { get; set; } = 1f;
         public float MusicVolume { get; set; } = 0.7f;
         public float SFXVolume { get; set; } = 1f;
-
-        // Daily Missions
-        public List<Mission> DailyMissions { get; set; } = new List<Mission>();
-        public string LastDailyReset { get; set; } = "";
-        public Dictionary<string, string> DateTimeStore { get; set; } = new Dictionary<string, string>();
+        
+        // Tutorial
+        public bool TutorialCompleted { get; set; } = false;
+        public bool IsFirstLaunch { get; set; } = true;
+        public int LastCompletedTutorialStep { get; set; } = 0;
     }
 
     #endregion

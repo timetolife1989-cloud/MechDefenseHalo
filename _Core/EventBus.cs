@@ -222,29 +222,12 @@ namespace MechDefenseHalo.Core
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
         
-        // Audio Events
-        public const string AudioSettingsChanged = "audio_settings_changed";
-        public const string SettingsChanged = "settings_changed";
-        public const string GameStateChanged = "game_state_changed";
-        public const string BossWaveStarted = "boss_wave_started";
-        
-        // UI Events
-        public const string ButtonClicked = "button_clicked";
-        
-        // Player Events
-        public const string PlayerLeveledUp = "player_leveled_up";
-        
-        // Achievement Events
-        public const string AchievementUnlocked = "achievement_unlocked";
-
-        // Daily Mission Events
-        public const string DailyMissionsRefreshed = "daily_missions_refreshed";
-        public const string MissionProgressUpdated = "mission_progress_updated";
-        public const string MissionCompleted = "mission_completed";
-        public const string MissionRewardClaimed = "mission_reward_claimed";
-        public const string EnemyKilled = "enemy_killed";
-        public const string ItemCrafted = "item_crafted";
-        public const string SurviveTimeTick = "survive_time_tick";
+        // Tutorial Events
+        public const string TutorialStarted = "tutorial_started";
+        public const string TutorialCompleted = "tutorial_completed";
+        public const string TutorialStopped = "tutorial_stopped";
+        public const string TutorialStepStarted = "tutorial_step_started";
+        public const string TutorialObjectiveComplete = "tutorial_objective_complete";
 
         #endregion
     }
