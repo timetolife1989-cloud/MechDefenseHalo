@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_grenade_launcher_tactical",
+  "display_name": "Tactical Grenade Launcher Blueprint",
+  "description": "Launches explosive grenades in an arc",
+  "result_item_id": "weapon_grenade_launcher_tactical",
+  "result_quantity": 1,
+  "craft_time_seconds": 480,
+  "rarity": "Rare",
+  "level_requirement": 16,
+  "currency_cost": {
+    "Credits": 2200,
+    "Cores": 0
+  },
+  "material_requirements": [
+    {"item_id": "material_alloy_plates", "quantity": 25},
+    {"item_id": "material_circuits", "quantity": 18},
+    {"item_id": "material_power_cells", "quantity": 12}
+  ],
+  "category": "Weapons",
+  "unlock_condition": "level_16"
+}

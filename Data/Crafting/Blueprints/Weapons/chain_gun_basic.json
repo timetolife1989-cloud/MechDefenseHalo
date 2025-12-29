@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_chain_gun_basic",
+  "display_name": "Chain Gun Blueprint",
+  "description": "Reliable automatic weapon for sustained fire",
+  "result_item_id": "weapon_chain_gun_basic",
+  "result_quantity": 1,
+  "craft_time_seconds": 90,
+  "rarity": "Common",
+  "level_requirement": 5,
+  "currency_cost": {
+    "Credits": 250,
+    "Cores": 0
+  },
+  "material_requirements": [
+    {"item_id": "material_scrap_metal", "quantity": 18},
+    {"item_id": "material_circuits", "quantity": 10},
+    {"item_id": "material_weapon_parts", "quantity": 2}
+  ],
+  "category": "Weapons",
+  "unlock_condition": "level_5"
+}

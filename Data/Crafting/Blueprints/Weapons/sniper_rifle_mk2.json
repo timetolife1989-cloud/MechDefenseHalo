@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_sniper_rifle_mk2",
+  "display_name": "Sniper Rifle Mk2 Blueprint",
+  "description": "Long-range precision weapon with high critical damage",
+  "result_item_id": "weapon_sniper_rifle_mk2",
+  "result_quantity": 1,
+  "craft_time_seconds": 240,
+  "rarity": "Uncommon",
+  "level_requirement": 10,
+  "currency_cost": {
+    "Credits": 800,
+    "Cores": 0
+  },
+  "material_requirements": [
+    {"item_id": "material_alloy_plates", "quantity": 15},
+    {"item_id": "material_circuits", "quantity": 12},
+    {"item_id": "material_weapon_parts", "quantity": 5}
+  ],
+  "category": "Weapons",
+  "unlock_condition": "level_10"
+}

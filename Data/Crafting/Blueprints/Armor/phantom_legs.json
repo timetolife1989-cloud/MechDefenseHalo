@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_phantom_legs",
+  "display_name": "Phantom Legs Blueprint",
+  "description": "High-speed mobility legs with silent operation",
+  "result_item_id": "legs_phantom_mk1",
+  "result_quantity": 1,
+  "craft_time_seconds": 1050,
+  "rarity": "Epic",
+  "level_requirement": 24,
+  "currency_cost": {
+    "Credits": 4800,
+    "Cores": 9
+  },
+  "material_requirements": [
+    {"item_id": "material_quantum_chips", "quantity": 9},
+    {"item_id": "material_power_cells", "quantity": 28},
+    {"item_id": "material_nanofibers", "quantity": 22}
+  ],
+  "category": "Armor",
+  "unlock_condition": "level_24"
+}

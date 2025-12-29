@@ -1,0 +1,31 @@
+{
+  "set_id": "sentinel_prime",
+  "display_name": "Sentinel Prime",
+  "description": "Ancient guardian set with ultimate defense capabilities",
+  "piece_ids": [
+    "head_sentinel_exotic",
+    "torso_sentinel_exotic",
+    "arms_sentinel_exotic",
+    "legs_sentinel_exotic"
+  ],
+  "two_piece_bonus": {
+    "description": "Guardian Shield: +2000 HP, +30% All Resistance, Block 30% of incoming damage",
+    "stat_bonuses": {
+      "HP": 2000,
+      "PhysicalResist": 0.30,
+      "FireResist": 0.30,
+      "IceResist": 0.30
+    }
+  },
+  "four_piece_bonus": {
+    "description": "Immortal Sentinel: HP cannot drop below 1, auto-counterattack on every hit received",
+    "stat_bonuses": {
+      "HP": 4000,
+      "PhysicalResist": 0.50,
+      "FireResist": 0.50,
+      "IceResist": 0.50,
+      "Damage": 0.25
+    },
+    "special_ability_id": "immortal_sentinel"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_phoenix_torso",
+  "display_name": "Phoenix Eternal Core Blueprint",
+  "description": "Legendary core that grants rebirth",
+  "result_item_id": "torso_phoenix_legendary",
+  "result_quantity": 1,
+  "craft_time_seconds": 3000,
+  "rarity": "Legendary",
+  "level_requirement": 38,
+  "currency_cost": {
+    "Credits": 20000,
+    "Cores": 60
+  },
+  "material_requirements": [
+    {"item_id": "material_aether_fragment", "quantity": 12},
+    {"item_id": "material_void_crystal", "quantity": 20},
+    {"item_id": "material_plasma_core", "quantity": 45}
+  ],
+  "category": "Armor",
+  "unlock_condition": "boss_phoenix_lord"
+}

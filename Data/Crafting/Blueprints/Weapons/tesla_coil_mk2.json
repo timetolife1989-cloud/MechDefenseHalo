@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_tesla_coil_mk2",
+  "display_name": "Tesla Coil Mk2 Blueprint",
+  "description": "Chains lightning between multiple enemies",
+  "result_item_id": "weapon_tesla_coil_mk2",
+  "result_quantity": 1,
+  "craft_time_seconds": 1650,
+  "rarity": "Epic",
+  "level_requirement": 26,
+  "currency_cost": {
+    "Credits": 5500,
+    "Cores": 12
+  },
+  "material_requirements": [
+    {"item_id": "material_quantum_chips", "quantity": 10},
+    {"item_id": "material_plasma_core", "quantity": 20},
+    {"item_id": "material_power_cells", "quantity": 38}
+  ],
+  "category": "Weapons",
+  "unlock_condition": "level_26"
+}

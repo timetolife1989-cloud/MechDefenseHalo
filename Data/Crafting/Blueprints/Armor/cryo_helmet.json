@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_cryo_helmet",
+  "display_name": "Cryo Helmet Blueprint",
+  "description": "Freezing helmet with ice-based defense systems",
+  "result_item_id": "head_cryo_mk1",
+  "result_quantity": 1,
+  "craft_time_seconds": 800,
+  "rarity": "Epic",
+  "level_requirement": 23,
+  "currency_cost": {
+    "Credits": 4400,
+    "Cores": 8
+  },
+  "material_requirements": [
+    {"item_id": "material_quantum_chips", "quantity": 8},
+    {"item_id": "material_plasma_core", "quantity": 16},
+    {"item_id": "material_nanofibers", "quantity": 19}
+  ],
+  "category": "Armor",
+  "unlock_condition": "level_23"
+}

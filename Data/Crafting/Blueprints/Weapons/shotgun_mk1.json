@@ -1,0 +1,20 @@
+{
+  "blueprint_id": "bp_shotgun_mk1",
+  "display_name": "Combat Shotgun Mk1 Blueprint",
+  "description": "Close-range spread weapon for devastating damage",
+  "result_item_id": "weapon_shotgun_mk1",
+  "result_quantity": 1,
+  "craft_time_seconds": 120,
+  "rarity": "Common",
+  "level_requirement": 3,
+  "currency_cost": {
+    "Credits": 200,
+    "Cores": 0
+  },
+  "material_requirements": [
+    {"item_id": "material_scrap_metal", "quantity": 15},
+    {"item_id": "material_circuits", "quantity": 8}
+  ],
+  "category": "Weapons",
+  "unlock_condition": "level_3"
+}

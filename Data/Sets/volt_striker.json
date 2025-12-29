@@ -1,0 +1,27 @@
+{
+  "set_id": "volt_striker",
+  "display_name": "Volt Striker",
+  "description": "Lightning-based speed and damage set for rapid strikes",
+  "piece_ids": [
+    "head_volt_mk1",
+    "torso_volt_mk1",
+    "arms_volt_mk1",
+    "legs_volt_mk1"
+  ],
+  "two_piece_bonus": {
+    "description": "Lightning Speed: +25% Lightning Damage and +10% Movement Speed",
+    "stat_bonuses": {
+      "LightningDamage": 0.25,
+      "Speed": 0.10
+    }
+  },
+  "four_piece_bonus": {
+    "description": "Storm Surge: Attacks chain to 3 nearby enemies, movement leaves electric trail dealing damage",
+    "stat_bonuses": {
+      "LightningDamage": 0.50,
+      "Speed": 0.20,
+      "Damage": 0.15
+    },
+    "special_ability_id": "storm_surge"
+  }
+}

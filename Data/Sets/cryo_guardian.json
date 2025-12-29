@@ -1,0 +1,27 @@
+{
+  "set_id": "cryo_guardian",
+  "display_name": "Cryo Guardian",
+  "description": "Ice-based defensive armor set with crowd control",
+  "piece_ids": [
+    "head_cryo_mk1",
+    "torso_cryo_mk1",
+    "arms_cryo_mk1",
+    "legs_cryo_mk1"
+  ],
+  "two_piece_bonus": {
+    "description": "Frost Armor: +25% Ice Damage and +20% Ice Resistance",
+    "stat_bonuses": {
+      "IceDamage": 0.25,
+      "IceResist": 0.20
+    }
+  },
+  "four_piece_bonus": {
+    "description": "Frozen Fortress: Create ice barriers on hit that absorb damage, slow nearby enemies by 30%",
+    "stat_bonuses": {
+      "IceDamage": 0.50,
+      "IceResist": 0.40,
+      "HP": 750
+    },
+    "special_ability_id": "frozen_fortress"
+  }
+}

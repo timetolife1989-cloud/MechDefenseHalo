@@ -1,0 +1,27 @@
+{
+  "set_id": "combat_medic",
+  "display_name": "Combat Medic",
+  "description": "Healing and support focused set for team play",
+  "piece_ids": [
+    "head_support_mk1",
+    "torso_support_mk1",
+    "arms_support_mk1",
+    "legs_support_mk1"
+  ],
+  "two_piece_bonus": {
+    "description": "Field Medic: +30% Healing Power and +15 HP/sec regeneration",
+    "stat_bonuses": {
+      "HealingPower": 0.30,
+      "Regeneration": 15
+    }
+  },
+  "four_piece_bonus": {
+    "description": "Guardian Angel: Healing affects nearby allies in 20m radius, grant damage immunity when below 20% HP",
+    "stat_bonuses": {
+      "HealingPower": 0.60,
+      "Regeneration": 30,
+      "HP": 1000
+    },
+    "special_ability_id": "guardian_angel"
+  }
+}

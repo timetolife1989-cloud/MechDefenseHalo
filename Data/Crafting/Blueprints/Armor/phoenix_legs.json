@@ -1,0 +1,21 @@
+{
+  "blueprint_id": "bp_phoenix_legs",
+  "display_name": "Phoenix Flight Legs Blueprint",
+  "description": "Legendary legs with flight capability",
+  "result_item_id": "legs_phoenix_legendary",
+  "result_quantity": 1,
+  "craft_time_seconds": 2800,
+  "rarity": "Legendary",
+  "level_requirement": 37,
+  "currency_cost": {
+    "Credits": 18000,
+    "Cores": 55
+  },
+  "material_requirements": [
+    {"item_id": "material_aether_fragment", "quantity": 10},
+    {"item_id": "material_void_crystal", "quantity": 18},
+    {"item_id": "material_power_cells", "quantity": 65}
+  ],
+  "category": "Armor",
+  "unlock_condition": "boss_phoenix_lord"
+}

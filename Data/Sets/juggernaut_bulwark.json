@@ -1,0 +1,27 @@
+{
+  "set_id": "juggernaut_bulwark",
+  "display_name": "Juggernaut's Bulwark",
+  "description": "Heavy armor favored by frontline mechs",
+  "piece_ids": [
+    "head_juggernaut_mk1",
+    "torso_juggernaut_mk1",
+    "arms_juggernaut_mk1",
+    "legs_juggernaut_mk1"
+  ],
+  "two_piece_bonus": {
+    "description": "+500 HP and 10% Physical Resistance",
+    "stat_bonuses": {
+      "HP": 500,
+      "PhysicalResist": 0.10
+    }
+  },
+  "four_piece_bonus": {
+    "description": "Immovable: Immune to knockback and stuns. +1000 HP and 10% All Resistance",
+    "stat_bonuses": {
+      "HP": 1000,
+      "PhysicalResist": 0.10,
+      "AllResist": 0.10
+    },
+    "special_ability_id": "immovable"
+  }
+}
