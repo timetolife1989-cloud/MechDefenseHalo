@@ -1,0 +1,92 @@
+[
+  {
+    "ID": "hoarder",
+    "Name": "Hoarder",
+    "Description": "Have 100 items in your inventory",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_credits": 300
+    }
+  },
+  {
+    "ID": "legendary_hunter",
+    "Name": "Legendary Hunter",
+    "Description": "Obtain your first Legendary item",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 100
+    }
+  },
+  {
+    "ID": "full_set",
+    "Name": "Full Set",
+    "Description": "Complete any armor set",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 200
+    }
+  },
+  {
+    "ID": "arsenal",
+    "Name": "Arsenal",
+    "Description": "Own 10 different weapons",
+    "RequiredProgress": 10,
+    "Rewards": {
+      "reward_credits": 500
+    }
+  },
+  {
+    "ID": "drone_commander",
+    "Name": "Drone Commander",
+    "Description": "Unlock all 5 drone types",
+    "RequiredProgress": 5,
+    "Rewards": {
+      "reward_cores": 150
+    }
+  },
+  {
+    "ID": "exotic_collector",
+    "Name": "Exotic Collector",
+    "Description": "Obtain 5 Exotic items",
+    "RequiredProgress": 5,
+    "Rewards": {
+      "reward_cores": 300
+    }
+  },
+  {
+    "ID": "completionist",
+    "Name": "Completionist",
+    "Description": "Complete 3 full armor sets",
+    "RequiredProgress": 3,
+    "Rewards": {
+      "reward_cores": 500
+    }
+  },
+  {
+    "ID": "weapon_master",
+    "Name": "Weapon Master",
+    "Description": "Own 25 different weapons",
+    "RequiredProgress": 25,
+    "Rewards": {
+      "reward_cores": 250
+    }
+  },
+  {
+    "ID": "blueprint_collector",
+    "Name": "Blueprint Collector",
+    "Description": "Unlock 20 crafting blueprints",
+    "RequiredProgress": 20,
+    "Rewards": {
+      "reward_credits": 400
+    }
+  },
+  {
+    "ID": "treasure_hunter",
+    "Name": "Treasure Hunter",
+    "Description": "Open 100 loot chests",
+    "RequiredProgress": 100,
+    "Rewards": {
+      "reward_credits": 600
+    }
+  }
+]

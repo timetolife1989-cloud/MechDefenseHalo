@@ -1,0 +1,48 @@
+{
+  "presets": {
+    "low": {
+      "name": "Low",
+      "quality_level": 0,
+      "shadow_quality": 0,
+      "particle_quality": 0,
+      "bloom": false,
+      "motion_blur": false,
+      "render_scale": 0.75,
+      "target_fps": 60,
+      "description": "Best performance, lowest visual quality"
+    },
+    "medium": {
+      "name": "Medium",
+      "quality_level": 1,
+      "shadow_quality": 1,
+      "particle_quality": 1,
+      "bloom": true,
+      "motion_blur": false,
+      "render_scale": 0.85,
+      "target_fps": 60,
+      "description": "Balanced performance and visuals"
+    },
+    "high": {
+      "name": "High",
+      "quality_level": 2,
+      "shadow_quality": 2,
+      "particle_quality": 2,
+      "bloom": true,
+      "motion_blur": false,
+      "render_scale": 1.0,
+      "target_fps": 60,
+      "description": "High visual quality, good performance"
+    },
+    "ultra": {
+      "name": "Ultra",
+      "quality_level": 3,
+      "shadow_quality": 3,
+      "particle_quality": 3,
+      "bloom": true,
+      "motion_blur": true,
+      "render_scale": 1.0,
+      "target_fps": 60,
+      "description": "Maximum visual quality"
+    }
+  }
+}

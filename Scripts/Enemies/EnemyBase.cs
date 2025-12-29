@@ -218,6 +218,8 @@ namespace MechDefenseHalo.Enemies
                 // Grant XP to player (base 10 XP * enemy level)
                 int xpAmount = 10 * Level;
                 PlayerLevel.AddXP(xpAmount, $"{EnemyName} kill");
+                // Emit enemy killed event for mission tracking
+                EventBus.Emit(EventBus.EnemyKilled, EnemyName);
                 
                 // Remove from group
                 RemoveFromGroup("enemies");

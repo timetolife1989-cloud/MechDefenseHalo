@@ -1,0 +1,92 @@
+[
+  {
+    "ID": "titan_slayer",
+    "Name": "Titan Slayer",
+    "Description": "Defeat the Frost Titan",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 300
+    }
+  },
+  {
+    "ID": "flawless_victory",
+    "Name": "Flawless Victory",
+    "Description": "Defeat any boss without dying",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 200
+    }
+  },
+  {
+    "ID": "speed_run",
+    "Name": "Speed Run",
+    "Description": "Defeat a boss in under 3 minutes",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 250
+    }
+  },
+  {
+    "ID": "all_weak_points",
+    "Name": "Weak Point Master",
+    "Description": "Destroy all weak points on a boss",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 150
+    }
+  },
+  {
+    "ID": "boss_rush",
+    "Name": "Boss Rush",
+    "Description": "Defeat all 5 bosses in one session",
+    "RequiredProgress": 5,
+    "Rewards": {
+      "reward_cores": 1000
+    }
+  },
+  {
+    "ID": "colossus_killer",
+    "Name": "Colossus Killer",
+    "Description": "Defeat 10 bosses total",
+    "RequiredProgress": 10,
+    "Rewards": {
+      "reward_cores": 400
+    }
+  },
+  {
+    "ID": "solo_boss",
+    "Name": "Solo Boss",
+    "Description": "Defeat a boss without using drones",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 300
+    }
+  },
+  {
+    "ID": "boss_no_hit",
+    "Name": "Flawless Boss",
+    "Description": "Defeat a boss without taking any damage",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_legendary": 1
+    }
+  },
+  {
+    "ID": "quick_reflexes",
+    "Name": "Quick Reflexes",
+    "Description": "Defeat a boss in under 1 minute",
+    "RequiredProgress": 1,
+    "Rewards": {
+      "reward_cores": 500
+    }
+  },
+  {
+    "ID": "boss_hunter",
+    "Name": "Boss Hunter",
+    "Description": "Defeat 50 bosses total",
+    "RequiredProgress": 50,
+    "Rewards": {
+      "reward_cores": 1500
+    }
+  }
+]

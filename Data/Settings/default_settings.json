@@ -1,0 +1,52 @@
+{
+  "graphics": {
+    "resolution_width": 1920,
+    "resolution_height": 1080,
+    "fullscreen": true,
+    "vsync": true,
+    "target_fps": 60,
+    "quality_level": 2,
+    "shadow_quality": 2,
+    "particle_quality": 2,
+    "bloom": true,
+    "motion_blur": false,
+    "render_scale": 1.0
+  },
+  "audio": {
+    "master_volume": 1.0,
+    "music_volume": 0.8,
+    "sfx_volume": 1.0,
+    "ui_volume": 0.9,
+    "mute_master": false
+  },
+  "controls": {
+    "mouse_sensitivity": 1.0,
+    "invert_y": false,
+    "controller_sensitivity": 1.0,
+    "controller_deadzone": 15,
+    "key_bindings": {
+      "move_forward": 87,
+      "move_backward": 83,
+      "move_left": 65,
+      "move_right": 68,
+      "sprint": 4194325,
+      "fire": 1,
+      "reload": 82,
+      "ability": 69,
+      "shield": 81,
+      "weapon_switch": 4194306,
+      "weapon_1": 49,
+      "weapon_2": 50,
+      "weapon_3": 51
+    }
+  },
+  "gameplay": {
+    "auto_pickup": true,
+    "damage_numbers": true,
+    "screen_shake": true,
+    "shake_intensity": 1.0,
+    "show_fps": false,
+    "show_ping": false,
+    "language": "en"
+  }
+}
