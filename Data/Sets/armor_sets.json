@@ -1,0 +1,182 @@
+[
+  {
+    "set_id": "juggernaut_bulwark",
+    "set_name": "Juggernaut Bulwark",
+    "description": "Heavy armor set for maximum survivability",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_juggernaut_epic", "torso_juggernaut_epic", "arms_juggernaut_epic", "legs_juggernaut_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Fortified",
+      "description": "+500 HP, +10% Physical Resist",
+      "stat_bonuses": {"HP": 500, "PhysicalResist": 0.10}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Immovable",
+      "description": "Immune to crowd control, +1000 HP, +20% All Resist",
+      "special_ability_id": "immovable",
+      "stat_bonuses": {"HP": 1000, "PhysicalResist": 0.20, "AllResist": 0.10}
+    }
+  },
+  {
+    "set_id": "inferno_warlord",
+    "set_name": "Inferno Warlord",
+    "description": "Fire-based offensive armor set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_inferno_epic", "torso_inferno_epic", "arms_inferno_epic", "legs_inferno_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Burning Soul",
+      "description": "+25% Fire Damage, +20% Fire Resist",
+      "stat_bonuses": {"FireDamage": 0.25, "FireResist": 0.20}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Eternal Flame",
+      "description": "Attacks ignite enemies, burn damage increased by 50%",
+      "special_ability_id": "eternal_flame",
+      "stat_bonuses": {"FireDamage": 0.50, "FireResist": 0.40, "BurnDuration": 5}
+    }
+  },
+  {
+    "set_id": "cryo_guardian",
+    "set_name": "Cryo Guardian",
+    "description": "Ice-based defensive armor set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_cryo_epic", "torso_cryo_epic", "arms_cryo_epic", "legs_cryo_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Frost Armor",
+      "description": "+25% Ice Damage, +20% Ice Resist",
+      "stat_bonuses": {"IceDamage": 0.25, "IceResist": 0.20}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Frozen Fortress",
+      "description": "Create ice barriers on hit, slow nearby enemies",
+      "special_ability_id": "frozen_fortress",
+      "stat_bonuses": {"IceDamage": 0.50, "IceResist": 0.40, "SlowAura": 0.30}
+    }
+  },
+  {
+    "set_id": "volt_striker",
+    "set_name": "Volt Striker",
+    "description": "Lightning-based speed and damage set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_volt_epic", "torso_volt_epic", "arms_volt_epic", "legs_volt_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Lightning Speed",
+      "description": "+25% Lightning Damage, +10% Speed",
+      "stat_bonuses": {"LightningDamage": 0.25, "Speed": 0.10}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Storm Surge",
+      "description": "Attacks chain to nearby enemies, movement leaves electric trail",
+      "special_ability_id": "storm_surge",
+      "stat_bonuses": {"LightningDamage": 0.50, "ChainTargets": 3, "Speed": 0.20}
+    }
+  },
+  {
+    "set_id": "phantom_assassin",
+    "set_name": "Phantom Assassin",
+    "description": "Stealth and critical strike set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_phantom_epic", "torso_phantom_epic", "arms_phantom_epic", "legs_phantom_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Shadow Walk",
+      "description": "+15% Crit Chance, +10% Dodge",
+      "stat_bonuses": {"CritChance": 0.15, "Dodge": 0.10}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Deadly Shadows",
+      "description": "Attacks from stealth deal 300% damage, leave afterimages",
+      "special_ability_id": "deadly_shadows",
+      "stat_bonuses": {"CritChance": 0.25, "CritDamage": 0.60, "Dodge": 0.20}
+    }
+  },
+  {
+    "set_id": "phoenix_rebirth",
+    "set_name": "Phoenix Rebirth",
+    "description": "Legendary fire set with resurrection",
+    "minimum_rarity": "Legendary",
+    "required_item_ids": ["head_phoenix_legendary", "torso_phoenix_legendary", "arms_phoenix_legendary", "legs_phoenix_legendary"],
+    "two_piece_bonus": {
+      "bonus_name": "Rising Flames",
+      "description": "+40% Fire Damage, +30% Fire Resist, +10 HP/sec",
+      "stat_bonuses": {"FireDamage": 0.40, "FireResist": 0.30, "HealthRegen": 10}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Phoenix Resurrection",
+      "description": "Revive at full HP on death once per battle, gain immunity for 5 seconds",
+      "special_ability_id": "phoenix_resurrection",
+      "stat_bonuses": {"FireDamage": 0.70, "FireResist": 0.50, "HealthRegen": 20}
+    }
+  },
+  {
+    "set_id": "void_walker",
+    "set_name": "Void Walker",
+    "description": "Exotic void set with reality manipulation",
+    "minimum_rarity": "Exotic",
+    "required_item_ids": ["head_void_exotic", "torso_void_exotic", "arms_void_exotic", "legs_void_exotic"],
+    "two_piece_bonus": {
+      "bonus_name": "Void Touch",
+      "description": "+35% Void Damage, +25% All Resist, Phase through attacks 20% chance",
+      "stat_bonuses": {"VoidDamage": 0.35, "AllResist": 0.25, "PhaseChance": 0.20}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Reality Breach",
+      "description": "Walk between dimensions, ignore all terrain and enemies",
+      "special_ability_id": "reality_breach",
+      "stat_bonuses": {"VoidDamage": 0.60, "AllResist": 0.40, "PhaseChance": 0.50, "DimensionalShift": 1}
+    }
+  },
+  {
+    "set_id": "sentinel_prime",
+    "set_name": "Sentinel Prime",
+    "description": "Ancient guardian set with ultimate defense",
+    "minimum_rarity": "Exotic",
+    "required_item_ids": ["head_sentinel_exotic", "torso_sentinel_exotic", "arms_sentinel_exotic", "legs_sentinel_exotic"],
+    "two_piece_bonus": {
+      "bonus_name": "Guardian Shield",
+      "description": "+2000 HP, +30% All Resist, Block 30% of incoming damage",
+      "stat_bonuses": {"HP": 2000, "AllResist": 0.30, "BlockChance": 0.30}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Immortal Sentinel",
+      "description": "Cannot be killed, HP cannot drop below 1, auto-counterattack",
+      "special_ability_id": "immortal_sentinel",
+      "stat_bonuses": {"HP": 4000, "AllResist": 0.50, "Counterattack": 1.0, "Immortality": 1}
+    }
+  },
+  {
+    "set_id": "berserker_rage",
+    "set_name": "Berserker's Rage",
+    "description": "High risk, high reward damage set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_berserker_epic", "torso_berserker_epic", "arms_berserker_epic", "legs_berserker_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Bloodlust",
+      "description": "+30% Damage, +15% Attack Speed",
+      "stat_bonuses": {"Damage": 0.30, "AttackSpeed": 0.15}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Unstoppable Fury",
+      "description": "Below 50% HP gain +100% damage, immune to CC",
+      "special_ability_id": "unstoppable_fury",
+      "stat_bonuses": {"Damage": 0.60, "AttackSpeed": 0.30, "LowHPBonus": 1.0}
+    }
+  },
+  {
+    "set_id": "support_medic",
+    "set_name": "Combat Medic",
+    "description": "Healing and support focused set",
+    "minimum_rarity": "Epic",
+    "required_item_ids": ["head_support_epic", "torso_support_epic", "arms_support_epic", "legs_support_epic"],
+    "two_piece_bonus": {
+      "bonus_name": "Field Medic",
+      "description": "+30% Healing Power, +15 HP/sec regen",
+      "stat_bonuses": {"HealingPower": 0.30, "HealthRegen": 15}
+    },
+    "four_piece_bonus": {
+      "bonus_name": "Guardian Angel",
+      "description": "Healing affects nearby allies, grant damage immunity on low HP",
+      "special_ability_id": "guardian_angel",
+      "stat_bonuses": {"HealingPower": 0.60, "HealthRegen": 30, "HealRadius": 20}
+    }
+  }
+]

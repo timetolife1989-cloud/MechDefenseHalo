@@ -1,0 +1,1 @@
+{"enemy_type": "Scout", "loot_pools": [{"pool_name": "common_drops", "weight": 60, "items": ["circuits", "power_cells"]}, {"pool_name": "uncommon_drops", "weight": 30, "items": ["alloy_plates", "nanofibers"]}, {"pool_name": "rare_drops", "weight": 10, "items": ["plasma_core", "rare_drone_chip"]}], "guaranteed_drops": ["credits_small"], "drop_count_range": [1, 2]}

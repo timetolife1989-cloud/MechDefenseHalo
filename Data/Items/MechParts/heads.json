@@ -1,0 +1,390 @@
+[
+  {
+    "item_id": "head_mk1_common",
+    "display_name": "MK-I Combat Helmet",
+    "description": "Standard issue combat helmet with basic protection",
+    "rarity": "Common",
+    "item_level": 1,
+    "sell_value": 50,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 50,
+      "Shield": 25
+    },
+    "secondary_stats": {
+      "CritChance": 0.02
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_tactical_uncommon",
+    "display_name": "Tactical Visor Mk-II",
+    "description": "Enhanced targeting system with improved sensors",
+    "rarity": "Uncommon",
+    "item_level": 5,
+    "sell_value": 150,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 100,
+      "Shield": 50
+    },
+    "secondary_stats": {
+      "CritChance": 0.05,
+      "Accuracy": 0.1
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_scanner_uncommon",
+    "display_name": "Combat Scanner Helmet",
+    "description": "Advanced sensor array for battlefield awareness",
+    "rarity": "Uncommon",
+    "item_level": 8,
+    "sell_value": 200,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 120,
+      "Shield": 60
+    },
+    "secondary_stats": {
+      "DetectionRange": 15,
+      "Accuracy": 0.08
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_reinforced_rare",
+    "display_name": "Reinforced Combat Helm",
+    "description": "Heavy-duty protection with ablative plating",
+    "rarity": "Rare",
+    "item_level": 15,
+    "sell_value": 500,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 200,
+      "Shield": 100
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.1,
+      "CritChance": 0.03
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_phantom_rare",
+    "display_name": "Phantom Recon Visor",
+    "description": "Stealth-optimized helmet with cloaking support",
+    "rarity": "Rare",
+    "item_level": 18,
+    "sell_value": 600,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 150,
+      "Shield": 80
+    },
+    "secondary_stats": {
+      "CritChance": 0.08,
+      "Dodge": 0.05,
+      "DetectionRange": 20
+    },
+    "tags": ["equipment", "mech_part", "head", "stealth"]
+  },
+  {
+    "item_id": "head_targeting_epic",
+    "display_name": "Advanced Targeting System",
+    "description": "Military-grade targeting computer with predictive AI",
+    "rarity": "Epic",
+    "item_level": 25,
+    "sell_value": 2000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 300,
+      "Shield": 150
+    },
+    "secondary_stats": {
+      "CritChance": 0.12,
+      "CritDamage": 0.15,
+      "Accuracy": 0.2
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_juggernaut_epic",
+    "display_name": "Juggernaut Battle Helm",
+    "description": "Extremely durable helmet for frontline assault",
+    "rarity": "Epic",
+    "item_level": 28,
+    "sell_value": 2500,
+    "part_type": "Head",
+    "set_id": "juggernaut_bulwark",
+    "primary_stats": {
+      "HP": 500,
+      "Shield": 200
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.15,
+      "ExplosiveResist": 0.1
+    },
+    "tags": ["equipment", "mech_part", "head", "set"]
+  },
+  {
+    "item_id": "head_inferno_epic",
+    "display_name": "Inferno Combat Mask",
+    "description": "Heat-resistant helmet with thermal vision",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 2300,
+    "part_type": "Head",
+    "set_id": "inferno_warlord",
+    "primary_stats": {
+      "HP": 280,
+      "Shield": 140
+    },
+    "secondary_stats": {
+      "FireResist": 0.25,
+      "FireDamage": 0.15
+    },
+    "tags": ["equipment", "mech_part", "head", "set", "fire"]
+  },
+  {
+    "item_id": "head_cryo_epic",
+    "display_name": "Cryo-Field Helmet",
+    "description": "Insulated helmet with cryogenic cooling system",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 2300,
+    "part_type": "Head",
+    "set_id": "cryo_guardian",
+    "primary_stats": {
+      "HP": 280,
+      "Shield": 140
+    },
+    "secondary_stats": {
+      "IceResist": 0.25,
+      "IceDamage": 0.15
+    },
+    "tags": ["equipment", "mech_part", "head", "set", "ice"]
+  },
+  {
+    "item_id": "head_volt_epic",
+    "display_name": "Volt Surge Visor",
+    "description": "Electrically insulated with arc discharge capability",
+    "rarity": "Epic",
+    "item_level": 27,
+    "sell_value": 2300,
+    "part_type": "Head",
+    "set_id": "volt_striker",
+    "primary_stats": {
+      "HP": 260,
+      "Shield": 130
+    },
+    "secondary_stats": {
+      "LightningResist": 0.25,
+      "LightningDamage": 0.15,
+      "Speed": 0.05
+    },
+    "tags": ["equipment", "mech_part", "head", "set", "lightning"]
+  },
+  {
+    "item_id": "head_aegis_legendary",
+    "display_name": "Aegis Command Helm",
+    "description": "Elite command helmet with tactical HUD overlay",
+    "rarity": "Legendary",
+    "item_level": 35,
+    "sell_value": 8000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 600,
+      "Shield": 300
+    },
+    "secondary_stats": {
+      "CritChance": 0.15,
+      "CritDamage": 0.25,
+      "PhysicalResist": 0.12,
+      "AllResist": 0.08
+    },
+    "special_ability_id": "tactical_overlay",
+    "special_description": "Reveals enemy weak points for 10 seconds",
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_phoenix_legendary",
+    "display_name": "Phoenix Crown",
+    "description": "Legendary helmet forged in plasma fire",
+    "rarity": "Legendary",
+    "item_level": 38,
+    "sell_value": 10000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 550,
+      "Shield": 280
+    },
+    "secondary_stats": {
+      "FireDamage": 0.35,
+      "FireResist": 0.40,
+      "HealthRegen": 5
+    },
+    "special_ability_id": "phoenix_resurrection",
+    "special_description": "When HP drops below 20%, restore 50% HP once per battle",
+    "tags": ["equipment", "mech_part", "head", "legendary"]
+  },
+  {
+    "item_id": "head_void_exotic",
+    "display_name": "Void Walker Mask",
+    "description": "Reality-bending mask from the void dimension",
+    "rarity": "Exotic",
+    "item_level": 45,
+    "sell_value": 30000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 800,
+      "Shield": 400
+    },
+    "secondary_stats": {
+      "CritChance": 0.20,
+      "CritDamage": 0.40,
+      "Dodge": 0.15,
+      "AllResist": 0.15
+    },
+    "special_ability_id": "void_phase",
+    "special_description": "Phase through attacks for 5 seconds (90s cooldown)",
+    "tags": ["equipment", "mech_part", "head", "exotic", "void"]
+  },
+  {
+    "item_id": "head_sentinel_exotic",
+    "display_name": "Sentinel Prime Helm",
+    "description": "Ancient guardian helm with unmatched protection",
+    "rarity": "Exotic",
+    "item_level": 48,
+    "sell_value": 35000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 1000,
+      "Shield": 500
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.25,
+      "ExplosiveResist": 0.20,
+      "AllResist": 0.18
+    },
+    "special_ability_id": "sentinel_barrier",
+    "special_description": "Create invulnerable barrier for 3 seconds (120s cooldown)",
+    "tags": ["equipment", "mech_part", "head", "exotic"]
+  },
+  {
+    "item_id": "head_basic_uncommon",
+    "display_name": "Field Combat Helmet",
+    "description": "Standard field helmet with reinforced plating",
+    "rarity": "Uncommon",
+    "item_level": 10,
+    "sell_value": 180,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 130,
+      "Shield": 65
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.05
+    },
+    "tags": ["equipment", "mech_part", "head"]
+  },
+  {
+    "item_id": "head_scout_rare",
+    "display_name": "Scout Reconnaissance Visor",
+    "description": "Lightweight helmet with enhanced mobility",
+    "rarity": "Rare",
+    "item_level": 20,
+    "sell_value": 650,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 180,
+      "Shield": 90
+    },
+    "secondary_stats": {
+      "Speed": 0.08,
+      "DetectionRange": 25,
+      "Dodge": 0.04
+    },
+    "tags": ["equipment", "mech_part", "head", "mobility"]
+  },
+  {
+    "item_id": "head_sniper_rare",
+    "display_name": "Precision Marksman Scope",
+    "description": "Long-range targeting helmet for snipers",
+    "rarity": "Rare",
+    "item_level": 22,
+    "sell_value": 700,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 160,
+      "Shield": 80
+    },
+    "secondary_stats": {
+      "CritChance": 0.10,
+      "CritDamage": 0.20,
+      "Accuracy": 0.25,
+      "Range": 15
+    },
+    "tags": ["equipment", "mech_part", "head", "sniper"]
+  },
+  {
+    "item_id": "head_support_epic",
+    "display_name": "Medic Support Helm",
+    "description": "Medical support helmet with field diagnostics",
+    "rarity": "Epic",
+    "item_level": 30,
+    "sell_value": 2800,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 350,
+      "Shield": 175
+    },
+    "secondary_stats": {
+      "HealthRegen": 3,
+      "ShieldRegen": 2,
+      "HealingPower": 0.15
+    },
+    "tags": ["equipment", "mech_part", "head", "support"]
+  },
+  {
+    "item_id": "head_tank_epic",
+    "display_name": "Fortress Battle Helm",
+    "description": "Maximum protection for tank roles",
+    "rarity": "Epic",
+    "item_level": 32,
+    "sell_value": 3000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 550,
+      "Shield": 225
+    },
+    "secondary_stats": {
+      "PhysicalResist": 0.18,
+      "ExplosiveResist": 0.15,
+      "AllResist": 0.10
+    },
+    "tags": ["equipment", "mech_part", "head", "tank"]
+  },
+  {
+    "item_id": "head_assassin_legendary",
+    "display_name": "Shadow Assassin Mask",
+    "description": "Stealth-optimized for silent eliminations",
+    "rarity": "Legendary",
+    "item_level": 40,
+    "sell_value": 12000,
+    "part_type": "Head",
+    "primary_stats": {
+      "HP": 400,
+      "Shield": 200
+    },
+    "secondary_stats": {
+      "CritChance": 0.25,
+      "CritDamage": 0.50,
+      "Dodge": 0.12,
+      "Speed": 0.10
+    },
+    "special_ability_id": "assassination",
+    "special_description": "Backstab attacks deal 300% damage",
+    "tags": ["equipment", "mech_part", "head", "stealth", "legendary"]
+  }
+]
