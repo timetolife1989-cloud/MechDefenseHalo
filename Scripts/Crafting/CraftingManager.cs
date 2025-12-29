@@ -66,7 +66,7 @@ namespace MechDefenseHalo.Crafting
                 return false;
             }
 
-            if (!blueprint.CanCraft(inventory, playerLevel, CurrencyManager.Credits))
+            if (!blueprint.CanCraft(inventory, playerLevel, CurrencyManager.CurrentCredits))
             {
                 GD.PrintErr($"Cannot craft {blueprint.DisplayName}: Requirements not met");
                 return false;

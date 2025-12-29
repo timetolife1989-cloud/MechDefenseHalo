@@ -32,6 +32,16 @@ namespace MechDefenseHalo.Economy
         public int Credits => _credits;
         public int Cores => _cores;
 
+        /// <summary>
+        /// Get current credits (static accessor)
+        /// </summary>
+        public static int CurrentCredits => Instance?._credits ?? 0;
+        
+        /// <summary>
+        /// Get current cores (static accessor)
+        /// </summary>
+        public static int CurrentCores => Instance?._cores ?? 0;
+
         #endregion
 
         #region Private Fields

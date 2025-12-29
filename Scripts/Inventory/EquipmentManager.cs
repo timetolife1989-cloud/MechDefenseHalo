@@ -233,6 +233,50 @@ namespace MechDefenseHalo.Inventory
 
         #endregion
 
+        #region Public Methods - Stats
+
+        /// <summary>
+        /// Get total combined stats from all equipped items
+        /// </summary>
+        /// <returns>Dictionary of total stat bonuses</returns>
+        public Dictionary<StatType, float> GetTotalStats()
+        {
+            var totalStats = new Dictionary<StatType, float>();
+
+            foreach (var item in _equippedItems.Values)
+            {
+                if (item == null) continue;
+
+                // Add primary stats
+                foreach (var stat in item.PrimaryStats)
+                {
+                    if (!totalStats.ContainsKey(stat.Key))
+                        totalStats[stat.Key] = 0f;
+                    totalStats[stat.Key] += stat.Value;
+                }
+
+                // Add secondary stats
+                foreach (var stat in item.SecondaryStats)
+                {
+                    if (!totalStats.ContainsKey(stat.Key))
+                        totalStats[stat.Key] = 0f;
+                    totalStats[stat.Key] += stat.Value;
+                }
+
+                // Add resistances
+                foreach (var stat in item.Resistances)
+                {
+                    if (!totalStats.ContainsKey(stat.Key))
+                        totalStats[stat.Key] = 0f;
+                    totalStats[stat.Key] += stat.Value;
+                }
+            }
+
+            return totalStats;
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void InitializeSlots()
