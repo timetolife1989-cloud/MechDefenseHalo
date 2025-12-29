@@ -26,16 +26,16 @@ namespace MechDefenseHalo.Audio
         private void SetupCombatAudio()
         {
             // Weapon fired - play weapon sound
-            EventBus.On(EventBus.WeaponFired, (data) =>
+            EventBus.On(EventBus.WeaponFired, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlaySound("weapon_fire");
                 }
-            });
+            }));
             
             // Enemy hit - play impact sound at enemy position
-            EventBus.On("EnemyHit", (data) =>
+            EventBus.On("EnemyHit", Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null && data != null)
                 {
@@ -55,7 +55,7 @@ namespace MechDefenseHalo.Audio
             });
             
             // Enemy killed - play death sound at enemy position
-            EventBus.On(EventBus.EntityDied, (data) =>
+            EventBus.On(EventBus.EntityDied, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null && data != null)
                 {
@@ -84,7 +84,7 @@ namespace MechDefenseHalo.Audio
             });
             
             // Boss roar when boss spawns
-            EventBus.On(EventBus.BossSpawned, (data) =>
+            EventBus.On(EventBus.BossSpawned, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {
@@ -96,7 +96,7 @@ namespace MechDefenseHalo.Audio
         private void SetupUIAudio()
         {
             // Button click sound
-            EventBus.On(EventBus.ButtonClicked, (data) =>
+            EventBus.On(EventBus.ButtonClicked, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {
@@ -108,7 +108,7 @@ namespace MechDefenseHalo.Audio
         private void SetupPlayerAudio()
         {
             // Player level up sound
-            EventBus.On(EventBus.PlayerLeveledUp, (data) =>
+            EventBus.On(EventBus.PlayerLeveledUp, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {
@@ -120,16 +120,16 @@ namespace MechDefenseHalo.Audio
         private void SetupLootAudio()
         {
             // Item looted/picked up
-            EventBus.On(EventBus.LootPickedUp, (data) =>
+            EventBus.On(EventBus.LootPickedUp, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlaySound("loot_pickup");
                 }
-            });
+            }));
             
             // Achievement unlocked
-            EventBus.On(EventBus.AchievementUnlocked, (data) =>
+            EventBus.On(EventBus.AchievementUnlocked, Callable.From<object>((data) =>
             {
                 if (AudioManager.Instance != null)
                 {

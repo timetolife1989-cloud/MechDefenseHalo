@@ -61,32 +61,44 @@ namespace MechDefenseHalo.Audio
             var masterVolumeProp = dataType.GetProperty("MasterVolume");
             if (masterVolumeProp != null)
             {
-                float volume = (float)masterVolumeProp.GetValue(data);
-                SetMasterVolume(volume);
+                var volumeValue = masterVolumeProp.GetValue(data);
+                if (volumeValue is float volume)
+                {
+                    SetMasterVolume(volume);
+                }
             }
             
             // Check for music volume
             var musicVolumeProp = dataType.GetProperty("MusicVolume");
             if (musicVolumeProp != null)
             {
-                float volume = (float)musicVolumeProp.GetValue(data);
-                SetMusicVolume(volume);
+                var volumeValue = musicVolumeProp.GetValue(data);
+                if (volumeValue is float volume)
+                {
+                    SetMusicVolume(volume);
+                }
             }
             
             // Check for SFX volume
             var sfxVolumeProp = dataType.GetProperty("SFXVolume");
             if (sfxVolumeProp != null)
             {
-                float volume = (float)sfxVolumeProp.GetValue(data);
-                SetSFXVolume(volume);
+                var volumeValue = sfxVolumeProp.GetValue(data);
+                if (volumeValue is float volume)
+                {
+                    SetSFXVolume(volume);
+                }
             }
             
             // Check for UI volume
             var uiVolumeProp = dataType.GetProperty("UIVolume");
             if (uiVolumeProp != null)
             {
-                float volume = (float)uiVolumeProp.GetValue(data);
-                SetUIVolume(volume);
+                var volumeValue = uiVolumeProp.GetValue(data);
+                if (volumeValue is float volume)
+                {
+                    SetUIVolume(volume);
+                }
             }
         }
         

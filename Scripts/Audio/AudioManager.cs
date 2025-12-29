@@ -26,8 +26,18 @@ namespace MechDefenseHalo.Audio
             }
             instance = this;
             
-            musicController = GetNode<MusicController>("MusicController");
-            sfxPool = GetNode<SoundEffectPool>("SFXPool");
+            musicController = GetNodeOrNull<MusicController>("MusicController");
+            sfxPool = GetNodeOrNull<SoundEffectPool>("SFXPool");
+            
+            if (musicController == null)
+            {
+                GD.PrintErr("MusicController node not found! Please add it as a child of AudioManager.");
+            }
+            
+            if (sfxPool == null)
+            {
+                GD.PrintErr("SFXPool node not found! Please add it as a child of AudioManager.");
+            }
             
             LoadSoundLibrary();
             SetupAudioBuses();
@@ -64,6 +74,12 @@ namespace MechDefenseHalo.Audio
         
         public void PlaySound(string soundName, Vector3 position = default, float pitch = 1.0f)
         {
+            if (sfxPool == null)
+            {
+                GD.PrintErr("SFXPool not initialized");
+                return;
+            }
+            
             if (!soundLibrary.ContainsKey(soundName))
             {
                 GD.PrintErr($"Sound not found: {soundName}");
@@ -84,6 +100,12 @@ namespace MechDefenseHalo.Audio
         
         public void PlayUISound(string soundName)
         {
+            if (sfxPool == null)
+            {
+                GD.PrintErr("SFXPool not initialized");
+                return;
+            }
+            
             if (!soundLibrary.ContainsKey(soundName))
                 return;
             

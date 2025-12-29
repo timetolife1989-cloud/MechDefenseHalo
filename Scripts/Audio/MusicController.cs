@@ -130,7 +130,11 @@ namespace MechDefenseHalo.Audio
                 var waveData = data.GetType().GetProperty("Wave");
                 if (waveData != null)
                 {
-                    wave = (int)waveData.GetValue(data);
+                    var waveValue = waveData.GetValue(data);
+                    if (waveValue != null && waveValue is int)
+                    {
+                        wave = (int)waveValue;
+                    }
                 }
             }
             

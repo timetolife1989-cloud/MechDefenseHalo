@@ -84,19 +84,24 @@ namespace MechDefenseHalo.Audio
         
         private AudioStreamPlayer GetOrCreate2DPlayer()
         {
+            AudioStreamPlayer player;
+            
             if (available2DPlayers.Count > 0)
             {
-                var player = available2DPlayers[0];
+                player = available2DPlayers[0];
                 available2DPlayers.RemoveAt(0);
-                return player;
+            }
+            else
+            {
+                // Pool exhausted, create new
+                player = new AudioStreamPlayer();
+                player.Finished += () => Return2DPlayer(player);
+                AddChild(player);
             }
             
-            // Pool exhausted, create new
-            var newPlayer = new AudioStreamPlayer();
-            newPlayer.Bus = "SFX";
-            newPlayer.Finished += () => Return2DPlayer(newPlayer);
-            AddChild(newPlayer);
-            return newPlayer;
+            // Reset bus to default
+            player.Bus = "SFX";
+            return player;
         }
         
         private AudioStreamPlayer3D GetOrCreate3DPlayer()

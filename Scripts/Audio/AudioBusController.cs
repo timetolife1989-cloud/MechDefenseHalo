@@ -37,17 +37,12 @@ namespace MechDefenseHalo.Audio
                 if (preferredIndex < busCount)
                 {
                     AudioServer.AddBus(preferredIndex);
+                    busIndex = preferredIndex;
                 }
                 else
                 {
                     AudioServer.AddBus(busCount);
-                }
-                
-                busIndex = AudioServer.GetBusIndex(busName);
-                if (busIndex == -1)
-                {
-                    // If still not found, get the last added bus
-                    busIndex = AudioServer.BusCount - 1;
+                    busIndex = busCount;
                 }
                 
                 AudioServer.SetBusName(busIndex, busName);
