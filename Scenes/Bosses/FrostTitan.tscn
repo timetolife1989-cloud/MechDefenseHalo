@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8kj9m2frost_titan"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Bosses/FrostTitan.cs" id="1_frosttitan"]
+[ext_resource type="PackedScene" uid="uid://b8kj9m2n3frost" path="res://Scenes/Bosses/FrostTitanModel.tscn" id="2_model"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="3_health"]
+[ext_resource type="Script" path="res://Components/DamageComponent.cs" id="4_damage"]
+[ext_resource type="Script" path="res://Components/MovementComponent.cs" id="5_movement"]
+[ext_resource type="Script" path="res://Components/WeakPointComponent.cs" id="6_weakpoint"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_collision"]
+radius = 1.5
+height = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_phase_zone"]
+radius = 15.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_weakpoint"]
+radius = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_core"]
+radius = 0.8
+
+[node name="FrostTitan" type="CharacterBody3D" groups=["enemy", "boss"]]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_frosttitan")
+EnemyName = "Frost Titan"
+MaxHealth = 50000.0
+MoveSpeed = 2.0
+AttackDamage = 35.0
+AttackRange = 4.0
+AttackCooldown = 2.5
+DetectionRange = 50.0
+PhaseCount = 3
+IceTornadoRadius = 10.0
+FreezingAuraRadius = 8.0
+FreezingAuraDamage = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("CapsuleShape3D_collision")
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="FrostTitanModel" parent="ModelMount" instance=ExtResource("2_model")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_health")
+MaxHealth = 50000.0
+RegenerationRate = 0.0
+RegenerationDelay = 0.0
+IsInvulnerable = false
+
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("4_damage")
+BaseDamage = 35.0
+ElementType = 2
+CanCrit = false
+CritChance = 0.0
+CritMultiplier = 1.0
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("5_movement")
+MaxSpeed = 2.0
+Acceleration = 10.0
+Deceleration = 8.0
+RotationSpeed = 3.0
+UseGravity = true
+
+[node name="LeftKnee" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.5, 0)
+script = ExtResource("6_weakpoint")
+DamageMultiplier = 1.5
+MaxHealth = 1000.0
+WeakPointName = "Left Knee"
+
+[node name="HitArea" type="Area3D" parent="LeftKnee"]
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftKnee/HitArea"]
+shape = SubResource("SphereShape3D_weakpoint")
+
+[node name="RightKnee" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.5, 0)
+script = ExtResource("6_weakpoint")
+DamageMultiplier = 1.5
+MaxHealth = 1000.0
+WeakPointName = "Right Knee"
+
+[node name="HitArea" type="Area3D" parent="RightKnee"]
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightKnee/HitArea"]
+shape = SubResource("SphereShape3D_weakpoint")
+
+[node name="BackCore" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1.8)
+script = ExtResource("6_weakpoint")
+DamageMultiplier = 3.0
+MaxHealth = 2000.0
+WeakPointName = "Back Energy Core"
+
+[node name="HitArea" type="Area3D" parent="BackCore"]
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackCore/HitArea"]
+shape = SubResource("SphereShape3D_core")
+
+[node name="AttackPoints" type="Node3D" parent="."]
+
+[node name="LeftHand" type="Marker3D" parent="AttackPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.5, 1)
+
+[node name="RightHand" type="Marker3D" parent="AttackPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, 1)
+
+[node name="Mouth" type="Marker3D" parent="AttackPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0.8)
+
+[node name="PhaseTransitionZone" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 1
+monitoring = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhaseTransitionZone"]
+shape = SubResource("SphereShape3D_phase_zone")
+
+[node name="VFXAttachments" type="Node3D" parent="."]
+
+[node name="AuraPoint" type="Marker3D" parent="VFXAttachments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="TornadoSpawn" type="Marker3D" parent="VFXAttachments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
