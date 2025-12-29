@@ -101,6 +101,12 @@ namespace MechDefenseHalo.VFX
             var effectData = _library.GetEffect(effectName);
             var pool = GetOrCreatePool(effectName, effectData.PrefabPath);
             
+            if (pool == null)
+            {
+                GD.PrintErr($"Failed to create pool for effect: {effectName}");
+                return;
+            }
+            
             var effect = pool.Get();
             if (effect == null)
             {
@@ -142,28 +148,35 @@ namespace MechDefenseHalo.VFX
         /// <param name="effectName">Name of the effect from VFXLibrary</param>
         /// <param name="parent">Parent node to attach effect to</param>
         /// <param name="localOffset">Local position offset from parent</param>
-        public void PlayEffectAttached(string effectName, Node3D parent, Vector3 localOffset)
+        /// <returns>The spawned effect node, or null if failed</returns>
+        public Node3D PlayEffectAttached(string effectName, Node3D parent, Vector3 localOffset)
         {
             if (!_library.HasEffect(effectName))
             {
                 GD.PrintErr($"VFX effect not found: {effectName}");
-                return;
+                return null;
             }
 
             if (!IsInstanceValid(parent))
             {
                 GD.PrintErr($"Invalid parent node for attached effect: {effectName}");
-                return;
+                return null;
             }
 
             var effectData = _library.GetEffect(effectName);
             var pool = GetOrCreatePool(effectName, effectData.PrefabPath);
             
+            if (pool == null)
+            {
+                GD.PrintErr($"Failed to create pool for attached effect: {effectName}");
+                return null;
+            }
+            
             var effect = pool.Get();
             if (effect == null)
             {
                 GD.PrintErr($"Failed to get effect from pool: {effectName}");
-                return;
+                return null;
             }
 
             // Attach to parent
@@ -192,6 +205,8 @@ namespace MechDefenseHalo.VFX
                     pool.Return(effect);
                 }
             };
+
+            return effect;
         }
 
         /// <summary>
@@ -231,13 +246,11 @@ namespace MechDefenseHalo.VFX
                 if (prefab == null)
                 {
                     GD.PrintErr($"Failed to load VFX prefab: {prefabPath}");
-                    // Create a fallback empty pool
-                    _pools[effectName] = new ParticlePool(null, _effectsContainer, initialSize: 0);
+                    // Don't create a pool for missing prefabs - return null to fail fast
+                    return null;
                 }
-                else
-                {
-                    _pools[effectName] = new ParticlePool(prefab, _effectsContainer, initialSize: 10);
-                }
+                
+                _pools[effectName] = new ParticlePool(prefab, _effectsContainer, initialSize: 10);
             }
             return _pools[effectName];
         }

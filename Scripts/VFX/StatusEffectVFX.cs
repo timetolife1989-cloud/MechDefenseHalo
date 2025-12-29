@@ -108,22 +108,12 @@ namespace MechDefenseHalo.VFX
                 return;
             }
 
-            var effectData = VFXManager.Instance.GetEffectData(effectName);
-            
-            // Spawn effect attached to entity
-            VFXManager.Instance.PlayEffectAttached(
+            // Spawn effect attached to entity and get the returned node
+            var effectNode = VFXManager.Instance.PlayEffectAttached(
                 effectName,
                 entityNode,
                 localOffset ?? Vector3.Zero
             );
-
-            // Get the spawned effect node (most recent child)
-            Node3D effectNode = null;
-            var children = entityNode.GetChildren();
-            if (children.Count > 0)
-            {
-                effectNode = children[children.Count - 1] as Node3D;
-            }
 
             if (effectNode != null)
             {
