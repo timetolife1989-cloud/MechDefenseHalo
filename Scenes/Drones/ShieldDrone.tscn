@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2shield2drone2"]
+
+[ext_resource type="Script" path="res://Scripts/Drones/ShieldDrone.cs" id="1_shield"]
+[ext_resource type="Script" path="res://Components/DroneControllerComponent.cs" id="2_controller"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.3, 0.3, 1, 1)
+metallic = 0.5
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.3, 0.3, 1, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_drone"]
+size = Vector3(0.5, 0.3, 0.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ring"]
+inner_radius = 0.2
+outer_radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_detection"]
+radius = 5.0
+
+[node name="ShieldDrone" type="Node3D"]
+script = ExtResource("1_shield")
+DroneName = "Shield Drone"
+EnergyCost = 15.0
+Lifetime = 30.0
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+ShieldStrength = 100.0
+ShieldRadius = 5.0
+ShieldRegenRate = 5.0
+
+[node name="ModelMount" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="ModelMount"]
+mesh = SubResource("BoxMesh_drone")
+surface_material_override/0 = SubResource("StandardMaterial3D_body")
+
+[node name="Ring" type="MeshInstance3D" parent="ModelMount"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_body")
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+shape = SubResource("SphereShape3D_detection")
+
+[node name="AttackPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="DroneControllerComponent" type="Node" parent="."]
+script = ExtResource("2_controller")
+OrbitRadius = 3.0
+OrbitSpeed = 2.0
+DetectionRange = 5.0
+AttackRange = 5.0
+MoveSpeed = 8.0
+
+[node name="OrbitCenter" type="Marker3D" parent="."]
