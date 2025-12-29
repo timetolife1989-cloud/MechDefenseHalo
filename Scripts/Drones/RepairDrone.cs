@@ -21,8 +21,9 @@ namespace MechDefenseHalo.Drones
         public RepairDrone()
         {
             DroneName = "Repair Drone";
-            EnergyCost = 20f;
-            Lifetime = 25f;
+            EnergyCost = 12f;
+            Lifetime = 30f;
+            HealRange = 8f;
         }
 
         #endregion

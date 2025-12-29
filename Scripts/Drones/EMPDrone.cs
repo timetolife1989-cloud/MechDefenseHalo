@@ -28,8 +28,9 @@ namespace MechDefenseHalo.Drones
         public EMPDrone()
         {
             DroneName = "EMP Drone";
-            EnergyCost = 25f;
-            Lifetime = 20f;
+            EnergyCost = 20f;
+            Lifetime = 30f;
+            EMPRange = 10f;
         }
 
         #endregion

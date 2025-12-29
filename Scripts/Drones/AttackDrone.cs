@@ -29,8 +29,9 @@ namespace MechDefenseHalo.Drones
         public AttackDrone()
         {
             DroneName = "Attack Drone";
-            EnergyCost = 25f;
+            EnergyCost = 10f;
             Lifetime = 30f;
+            AttackRange = 20f;
         }
 
         #endregion

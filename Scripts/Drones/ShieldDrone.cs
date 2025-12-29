@@ -30,8 +30,8 @@ namespace MechDefenseHalo.Drones
         public ShieldDrone()
         {
             DroneName = "Shield Drone";
-            EnergyCost = 30f;
-            Lifetime = 20f;
+            EnergyCost = 15f;
+            Lifetime = 30f;
         }
 
         #endregion

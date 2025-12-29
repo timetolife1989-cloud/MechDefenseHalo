@@ -30,8 +30,9 @@ namespace MechDefenseHalo.Drones
         public BomberDrone()
         {
             DroneName = "Bomber Drone";
-            EnergyCost = 35f;
-            Lifetime = 15f;
+            EnergyCost = 25f;
+            Lifetime = 30f;
+            ExplosionDamage = 100f;
         }
 
         #endregion
