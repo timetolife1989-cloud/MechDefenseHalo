@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "last_updated": "2025-12-29T13:00:00Z",
+  "combat": {
+    "TotalKills": 0,
+    "KillsByEnemyType": {},
+    "BossesDefeated": 0,
+    "DeathCount": 0,
+    "TotalDamageDealt": 0,
+    "TotalDamageTaken": 0,
+    "WeakPointHits": 0,
+    "AccuracyPercentage": 0.0,
+    "KillsByWeapon": {},
+    "ShotsFired": 0,
+    "ShotsHit": 0,
+    "DronesDeployed": 0,
+    "DroneKills": 0,
+    "HighestWaveReached": 0,
+    "FastestBossKill": 3.4028235E+38,
+    "LongestKillStreak": 0
+  },
+  "economy": {
+    "TotalCreditsEarned": 0,
+    "TotalCreditsSpent": 0,
+    "TotalCoresEarned": 0,
+    "TotalCoresSpent": 0,
+    "ItemsLooted": 0,
+    "ItemsCrafted": 0,
+    "ItemsSalvaged": 0,
+    "ItemsByRarity": {},
+    "ShopPurchases": 0,
+    "TotalSpentInShop": 0,
+    "ChestsOpened": 0,
+    "LegendariesObtained": 0
+  },
+  "session": {
+    "TotalPlaytimeSeconds": 0.0,
+    "TotalSessions": 0,
+    "FirstPlayedDate": "0001-01-01T00:00:00",
+    "LastPlayedDate": "0001-01-01T00:00:00",
+    "LongestSessionSeconds": 0.0,
+    "DailyLoginStreak": 0,
+    "LastLoginDate": "0001-01-01T00:00:00",
+    "CurrentSessionTime": 0.0,
+    "CurrentSessionKills": 0,
+    "CurrentSessionWaves": 0
+  }
+}

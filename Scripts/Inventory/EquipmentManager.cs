@@ -12,6 +12,24 @@ namespace MechDefenseHalo.Inventory
     /// </summary>
     public partial class EquipmentManager : Node
     {
+        #region Singleton
+
+        private static EquipmentManager _instance;
+
+        public static EquipmentManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    GD.PrintErr("EquipmentManager accessed before initialization!");
+                }
+                return _instance;
+            }
+        }
+
+        #endregion
+
         #region Constants
 
         private const int MAX_LOADOUTS = 5;
@@ -30,8 +48,24 @@ namespace MechDefenseHalo.Inventory
 
         public override void _Ready()
         {
+            if (_instance != null && _instance != this)
+            {
+                GD.PrintErr("Multiple EquipmentManager instances detected! Removing duplicate.");
+                QueueFree();
+                return;
+            }
+
+            _instance = this;
             InitializeSlots();
             GD.Print("EquipmentManager initialized");
+        }
+
+        public override void _ExitTree()
+        {
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         #endregion
@@ -302,6 +336,95 @@ namespace MechDefenseHalo.Inventory
                     => true, // Any item can go in accessory slots
                 _ => false
             };
+        }
+
+        #endregion
+
+        #region Public Methods - Save/Load
+
+        /// <summary>
+        /// Get equipment data for saving
+        /// </summary>
+        /// <returns>Equipment save data</returns>
+        public SaveSystem.EquipmentSaveData GetSaveData()
+        {
+            var equippedItems = new Dictionary<string, string>();
+            
+            foreach (var kvp in _equippedItems)
+            {
+                if (kvp.Value != null)
+                {
+                    equippedItems[kvp.Key.ToString()] = kvp.Value.ItemID;
+                }
+            }
+
+            var loadouts = new Dictionary<int, Dictionary<string, string>>();
+            foreach (var loadoutKvp in _loadouts)
+            {
+                var loadoutData = new Dictionary<string, string>();
+                foreach (var slotKvp in loadoutKvp.Value)
+                {
+                    loadoutData[slotKvp.Key.ToString()] = slotKvp.Value;
+                }
+                loadouts[loadoutKvp.Key] = loadoutData;
+            }
+
+            return new SaveSystem.EquipmentSaveData
+            {
+                EquippedItems = equippedItems,
+                CurrentLoadoutID = _currentLoadoutID,
+                Loadouts = loadouts
+            };
+        }
+
+        /// <summary>
+        /// Load equipment data from save
+        /// </summary>
+        /// <param name="saveData">Equipment save data</param>
+        public void LoadFromSave(SaveSystem.EquipmentSaveData saveData)
+        {
+            if (saveData == null)
+            {
+                GD.PrintErr("Cannot load from null save data");
+                return;
+            }
+
+            // Clear existing equipment
+            _equippedItems.Clear();
+            _loadouts.Clear();
+
+            // Load current loadout ID
+            _currentLoadoutID = saveData.CurrentLoadoutID;
+
+            // Load equipped items - Note: This is a simplified version
+            // In a real implementation, you would need to look up actual item objects
+            foreach (var kvp in saveData.EquippedItems)
+            {
+                if (Enum.TryParse<EquipmentSlot>(kvp.Key, out var slot))
+                {
+                    // TODO: Look up item from item database/registry using kvp.Value (itemID)
+                    GD.Print($"Should restore equipment in slot {slot}: {kvp.Value}");
+                }
+            }
+
+            // Load loadouts
+            foreach (var loadoutKvp in saveData.Loadouts)
+            {
+                var loadoutData = new Dictionary<EquipmentSlot, string>();
+                foreach (var slotKvp in loadoutKvp.Value)
+                {
+                    if (Enum.TryParse<EquipmentSlot>(slotKvp.Key, out var slot))
+                    {
+                        loadoutData[slot] = slotKvp.Value;
+                    }
+                }
+                _loadouts[loadoutKvp.Key] = loadoutData;
+            }
+
+            // Reinitialize slots
+            InitializeSlots();
+
+            GD.Print($"Equipment loaded from save: {saveData.EquippedItems.Count} items equipped");
         }
 
         #endregion

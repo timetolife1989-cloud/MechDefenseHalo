@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://mission_list_item_001"]
+
+[ext_resource type="Script" path="res://Scripts/Notifications/MissionListItem.cs" id="1_mission_item"]
+
+[node name="MissionListItem" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
+script = ExtResource("1_mission_item")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBox"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBox" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="HBox/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mission Title"
+
+[node name="Description" type="Label" parent="HBox/VBox"]
+layout_mode = 2
+text = "Mission description"
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBox/VBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+value = 50.0
+show_percentage = false
+
+[node name="ProgressLabel" type="Label" parent="HBox/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "0/100"
+
+[node name="Reward" type="Label" parent="HBox/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "💰 200 Credits | ⭐ 100 XP"
+
+[node name="ClaimButton" type="Button" parent="HBox"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+disabled = true
+text = "Claim Reward"

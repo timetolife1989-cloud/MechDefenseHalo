@@ -1,0 +1,202 @@
+[gd_scene load_steps=2 format=3 uid="uid://stats_ui_scene_001"]
+
+[ext_resource type="Script" path="res://Scripts/Statistics/StatisticsUI.cs" id="1_statistics"]
+
+[node name="StatisticsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_statistics")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -900.0
+offset_right = 500.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "STATISTICS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Combat" type="VBoxContainer" parent="Background/TabContainer"]
+layout_mode = 2
+
+[node name="TotalKills" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Total Kills: 0"
+
+[node name="BossesDefeated" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Bosses Defeated: 0"
+
+[node name="Accuracy" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Accuracy: 0.0%"
+
+[node name="DamageDealt" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Damage Dealt: 0"
+
+[node name="HighestWave" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Highest Wave: 0"
+
+[node name="DeathCount" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Deaths: 0"
+
+[node name="KillStreak" type="Label" parent="Background/TabContainer/Combat"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Longest Kill Streak: 0"
+
+[node name="Economy" type="VBoxContainer" parent="Background/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CreditsEarned" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Credits Earned: 0"
+
+[node name="CreditsSpent" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Credits Spent: 0"
+
+[node name="ItemsLooted" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Items Looted: 0"
+
+[node name="Legendaries" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Legendaries: 0"
+
+[node name="ItemsCrafted" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Items Crafted: 0"
+
+[node name="ChestsOpened" type="Label" parent="Background/TabContainer/Economy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Chests Opened: 0"
+
+[node name="Session" type="VBoxContainer" parent="Background/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TotalPlaytime" type="Label" parent="Background/TabContainer/Session"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Total Playtime: 0m"
+
+[node name="Sessions" type="Label" parent="Background/TabContainer/Session"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sessions: 0"
+
+[node name="LoginStreak" type="Label" parent="Background/TabContainer/Session"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Login Streak: 0 days"
+
+[node name="FirstPlayed" type="Label" parent="Background/TabContainer/Session"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "First Played: Never"
+
+[node name="CurrentSession" type="Label" parent="Background/TabContainer/Session"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Current Session: 0m"
+
+[node name="Records" type="VBoxContainer" parent="Background/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="FastestBoss" type="Label" parent="Background/TabContainer/Records"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Fastest Boss Kill: N/A"
+
+[node name="LongestStreak" type="Label" parent="Background/TabContainer/Records"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Longest Streak: 0"
+
+[node name="DronesDeployed" type="Label" parent="Background/TabContainer/Records"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Drones Deployed: 0"
+
+[node name="ButtonBar" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RefreshButton" type="Button" parent="Background/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Refresh"
+
+[node name="ExportButton" type="Button" parent="Background/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export Statistics"
+
+[node name="CloseButton" type="Button" parent="Background/ButtonBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[connection signal="pressed" from="Background/ButtonBar/RefreshButton" to="." method="RefreshDisplay"]
+[connection signal="pressed" from="Background/ButtonBar/ExportButton" to="." method="OnExportButtonPressed"]
+[connection signal="pressed" from="Background/ButtonBar/CloseButton" to="." method="OnCloseButtonPressed"]

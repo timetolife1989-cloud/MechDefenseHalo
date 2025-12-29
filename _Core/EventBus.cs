@@ -225,6 +225,10 @@ namespace MechDefenseHalo.Core
         // Achievement Events
         public const string AchievementUnlocked = "achievement_unlocked";
         public const string AchievementProgressUpdated = "achievement_progress_updated";
+        // Save System Events
+        public const string GameSaved = "game_saved";
+        public const string GameLoaded = "game_loaded";
+        public const string AutoSaveTriggered = "auto_save_notification";
 
         #endregion
     }

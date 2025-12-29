@@ -1,0 +1,47 @@
+{
+  "Version": "1.0.0",
+  "LastSaved": "2025-01-01T00:00:00Z",
+  "TotalPlaytime": 0,
+  "Player": {
+    "Level": 1,
+    "CurrentXP": 0,
+    "PrestigeLevel": 0,
+    "LastPositionX": 0,
+    "LastPositionY": 0,
+    "LastPositionZ": 0,
+    "MaxHP": 1000,
+    "CurrentHP": 1000
+  },
+  "Inventory": {
+    "MaxSlots": 500,
+    "Items": []
+  },
+  "Equipment": {
+    "EquippedItems": {},
+    "CurrentLoadoutID": 0,
+    "Loadouts": {}
+  },
+  "Currency": {
+    "Credits": 0,
+    "Cores": 0
+  },
+  "CurrentWave": 0,
+  "UnlockedContent": [],
+  "CompletedAchievements": [],
+  "Statistics": {
+    "TotalKills": 0,
+    "TotalDeaths": 0,
+    "WavesCompleted": 0,
+    "BossesDefeated": 0,
+    "DamageDealt": 0,
+    "DamageTaken": 0
+  },
+  "Settings": {
+    "MasterVolume": 1.0,
+    "MusicVolume": 0.7,
+    "SFXVolume": 1.0,
+    "FullScreen": true,
+    "ResolutionWidth": 1920,
+    "ResolutionHeight": 1080
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "circle": {
+    "name": "Circle",
+    "description": "Enemies spawn in a circle formation around a central point",
+    "radius": 20.0,
+    "best_for": ["Mixed groups", "Boss support enemies"],
+    "difficulty": "Medium"
+  },
+  "line": {
+    "name": "Line",
+    "description": "Enemies spawn in a linear formation",
+    "spacing": 3.0,
+    "best_for": ["Tank formations", "Organized attacks"],
+    "difficulty": "Easy"
+  },
+  "surround": {
+    "name": "Surround",
+    "description": "Enemies completely encircle the player",
+    "radius": 30.0,
+    "best_for": ["Overwhelming the player", "Swarm enemies"],
+    "difficulty": "Hard"
+  },
+  "random": {
+    "name": "Random",
+    "description": "Enemies spawn at random positions within a radius",
+    "radius": 25.0,
+    "variance": 5.0,
+    "best_for": ["Unpredictable spawns", "Fast enemies"],
+    "difficulty": "Medium"
+  },
+  "wave_formation": {
+    "name": "Wave Formation",
+    "description": "Enemies spawn in sequential waves from one direction",
+    "wave_count": 3,
+    "delay_between_waves": 2.0,
+    "best_for": ["Coordinated assaults", "Building tension"],
+    "difficulty": "Medium"
+  },
+  "pincer": {
+    "name": "Pincer",
+    "description": "Enemies spawn from two opposite directions",
+    "angle_separation": 180.0,
+    "best_for": ["Tactical challenges", "Forcing player movement"],
+    "difficulty": "Hard"
+  },
+  "spiral": {
+    "name": "Spiral",
+    "description": "Enemies spawn in a spiral pattern expanding outward",
+    "rotation_speed": 45.0,
+    "radius_increment": 2.0,
+    "best_for": ["Visual variety", "Dynamic spawns"],
+    "difficulty": "Medium"
+  },
+  "cluster": {
+    "name": "Cluster",
+    "description": "Enemies spawn in tight groups at random locations",
+    "cluster_size": 5,
+    "cluster_radius": 3.0,
+    "best_for": ["AOE weapon testing", "Dense enemy groups"],
+    "difficulty": "Hard"
+  }
+}

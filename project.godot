@@ -35,6 +35,9 @@ LootTableManager="*res://Scripts/Loot/LootTableManager.cs"
 CurrencyManager="*res://Scripts/Economy/CurrencyManager.cs"
 SaveManager="*res://_Core/SaveManager.cs"
 AchievementManager="*res://Scripts/Achievements/AchievementManager.cs"
+StatisticsManager="*res://Scripts/Statistics/StatisticsManager.cs"
+PlayerLevel="*res://Scripts/Player/PlayerLevel.cs"
+DailyMissionManager="*res://Scripts/Notifications/DailyMissionManager.cs"
 
 [dotnet]
 
