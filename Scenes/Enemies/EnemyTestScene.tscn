@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://enemy_test_scene_001"]
+
+[ext_resource type="PackedScene" uid="uid://grunt_enemy_001" path="res://Scenes/Enemies/Grunt.tscn" id="1_grunt"]
+[ext_resource type="PackedScene" uid="uid://shooter_enemy_001" path="res://Scenes/Enemies/Shooter.tscn" id="2_shooter"]
+[ext_resource type="PackedScene" uid="uid://tank_enemy_001" path="res://Scenes/Enemies/Tank.tscn" id="3_tank"]
+[ext_resource type="PackedScene" uid="uid://swarm_enemy_001" path="res://Scenes/Enemies/Swarm.tscn" id="4_swarm"]
+[ext_resource type="PackedScene" uid="uid://flyer_enemy_001" path="res://Scenes/Enemies/Flyer.tscn" id="5_flyer"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+size = Vector2(50, 50)
+
+[node name="EnemyTestScene" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ground")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Grunt" parent="Enemies" instance=ExtResource("1_grunt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="Shooter" parent="Enemies" instance=ExtResource("2_shooter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Tank" parent="Enemies" instance=ExtResource("3_tank")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Swarm" parent="Enemies" instance=ExtResource("4_swarm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Flyer" parent="Enemies" instance=ExtResource("5_flyer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
