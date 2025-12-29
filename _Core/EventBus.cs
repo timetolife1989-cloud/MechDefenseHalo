@@ -222,6 +222,9 @@ namespace MechDefenseHalo.Core
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
         
+        // Achievement Events
+        public const string AchievementUnlocked = "achievement_unlocked";
+        public const string AchievementProgressUpdated = "achievement_progress_updated";
         // Save System Events
         public const string GameSaved = "game_saved";
         public const string GameLoaded = "game_loaded";
