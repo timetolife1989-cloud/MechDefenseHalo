@@ -109,7 +109,7 @@ namespace MechDefenseHalo.Tutorial
             
             ShowStep(_tutorialSteps[0]);
             
-            EventBus.Emit("tutorial_started", null);
+            EventBus.Emit(EventBus.TutorialStarted, null);
             GD.Print("Tutorial started");
         }
 
@@ -190,7 +190,7 @@ namespace MechDefenseHalo.Tutorial
                 _dialogUI.HideDialog();
             }
 
-            EventBus.Emit("tutorial_stopped", null);
+            EventBus.Emit(EventBus.TutorialStopped, null);
             GD.Print("Tutorial stopped");
         }
 
@@ -246,7 +246,7 @@ namespace MechDefenseHalo.Tutorial
                 _progressTracker.StartTracking(step);
             }
             
-            EventBus.Emit("tutorial_step_started", new TutorialStepEventData 
+            EventBus.Emit(EventBus.TutorialStepStarted, new TutorialStepEventData 
             { 
                 StepNumber = step.StepNumber,
                 Title = step.Title 
@@ -304,7 +304,7 @@ namespace MechDefenseHalo.Tutorial
             // Save completion status
             SetTutorialCompleted(true);
             
-            EventBus.Emit("tutorial_completed", null);
+            EventBus.Emit(EventBus.TutorialCompleted, null);
             GD.Print("Tutorial completed!");
         }
 
@@ -480,7 +480,7 @@ namespace MechDefenseHalo.Tutorial
             AddChild(_skipHandler);
             
             // Listen for objective completion
-            EventBus.On("tutorial_objective_complete", (data) => OnObjectiveComplete());
+            EventBus.On(EventBus.TutorialObjectiveComplete, (data) => OnObjectiveComplete());
         }
 
         private void LoadTutorialSteps()

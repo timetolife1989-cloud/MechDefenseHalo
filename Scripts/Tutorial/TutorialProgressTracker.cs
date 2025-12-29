@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using MechDefenseHalo.Core;
 
 namespace MechDefenseHalo.Tutorial
 {
@@ -54,7 +55,7 @@ namespace MechDefenseHalo.Tutorial
             // Clean up all active listeners
             foreach (var kvp in _activeListeners)
             {
-                Core.EventBus.Off(kvp.Key, kvp.Value);
+                EventBus.Off(kvp.Key, kvp.Value);
             }
 
             _activeListeners.Clear();
@@ -93,28 +94,28 @@ namespace MechDefenseHalo.Tutorial
                     RegisterListener("player_moved", OnPlayerMoved);
                     break;
                 case "shots_fired":
-                    RegisterListener(Core.EventBus.WeaponFired, OnShotFired);
+                    RegisterListener(EventBus.WeaponFired, OnShotFired);
                     break;
                 case "enemy_kills":
-                    RegisterListener(Core.EventBus.EntityDied, OnEnemyKilled);
+                    RegisterListener(EventBus.EntityDied, OnEnemyKilled);
                     break;
                 case "items_collected":
-                    RegisterListener(Core.EventBus.LootPickedUp, OnItemCollected);
+                    RegisterListener(EventBus.LootPickedUp, OnItemCollected);
                     break;
                 case "ui_opened":
                     RegisterListener("ui_opened", OnUIOpened);
                     break;
                 case "item_equipped":
-                    RegisterListener(Core.EventBus.ItemEquipped, OnItemEquipped);
+                    RegisterListener(EventBus.ItemEquipped, OnItemEquipped);
                     break;
                 case "drone_deployed":
-                    RegisterListener(Core.EventBus.DroneDeployed, OnDroneDeployed);
+                    RegisterListener(EventBus.DroneDeployed, OnDroneDeployed);
                     break;
                 case "wave_completed":
-                    RegisterListener(Core.EventBus.WaveCompleted, OnWaveCompleted);
+                    RegisterListener(EventBus.WaveCompleted, OnWaveCompleted);
                     break;
                 case "craft_started":
-                    RegisterListener(Core.EventBus.CraftStarted, OnCraftStarted);
+                    RegisterListener(EventBus.CraftStarted, OnCraftStarted);
                     break;
             }
         }
@@ -122,7 +123,7 @@ namespace MechDefenseHalo.Tutorial
         private void RegisterListener(string eventName, Action<object> callback)
         {
             _activeListeners[eventName] = callback;
-            Core.EventBus.On(eventName, callback);
+            EventBus.On(eventName, callback);
         }
 
         #endregion
@@ -227,7 +228,7 @@ namespace MechDefenseHalo.Tutorial
         private void OnObjectiveComplete()
         {
             GD.Print($"Tutorial objective complete: {_currentStep.Title}");
-            Core.EventBus.Emit("tutorial_objective_complete", _currentStep);
+            EventBus.Emit(EventBus.TutorialObjectiveComplete, _currentStep);
         }
 
         #endregion

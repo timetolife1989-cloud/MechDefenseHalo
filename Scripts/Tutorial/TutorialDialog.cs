@@ -108,8 +108,30 @@ namespace MechDefenseHalo.Tutorial
 
             if (_objectiveLabel != null)
             {
-                _objectiveLabel.Text = $"{_currentStep.ObjectiveType}: {_currentStep.GetObjectiveText()}";
+                string objectiveText = GetUserFriendlyObjectiveType(_currentStep.ObjectiveType);
+                _objectiveLabel.Text = $"{objectiveText}: {_currentStep.GetObjectiveText()}";
             }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private string GetUserFriendlyObjectiveType(string objectiveType)
+        {
+            return objectiveType switch
+            {
+                "distance_moved" => "Distance Moved",
+                "shots_fired" => "Shots Fired",
+                "enemy_kills" => "Enemies Killed",
+                "items_collected" => "Items Collected",
+                "ui_opened" => "Open UI",
+                "item_equipped" => "Items Equipped",
+                "drone_deployed" => "Drones Deployed",
+                "wave_completed" => "Waves Completed",
+                "craft_started" => "Crafting Started",
+                _ => objectiveType
+            };
         }
 
         /// <summary>
