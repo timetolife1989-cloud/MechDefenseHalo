@@ -221,6 +221,11 @@ namespace MechDefenseHalo.Core
         public const string ShowDailyLoginOffer = "show_daily_login_offer";
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
+        
+        // Settings Events
+        public const string SettingsSaved = "settings_saved";
+        public const string SettingsApplied = "settings_applied";
+        public const string SettingsReset = "settings_reset";
 
         #endregion
     }
