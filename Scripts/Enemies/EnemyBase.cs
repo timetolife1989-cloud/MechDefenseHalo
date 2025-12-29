@@ -2,6 +2,7 @@ using Godot;
 using System;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Components;
+using MechDefenseHalo.Progression;
 
 namespace MechDefenseHalo.Enemies
 {
@@ -14,6 +15,7 @@ namespace MechDefenseHalo.Enemies
         #region Exported Properties
 
         [Export] public string EnemyName { get; set; } = "Enemy";
+        [Export] public int Level { get; set; } = 1;
         [Export] public float MaxHealth { get; set; } = 100f;
         [Export] public float MoveSpeed { get; set; } = 3f;
         [Export] public float AttackDamage { get; set; } = 10f;
@@ -212,6 +214,10 @@ namespace MechDefenseHalo.Enemies
             if (data is EntityDiedData diedData && diedData.Entity == this)
             {
                 OnDeath();
+                
+                // Grant XP to player (base 10 XP * enemy level)
+                int xpAmount = 10 * Level;
+                PlayerLevel.AddXP(xpAmount, $"{EnemyName} kill");
                 
                 // Remove from group
                 RemoveFromGroup("enemies");
