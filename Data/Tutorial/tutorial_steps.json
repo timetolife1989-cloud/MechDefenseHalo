@@ -3,7 +3,6 @@
     "step": 1,
     "title": "Welcome, Commander",
     "description": "Use WASD to move around the training ground",
-    "objective": "Move 10 meters",
     "objective_type": "distance_moved",
     "objective_value": 10,
     "highlight_keys": ["W", "A", "S", "D"],
@@ -13,7 +12,6 @@
     "step": 2,
     "title": "Combat Systems",
     "description": "Click LEFT MOUSE to fire your weapon",
-    "objective": "Fire 10 shots",
     "objective_type": "shots_fired",
     "objective_value": 10,
     "highlight_ui": "crosshair"
@@ -22,7 +20,6 @@
     "step": 3,
     "title": "Eliminate Hostiles",
     "description": "Destroy 3 training dummies",
-    "objective": "Kill 3 enemies",
     "objective_type": "enemy_kills",
     "objective_value": 3,
     "spawn_enemies": ["Grunt", "Grunt", "Grunt"],
@@ -32,7 +29,6 @@
     "step": 4,
     "title": "Loot Collection",
     "description": "Walk over the dropped loot to collect it",
-    "objective": "Collect 3 items",
     "objective_type": "items_collected",
     "objective_value": 3
   },
@@ -40,7 +36,6 @@
     "step": 5,
     "title": "Inventory Management",
     "description": "Press I to open your inventory",
-    "objective": "Open inventory",
     "objective_type": "ui_opened",
     "objective_value": "inventory",
     "highlight_keys": ["I"]
@@ -49,7 +44,6 @@
     "step": 6,
     "title": "Equipment Upgrade",
     "description": "Right-click an item and select 'Equip'",
-    "objective": "Equip 1 item",
     "objective_type": "item_equipped",
     "objective_value": 1,
     "highlight_ui": "inventory_grid"
@@ -58,7 +52,6 @@
     "step": 7,
     "title": "Drone Systems",
     "description": "Press F to deploy an Attack Drone",
-    "objective": "Deploy 1 drone",
     "objective_type": "drone_deployed",
     "objective_value": 1,
     "highlight_keys": ["F"],
@@ -68,7 +61,6 @@
     "step": 8,
     "title": "Wave Defense",
     "description": "Survive Wave 1 using your new skills",
-    "objective": "Complete Wave 1",
     "objective_type": "wave_completed",
     "objective_value": 1,
     "spawn_wave": 1,
@@ -78,7 +70,6 @@
     "step": 9,
     "title": "Shop Access",
     "description": "Press P to open the shop and browse items",
-    "objective": "Open shop",
     "objective_type": "ui_opened",
     "objective_value": "shop",
     "highlight_keys": ["P"]
@@ -87,7 +78,6 @@
     "step": 10,
     "title": "Crafting Basics",
     "description": "Press C to open crafting and queue an item",
-    "objective": "Start 1 craft",
     "objective_type": "craft_started",
     "objective_value": 1,
     "highlight_keys": ["C"]

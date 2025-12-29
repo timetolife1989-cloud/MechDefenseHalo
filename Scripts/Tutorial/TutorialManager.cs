@@ -20,6 +20,8 @@ namespace MechDefenseHalo.Tutorial
 
         [Export] public string TutorialStepsPath { get; set; } = "res://Data/Tutorial/tutorial_steps.json";
         [Export] public string TutorialRewardsPath { get; set; } = "res://Data/Tutorial/tutorial_rewards.json";
+        [Export] public string WaveSpawnerPath { get; set; } = "/root/GameManager/WaveSpawner";
+        [Export] public string InventoryManagerPath { get; set; } = "/root/GameManager/InventoryManager";
 
         #endregion
 
@@ -102,7 +104,7 @@ namespace MechDefenseHalo.Tutorial
             _currentStepIndex = 0;
             
             // Pause wave spawner if it exists
-            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>("/root/GameManager/WaveSpawner");
+            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>(WaveSpawnerPath);
             if (waveSpawner != null)
             {
                 waveSpawner.Set("paused_for_tutorial", true);
@@ -290,7 +292,7 @@ namespace MechDefenseHalo.Tutorial
             }
             
             // Re-enable game systems
-            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>("/root/GameManager/WaveSpawner");
+            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>(WaveSpawnerPath);
             if (waveSpawner != null)
             {
                 waveSpawner.Set("paused_for_tutorial", false);
@@ -336,15 +338,22 @@ namespace MechDefenseHalo.Tutorial
             GD.Print($"Spawning {enemyTypes.Count} tutorial enemies");
             
             // Find wave spawner or enemy container
-            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>("/root/GameManager/WaveSpawner");
+            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>(WaveSpawnerPath);
             
             if (waveSpawner != null)
             {
                 // Use wave spawner to spawn enemies
                 foreach (var enemyType in enemyTypes)
                 {
-                    // Call spawn method on wave spawner
-                    waveSpawner.Call("spawn_enemy", enemyType);
+                    // Try to call spawn_enemy method if it exists
+                    if (waveSpawner.HasMethod("spawn_enemy"))
+                    {
+                        waveSpawner.Call("spawn_enemy", enemyType);
+                    }
+                    else
+                    {
+                        GD.PrintErr("WaveSpawner does not have 'spawn_enemy' method");
+                    }
                 }
             }
             else
@@ -357,11 +366,19 @@ namespace MechDefenseHalo.Tutorial
         {
             GD.Print($"Starting tutorial wave {waveNumber}");
             
-            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>("/root/GameManager/WaveSpawner");
+            var waveSpawner = GetNodeOrNull<GamePlay.WaveSpawner>(WaveSpawnerPath);
             
             if (waveSpawner != null)
             {
-                waveSpawner.Call("start_wave", waveNumber);
+                // Try to call start_wave method if it exists
+                if (waveSpawner.HasMethod("start_wave"))
+                {
+                    waveSpawner.Call("start_wave", waveNumber);
+                }
+                else
+                {
+                    GD.PrintErr("WaveSpawner does not have 'start_wave' method");
+                }
             }
             else
             {
@@ -403,7 +420,7 @@ namespace MechDefenseHalo.Tutorial
             // Grant items
             if (rewards.Items != null)
             {
-                var inventoryManager = GetNodeOrNull<InventoryManager>("/root/GameManager/InventoryManager");
+                var inventoryManager = GetNodeOrNull<InventoryManager>(InventoryManagerPath);
                 
                 foreach (var itemReward in rewards.Items)
                 {
