@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MechDefenseHalo Save Data Schema",
+  "description": "Schema for validating save game data",
+  "type": "object",
+  "required": ["Version", "LastSaved", "Player", "Currency"],
+  "properties": {
+    "Version": {
+      "type": "string",
+      "description": "Save file version"
+    },
+    "LastSaved": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last save"
+    },
+    "TotalPlaytime": {
+      "type": "number",
+      "description": "Total playtime in seconds"
+    },
+    "Player": {
+      "type": "object",
+      "required": ["Level", "CurrentXP", "MaxHP", "CurrentHP"],
+      "properties": {
+        "Level": { "type": "integer", "minimum": 1 },
+        "CurrentXP": { "type": "integer", "minimum": 0 },
+        "PrestigeLevel": { "type": "integer", "minimum": 0 },
+        "LastPositionX": { "type": "number" },
+        "LastPositionY": { "type": "number" },
+        "LastPositionZ": { "type": "number" },
+        "MaxHP": { "type": "number", "minimum": 0 },
+        "CurrentHP": { "type": "number", "minimum": 0 }
+      }
+    },
+    "Inventory": {
+      "type": "object",
+      "properties": {
+        "MaxSlots": { "type": "integer", "minimum": 1 },
+        "Items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ItemID", "Quantity"],
+            "properties": {
+              "ItemID": { "type": "string" },
+              "Quantity": { "type": "integer", "minimum": 1 },
+              "SlotIndex": { "type": "integer", "minimum": 0 },
+              "Stats": {
+                "type": "object",
+                "additionalProperties": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Equipment": {
+      "type": "object",
+      "properties": {
+        "EquippedItems": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "CurrentLoadoutID": { "type": "integer" },
+        "Loadouts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      }
+    },
+    "Currency": {
+      "type": "object",
+      "required": ["Credits", "Cores"],
+      "properties": {
+        "Credits": { "type": "integer", "minimum": 0 },
+        "Cores": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "CurrentWave": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "UnlockedContent": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "CompletedAchievements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "Statistics": {
+      "type": "object",
+      "properties": {
+        "TotalKills": { "type": "integer", "minimum": 0 },
+        "TotalDeaths": { "type": "integer", "minimum": 0 },
+        "WavesCompleted": { "type": "integer", "minimum": 0 },
+        "BossesDefeated": { "type": "integer", "minimum": 0 },
+        "DamageDealt": { "type": "number", "minimum": 0 },
+        "DamageTaken": { "type": "number", "minimum": 0 }
+      }
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "MasterVolume": { "type": "number", "minimum": 0, "maximum": 1 },
+        "MusicVolume": { "type": "number", "minimum": 0, "maximum": 1 },
+        "SFXVolume": { "type": "number", "minimum": 0, "maximum": 1 },
+        "FullScreen": { "type": "boolean" },
+        "ResolutionWidth": { "type": "integer", "minimum": 800 },
+        "ResolutionHeight": { "type": "integer", "minimum": 600 }
+      }
+    }
+  }
+}

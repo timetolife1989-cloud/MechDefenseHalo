@@ -221,6 +221,11 @@ namespace MechDefenseHalo.Core
         public const string ShowDailyLoginOffer = "show_daily_login_offer";
         public const string ShowConsentDialog = "show_consent_dialog";
         public const string ConsentStatusChanged = "consent_status_changed";
+        
+        // Save System Events
+        public const string GameSaved = "game_saved";
+        public const string GameLoaded = "game_loaded";
+        public const string AutoSaveTriggered = "auto_save_notification";
 
         #endregion
     }
