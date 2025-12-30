@@ -43,6 +43,10 @@ namespace MechDefenseHalo.Leaderboard
         private List<LeaderboardEntry> _entries = new List<LeaderboardEntry>();
         private FirebaseLeaderboard _firebaseLeaderboard;
         private RankCalculator _rankCalculator;
+        private static readonly System.Text.Json.JsonSerializerOptions _jsonOptions = new System.Text.Json.JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
         
         #endregion
         
@@ -213,7 +217,7 @@ namespace MechDefenseHalo.Leaderboard
                     LastSaved = DateTime.Now
                 };
                 
-                string json = System.Text.Json.JsonSerializer.Serialize(data);
+                string json = System.Text.Json.JsonSerializer.Serialize(data, _jsonOptions);
                 var file = FileAccess.Open(SaveFilePath, FileAccess.ModeFlags.Write);
                 
                 if (file != null)
@@ -256,7 +260,7 @@ namespace MechDefenseHalo.Leaderboard
                     string json = file.GetAsText();
                     file.Close();
                     
-                    var data = System.Text.Json.JsonSerializer.Deserialize<LeaderboardSaveData>(json);
+                    var data = System.Text.Json.JsonSerializer.Deserialize<LeaderboardSaveData>(json, _jsonOptions);
                     
                     if (data != null && data.Entries != null)
                     {
@@ -296,10 +300,11 @@ namespace MechDefenseHalo.Leaderboard
                 var allEntries = new List<LeaderboardEntry>(_entries);
                 allEntries.AddRange(firebaseEntries);
                 
-                // Remove duplicates and keep top scores
+                // Remove duplicates - keep highest score per player
+                // For players with multiple entries, keep only their best score
                 _entries = allEntries
-                    .GroupBy(e => new { e.PlayerName, e.Timestamp })
-                    .Select(g => g.First())
+                    .GroupBy(e => e.PlayerName)
+                    .Select(g => g.OrderByDescending(e => e.Score).First())
                     .OrderByDescending(e => e.Score)
                     .Take(MaxLeaderboardEntries)
                     .ToList();

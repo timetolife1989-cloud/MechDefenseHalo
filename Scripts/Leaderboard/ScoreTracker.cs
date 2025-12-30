@@ -2,6 +2,7 @@ using Godot;
 using System;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Statistics;
+using MechDefenseHalo.Components;
 
 namespace MechDefenseHalo.Leaderboard
 {
@@ -33,8 +34,10 @@ namespace MechDefenseHalo.Leaderboard
         
         [Export] public int PointsPerKill { get; set; } = 100;
         [Export] public int PointsPerWave { get; set; } = 500;
+        [Export] public int WaveBonusMultiplier { get; set; } = 50;
         [Export] public int PointsPerBoss { get; set; } = 2000;
-        [Export] public float ComboMultiplier { get; set; } = 1.5f;
+        [Export] public float MaxComboMultiplier { get; set; } = 1.5f;
+        [Export] public float ComboMultiplierIncrement { get; set; } = 0.1f;
         [Export] public float ComboDecayTime { get; set; } = 3.0f;
         
         #endregion
@@ -259,7 +262,7 @@ namespace MechDefenseHalo.Leaderboard
         private int CalculateWavePoints()
         {
             // Wave points increase with wave number
-            return PointsPerWave + (CurrentWave * 50);
+            return PointsPerWave + (CurrentWave * WaveBonusMultiplier);
         }
         
         private int CalculateBossPoints()
@@ -273,8 +276,8 @@ namespace MechDefenseHalo.Leaderboard
                 return basePoints;
             
             // Apply combo multiplier
-            float multiplier = 1f + ((CurrentCombo - 1) * 0.1f);
-            multiplier = Mathf.Min(multiplier, ComboMultiplier);
+            float multiplier = 1f + ((CurrentCombo - 1) * ComboMultiplierIncrement);
+            multiplier = Mathf.Min(multiplier, MaxComboMultiplier);
             
             return (int)(basePoints * multiplier);
         }
