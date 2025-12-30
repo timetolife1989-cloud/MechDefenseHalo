@@ -43,6 +43,7 @@ jobs:
         continue-on-error: true
 
       - name: Enable auto-merge
+        id: auto_merge
         run: |
           gh pr merge ${{ github.event.pull_request.number }} \
             --auto \
@@ -53,7 +54,7 @@ jobs:
         continue-on-error: true
 
       - name: Force merge if auto-merge fails
-        if: failure()
+        if: steps.auto_merge.outcome == 'failure'
         run: |
           gh pr merge ${{ github.event.pull_request.number }} \
             --squash \
