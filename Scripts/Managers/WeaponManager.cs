@@ -21,6 +21,7 @@ namespace MechDefenseHalo.Managers
         [Export] public int MaxAmmo { get; set; } = 300;
         [Export] public int CurrentAmmo { get; set; } = 300;
         [Export] public float ReloadTime { get; set; } = 2.0f;
+        [Export] public float RaycastDistance { get; set; } = 1000f;
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace MechDefenseHalo.Managers
         private List<WeaponData> equippedWeapons = new List<WeaponData>();
         private int currentWeaponIndex = 0;
         private bool isReloading = false;
+        private float lastFireTime = 0f;
 
         #endregion
 
@@ -121,6 +123,15 @@ namespace MechDefenseHalo.Managers
             var weapon = GetCurrentWeapon();
             if (weapon == null) return;
 
+            // Check fire rate limiting
+            float currentTime = (float)Time.GetTicksMsec() / 1000f;
+            if (currentTime - lastFireTime < weapon.FireRate)
+            {
+                return; // Too soon to fire again
+            }
+
+            lastFireTime = currentTime;
+
             // Raycast from camera for hit detection
             var camera = GetViewport().GetCamera3D();
             if (camera == null)
@@ -130,7 +141,7 @@ namespace MechDefenseHalo.Managers
             }
 
             var from = camera.GlobalPosition;
-            var to = from + camera.GlobalTransform.Basis.Z * -1000f;
+            var to = from + camera.GlobalTransform.Basis.Z * -RaycastDistance;
 
             var spaceState = GetWorld3D().DirectSpaceState;
             var query = PhysicsRayQueryParameters3D.Create(from, to);
