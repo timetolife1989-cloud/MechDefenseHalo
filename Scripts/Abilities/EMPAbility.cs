@@ -155,6 +155,9 @@ namespace MechDefenseHalo.Abilities
             else
             {
                 // Fallback: disable the enemy temporarily
+                // NOTE: This is a simple fallback that disables all processing.
+                // Enemies should implement ApplyStun(float duration) for proper stun handling.
+                // This fallback may interfere with other enemy behaviors.
                 enemy.SetProcess(false);
                 enemy.SetPhysicsProcess(false);
                 

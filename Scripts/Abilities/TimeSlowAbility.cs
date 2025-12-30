@@ -181,6 +181,9 @@ namespace MechDefenseHalo.Abilities
         private void ApplySlowEffect(Node3D enemy)
         {
             // Apply time scale to enemy if it has the method
+            // NOTE: This uses duck typing for flexibility. Enemies should implement
+            // SetTimeScale(float) or SetSpeedMultiplier(float) for proper slow effect.
+            // Consider creating an ITimeScalable interface in future refactoring.
             if (enemy.HasMethod("SetTimeScale"))
             {
                 enemy.Call("SetTimeScale", TimeScale);

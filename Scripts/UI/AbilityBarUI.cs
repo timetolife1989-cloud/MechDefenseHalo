@@ -51,7 +51,9 @@ namespace MechDefenseHalo.UI
             }
             else
             {
-                // Try to find it in the scene tree
+                // Try to find it in the scene tree as fallback
+                // NOTE: If multiple AbilitySystem nodes exist, this may not find the correct one.
+                // It's recommended to explicitly set AbilitySystemPath in the inspector.
                 _abilitySystem = GetTree().Root.FindChild("AbilitySystem", true, false) as AbilitySystem;
             }
             
