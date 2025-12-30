@@ -281,11 +281,16 @@ namespace MechDefenseHalo.UI.HUD
         /// </summary>
         private void CleanupInvalidMarkers()
         {
-            // Clean up invalid enemy markers
-            _enemyMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
-            
-            // Clean up invalid objective markers
-            _objectiveMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
+            CleanupMarkerList(_enemyMarkers);
+            CleanupMarkerList(_objectiveMarkers);
+        }
+        
+        /// <summary>
+        /// Clean up invalid markers from a list
+        /// </summary>
+        private void CleanupMarkerList(List<MinimapMarker> markers)
+        {
+            markers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
         }
         
         /// <summary>
