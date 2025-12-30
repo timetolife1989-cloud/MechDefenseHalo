@@ -440,10 +440,23 @@ namespace MechDefenseHalo.Achievements
 
         private string GetGooglePlayAchievementId(string internalId)
         {
-            // Return mapped ID or use placeholder as fallback
-            return _googlePlayAchievementMap.ContainsKey(internalId)
-                ? _googlePlayAchievementMap[internalId]
-                : "PLACEHOLDER_" + internalId; // Placeholder format for unmapped IDs
+            if (_googlePlayAchievementMap.ContainsKey(internalId))
+            {
+                string mappedId = _googlePlayAchievementMap[internalId];
+                
+                // Warn if using placeholder ID in production
+                if (mappedId.StartsWith("PLACEHOLDER_"))
+                {
+                    GD.PrintErr($"WARNING: Using placeholder Google Play achievement ID '{mappedId}'. Replace with real ID from Google Play Console before production deployment!");
+                }
+                
+                return mappedId;
+            }
+            
+            // Fallback with warning
+            string placeholderId = "PLACEHOLDER_" + internalId;
+            GD.PrintErr($"WARNING: No mapping found for achievement '{internalId}'. Using placeholder ID '{placeholderId}'");
+            return placeholderId;
         }
 
         #endregion
@@ -484,6 +497,10 @@ namespace MechDefenseHalo.Achievements
 
         /// <summary>
         /// Setup mappings between internal achievement IDs and platform-specific IDs
+        /// 
+        /// NOTE: For production deployment at scale, consider moving these mappings to
+        /// an external configuration file (JSON/XML) to allow modification without code changes.
+        /// Current hardcoded approach is suitable for initial implementation and testing.
         /// </summary>
         private void SetupAchievementMappings()
         {
