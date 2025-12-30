@@ -160,3 +160,20 @@ This project uses AI-assisted development. All contributions should:
 ## License
 
 *(License to be determined)*
+
+## Development Setup
+
+### Prerequisites
+- Godot 4.x
+- .NET SDK 8.0 or later
+- Git
+
+### Getting Started
+1. Clone the repository
+2. Open the project in Godot
+3. Press F5 to run the game
+
+### Project Structure
+- `Scripts/` - C# game scripts
+- `Scenes/` - Godot scene files
+- `.github/workflows/` - CI/CD automation workflows
