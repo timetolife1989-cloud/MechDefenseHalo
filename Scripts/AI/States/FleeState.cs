@@ -16,6 +16,12 @@ namespace MechDefenseHalo.AI.States
             
             // Flee in opposite direction
             var body = Controller.GetParent<Node3D>();
+            if (body == null)
+            {
+                Controller.ChangeState("Idle");
+                return;
+            }
+            
             Vector3 fleeDirection = (body.GlobalPosition - Controller.TargetPosition).Normalized();
             Vector3 fleeTarget = body.GlobalPosition + fleeDirection * 20f;
             

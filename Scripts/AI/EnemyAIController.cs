@@ -93,7 +93,10 @@ namespace MechDefenseHalo.AI
         private void ActorSetup()
         {
             // Wait one frame for navigation map to be ready
-            GetTree().CreateTimer(0.0).Timeout += () => _navAgent.NavigationFinished += OnNavigationFinished;
+            if (_navAgent != null)
+            {
+                _navAgent.NavigationFinished += OnNavigationFinished;
+            }
         }
         
         private void SetupStateMachine()

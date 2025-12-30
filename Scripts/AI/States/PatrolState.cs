@@ -37,6 +37,9 @@ namespace MechDefenseHalo.AI.States
         private void PickNewPatrolPoint()
         {
             var body = Controller.GetParent<Node3D>();
+            if (body == null)
+                return;
+                
             Vector3 randomOffset = new Vector3(
                 GD.Randf() * _patrolRadius * 2 - _patrolRadius,
                 0,

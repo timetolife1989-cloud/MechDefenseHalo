@@ -31,7 +31,10 @@ namespace MechDefenseHalo.AI.States
             if (_attackCooldown <= 0)
             {
                 PerformAttack();
-                _attackCooldown = 1.5f; // TODO: Get from enemy stats
+                
+                // Get attack cooldown from enemy stats
+                var enemyBase = Controller.GetParent() as Enemies.EnemyBase;
+                _attackCooldown = enemyBase?.AttackCooldown ?? 1.5f;
             }
         }
         
