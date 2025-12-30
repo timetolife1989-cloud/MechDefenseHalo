@@ -98,7 +98,7 @@ namespace MechDefenseHalo.Quests
             _activeQuests.Add(quest);
 
             // Emit quest started event
-            EventBus.Emit("quest_started", new QuestEventData
+            Core.EventBus.Instance?.Emit("quest_started", new QuestEventData
             {
                 QuestId = questId,
                 QuestName = quest.Name
@@ -134,12 +134,18 @@ namespace MechDefenseHalo.Quests
             var objective = quest.Objectives[objectiveIndex];
             objective.CurrentCount += progress;
 
+            // Clamp to prevent exceeding required count
+            if (objective.CurrentCount > objective.RequiredCount)
+            {
+                objective.CurrentCount = objective.RequiredCount;
+            }
+
             if (objective.CurrentCount >= objective.RequiredCount && !objective.IsCompleted)
             {
                 objective.IsCompleted = true;
                 
                 // Emit objective completed event
-                EventBus.Emit("quest_objective_completed", new QuestObjectiveEventData
+                Core.EventBus.Instance?.Emit("quest_objective_completed", new QuestObjectiveEventData
                 {
                     QuestId = questId,
                     ObjectiveIndex = objectiveIndex,
@@ -182,7 +188,7 @@ namespace MechDefenseHalo.Quests
             GiveRewards(quest.Rewards);
 
             // Emit quest completed event
-            EventBus.Emit("quest_completed", new QuestEventData
+            Core.EventBus.Instance?.Emit("quest_completed", new QuestEventData
             {
                 QuestId = questId,
                 QuestName = quest.Name
@@ -213,7 +219,7 @@ namespace MechDefenseHalo.Quests
             _activeQuests.Remove(quest);
 
             // Emit quest failed event
-            EventBus.Emit("quest_failed", new QuestEventData
+            Core.EventBus.Instance?.Emit("quest_failed", new QuestEventData
             {
                 QuestId = questId,
                 QuestName = quest.Name

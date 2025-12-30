@@ -30,13 +30,17 @@ namespace MechDefenseHalo.Quests
             // Create UI structure
             SetupUI();
 
-            // Subscribe to quest events
-            if (QuestManager.Instance != null)
+            // Subscribe to quest events only if QuestManager is available
+            if (QuestManager.Instance != null && Core.EventBus.Instance != null)
             {
-                Core.EventBus.Instance?.On("quest_started", OnQuestStarted);
-                Core.EventBus.Instance?.On("quest_completed", OnQuestCompleted);
-                Core.EventBus.Instance?.On("quest_failed", OnQuestFailed);
-                Core.EventBus.Instance?.On("quest_objective_completed", OnObjectiveCompleted);
+                Core.EventBus.Instance.On("quest_started", OnQuestStarted);
+                Core.EventBus.Instance.On("quest_completed", OnQuestCompleted);
+                Core.EventBus.Instance.On("quest_failed", OnQuestFailed);
+                Core.EventBus.Instance.On("quest_objective_completed", OnObjectiveCompleted);
+            }
+            else
+            {
+                GD.PrintErr("QuestTracker: QuestManager or EventBus not initialized!");
             }
 
             // Initial update

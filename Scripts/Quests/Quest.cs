@@ -27,11 +27,12 @@ namespace MechDefenseHalo.Quests
 
         /// <summary>
         /// Get the overall progress of the quest (0.0 to 1.0)
+        /// Returns 0.0 for quests with no objectives
         /// </summary>
         public float GetProgress()
         {
             if (Objectives == null || Objectives.Count == 0)
-                return 0f;
+                return 0f; // No objectives means no progress possible
 
             float totalProgress = 0f;
             foreach (var objective in Objectives)

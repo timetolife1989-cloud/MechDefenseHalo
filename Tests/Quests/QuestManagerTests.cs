@@ -29,12 +29,9 @@ namespace MechDefenseHalo.Tests.Quests
             
             // Create and initialize CurrencyManager
             _currencyManager = new CurrencyManager();
-            CurrencyManager.SetCredits(0);
-            CurrencyManager.SetCores(0);
             
             // Create and initialize PlayerLevel
             _playerLevel = new PlayerLevel();
-            PlayerLevel.SetLevel(1, 0);
             
             // Create QuestManager
             _questManager = new QuestManager();
