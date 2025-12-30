@@ -84,14 +84,6 @@ jobs:
           fi
         continue-on-error: true
       
-      - name: Auto-approve PR
-        if: success()
-        run: |
-          echo "✅ Build succeeded - PR approved"
-          # Note: Auto-approval happens via auto-merge workflow
-        env:
-          GH_TOKEN: ${{ github.token }}
-      
       - name: Build Summary
         if: always()
         env:
