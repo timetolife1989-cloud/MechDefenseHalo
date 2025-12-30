@@ -178,7 +178,7 @@ namespace MechDefenseHalo.Enemies
             return distance <= AttackRange;
         }
 
-        protected void TryAttack()
+        public void TryAttack()
         {
             if (_attackTimer > 0 || !IsInAttackRange())
                 return;

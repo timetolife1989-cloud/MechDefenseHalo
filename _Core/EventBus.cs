@@ -161,8 +161,10 @@ namespace MechDefenseHalo.Core
         
         // Weapons
         public const string WeaponFired = "weapon_fired";
+        public const string WeaponReloading = "weapon_reloading";
         public const string WeaponReloaded = "weapon_reloaded";
         public const string WeaponSwitched = "weapon_switched";
+        public const string WeaponRecoil = "weapon_recoil";
         
         // Drones
         public const string DroneDeployed = "drone_deployed";
@@ -238,6 +240,16 @@ namespace MechDefenseHalo.Core
         public const string FeatureUnlocked = "feature_unlocked";
         public const string LegendaryItemReward = "legendary_item_reward";
         public const string PlayerPrestiged = "player_prestiged";
+
+        // DLC Events
+        public const string DLCUnlocked = "dlc_unlocked";
+
+        // Tutorial Events
+        public const string TutorialStarted = "tutorial_started";
+        public const string TutorialStopped = "tutorial_stopped";
+        public const string TutorialCompleted = "tutorial_completed";
+        public const string TutorialStepStarted = "tutorial_step_started";
+        public const string TutorialObjectiveComplete = "tutorial_objective_complete";
 
         #endregion
     }

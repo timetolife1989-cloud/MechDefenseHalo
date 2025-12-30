@@ -40,3 +40,9 @@ bld/
 # Visual Studio cache/options
 .vs/
 *.userprefs
+
+# Mobile build artifacts
+build/
+*.apk
+*.aab
+*.obb
