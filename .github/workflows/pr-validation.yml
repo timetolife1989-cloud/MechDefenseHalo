@@ -77,14 +77,8 @@ jobs:
         run: |
           if [ -d "Tests" ] || [ -d "tests" ]; then
             echo "Running tests..."
-            if dotnet test --configuration Release --no-build; then
-              echo "✅ All tests passed"
-            else
-              EXIT_CODE=$?
-              echo "❌ Tests failed with exit code $EXIT_CODE"
-              # Don't fail the workflow on test failures - warnings acceptable
-              echo "⚠️ Test failures noted but not blocking (warnings acceptable)"
-            fi
+            dotnet test --configuration Release --no-build
+            echo "✅ Tests completed"
           else
             echo "✅ No test directory found, skipping tests"
           fi
@@ -100,9 +94,12 @@ jobs:
       
       - name: Build Summary
         if: always()
+        env:
+          BUILD_OUTCOME: ${{ steps.dotnet_build.outcome }}
+          GODOT_OUTCOME: ${{ steps.godot_build.outcome }}
         run: |
           echo "## PR Validation Summary" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.dotnet_build.outcome }}" == "success" ] || [ "${{ steps.godot_build.outcome }}" == "success" ]; then
+          if [ "$BUILD_OUTCOME" == "success" ] || [ "$GODOT_OUTCOME" == "success" ]; then
             echo "✅ **Build Status:** PASSED" >> $GITHUB_STEP_SUMMARY
             echo "✅ PR is ready to merge" >> $GITHUB_STEP_SUMMARY
           else
