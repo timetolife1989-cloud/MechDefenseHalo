@@ -11,8 +11,9 @@ namespace MechDefenseHalo.Loot
     
     /// <summary>
     /// Complete loot table definition for an enemy or loot source
+    /// Note: This is different from the LootTable class in LootTableManager which is for JSON deserialization
     /// </summary>
-    public class LootTable
+    public class LootTableDefinition
     {
         /// <summary>
         /// Identifier for this loot table (e.g., "grunt", "elite", "boss_hunter")
@@ -52,9 +53,9 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Create a loot table for testing/debugging
         /// </summary>
-        public static LootTable CreateTestTable(string tableId)
+        public static LootTableDefinition CreateTestTable(string tableId)
         {
-            return new LootTable
+            return new LootTableDefinition
             {
                 TableId = tableId,
                 DisplayName = $"Test Table: {tableId}",
@@ -99,9 +100,9 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Create a loot table from enemy type
         /// </summary>
-        public static LootTable CreateForEnemy(string enemyType, int enemyLevel)
+        public static LootTableDefinition CreateForEnemy(string enemyType, int enemyLevel)
         {
-            var table = new LootTable
+            var table = new LootTableDefinition
             {
                 TableId = enemyType,
                 DisplayName = $"{enemyType} Loot"
@@ -175,11 +176,11 @@ namespace MechDefenseHalo.Loot
     /// </summary>
     public class LootTableBuilder
     {
-        private LootTable _table;
+        private LootTableDefinition _table;
 
         public LootTableBuilder(string tableId)
         {
-            _table = new LootTable { TableId = tableId };
+            _table = new LootTableDefinition { TableId = tableId };
         }
 
         public LootTableBuilder WithDisplayName(string displayName)
@@ -218,7 +219,7 @@ namespace MechDefenseHalo.Loot
             return this;
         }
 
-        public LootTable Build()
+        public LootTableDefinition Build()
         {
             return _table;
         }
@@ -232,7 +233,7 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Get total drop chance across all entries
         /// </summary>
-        public static float GetTotalDropChance(this LootTable table)
+        public static float GetTotalDropChance(this LootTableDefinition table)
         {
             float total = 0f;
             foreach (var entry in table.Entries)
@@ -245,7 +246,7 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Normalize drop chances to sum to 1.0
         /// </summary>
-        public static void NormalizeDropChances(this LootTable table)
+        public static void NormalizeDropChances(this LootTableDefinition table)
         {
             float total = table.GetTotalDropChance();
             if (total > 0)
@@ -260,7 +261,7 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Get entries of a specific rarity
         /// </summary>
-        public static List<LootTableEntry> GetEntriesByRarity(this LootTable table, ItemRarity rarity)
+        public static List<LootTableEntry> GetEntriesByRarity(this LootTableDefinition table, ItemRarity rarity)
         {
             var results = new List<LootTableEntry>();
             foreach (var entry in table.Entries)
@@ -276,7 +277,7 @@ namespace MechDefenseHalo.Loot
         /// <summary>
         /// Get the rarest item in the table
         /// </summary>
-        public static LootTableEntry GetRarestEntry(this LootTable table)
+        public static LootTableEntry GetRarestEntry(this LootTableDefinition table)
         {
             LootTableEntry rarest = null;
             foreach (var entry in table.Entries)

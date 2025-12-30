@@ -16,7 +16,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTable_Construction_ShouldHaveDefaults()
         {
             // Arrange & Act
-            var table = new LootTable();
+            var table = new LootTableDefinition();
 
             // Assert
             AssertString(table.TableId).IsEqual("");
@@ -32,7 +32,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTable_WithData_ShouldStoreValues()
         {
             // Arrange & Act
-            var table = new LootTable
+            var table = new LootTableDefinition
             {
                 TableId = "test_table",
                 DisplayName = "Test Table",
@@ -53,7 +53,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTable_CreateTestTable_ShouldReturnValidTable()
         {
             // Act
-            var table = LootTable.CreateTestTable("test_enemy");
+            var table = LootTableDefinition.CreateTestTable("test_enemy");
 
             // Assert
             AssertObject(table).IsNotNull();
@@ -65,8 +65,8 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTable_CreateForEnemy_ShouldScaleWithLevel()
         {
             // Act
-            var table1 = LootTable.CreateForEnemy("grunt", 1);
-            var table2 = LootTable.CreateForEnemy("grunt", 10);
+            var table1 = LootTableDefinition.CreateForEnemy("grunt", 1);
+            var table2 = LootTableDefinition.CreateForEnemy("grunt", 10);
 
             // Assert
             AssertObject(table1).IsNotNull();
@@ -161,7 +161,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTableExtensions_GetTotalDropChance_ShouldSumAllEntries()
         {
             // Arrange
-            var table = new LootTable();
+            var table = new LootTableDefinition();
             table.Entries.Add(new LootTableEntry { DropChance = 0.3f });
             table.Entries.Add(new LootTableEntry { DropChance = 0.5f });
             table.Entries.Add(new LootTableEntry { DropChance = 0.2f });
@@ -177,7 +177,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTableExtensions_GetEntriesByRarity_ShouldFilterCorrectly()
         {
             // Arrange
-            var table = new LootTable();
+            var table = new LootTableDefinition();
             table.Entries.Add(new LootTableEntry { ItemId = "common1", Rarity = ItemRarity.Common });
             table.Entries.Add(new LootTableEntry { ItemId = "rare1", Rarity = ItemRarity.Rare });
             table.Entries.Add(new LootTableEntry { ItemId = "common2", Rarity = ItemRarity.Common });
@@ -195,7 +195,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTableExtensions_GetRarestEntry_ShouldReturnHighestRarity()
         {
             // Arrange
-            var table = new LootTable();
+            var table = new LootTableDefinition();
             table.Entries.Add(new LootTableEntry { ItemId = "common", Rarity = ItemRarity.Common });
             table.Entries.Add(new LootTableEntry { ItemId = "legendary", Rarity = ItemRarity.Legendary });
             table.Entries.Add(new LootTableEntry { ItemId = "rare", Rarity = ItemRarity.Rare });
@@ -212,7 +212,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTableExtensions_GetRarestEntry_EmptyTable_ShouldReturnNull()
         {
             // Arrange
-            var table = new LootTable();
+            var table = new LootTableDefinition();
 
             // Act
             var rarest = table.GetRarestEntry();
@@ -225,7 +225,7 @@ namespace MechDefenseHalo.Tests.Loot
         public void LootTableExtensions_NormalizeDropChances_ShouldSumToOne()
         {
             // Arrange
-            var table = new LootTable();
+            var table = new LootTableDefinition();
             table.Entries.Add(new LootTableEntry { DropChance = 50f });
             table.Entries.Add(new LootTableEntry { DropChance = 30f });
             table.Entries.Add(new LootTableEntry { DropChance = 20f });
