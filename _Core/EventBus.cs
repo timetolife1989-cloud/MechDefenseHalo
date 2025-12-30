@@ -241,6 +241,13 @@ namespace MechDefenseHalo.Core
         // DLC Events
         public const string DLCUnlocked = "dlc_unlocked";
 
+        // Tutorial Events
+        public const string TutorialStarted = "tutorial_started";
+        public const string TutorialStopped = "tutorial_stopped";
+        public const string TutorialCompleted = "tutorial_completed";
+        public const string TutorialStepStarted = "tutorial_step_started";
+        public const string TutorialObjectiveComplete = "tutorial_objective_complete";
+
         #endregion
     }
 }
