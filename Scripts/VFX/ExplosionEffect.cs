@@ -32,6 +32,7 @@ namespace MechDefenseHalo.VFX
         public bool CreateLight { get; set; } = true;
         
         private OmniLight3D _explosionLight;
+        private Tween _lightTween;
         
         public override void _Ready()
         {
@@ -46,6 +47,15 @@ namespace MechDefenseHalo.VFX
             if (CreateLight)
             {
                 SetupExplosionLight();
+            }
+        }
+        
+        public override void _ExitTree()
+        {
+            // Clean up tween if it's still running
+            if (_lightTween != null && _lightTween.IsRunning())
+            {
+                _lightTween.Kill();
             }
         }
         
@@ -128,8 +138,14 @@ namespace MechDefenseHalo.VFX
         {
             if (_explosionLight == null) return;
             
-            var tween = CreateTween();
-            tween.TweenProperty(_explosionLight, "light_energy", 0.0f, ExplosionDuration);
+            // Kill existing tween if running
+            if (_lightTween != null && _lightTween.IsRunning())
+            {
+                _lightTween.Kill();
+            }
+            
+            _lightTween = CreateTween();
+            _lightTween.TweenProperty(_explosionLight, "light_energy", 0.0f, ExplosionDuration);
         }
     }
 }

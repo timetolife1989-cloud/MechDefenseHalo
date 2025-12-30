@@ -6,6 +6,8 @@ namespace MechDefenseHalo.VFX
     /// <summary>
     /// Controls screen effects like camera shake, chromatic aberration, and vignette.
     /// Provides visual feedback for impacts, explosions, and damage events.
+    /// 
+    /// NOTE: Singleton pattern without thread safety - should only be accessed from main thread.
     /// </summary>
     public partial class ScreenEffects : Node
     {

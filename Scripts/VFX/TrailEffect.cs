@@ -34,6 +34,9 @@ namespace MechDefenseHalo.VFX
             
             // Setup trail material if needed
             SetupTrailMaterial();
+            
+            // Start with process disabled if no projectile
+            SetProcess(_projectile != null);
         }
         
         public override void _Process(double delta)
@@ -42,6 +45,13 @@ namespace MechDefenseHalo.VFX
             if (_projectile != null && IsInstanceValid(_projectile))
             {
                 GlobalPosition = _projectile.GlobalPosition;
+            }
+            else if (_projectile != null)
+            {
+                // Projectile was destroyed, disable processing
+                _projectile = null;
+                SetProcess(false);
+                StopTrail();
             }
         }
         
@@ -55,7 +65,12 @@ namespace MechDefenseHalo.VFX
             if (projectile != null)
             {
                 GlobalPosition = projectile.GlobalPosition;
+                SetProcess(true);
                 StartTrail();
+            }
+            else
+            {
+                SetProcess(false);
             }
         }
         
