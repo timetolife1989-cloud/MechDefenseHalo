@@ -196,9 +196,8 @@ namespace MechDefenseHalo.Components
             EmitSignal(SignalName.Died);
             GD.Print($"{GetParent().Name} died!");
             
-            // Optional: Queue free parent after death animation time
-            // await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
-            // GetParent().QueueFree();
+            // Note: Death animation and cleanup should be handled by the parent entity
+            // Connect to the Died signal to trigger animations, effects, and eventual cleanup
         }
 
         /// <summary>
