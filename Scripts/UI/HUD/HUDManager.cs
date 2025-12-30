@@ -1,6 +1,7 @@
 using Godot;
 using MechDefenseHalo.Core;
 using MechDefenseHalo.Components;
+using MechDefenseHalo.WaveSystem;
 
 namespace MechDefenseHalo.UI.HUD
 {
@@ -206,28 +207,4 @@ namespace MechDefenseHalo.UI.HUD
         
         #endregion
     }
-    
-    #region Event Data Structures
-    
-    /// <summary>
-    /// Wave started event data
-    /// </summary>
-    public class WaveStartedEventData
-    {
-        public int WaveNumber { get; set; }
-        public int TotalEnemies { get; set; }
-        public bool IsBossWave { get; set; }
-    }
-    
-    /// <summary>
-    /// Wave completed event data
-    /// </summary>
-    public class WaveCompletedEventData
-    {
-        public int WaveNumber { get; set; }
-        public float CompletionTime { get; set; }
-        public int EnemiesKilled { get; set; }
-    }
-    
-    #endregion
 }
