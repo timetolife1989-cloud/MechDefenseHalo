@@ -28,6 +28,10 @@ obj/
 # Build results
 [Dd]ebug/
 [Rr]elease/
+
+# Exception: Allow Debug directories in Scripts and UI
+!Scripts/Debug/
+!UI/Debug/
 x64/
 x86/
 [Aa][Rr][Mm]/
