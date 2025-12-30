@@ -59,6 +59,8 @@ namespace MechDefenseHalo.VFX
         private VFXLibrary _library;
         private Dictionary<string, ParticlePool> _pools = new();
         private Node3D _effectsContainer;
+        private Dictionary<string, PackedScene> _effectPrefabs = new();
+        private ParticlePool _particlePool;
 
         #endregion
 
@@ -79,9 +81,15 @@ namespace MechDefenseHalo.VFX
             // Create container for all effects
             _effectsContainer = new Node3D { Name = VFXContainerNodeName };
             AddChild(_effectsContainer);
+            
+            // Initialize particle pool
+            _particlePool = new ParticlePool(null, _effectsContainer);
 
             // Load VFX library
             _library = new VFXLibrary();
+            
+            // Load effect prefabs from Scenes/VFX
+            LoadEffectPrefabs();
             
             // Pre-warm pools for common effects
             PreWarmPools();
@@ -246,6 +254,106 @@ namespace MechDefenseHalo.VFX
         {
             return _library.GetEffect(effectName);
         }
+        
+        /// <summary>
+        /// Spawn a VFX effect at position with optional normal direction.
+        /// This is a simplified version for direct scene-based effect spawning.
+        /// </summary>
+        /// <param name="effectName">Name of the effect</param>
+        /// <param name="position">World position to spawn effect</param>
+        /// <param name="normal">Optional surface normal for orientation</param>
+        public void SpawnEffect(string effectName, Vector3 position, Vector3 normal = default)
+        {
+            // Try loading from Scenes/VFX first, then fall back to library
+            string scenePath = $"res://Scenes/VFX/{effectName}.tscn";
+            var scene = GD.Load<PackedScene>(scenePath);
+            
+            if (scene == null && _library.HasEffect(effectName))
+            {
+                // Fall back to library-based spawning
+                PlayEffect(effectName, position);
+                return;
+            }
+            
+            if (scene == null)
+            {
+                GD.PrintErr($"Effect {effectName} not found in Scenes/VFX/ or library!");
+                return;
+            }
+            
+            var effect = scene.Instantiate<GpuParticles3D>();
+            GetTree().Root.AddChild(effect);
+            effect.GlobalPosition = position;
+            
+            if (normal != Vector3.Zero)
+            {
+                effect.LookAt(position + normal, Vector3.Up);
+            }
+            
+            effect.Emitting = true;
+            effect.OneShot = true;
+            
+            GetTree().CreateTimer(effect.Lifetime).Timeout += () => 
+            {
+                if (IsInstanceValid(effect))
+                {
+                    effect.QueueFree();
+                }
+            };
+        }
+        
+        /// <summary>
+        /// Spawn a muzzle flash effect at weapon position.
+        /// </summary>
+        /// <param name="position">World position of muzzle</param>
+        /// <param name="forward">Forward direction of weapon</param>
+        public void SpawnMuzzleFlash(Vector3 position, Vector3 forward)
+        {
+            SpawnEffect("MuzzleFlash", position, forward);
+        }
+        
+        /// <summary>
+        /// Spawn an impact effect at hit location.
+        /// </summary>
+        /// <param name="impactType">Type of impact (BulletImpact, PlasmaImpact, etc.)</param>
+        /// <param name="position">World position of impact</param>
+        /// <param name="normal">Surface normal at impact point</param>
+        public void SpawnImpact(string impactType, Vector3 position, Vector3 normal)
+        {
+            SpawnEffect(impactType, position, normal);
+        }
+        
+        /// <summary>
+        /// Spawn an explosion effect at position with specified radius.
+        /// </summary>
+        /// <param name="position">World position of explosion</param>
+        /// <param name="radius">Explosion radius (used for scale)</param>
+        public void SpawnExplosion(Vector3 position, float radius)
+        {
+            string scenePath = "res://Scenes/VFX/Explosion.tscn";
+            var scene = GD.Load<PackedScene>(scenePath);
+            
+            if (scene == null)
+            {
+                // Fall back to library
+                PlayEffect("explosion_medium", position, null, radius);
+                return;
+            }
+            
+            var explosion = scene.Instantiate<GpuParticles3D>();
+            GetTree().Root.AddChild(explosion);
+            explosion.GlobalPosition = position;
+            explosion.Scale = Vector3.One * radius;
+            explosion.Emitting = true;
+            
+            GetTree().CreateTimer(explosion.Lifetime).Timeout += () => 
+            {
+                if (IsInstanceValid(explosion))
+                {
+                    explosion.QueueFree();
+                }
+            };
+        }
 
         #endregion
 
@@ -296,6 +404,34 @@ namespace MechDefenseHalo.VFX
             }
 
             GD.Print($"Pre-warmed {commonEffects.Length} common VFX pools");
+        }
+        
+        /// <summary>
+        /// Load effect prefabs from Scenes/VFX directory.
+        /// </summary>
+        private void LoadEffectPrefabs()
+        {
+            _effectPrefabs["MuzzleFlash"] = GD.Load<PackedScene>("res://Scenes/VFX/MuzzleFlash.tscn");
+            _effectPrefabs["BulletImpact"] = GD.Load<PackedScene>("res://Scenes/VFX/BulletImpact.tscn");
+            _effectPrefabs["PlasmaImpact"] = GD.Load<PackedScene>("res://Scenes/VFX/PlasmaImpact.tscn");
+            _effectPrefabs["Explosion"] = GD.Load<PackedScene>("res://Scenes/VFX/Explosion.tscn");
+            _effectPrefabs["BulletTrail"] = GD.Load<PackedScene>("res://Scenes/VFX/BulletTrail.tscn");
+            _effectPrefabs["ShieldHit"] = GD.Load<PackedScene>("res://Scenes/VFX/ShieldHit.tscn");
+            
+            int loadedCount = 0;
+            foreach (var kvp in _effectPrefabs)
+            {
+                if (kvp.Value != null)
+                {
+                    loadedCount++;
+                }
+                else
+                {
+                    GD.PrintErr($"Failed to load effect prefab: {kvp.Key}");
+                }
+            }
+            
+            GD.Print($"Loaded {loadedCount}/{_effectPrefabs.Count} effect prefabs from Scenes/VFX");
         }
 
         #endregion
