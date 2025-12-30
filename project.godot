@@ -42,6 +42,7 @@ PlayerLevel="*res://Scripts/Player/PlayerLevel.cs"
 DailyMissionManager="*res://Scripts/Notifications/DailyMissionManager.cs"
 LeaderboardManager="*res://Scripts/Leaderboard/LeaderboardManager.cs"
 ScoreTracker="*res://Scripts/Leaderboard/ScoreTracker.cs"
+WeaponManager="*res://Scripts/Managers/WeaponManager.cs"
 
 [dotnet]
 
