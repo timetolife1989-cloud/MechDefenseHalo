@@ -168,8 +168,8 @@ namespace MechDefenseHalo.Abilities
                 {
                     if (collider is Node3D node)
                     {
-                        // Check if it's an enemy
-                        if (node.IsInGroup("enemies") || node.GetType().Name.Contains("Enemy"))
+                        // Check if it's an enemy (primarily use group membership)
+                        if (node.IsInGroup("enemies"))
                         {
                             ApplySlowEffect(node);
                         }
@@ -189,13 +189,7 @@ namespace MechDefenseHalo.Abilities
             {
                 enemy.Call("SetSpeedMultiplier", TimeScale);
             }
-            else
-            {
-                // Fallback: modify the process delta manually
-                // Note: This is a simplified approach
-                // In a real implementation, enemies should track their own time scale
-                enemy.Set("time_scale", TimeScale);
-            }
+            // Note: Enemies should implement one of these methods to properly support time slow
             
             // Add visual indicator if not already present
             if (enemy.GetNodeOrNull("TimeSlowIndicator") == null)

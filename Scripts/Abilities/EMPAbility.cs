@@ -127,8 +127,8 @@ namespace MechDefenseHalo.Abilities
                 {
                     if (collider is Node3D node && node != user)
                     {
-                        // Check if it's an enemy (has EnemyBase script or is in "enemies" group)
-                        if (node.IsInGroup("enemies") || node.GetType().Name.Contains("Enemy"))
+                        // Check if it's an enemy (primarily use group membership)
+                        if (node.IsInGroup("enemies"))
                         {
                             enemies.Add(node);
                         }

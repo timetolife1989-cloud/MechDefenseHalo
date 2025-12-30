@@ -181,9 +181,9 @@ namespace MechDefenseHalo.UI
                 {
                     Name = "Hotkey",
                     Text = hotkey,
-                    Position = new Vector2(5, 5),
-                    AddThemeFontSizeOverride("font_size", 12)
+                    Position = new Vector2(5, 5)
                 };
+                slot.HotkeyLabel.AddThemeFontSizeOverride("font_size", 12);
                 slot.HotkeyLabel.AddThemeColorOverride("font_color", new Color(1, 1, 1, 0.8f));
                 slot.Panel.AddChild(slot.HotkeyLabel);
             }
@@ -195,9 +195,9 @@ namespace MechDefenseHalo.UI
                 {
                     Name = "EnergyCost",
                     Text = $"-{ability.EnergyCost:F0}",
-                    Position = new Vector2(48, 5),
-                    AddThemeFontSizeOverride("font_size", 10)
+                    Position = new Vector2(48, 5)
                 };
+                slot.EnergyCostLabel.AddThemeFontSizeOverride("font_size", 10);
                 slot.EnergyCostLabel.AddThemeColorOverride("font_color", new Color(0.3f, 0.7f, 1.0f, 0.9f));
                 slot.Panel.AddChild(slot.EnergyCostLabel);
             }
@@ -207,9 +207,9 @@ namespace MechDefenseHalo.UI
             {
                 Name = "CooldownTimer",
                 Position = new Vector2(28, 30),
-                AddThemeFontSizeOverride("font_size", 16),
                 Visible = false
             };
+            slot.CooldownLabel.AddThemeFontSizeOverride("font_size", 16);
             slot.CooldownLabel.AddThemeColorOverride("font_color", new Color(1, 1, 1, 1));
             slot.Panel.AddChild(slot.CooldownLabel);
             
