@@ -52,6 +52,9 @@ namespace MechDefenseHalo.Managers
             }
             Instance = this;
 
+            // Initialize with a default weapon for testing/demo purposes
+            InitializeDefaultWeapon();
+
             GD.Print("WeaponManager initialized");
         }
 
@@ -76,6 +79,21 @@ namespace MechDefenseHalo.Managers
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Add a weapon to the equipped weapons list
+        /// </summary>
+        public void AddWeapon(WeaponData weapon)
+        {
+            if (equippedWeapons.Count >= MaxWeaponSlots)
+            {
+                GD.PrintErr("Cannot add weapon: all slots are full!");
+                return;
+            }
+
+            equippedWeapons.Add(weapon);
+            GD.Print($"Weapon added: {weapon.Name} (Slot {equippedWeapons.Count - 1})");
+        }
 
         /// <summary>
         /// Get the currently equipped weapon
@@ -147,6 +165,24 @@ namespace MechDefenseHalo.Managers
             currentWeaponIndex = slotIndex;
             EmitSignal(SignalName.WeaponSwitched, currentWeaponIndex);
             GD.Print($"Switched to weapon slot {slotIndex}");
+        }
+
+        #endregion
+
+        #region Private Methods - Initialization
+
+        private void InitializeDefaultWeapon()
+        {
+            // Add a default assault rifle for testing/demo purposes
+            var defaultWeapon = new WeaponData
+            {
+                Name = "Assault Rifle",
+                Damage = 10f,
+                FireRate = 0.1f,
+                MagazineSize = 30
+            };
+
+            AddWeapon(defaultWeapon);
         }
 
         #endregion
