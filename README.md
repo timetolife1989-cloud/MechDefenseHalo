@@ -9,6 +9,7 @@
 - [Improvement Guide](IMPROVEMENT_GUIDE.md) - Action plan for next steps
 - [Architecture](ARCHITECTURE.md) - Technical architecture & code structure
 - [Game Design Document](docs/GDD.md) - Complete game vision (Hungarian)
+- [One-Button Deploy System](DEPLOY_SYSTEM_README.md) - 🚀 Rapid mobile deployment tools
 
 ## Game Concept
 
@@ -45,6 +46,22 @@ This project follows the **"Vibe Developer" methodology**:
 - PR-based code reviews for quality assurance
 - Iterative feature development
 - Continuous integration and testing
+
+### 🚀 One-Button Deploy System
+
+For rapid mobile testing iteration:
+
+**Quick Start:**
+1. Click **🚀 Deploy to Mobile** button in Godot toolbar
+2. Or run `./Tools/deploy.sh` (Linux/Mac) or `Tools\deploy.bat` (Windows)
+
+**Features:**
+- ✅ Automated build, install, and launch in 30 seconds
+- ✅ Auto-detects connected Android devices
+- ✅ Real-time logcat monitoring
+- ✅ Cross-platform support (Linux/Mac/Windows)
+
+See [DEPLOY_SYSTEM_README.md](DEPLOY_SYSTEM_README.md) for detailed documentation.
 
 ## Monetization Strategy
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://scene_vfx_plasma_impact"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_plasma_impact"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+spread = 60.0
+initial_velocity_min = 1.5
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.8
+color = Color(0.2, 0.5, 1.0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_plasma_impact"]
+size = Vector2(0.08, 0.08)
+
+[node name="PlasmaImpact" type="GpuParticles3D"]
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_plasma_impact")
+draw_pass_1 = SubResource("QuadMesh_plasma_impact")
