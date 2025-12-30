@@ -87,6 +87,12 @@ namespace MechDefenseHalo.Managers
         /// </summary>
         public void AddWeapon(WeaponData weapon)
         {
+            if (weapon == null)
+            {
+                GD.PrintErr("Cannot add null weapon!");
+                return;
+            }
+
             if (equippedWeapons.Count >= MaxWeaponSlots)
             {
                 GD.PrintErr("Cannot add weapon: all slots are full!");
