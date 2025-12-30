@@ -19,6 +19,15 @@ namespace MechDefenseHalo.Components
 
         #endregion
 
+        #region Events
+        
+        /// <summary>
+        /// Event raised when the entity dies
+        /// </summary>
+        public event Action Died;
+        
+        #endregion
+        
         #region Public Properties
 
         public float CurrentHealth { get; private set; }
@@ -143,6 +152,9 @@ namespace MechDefenseHalo.Components
         private void Die()
         {
             _isDead = true;
+
+            // Raise C# event
+            Died?.Invoke();
 
             // Emit death event
             EventBus.Emit(EventBus.EntityDied, new EntityDiedData
