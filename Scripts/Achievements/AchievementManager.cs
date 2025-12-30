@@ -36,6 +36,7 @@ namespace MechDefenseHalo.Achievements
 
         private Dictionary<string, Achievement> _achievements = new Dictionary<string, Achievement>();
         private const string AchievementDataPath = "res://Data/Achievements/";
+        private PlatformIntegration _platformIntegration;
 
         #endregion
 
@@ -63,6 +64,7 @@ namespace MechDefenseHalo.Achievements
             
             LoadAllAchievements();
             LoadProgress();
+            InitializePlatformIntegration();
 
             GD.Print($"AchievementManager initialized - {TotalAchievements} achievements loaded ({CompletedAchievements} completed)");
         }
@@ -134,6 +136,11 @@ namespace MechDefenseHalo.Achievements
                     if (canUnlock)
                     {
                         UnlockAchievement(achievement.ID);
+                    }
+                    else
+                    {
+                        // Sync progress to platform for incremental achievements
+                        SyncProgressToPlatform(achievement.ID, achievement.Progress, achievement.RequiredProgress);
                     }
                 }
             }
@@ -233,6 +240,9 @@ namespace MechDefenseHalo.Achievements
 
             // Save progress
             SaveProgress();
+
+            // Sync with platform (Steam/Google Play)
+            SyncAchievementToPlatform(achievementID);
 
             // Emit event
             EventBus.Emit(EventBus.AchievementUnlocked, achievement);
@@ -475,6 +485,65 @@ namespace MechDefenseHalo.Achievements
                 {
                     results.Add(achievement);
                 }
+            }
+        }
+
+        #endregion
+
+        #region Private Methods - Platform Integration
+
+        /// <summary>
+        /// Initialize platform integration
+        /// </summary>
+        private void InitializePlatformIntegration()
+        {
+            // Try to get PlatformIntegration node from autoload
+            _platformIntegration = GetNodeOrNull<PlatformIntegration>("/root/PlatformIntegration");
+
+            if (_platformIntegration == null)
+            {
+                GD.Print("PlatformIntegration not found - platform hooks disabled");
+            }
+            else
+            {
+                GD.Print("PlatformIntegration connected successfully");
+            }
+        }
+
+        /// <summary>
+        /// Sync achievement unlock to platform (Steam/Google Play)
+        /// </summary>
+        private void SyncAchievementToPlatform(string achievementID)
+        {
+            if (_platformIntegration != null && _platformIntegration.IsInitialized)
+            {
+                _platformIntegration.UnlockAchievement(achievementID);
+            }
+        }
+
+        /// <summary>
+        /// Sync achievement progress to platform
+        /// </summary>
+        private void SyncProgressToPlatform(string achievementID, int progress, int requiredProgress)
+        {
+            if (_platformIntegration != null && _platformIntegration.IsInitialized)
+            {
+                _platformIntegration.UpdateAchievementProgress(achievementID, progress, requiredProgress);
+            }
+        }
+
+        /// <summary>
+        /// Sync all achievements to platform (useful for offline progress)
+        /// </summary>
+        public void SyncAllToPlatform()
+        {
+            if (_platformIntegration != null && _platformIntegration.IsInitialized)
+            {
+                _platformIntegration.SyncAllAchievements();
+            }
+            else
+            {
+                GD.PrintErr("Cannot sync: PlatformIntegration not available");
             }
         }
 

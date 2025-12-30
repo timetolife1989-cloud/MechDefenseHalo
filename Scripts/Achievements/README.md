@@ -42,6 +42,12 @@ The Achievement System tracks player accomplishments across 50+ achievements in 
    - Displays completion percentage
    - Toggle with 'A' key
 
+6. **PlatformIntegration.cs** - Platform-specific hooks
+   - Auto-detects platform (Steam, Google Play, etc.)
+   - Syncs achievements to external platforms
+   - Maps internal IDs to platform-specific IDs
+   - Supports Steam, Google Play, Game Center, Console platforms
+
 ## Setup
 
 ### Autoload Configuration
@@ -50,6 +56,7 @@ The following nodes are autoloaded in `project.godot`:
 ```
 SaveManager="*res://_Core/SaveManager.cs"
 AchievementManager="*res://Scripts/Achievements/AchievementManager.cs"
+PlatformIntegration="*res://Scripts/Achievements/PlatformIntegration.cs"  # Optional
 ```
 
 ### Scene Setup
@@ -201,6 +208,49 @@ Achievement progress is automatically saved to `user://save_data.json` via the S
 - Plays unlock sound effect
 - Auto-dismisses after 3 seconds
 
+## Platform Integration
+
+### Overview
+
+The achievement system supports integration with external platforms:
+- **Steam** (via GodotSteam plugin)
+- **Google Play Games** (via Google Play Games plugin)
+- **Apple Game Center** (via Game Center plugin)
+- **Console Platforms** (Xbox, PlayStation, Nintendo)
+
+### How It Works
+
+1. **Auto-Detection**: Platform is automatically detected on startup
+2. **ID Mapping**: Internal achievement IDs are mapped to platform-specific IDs
+3. **Auto-Sync**: Achievements sync automatically when unlocked
+4. **Progress Updates**: Incremental achievements sync progress to platforms that support it
+
+### Setup for Steam
+
+1. Install GodotSteam plugin for Godot 4.x
+2. Configure Steam App ID
+3. Update achievement ID mappings in `PlatformIntegration.cs`
+4. Add PlatformIntegration to autoload in `project.godot`
+
+### Setup for Google Play
+
+1. Install Google Play Games plugin for Godot
+2. Configure Google Play Console achievement IDs
+3. Update achievement ID mappings in `PlatformIntegration.cs`
+4. Add PlatformIntegration to autoload in `project.godot`
+
+### Manual Sync
+
+To manually sync all achievements (useful after offline play):
+
+```csharp
+AchievementManager.Instance.SyncAllToPlatform();
+```
+
+### Testing Without Plugins
+
+PlatformIntegration works without plugins installed - it will log "[HOOK]" messages showing what would be synced to the platform, allowing you to test integration logic without actual platform credentials.
+
 ## Testing
 
 Unit tests are available in `Tests/Achievements/`:
@@ -212,7 +262,6 @@ Run tests using GdUnit4 framework in Godot editor.
 ## Future Enhancements
 
 Potential additions:
-- Steam/Console achievement integration
 - Achievement point system
 - Tiered achievements (Bronze/Silver/Gold)
 - Daily/Weekly challenges
