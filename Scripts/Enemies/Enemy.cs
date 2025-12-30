@@ -43,7 +43,11 @@ namespace MechDefenseHalo.Enemies
 
         [ExportGroup("Components")]
         [Export] public NodePath HealthSystemPath { get; set; }
+        [Export] public string PlayerNodeName { get; set; } = "PlayerMech";
+        [Export] public string DamageType { get; set; } = "melee";
 
+        private const string DefaultHealthSystemNodeName = "HealthSystem";
+        
         private HealthSystem healthSystem;
         private Node3D target; // Player reference
         private float attackTimer = 0f;
@@ -75,7 +79,7 @@ namespace MechDefenseHalo.Enemies
             }
             else
             {
-                healthSystem = GetNodeOrNull<HealthSystem>("HealthSystem");
+                healthSystem = GetNodeOrNull<HealthSystem>(DefaultHealthSystemNodeName);
             }
 
             if (healthSystem != null)
@@ -102,9 +106,9 @@ namespace MechDefenseHalo.Enemies
                 return;
             }
 
-            // Fallback: search by name
+            // Fallback: search by configurable name
             var root = GetTree().Root;
-            target = root.FindChild("PlayerMech", true, false) as Node3D;
+            target = root.FindChild(PlayerNodeName, true, false) as Node3D;
 
             if (target == null)
             {
@@ -263,10 +267,10 @@ namespace MechDefenseHalo.Enemies
             GD.Print($"{Name} attacks for {Damage} damage!");
 
             // Try to damage player's HealthSystem
-            var playerHealth = target.GetNodeOrNull<HealthSystem>("HealthSystem");
+            var playerHealth = target.GetNodeOrNull<HealthSystem>(DefaultHealthSystemNodeName);
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(Damage, "melee");
+                playerHealth.TakeDamage(Damage, DamageType);
             }
 
             EmitSignal(SignalName.Attacked, target);
@@ -298,7 +302,7 @@ namespace MechDefenseHalo.Enemies
             }
 
             // Death animation delay (configurable per enemy type)
-            await ToSignal(GetTree().CreateTimer(DeathAnimationDuration), "timeout");
+            await ToSignal(GetTree().CreateTimer(DeathAnimationDuration), SceneTreeTimer.SignalName.Timeout);
 
             QueueFree();
         }
