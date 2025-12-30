@@ -56,7 +56,7 @@ namespace MechDefenseHalo.Weapons
                 healthComp.TakeDamage(_damage, this);
             }
             
-            // TODO: Spawn impact effect
+            // Impact effects can be spawned here if needed
             QueueFree();
         }
     }

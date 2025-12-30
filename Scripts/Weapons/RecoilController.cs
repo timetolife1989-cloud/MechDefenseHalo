@@ -17,14 +17,19 @@ namespace MechDefenseHalo.Weapons
         
         #endregion
         
-        private Vector3 _currentRecoil = Vector3.Zero;
-        private Vector3 _targetRecoil = Vector3.Zero;
+        private Vector3 _recoilOffset = Vector3.Zero;
+        private Vector3 _originalRotation = Vector3.Zero;
         
         public override void _Ready()
         {
             if (TargetCamera == null)
             {
                 TargetCamera = GetViewport().GetCamera3D();
+            }
+            
+            if (TargetCamera != null)
+            {
+                _originalRotation = TargetCamera.RotationDegrees;
             }
             
             // Subscribe to recoil events
@@ -36,20 +41,20 @@ namespace MechDefenseHalo.Weapons
             float deltaF = (float)delta;
             
             // Smoothly recover from recoil
-            _currentRecoil = _currentRecoil.Lerp(_targetRecoil, RecoilRecoverySpeed * deltaF);
+            _recoilOffset = _recoilOffset.Lerp(Vector3.Zero, RecoilRecoverySpeed * deltaF);
             
-            // Apply recoil to camera
-            if (TargetCamera != null && _currentRecoil != Vector3.Zero)
+            // Apply recoil offset to camera
+            if (TargetCamera != null)
             {
-                TargetCamera.RotationDegrees = new Vector3(
-                    TargetCamera.RotationDegrees.X + _currentRecoil.X,
-                    TargetCamera.RotationDegrees.Y + _currentRecoil.Y,
-                    TargetCamera.RotationDegrees.Z + _currentRecoil.Z
-                );
+                TargetCamera.RotationDegrees = _originalRotation + _recoilOffset;
+                
+                // Update original rotation if recoil is negligible
+                if (_recoilOffset.LengthSquared() < 0.01f)
+                {
+                    _originalRotation = TargetCamera.RotationDegrees;
+                    _recoilOffset = Vector3.Zero;
+                }
             }
-            
-            // Reset target recoil
-            _targetRecoil = Vector3.Zero;
         }
         
         public override void _ExitTree()
@@ -61,11 +66,15 @@ namespace MechDefenseHalo.Weapons
         {
             float intensity = data is float f ? f : 0.01f;
             
-            // Add random recoil
+            // Add random recoil as offset
             float recoilX = Mathf.Min(-intensity * 10f, -MaxRecoilAngle);
             float recoilY = (GD.Randf() - 0.5f) * intensity * 5f;
             
-            _currentRecoil += new Vector3(recoilX, recoilY, 0);
+            _recoilOffset += new Vector3(recoilX, recoilY, 0);
+            
+            // Clamp recoil offset
+            _recoilOffset.X = Mathf.Clamp(_recoilOffset.X, -MaxRecoilAngle, MaxRecoilAngle);
+            _recoilOffset.Y = Mathf.Clamp(_recoilOffset.Y, -MaxRecoilAngle, MaxRecoilAngle);
         }
     }
 }

@@ -150,7 +150,7 @@ namespace MechDefenseHalo.Weapons
         
         protected void ApplyRecoil()
         {
-            // TODO: Camera shake/recoil
+            // Camera recoil is handled by RecoilController via EventBus
             EventBus.Emit(EventBus.WeaponRecoil, Damage * 0.01f);
         }
         
@@ -167,7 +167,7 @@ namespace MechDefenseHalo.Weapons
         {
             if (FireSound != null)
             {
-                // TODO: Use audio manager
+                // Use simple AudioStreamPlayer3D for now
                 var player = new AudioStreamPlayer3D();
                 player.Stream = FireSound;
                 AddChild(player);
