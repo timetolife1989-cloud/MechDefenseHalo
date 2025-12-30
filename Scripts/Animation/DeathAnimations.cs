@@ -250,9 +250,10 @@ namespace MechDefenseHalo.Animation
                 ActivateRagdoll();
             }
 
-            // Connect to animation finished if available
+            // Connect to animation finished if available (disconnect first to avoid multiple subscriptions)
             if (AnimationController != null)
             {
+                AnimationController.AnimationFinished -= OnDeathAnimationFinished;
                 AnimationController.AnimationFinished += OnDeathAnimationFinished;
             }
         }

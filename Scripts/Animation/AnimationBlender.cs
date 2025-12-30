@@ -272,7 +272,8 @@ namespace MechDefenseHalo.Animation
         /// <param name="smooth">Whether to smoothly interpolate</param>
         public void SetBlendSpace2D(string parameterName, Vector2 value, bool smooth = true)
         {
-            SetParameter($"{parameterName}/blend_position", value.X, smooth);
+            SetParameter($"{parameterName}/blend_position_x", value.X, smooth);
+            SetParameter($"{parameterName}/blend_position_y", value.Y, smooth);
         }
 
         /// <summary>

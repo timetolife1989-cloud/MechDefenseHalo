@@ -207,9 +207,10 @@ namespace MechDefenseHalo.Animation
 
             GD.Print($"HitReactions: Playing {animationName} (damage: {damageAmount}, critical: {isCritical})");
 
-            // Connect to animation finished
+            // Connect to animation finished (disconnect first to avoid multiple subscriptions)
             if (AnimationController != null)
             {
+                AnimationController.AnimationFinished -= OnHitReactionFinished;
                 AnimationController.AnimationFinished += OnHitReactionFinished;
             }
         }
@@ -239,6 +240,7 @@ namespace MechDefenseHalo.Animation
 
             if (AnimationController != null)
             {
+                AnimationController.AnimationFinished -= OnHitReactionFinished;
                 AnimationController.AnimationFinished += OnHitReactionFinished;
             }
         }

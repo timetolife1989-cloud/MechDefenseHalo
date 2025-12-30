@@ -22,8 +22,10 @@ namespace MechDefenseHalo.Tests.Animation
             _animationTree = new AnimationTree();
             _animationPlayer = new AnimationPlayer();
             
-            // Note: In a real test, you would need to set up a proper AnimationTree
-            // with a state machine. For unit tests, we're testing the controller logic.
+            // Note: In a real integration test scenario, you would need to set up a proper 
+            // AnimationTree with a state machine root and AnimationNodeStateMachinePlayback.
+            // For unit tests, we're testing the controller logic independently.
+            // See the project's integration test examples for full AnimationTree setup.
         }
 
         [After]

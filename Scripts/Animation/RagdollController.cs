@@ -416,7 +416,8 @@ namespace MechDefenseHalo.Animation
         private void ConfigurePhysicalBone(PhysicalBone3D bone)
         {
             bone.Mass = DefaultMass;
-            bone.GravityScale = GravityScale;
+            // Note: PhysicalBone3D uses global gravity settings in Godot 4.x
+            // GravityScale is not directly available, gravity is controlled via project settings
         }
 
         /// <summary>
