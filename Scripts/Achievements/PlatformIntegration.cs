@@ -398,10 +398,11 @@ namespace MechDefenseHalo.Achievements
 
         private string GetSteamAchievementId(string internalId)
         {
-            // Return mapped ID or use internal ID as fallback
+            // Return mapped ID if exists, otherwise use ACH_ prefix as fallback
+            // This follows Steam's common naming convention
             return _steamAchievementMap.ContainsKey(internalId) 
                 ? _steamAchievementMap[internalId] 
-                : internalId.ToUpper();
+                : "ACH_" + internalId.ToUpper();
         }
 
         #endregion
