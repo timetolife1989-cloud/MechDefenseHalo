@@ -38,6 +38,8 @@ AchievementManager="*res://Scripts/Achievements/AchievementManager.cs"
 StatisticsManager="*res://Scripts/Statistics/StatisticsManager.cs"
 PlayerLevel="*res://Scripts/Player/PlayerLevel.cs"
 DailyMissionManager="*res://Scripts/Notifications/DailyMissionManager.cs"
+LeaderboardManager="*res://Scripts/Leaderboard/LeaderboardManager.cs"
+ScoreTracker="*res://Scripts/Leaderboard/ScoreTracker.cs"
 
 [dotnet]
 
