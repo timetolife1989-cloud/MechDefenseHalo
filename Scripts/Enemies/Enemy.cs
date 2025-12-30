@@ -35,6 +35,7 @@ namespace MechDefenseHalo.Enemies
         [Export] public float AttackRange { get; set; } = 2f;
         [Export] public float AttackCooldown { get; set; } = 1.5f;
         [Export] public float DetectionRange { get; set; } = 20f;
+        [Export] public float DeathAnimationDuration { get; set; } = 2.0f;
 
         #endregion
 
@@ -93,14 +94,17 @@ namespace MechDefenseHalo.Enemies
 
         private void FindPlayer()
         {
-            // Try to find player node
-            var root = GetTree().Root;
-            target = root.FindChild("Player*", true, false) as Node3D;
-
-            if (target == null)
+            // Try to find player node by group first (most reliable)
+            var players = GetTree().GetNodesInGroup("player");
+            if (players.Count > 0 && players[0] is Node3D player)
             {
-                target = root.FindChild("PlayerMech", true, false) as Node3D;
+                target = player;
+                return;
             }
+
+            // Fallback: search by name
+            var root = GetTree().Root;
+            target = root.FindChild("PlayerMech", true, false) as Node3D;
 
             if (target == null)
             {
@@ -169,7 +173,9 @@ namespace MechDefenseHalo.Enemies
                 return;
             }
 
-            if (distanceToTarget > DetectionRange * 1.5f)
+            // Use hysteresis to prevent state flickering at detection range edge
+            float loseTargetDistance = DetectionRange * 1.5f;
+            if (distanceToTarget > loseTargetDistance)
             {
                 ChangeState(EnemyState.Idle);
                 return;
@@ -189,7 +195,9 @@ namespace MechDefenseHalo.Enemies
 
             float distanceToTarget = GlobalPosition.DistanceTo(target.GlobalPosition);
 
-            if (distanceToTarget > AttackRange * 1.2f)
+            // Use hysteresis to prevent state flickering at attack range edge
+            float exitAttackDistance = AttackRange * 1.2f;
+            if (distanceToTarget > exitAttackDistance)
             {
                 ChangeState(EnemyState.Chase);
                 return;
@@ -289,8 +297,8 @@ namespace MechDefenseHalo.Enemies
                 EnemySpawner.Instance.OnEnemyDied(this);
             }
 
-            // Death animation delay (placeholder)
-            await ToSignal(GetTree().CreateTimer(2.0f), "timeout");
+            // Death animation delay (configurable per enemy type)
+            await ToSignal(GetTree().CreateTimer(DeathAnimationDuration), "timeout");
 
             QueueFree();
         }
@@ -327,12 +335,9 @@ namespace MechDefenseHalo.Enemies
 
         #region Debug
 
-#if DEBUG
-        public override void _Draw()
-        {
-            // TODO: Add debug sphere for detection/attack range in 3D viewport
-        }
-#endif
+        // Note: For 3D debug visualization of detection/attack ranges,
+        // use the Godot editor's gizmo system or create debug MeshInstance3D nodes
+        // in a separate debug tool script, as _Draw() is only for 2D rendering
 
         #endregion
     }
