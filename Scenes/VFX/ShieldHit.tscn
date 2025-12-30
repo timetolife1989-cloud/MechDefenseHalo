@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://scene_vfx_shield_hit"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shield_hit"]
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 0, 1)
+spread = 45.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.7
+color = Color(0.3, 0.7, 1.0, 0.8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_shield_hit"]
+size = Vector2(0.1, 0.1)
+
+[node name="ShieldHit" type="GpuParticles3D"]
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_shield_hit")
+draw_pass_1 = SubResource("QuadMesh_shield_hit")
