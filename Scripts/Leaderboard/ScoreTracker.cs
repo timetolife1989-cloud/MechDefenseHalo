@@ -46,6 +46,7 @@ namespace MechDefenseHalo.Leaderboard
         public int TotalKills { get; private set; } = 0;
         public int CurrentCombo { get; private set; } = 0;
         public float ComboTimer { get; private set; } = 0f;
+        public int MaxCombo { get; private set; } = 0;
         
         #endregion
         
@@ -111,6 +112,7 @@ namespace MechDefenseHalo.Leaderboard
             TotalScore = 0;
             CurrentWave = 0;
             TotalKills = 0;
+            MaxCombo = 0;
             ResetCombo();
             
             EventBus.Emit("score_updated", new ScoreUpdateData 
@@ -184,6 +186,12 @@ namespace MechDefenseHalo.Leaderboard
                     TotalKills++;
                     CurrentCombo++;
                     _comboTimeRemaining = ComboDecayTime;
+                    
+                    // Track max combo
+                    if (CurrentCombo > MaxCombo)
+                    {
+                        MaxCombo = CurrentCombo;
+                    }
                     
                     int points = CalculateKillPoints();
                     TotalScore += points;
@@ -285,9 +293,7 @@ namespace MechDefenseHalo.Leaderboard
         
         private int GetMaxCombo()
         {
-            // This would ideally track the max combo throughout the session
-            // For now, return current combo
-            return CurrentCombo;
+            return MaxCombo;
         }
         
         #endregion

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MechDefenseHalo.Core;
+using MechDefenseHalo.Settings;
 
 namespace MechDefenseHalo.Leaderboard
 {
@@ -316,8 +317,13 @@ namespace MechDefenseHalo.Leaderboard
         
         private string GetPlayerName()
         {
-            // TODO: Get from player profile/settings
-            // For now, return a placeholder
+            // Get player name from settings
+            if (SettingsManager.Instance != null && SettingsManager.Instance.CurrentSettings != null)
+            {
+                return SettingsManager.Instance.CurrentSettings.Gameplay.PlayerName;
+            }
+            
+            // Fallback to default if settings not available
             return "Player";
         }
         

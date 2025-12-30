@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using MechDefenseHalo.Core;
+using MechDefenseHalo.Settings;
 
 namespace MechDefenseHalo.Leaderboard
 {
@@ -374,7 +375,13 @@ namespace MechDefenseHalo.Leaderboard
         
         private string GetPlayerName()
         {
-            // TODO: Get from player profile/settings
+            // Get player name from settings
+            if (SettingsManager.Instance != null && SettingsManager.Instance.CurrentSettings != null)
+            {
+                return SettingsManager.Instance.CurrentSettings.Gameplay.PlayerName;
+            }
+            
+            // Fallback to default if settings not available
             return "Player";
         }
         
