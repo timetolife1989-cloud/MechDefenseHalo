@@ -27,16 +27,23 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   auto-merge:
+    runs-on: ubuntu-latest
     if: |
-      github.actor == 'Copilot' || 
-      github.actor == 'copilot[bot]' || 
+      github.actor == 'Copilot' ||
+      github.actor == 'copilot[bot]' ||
+      github.actor == 'github-actions[bot]' ||
       github.event.pull_request.user.login == 'Copilot'
     
     steps:
       - name: Enable auto-merge
-        run: gh pr merge --auto --squash "https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
+        run: |
+          gh pr merge --auto --squash "https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
