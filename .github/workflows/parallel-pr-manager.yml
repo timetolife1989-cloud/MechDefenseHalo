@@ -58,10 +58,10 @@ jobs:
     runs-on: ubuntu-latest
     # Use concurrency to prevent resource exhaustion
     concurrency:
-      group: pr-${{ github.event.pull_request.number }}
+      group: pr-${{ github.event.pull_request.number || github.run_id }}
       cancel-in-progress: false
     
-    if: github.event.pull_request.state == 'open'
+    if: github.event.pull_request && github.event.pull_request.state == 'open'
     
     steps:
       - name: Process PR
