@@ -268,7 +268,3 @@ Potential additions:
 - Achievement rewards preview
 - Social sharing
 - Rarity tiers for achievements
-- Daily/Weekly challenges
-- Achievement rewards preview
-- Social sharing
-- Rarity tiers for achievements

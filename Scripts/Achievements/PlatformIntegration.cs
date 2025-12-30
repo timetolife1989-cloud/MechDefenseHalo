@@ -136,8 +136,29 @@ namespace MechDefenseHalo.Achievements
         /// </summary>
         private bool IsSteamAvailable()
         {
-            // This would check for Steamworks/GodotSteam plugin
-            // For now, return false as Steam integration requires additional setup
+            // Check for GodotSteam plugin
+            // The plugin typically adds a "Steam" singleton to the Engine
+            // Example check: Engine.HasSingleton("Steam")
+            
+            // Attempt to detect Steam via Engine singleton
+            if (Engine.HasSingleton("Steam"))
+            {
+                GD.Print("Steam singleton detected");
+                return true;
+            }
+
+            // Alternative: Check for Steam environment variables
+            string steamAppId = OS.GetEnvironment("SteamAppId");
+            if (!string.IsNullOrEmpty(steamAppId))
+            {
+                GD.Print($"Steam environment detected (AppId: {steamAppId})");
+                return true;
+            }
+
+            // TODO: Add more Steam detection methods if needed
+            // For now, Steam integration requires GodotSteam plugin to be installed
+            // and properly configured in the project
+            
             return false;
         }
 
