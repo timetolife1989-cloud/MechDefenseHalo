@@ -18,6 +18,7 @@ namespace MechDefenseHalo.UI.HUD
         [Export] public float MapRadius { get; set; } = 100f;
         [Export] public bool ShowEnemies { get; set; } = true;
         [Export] public bool ShowObjectives { get; set; } = true;
+        [Export] public float MarkerCleanupInterval { get; set; } = 1f; // Seconds between cleanup
         [Export] public Color EnemyColor { get; set; } = Colors.Red;
         [Export] public Color ObjectiveColor { get; set; } = Colors.Yellow;
         [Export] public Color AllyColor { get; set; } = Colors.Green;
@@ -32,6 +33,8 @@ namespace MechDefenseHalo.UI.HUD
         
         private List<MinimapMarker> _enemyMarkers = new List<MinimapMarker>();
         private List<MinimapMarker> _objectiveMarkers = new List<MinimapMarker>();
+        
+        private float _cleanupTimer = 0f;
         
         private PackedScene _markerScene;
         
@@ -59,6 +62,14 @@ namespace MechDefenseHalo.UI.HUD
             UpdatePlayerMarker();
             UpdateEnemyMarkers();
             UpdateObjectiveMarkers();
+            
+            // Periodic cleanup of invalid markers
+            _cleanupTimer += (float)delta;
+            if (_cleanupTimer >= MarkerCleanupInterval)
+            {
+                CleanupInvalidMarkers();
+                _cleanupTimer = 0f;
+            }
         }
         
         #endregion
@@ -228,9 +239,6 @@ namespace MechDefenseHalo.UI.HUD
             var viewportSize = _minimapViewport.Size;
             var viewportCenter = viewportSize / 2;
             
-            // Clean up invalid markers
-            _enemyMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
-            
             foreach (var marker in _enemyMarkers)
             {
                 if (marker.MarkerNode != null && IsInstanceValid(marker.Target))
@@ -255,9 +263,6 @@ namespace MechDefenseHalo.UI.HUD
             var viewportSize = _minimapViewport.Size;
             var viewportCenter = viewportSize / 2;
             
-            // Clean up invalid markers
-            _objectiveMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
-            
             foreach (var marker in _objectiveMarkers)
             {
                 if (marker.MarkerNode != null && IsInstanceValid(marker.Target))
@@ -269,6 +274,18 @@ namespace MechDefenseHalo.UI.HUD
                     marker.MarkerNode.Visible = true;
                 }
             }
+        }
+        
+        /// <summary>
+        /// Clean up invalid markers (called periodically, not every frame)
+        /// </summary>
+        private void CleanupInvalidMarkers()
+        {
+            // Clean up invalid enemy markers
+            _enemyMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
+            
+            // Clean up invalid objective markers
+            _objectiveMarkers.RemoveAll(m => !IsInstanceValid(m.Target) || m.Target.IsQueuedForDeletion());
         }
         
         /// <summary>

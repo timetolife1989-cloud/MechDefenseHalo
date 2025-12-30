@@ -195,7 +195,14 @@ namespace MechDefenseHalo.UI.HUD
             // Create tween for fade out
             var tween = CreateTween();
             tween.TweenProperty(objective.LabelNode, "modulate:a", 0.0, 1.0).SetDelay(2.0);
-            tween.TweenCallback(Callable.From(() => RemoveObjective(objective.Id)));
+            tween.TweenCallback(Callable.From(() => 
+            {
+                // Check if objective still exists before removing
+                if (_objectives.Contains(objective))
+                {
+                    RemoveObjective(objective.Id);
+                }
+            }));
         }
         
         #endregion

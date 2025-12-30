@@ -23,6 +23,8 @@ namespace MechDefenseHalo.UI.HUD
         
         #region Private Fields
         
+        private const int MinMaxAmmo = 1; // Minimum value for max ammo to prevent division by zero
+        
         private Label _ammoLabel;
         private ProgressBar _reloadProgress;
         private Label _reloadLabel;
@@ -73,7 +75,7 @@ namespace MechDefenseHalo.UI.HUD
         public void UpdateAmmo(int current, int max)
         {
             _currentAmmo = Mathf.Max(0, current);
-            _maxAmmo = Mathf.Max(1, max);
+            _maxAmmo = Mathf.Max(MinMaxAmmo, max);
             _isReloading = false;
             
             UpdateDisplay();

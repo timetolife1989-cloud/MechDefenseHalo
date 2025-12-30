@@ -88,8 +88,8 @@ namespace MechDefenseHalo.UI.HUD
         {
             if (data is HealthChangedData healthData)
             {
-                // Check if this is the player (you may need to adjust this check based on your player setup)
-                if (healthData.Entity?.Name?.Contains("Player") ?? false)
+                // Check if this is the player by checking if entity is in "player" group
+                if (healthData.Entity?.IsInGroup("player") ?? false)
                 {
                     _healthBar?.UpdateHealth(healthData.CurrentHealth, healthData.MaxHealth);
                 }

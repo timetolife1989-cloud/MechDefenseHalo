@@ -17,6 +17,7 @@ namespace MechDefenseHalo.UI.HUD
         [Export] public Color HitColor { get; set; } = Colors.Red;
         [Export] public float HitMarkerDuration { get; set; } = 0.2f;
         [Export] public float CrosshairSpread { get; set; } = 10f;
+        [Export] public float SpreadRecoveryRate { get; set; } = 20f; // Units per second
         [Export] public bool DynamicSpread { get; set; } = true;
         
         #endregion
@@ -160,7 +161,7 @@ namespace MechDefenseHalo.UI.HUD
             _crosshairCenter.Scale = new Vector2(scale, scale);
             
             // Gradually reduce spread when not firing
-            _targetSpread = Mathf.Max(0f, _targetSpread - delta * 20f);
+            _targetSpread = Mathf.Max(0f, _targetSpread - delta * SpreadRecoveryRate);
         }
         
         /// <summary>
