@@ -60,7 +60,6 @@ namespace MechDefenseHalo.VFX
         private Dictionary<string, ParticlePool> _pools = new();
         private Node3D _effectsContainer;
         private Dictionary<string, PackedScene> _effectPrefabs = new();
-        private ParticlePool _particlePool;
 
         #endregion
 
@@ -81,9 +80,6 @@ namespace MechDefenseHalo.VFX
             // Create container for all effects
             _effectsContainer = new Node3D { Name = VFXContainerNodeName };
             AddChild(_effectsContainer);
-            
-            // Initialize particle pool
-            _particlePool = new ParticlePool(null, _effectsContainer);
 
             // Load VFX library
             _library = new VFXLibrary();
@@ -264,9 +260,18 @@ namespace MechDefenseHalo.VFX
         /// <param name="normal">Optional surface normal for orientation</param>
         public void SpawnEffect(string effectName, Vector3 position, Vector3 normal = default)
         {
-            // Try loading from Scenes/VFX first, then fall back to library
-            string scenePath = $"res://Scenes/VFX/{effectName}.tscn";
-            var scene = GD.Load<PackedScene>(scenePath);
+            // Try using pre-loaded prefabs first
+            PackedScene scene = null;
+            if (_effectPrefabs.ContainsKey(effectName))
+            {
+                scene = _effectPrefabs[effectName];
+            }
+            else
+            {
+                // Try loading from Scenes/VFX dynamically
+                string scenePath = $"res://Scenes/VFX/{effectName}.tscn";
+                scene = GD.Load<PackedScene>(scenePath);
+            }
             
             if (scene == null && _library.HasEffect(effectName))
             {
@@ -281,25 +286,46 @@ namespace MechDefenseHalo.VFX
                 return;
             }
             
-            var effect = scene.Instantiate<GpuParticles3D>();
-            GetTree().Root.AddChild(effect);
-            effect.GlobalPosition = position;
+            var effectNode = scene.Instantiate<Node3D>();
+            if (effectNode == null)
+            {
+                GD.PrintErr($"Failed to instantiate effect {effectName} as Node3D");
+                return;
+            }
+            
+            GetTree().Root.AddChild(effectNode);
+            effectNode.GlobalPosition = position;
             
             if (normal != Vector3.Zero)
             {
-                effect.LookAt(position + normal, Vector3.Up);
+                effectNode.LookAt(position + normal, Vector3.Up);
             }
             
-            effect.Emitting = true;
-            effect.OneShot = true;
-            
-            GetTree().CreateTimer(effect.Lifetime).Timeout += () => 
+            // Handle GpuParticles3D
+            if (effectNode is GpuParticles3D gpuEffect)
             {
-                if (IsInstanceValid(effect))
+                gpuEffect.Emitting = true;
+                gpuEffect.OneShot = true;
+                
+                GetTree().CreateTimer(gpuEffect.Lifetime).Timeout += () => 
                 {
-                    effect.QueueFree();
-                }
-            };
+                    if (IsInstanceValid(gpuEffect))
+                    {
+                        gpuEffect.QueueFree();
+                    }
+                };
+            }
+            else
+            {
+                // Default cleanup for non-particle effects
+                GetTree().CreateTimer(1.0f).Timeout += () => 
+                {
+                    if (IsInstanceValid(effectNode))
+                    {
+                        effectNode.QueueFree();
+                    }
+                };
+            }
         }
         
         /// <summary>
@@ -330,8 +356,15 @@ namespace MechDefenseHalo.VFX
         /// <param name="radius">Explosion radius (used for scale)</param>
         public void SpawnExplosion(Vector3 position, float radius)
         {
-            string scenePath = "res://Scenes/VFX/Explosion.tscn";
-            var scene = GD.Load<PackedScene>(scenePath);
+            PackedScene scene = null;
+            if (_effectPrefabs.ContainsKey("Explosion"))
+            {
+                scene = _effectPrefabs["Explosion"];
+            }
+            else
+            {
+                scene = GD.Load<PackedScene>("res://Scenes/VFX/Explosion.tscn");
+            }
             
             if (scene == null)
             {
@@ -340,19 +373,42 @@ namespace MechDefenseHalo.VFX
                 return;
             }
             
-            var explosion = scene.Instantiate<GpuParticles3D>();
-            GetTree().Root.AddChild(explosion);
-            explosion.GlobalPosition = position;
-            explosion.Scale = Vector3.One * radius;
-            explosion.Emitting = true;
-            
-            GetTree().CreateTimer(explosion.Lifetime).Timeout += () => 
+            var explosionNode = scene.Instantiate<Node3D>();
+            if (explosionNode == null)
             {
-                if (IsInstanceValid(explosion))
+                GD.PrintErr("Failed to instantiate Explosion effect as Node3D");
+                PlayEffect("explosion_medium", position, null, radius);
+                return;
+            }
+            
+            GetTree().Root.AddChild(explosionNode);
+            explosionNode.GlobalPosition = position;
+            explosionNode.Scale = Vector3.One * radius;
+            
+            // Handle GpuParticles3D
+            if (explosionNode is GpuParticles3D gpuExplosion)
+            {
+                gpuExplosion.Emitting = true;
+                
+                GetTree().CreateTimer(gpuExplosion.Lifetime).Timeout += () => 
                 {
-                    explosion.QueueFree();
-                }
-            };
+                    if (IsInstanceValid(gpuExplosion))
+                    {
+                        gpuExplosion.QueueFree();
+                    }
+                };
+            }
+            else
+            {
+                // Default cleanup for non-particle effects
+                GetTree().CreateTimer(2.0f).Timeout += () => 
+                {
+                    if (IsInstanceValid(explosionNode))
+                    {
+                        explosionNode.QueueFree();
+                    }
+                };
+            }
         }
 
         #endregion

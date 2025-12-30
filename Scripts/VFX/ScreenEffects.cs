@@ -93,6 +93,11 @@ namespace MechDefenseHalo.VFX
             {
                 ShakeDecay = strength / duration;
             }
+            else
+            {
+                // If duration is 0 or negative, use instant decay
+                ShakeDecay = float.MaxValue;
+            }
         }
         
         /// <summary>
