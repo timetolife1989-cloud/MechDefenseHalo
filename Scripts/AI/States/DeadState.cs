@@ -1,3 +1,5 @@
+using Godot;
+
 namespace MechDefenseHalo.AI.States
 {
     public class DeadState : AIState
