@@ -13,6 +13,12 @@ namespace MechDefenseHalo.Combat
         
         public override void _Ready()
         {
+            if (_instance != null && _instance != this)
+            {
+                GD.PrintErr("Multiple HitDetection instances detected!");
+                QueueFree();
+                return;
+            }
             _instance = this;
             GD.Print("HitDetection initialized");
         }

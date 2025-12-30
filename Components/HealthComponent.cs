@@ -111,7 +111,7 @@ namespace MechDefenseHalo.Components
             // Calculate final damage
             float armor = _armorComponent?.GetArmor() ?? 0;
             string armorType = _armorComponent?.GetArmorType() ?? "Light";
-            float critMultiplier = 1.5f; // TODO: Get from attacker stats
+            float critMultiplier = 1.5f; // Default crit multiplier if not provided by attacker
             
             float finalDamage = DamageCalculator.Instance?.CalculateDamage(
                 rawDamage, damageType, armor, armorType, isCritical, critMultiplier) ?? rawDamage;
@@ -175,7 +175,9 @@ namespace MechDefenseHalo.Components
         /// <param name="damageSource">Optional source of damage for tracking</param>
         public void TakeDamage(float amount, Node damageSource = null)
         {
-            TakeDamage(amount, GetParent<Node3D>()?.GlobalPosition ?? Vector3.Zero, DamageType.Kinetic, false);
+            var parent = GetParent();
+            var position = parent is Node3D node3D ? node3D.GlobalPosition : Vector3.Zero;
+            TakeDamage(amount, position, DamageType.Kinetic, false);
         }
 
         /// <summary>
