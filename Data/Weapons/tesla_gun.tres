@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+WeaponName = "Tesla Gun"
+Damage = 25.0
+FireRate = 0.15
+MagazineSize = 25
+ReloadTime = 2.2
+Range = 120.0
+Accuracy = 0.92
+IsAutomatic = true
+ProjectileSpeed = 90.0

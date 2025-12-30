@@ -641,6 +641,39 @@ namespace MechDefenseHalo.Core
         }
 
         #endregion
+
+        #region Generic Key-Value Methods
+
+        /// <summary>
+        /// Get a string value from storage
+        /// </summary>
+        public static string GetString(string key, string defaultValue = "")
+        {
+            if (Instance?.CurrentPlayerData?.KeyValueStore != null && 
+                Instance.CurrentPlayerData.KeyValueStore.ContainsKey(key))
+            {
+                return Instance.CurrentPlayerData.KeyValueStore[key];
+            }
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Set a string value in storage
+        /// </summary>
+        public static void SetValue(string key, string value)
+        {
+            if (Instance?.CurrentPlayerData != null)
+            {
+                if (Instance.CurrentPlayerData.KeyValueStore == null)
+                {
+                    Instance.CurrentPlayerData.KeyValueStore = new Dictionary<string, string>();
+                }
+                Instance.CurrentPlayerData.KeyValueStore[key] = value;
+                Instance.SaveGame();
+            }
+        }
+
+        #endregion
     }
 
     #region Legacy Data Structures (for backwards compatibility)
@@ -694,6 +727,13 @@ namespace MechDefenseHalo.Core
         public bool TutorialCompleted { get; set; } = false;
         public bool IsFirstLaunch { get; set; } = true;
         public int LastCompletedTutorialStep { get; set; } = 0;
+        
+        // Daily Missions
+        public List<MechDefenseHalo.Notifications.Mission> DailyMissions { get; set; } = new List<MechDefenseHalo.Notifications.Mission>();
+        
+        // Generic Storage
+        public Dictionary<string, string> KeyValueStore { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> DateTimeStore { get; set; } = new Dictionary<string, string>();
     }
 
     #endregion
