@@ -1,0 +1,81 @@
+name: 🤖 Auto-Merge PRs (YOLO Mode)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  pull_request_review:
+    types: [submitted]
+  check_suite:
+    types: [completed]
+  status: {}
+
+jobs:
+  auto-approve:
+    name: Auto Approve
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    
+    steps:
+      - name: Auto approve PR
+        uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  auto-merge:
+    name: Auto Merge
+    runs-on: ubuntu-latest
+    needs: auto-approve
+    permissions:
+      pull-requests: write
+      contents: write
+    
+    steps:
+      - name: Wait for checks to complete
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          running-workflow-name: 'Auto Merge'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+          allowed-conclusions: success,skipped,neutral
+        continue-on-error: true
+
+      - name: Enable auto-merge
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --auto \
+            --squash \
+            --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Force merge if auto-merge fails
+        if: failure()
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --squash \
+            --admin \
+            --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  celebrate:
+    name: 🎉 Celebrate Merge
+    runs-on: ubuntu-latest
+    needs: auto-merge
+    if: success()
+    
+    steps:
+      - name: Comment on merged PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 **AUTO-MERGED BY SKYNET!** 🤖\n\nThis PR was automatically approved and merged because YOLO! 💀🔥'
+            })
