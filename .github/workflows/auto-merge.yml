@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Enable auto-merge
         if: github.event.pull_request.draft == false
-        run: gh pr merge --auto --squash --delete-branch "#$PR_NUMBER"
+        run: gh pr merge --auto --squash --delete-branch "$PR_NUMBER"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ github.token }}

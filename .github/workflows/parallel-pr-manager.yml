@@ -59,7 +59,7 @@ jobs:
     # Use concurrency to prevent resource exhaustion
     concurrency:
       group: pr-${{ github.event.pull_request.number }}
-      cancel-in-progress: false
+      cancel-in-progress: true
     
     if: github.event.pull_request
     
