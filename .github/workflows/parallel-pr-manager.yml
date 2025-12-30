@@ -56,6 +56,9 @@ jobs:
   # Each PR gets its own workflow run with no dependencies
   pr-processor:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     # Use concurrency to prevent resource exhaustion
     concurrency:
       group: pr-${{ github.event.pull_request.number }}
