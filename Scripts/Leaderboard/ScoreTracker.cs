@@ -152,7 +152,7 @@ namespace MechDefenseHalo.Leaderboard
                 TotalScore = TotalScore,
                 Wave = CurrentWave,
                 Kills = TotalKills,
-                MaxCombo = GetMaxCombo()
+                MaxCombo = MaxCombo
             };
         }
         
@@ -289,11 +289,6 @@ namespace MechDefenseHalo.Leaderboard
             CurrentCombo = 0;
             _comboTimeRemaining = 0f;
             ComboTimer = 0f;
-        }
-        
-        private int GetMaxCombo()
-        {
-            return MaxCombo;
         }
         
         #endregion
