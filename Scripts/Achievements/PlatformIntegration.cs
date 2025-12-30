@@ -155,9 +155,9 @@ namespace MechDefenseHalo.Achievements
                 return true;
             }
 
-            // TODO: Add more Steam detection methods if needed
-            // For now, Steam integration requires GodotSteam plugin to be installed
-            // and properly configured in the project
+            // Note: Steam integration requires GodotSteam plugin to be installed
+            // and properly configured in the project. Additional detection methods
+            // can be added here if needed for specific deployment scenarios.
             
             return false;
         }
@@ -439,10 +439,10 @@ namespace MechDefenseHalo.Achievements
 
         private string GetGooglePlayAchievementId(string internalId)
         {
-            // Return mapped ID or use internal ID as fallback
+            // Return mapped ID or use placeholder as fallback
             return _googlePlayAchievementMap.ContainsKey(internalId)
                 ? _googlePlayAchievementMap[internalId]
-                : "CgkI" + internalId; // Google Play IDs typically start with CgkI
+                : "PLACEHOLDER_" + internalId; // Placeholder format for unmapped IDs
         }
 
         #endregion
@@ -513,29 +513,31 @@ namespace MechDefenseHalo.Achievements
 
             // Google Play achievement ID mappings
             // Format: internal_id -> Google Play achievement ID
-            // Note: Real Google Play IDs should be obtained from Google Play Console
-            _googlePlayAchievementMap["first_blood"] = "CgkIxxx_first_blood";
-            _googlePlayAchievementMap["soldier"] = "CgkIxxx_soldier";
-            _googlePlayAchievementMap["warrior"] = "CgkIxxx_warrior";
-            _googlePlayAchievementMap["genocide"] = "CgkIxxx_genocide";
-            _googlePlayAchievementMap["headhunter"] = "CgkIxxx_headhunter";
-            _googlePlayAchievementMap["no_damage"] = "CgkIxxx_untouchable";
-            _googlePlayAchievementMap["perfect_wave"] = "CgkIxxx_perfect";
-            _googlePlayAchievementMap["wave_breaker"] = "CgkIxxx_wave_breaker";
-            _googlePlayAchievementMap["endgame"] = "CgkIxxx_endgame";
-            _googlePlayAchievementMap["veteran"] = "CgkIxxx_veteran";
-            _googlePlayAchievementMap["colossus_killer"] = "CgkIxxx_colossus_killer";
-            _googlePlayAchievementMap["boss_hunter"] = "CgkIxxx_boss_hunter";
-            _googlePlayAchievementMap["flawless_victory"] = "CgkIxxx_flawless_victory";
-            _googlePlayAchievementMap["speed_run"] = "CgkIxxx_speed_run";
-            _googlePlayAchievementMap["legendary_hunter"] = "CgkIxxx_legendary_hunter";
-            _googlePlayAchievementMap["hoarder"] = "CgkIxxx_hoarder";
-            _googlePlayAchievementMap["full_set"] = "CgkIxxx_full_set";
-            _googlePlayAchievementMap["arsenal"] = "CgkIxxx_arsenal";
-            _googlePlayAchievementMap["drone_commander"] = "CgkIxxx_drone_commander";
-            _googlePlayAchievementMap["novice"] = "CgkIxxx_novice";
-            _googlePlayAchievementMap["expert"] = "CgkIxxx_expert";
-            _googlePlayAchievementMap["master"] = "CgkIxxx_master";
+            // IMPORTANT: Replace these placeholder IDs with actual achievement IDs from Google Play Console
+            // Google Play IDs typically start with "CgkI" followed by a unique identifier
+            // Example format: "CgkI1a2b3c4d5e6f7g8h" (obtained from Play Console)
+            _googlePlayAchievementMap["first_blood"] = "PLACEHOLDER_first_blood";
+            _googlePlayAchievementMap["soldier"] = "PLACEHOLDER_soldier";
+            _googlePlayAchievementMap["warrior"] = "PLACEHOLDER_warrior";
+            _googlePlayAchievementMap["genocide"] = "PLACEHOLDER_genocide";
+            _googlePlayAchievementMap["headhunter"] = "PLACEHOLDER_headhunter";
+            _googlePlayAchievementMap["no_damage"] = "PLACEHOLDER_untouchable";
+            _googlePlayAchievementMap["perfect_wave"] = "PLACEHOLDER_perfect";
+            _googlePlayAchievementMap["wave_breaker"] = "PLACEHOLDER_wave_breaker";
+            _googlePlayAchievementMap["endgame"] = "PLACEHOLDER_endgame";
+            _googlePlayAchievementMap["veteran"] = "PLACEHOLDER_veteran";
+            _googlePlayAchievementMap["colossus_killer"] = "PLACEHOLDER_colossus_killer";
+            _googlePlayAchievementMap["boss_hunter"] = "PLACEHOLDER_boss_hunter";
+            _googlePlayAchievementMap["flawless_victory"] = "PLACEHOLDER_flawless_victory";
+            _googlePlayAchievementMap["speed_run"] = "PLACEHOLDER_speed_run";
+            _googlePlayAchievementMap["legendary_hunter"] = "PLACEHOLDER_legendary_hunter";
+            _googlePlayAchievementMap["hoarder"] = "PLACEHOLDER_hoarder";
+            _googlePlayAchievementMap["full_set"] = "PLACEHOLDER_full_set";
+            _googlePlayAchievementMap["arsenal"] = "PLACEHOLDER_arsenal";
+            _googlePlayAchievementMap["drone_commander"] = "PLACEHOLDER_drone_commander";
+            _googlePlayAchievementMap["novice"] = "PLACEHOLDER_novice";
+            _googlePlayAchievementMap["expert"] = "PLACEHOLDER_expert";
+            _googlePlayAchievementMap["master"] = "PLACEHOLDER_master";
 
             GD.Print($"Achievement mappings configured: {_steamAchievementMap.Count} Steam, {_googlePlayAchievementMap.Count} Google Play");
         }
