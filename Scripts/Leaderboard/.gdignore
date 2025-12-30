@@ -1,0 +1,2 @@
+# Godot ignore file for C# scripts
+# This directory contains C# code that should not be directly imported by Godot
