@@ -50,6 +50,7 @@ namespace MechDefenseHalo.Managers
 
         private int enemiesRemaining = 0;
         private int enemiesAlive = 0;
+        private int totalSpawned = 0;
         private bool waveActive = false;
         private List<Node3D> spawnPoints = new List<Node3D>();
 
@@ -191,7 +192,7 @@ namespace MechDefenseHalo.Managers
 
             await ToSignal(GetTree().CreateTimer(TimeBetweenWaves), SceneTreeTimer.SignalName.Timeout);
 
-            if (waveActive == false)  // Only start next wave if not manually stopped
+            if (!waveActive)  // Only start next wave if not manually stopped
             {
                 StartWave();
             }
@@ -218,8 +219,9 @@ namespace MechDefenseHalo.Managers
             // TODO: Load enemy scene when created
             // For now, create placeholder
             var enemy = new Node3D();
+            totalSpawned++;
             enemiesAlive++;
-            enemy.Name = $"Enemy_{CurrentWave}_{enemiesAlive}";
+            enemy.Name = $"Enemy_{CurrentWave}_{totalSpawned}";
             enemy.GlobalPosition = spawnPoint.GlobalPosition;
 
             AddChild(enemy);
