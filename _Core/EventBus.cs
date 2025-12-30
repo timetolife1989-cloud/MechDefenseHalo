@@ -157,8 +157,7 @@ namespace MechDefenseHalo.Core
         public const string HealthChanged = "health_changed";
         public const string EntityDied = "entity_died";
         public const string DamageDealt = "damage_dealt";
-        public const string EntityDamaged = "entity_damaged"; // (Node target, float damage, Vector3 position)
-        public const string EntityHealed = "entity_healed"; // (Node target, float amount)
+        public const string PlayerHit = "player_hit";
         
         // Weapons
         public const string WeaponFired = "weapon_fired";
@@ -242,6 +241,13 @@ namespace MechDefenseHalo.Core
 
         // DLC Events
         public const string DLCUnlocked = "dlc_unlocked";
+
+        // Tutorial Events
+        public const string TutorialStarted = "tutorial_started";
+        public const string TutorialStopped = "tutorial_stopped";
+        public const string TutorialCompleted = "tutorial_completed";
+        public const string TutorialStepStarted = "tutorial_step_started";
+        public const string TutorialObjectiveComplete = "tutorial_objective_complete";
 
         #endregion
     }

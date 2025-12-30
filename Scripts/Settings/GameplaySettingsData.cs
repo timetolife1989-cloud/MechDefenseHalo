@@ -15,5 +15,6 @@ namespace MechDefenseHalo.Settings
         public bool ShowFPSCounter = false;
         public bool ShowPing = false;
         public string Language = "en";
+        public string PlayerName = "Player";
     }
 }
