@@ -116,9 +116,9 @@ namespace MechDefenseHalo.Camera
         {
             if (Target == null) return;
             
-            // Calculate look direction
-            Vector3 direction = (Target.GlobalPosition - GlobalPosition).Normalized();
-            if (direction.LengthSquared() > 0.001f)
+            // Only look at target if we're at a different position to avoid exceptions
+            float distanceSquared = GlobalPosition.DistanceSquaredTo(Target.GlobalPosition);
+            if (distanceSquared > 0.001f)
             {
                 // Calculate target rotation
                 var targetTransform = GlobalTransform.LookingAt(Target.GlobalPosition, Vector3.Up);

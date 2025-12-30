@@ -89,8 +89,9 @@ namespace MechDefenseHalo.Tests.Camera
             
             shake.StartShake(1.0f, 1.0f);
 
-            // Act - process multiple times to deplete the shake
-            for (int i = 0; i < 100; i++)
+            // Act - process enough times to complete the 1.0s shake (1.0s / 0.016s ~= 63 iterations)
+            int requiredIterations = (int)(1.0f / 0.016f) + 10; // Add buffer for safety
+            for (int i = 0; i < requiredIterations; i++)
             {
                 shake._Process(0.016);
             }

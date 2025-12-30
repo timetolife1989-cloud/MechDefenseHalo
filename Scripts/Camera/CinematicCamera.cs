@@ -121,7 +121,11 @@ namespace MechDefenseHalo.Camera
         /// </summary>
         public void PlaySequence()
         {
-            if (_keyframes.Count == 0) return;
+            if (_keyframes.Count == 0)
+            {
+                GD.PushWarning("CinematicCamera: Cannot play sequence with no keyframes.");
+                return;
+            }
             
             _isPlaying = true;
             _currentKeyframeIndex = 0;

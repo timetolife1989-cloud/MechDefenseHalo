@@ -39,7 +39,12 @@ namespace MechDefenseHalo.Camera
             
             Vector3 targetPos = Target.GlobalPosition + Offset + _shakeOffset;
             GlobalPosition = GlobalPosition.Lerp(targetPos, FollowSpeed * (float)delta);
-            LookAt(Target.GlobalPosition, Vector3.Up);
+            
+            // Only look at target if we're at a different position to avoid exceptions
+            if (GlobalPosition.DistanceSquaredTo(Target.GlobalPosition) > 0.001f)
+            {
+                LookAt(Target.GlobalPosition, Vector3.Up);
+            }
         }
         
         #endregion

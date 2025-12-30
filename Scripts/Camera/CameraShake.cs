@@ -47,10 +47,11 @@ namespace MechDefenseHalo.Camera
             _timer -= (float)delta;
             float progress = _timer / _duration;
             
+            // Random offset in range [-1, 1] for X and Y, no Z-axis shake for cleaner effect
             Vector3 offset = new Vector3(
-                GD.Randf() * 2 - 1,
-                GD.Randf() * 2 - 1,
-                0
+                GD.Randf() * 2 - 1,  // Random X offset in range [-1, 1]
+                GD.Randf() * 2 - 1,  // Random Y offset in range [-1, 1]
+                0                     // No Z-axis shake
             ) * _intensity * progress;
             
             EmitSignal(SignalName.ShakeUpdated, offset);

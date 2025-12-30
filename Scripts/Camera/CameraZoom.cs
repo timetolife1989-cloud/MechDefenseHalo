@@ -34,6 +34,10 @@ namespace MechDefenseHalo.Camera
                 _camera.Fov = DefaultFov;
                 _targetFov = DefaultFov;
             }
+            else
+            {
+                GD.PushWarning("CameraZoom: Parent is not a Camera3D. Zoom functionality will not work.");
+            }
         }
         
         public override void _Process(double delta)
