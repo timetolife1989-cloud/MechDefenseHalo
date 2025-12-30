@@ -157,6 +157,7 @@ namespace MechDefenseHalo.Core
         public const string HealthChanged = "health_changed";
         public const string EntityDied = "entity_died";
         public const string DamageDealt = "damage_dealt";
+        public const string PlayerHit = "player_hit";
         
         // Weapons
         public const string WeaponFired = "weapon_fired";
