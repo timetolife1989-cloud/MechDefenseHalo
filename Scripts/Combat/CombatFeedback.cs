@@ -65,7 +65,7 @@ namespace MechDefenseHalo.Combat
             var hitMarker = HitMarkerPrefab.Instantiate<Node2D>();
             GetTree().Root.AddChild(hitMarker);
             
-            // Convert world to screen position - check if behind camera
+            // Don't show hit marker if position is behind camera or camera not found
             var camera = GetViewport().GetCamera3D();
             if (camera == null || camera.IsPositionBehind(worldPosition))
             {

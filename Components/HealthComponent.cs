@@ -111,7 +111,7 @@ namespace MechDefenseHalo.Components
             // Calculate final damage
             float armor = _armorComponent?.GetArmor() ?? 0;
             string armorType = _armorComponent?.GetArmorType() ?? "Light";
-            float critMultiplier = 1.5f; // Default crit multiplier if not provided by attacker
+            float critMultiplier = 1.5f; // Default critical damage multiplier (1.5x damage)
             
             float finalDamage = DamageCalculator.Instance?.CalculateDamage(
                 rawDamage, damageType, armor, armorType, isCritical, critMultiplier) ?? rawDamage;
