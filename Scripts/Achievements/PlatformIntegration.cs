@@ -89,7 +89,7 @@ namespace MechDefenseHalo.Achievements
 
         #endregion
 
-        #region Public Methods - Platform Detection
+        #region Private Methods - Platform Detection
 
         /// <summary>
         /// Detect which platform the game is running on
