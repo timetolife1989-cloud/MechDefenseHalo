@@ -10,7 +10,7 @@
 - **Dimensions**: 1.0m × 0.3m × 0.2m
 - **Shape**: Rectangular box (elongated)
 - **Color**: Dark Gray (#3C4041)
-- **Pivot Point**: Rear center (grip position)
+- **Pivot Point**: Rear center (grip position) - local transform origin for player hand attachment
 
 ### Sniper Rifle (SRS99)
 - **Dimensions**: 1.5m × 0.2m × 0.2m

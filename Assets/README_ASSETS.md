@@ -64,6 +64,8 @@ This document describes the temporary placeholder assets used during development
 - [Freesound.org](https://freesound.org)
 - [OpenGameArt.org](https://opengameart.org)
 
+**Note**: Always check license requirements and provide attribution where required, even for royalty-free assets.
+
 ## Replacement Strategy
 
 When replacing placeholders with final assets:
