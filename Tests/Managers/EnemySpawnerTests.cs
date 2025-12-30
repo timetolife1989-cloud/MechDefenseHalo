@@ -12,7 +12,6 @@ namespace MechDefenseHalo.Tests.Managers
     public class EnemySpawnerTests
     {
         private EnemySpawner _spawner;
-        private SceneTree _sceneTree;
 
         [Before]
         public void Setup()

@@ -72,7 +72,7 @@ namespace MechDefenseHalo.Managers
             {
                 foreach (var path in SpawnPointPaths)
                 {
-                    var point = GetNode<Node3D>(path);
+                    var point = GetNodeOrNull<Node3D>(path);
                     if (point != null)
                     {
                         spawnPoints.Add(point);
@@ -175,7 +175,7 @@ namespace MechDefenseHalo.Managers
 
                 if (enemiesRemaining > 0)
                 {
-                    await ToSignal(GetTree().CreateTimer(SpawnInterval), "timeout");
+                    await ToSignal(GetTree().CreateTimer(SpawnInterval), SceneTreeTimer.SignalName.Timeout);
                 }
             }
         }
@@ -189,9 +189,12 @@ namespace MechDefenseHalo.Managers
             EmitSignal(SignalName.WaveCompleted, CurrentWave);
             GD.Print($"Wave {CurrentWave} completed! Next wave in {TimeBetweenWaves}s");
 
-            await ToSignal(GetTree().CreateTimer(TimeBetweenWaves), "timeout");
+            await ToSignal(GetTree().CreateTimer(TimeBetweenWaves), SceneTreeTimer.SignalName.Timeout);
 
-            StartWave();
+            if (waveActive == false)  // Only start next wave if not manually stopped
+            {
+                StartWave();
+            }
         }
 
         #endregion
@@ -215,11 +218,11 @@ namespace MechDefenseHalo.Managers
             // TODO: Load enemy scene when created
             // For now, create placeholder
             var enemy = new Node3D();
+            enemiesAlive++;
             enemy.Name = $"Enemy_{CurrentWave}_{enemiesAlive}";
             enemy.GlobalPosition = spawnPoint.GlobalPosition;
 
             AddChild(enemy);
-            enemiesAlive++;
 
             EmitSignal(SignalName.EnemySpawned, enemy);
             GD.Print($"Spawned enemy at {spawnPoint.GlobalPosition}");
