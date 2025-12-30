@@ -1,265 +1,201 @@
 using Godot;
 using System;
 using MechDefenseHalo.Core;
-using MechDefenseHalo.Components;
 
 namespace MechDefenseHalo.Weapons
 {
-    /// <summary>
-    /// Abstract base class for all weapons in the game.
-    /// Provides common functionality for firing, ammo, and damage.
-    /// </summary>
     public abstract partial class WeaponBase : Node3D
     {
         #region Exported Properties
-
+        
         [Export] public string WeaponName { get; set; } = "Weapon";
-        [Export] public float BaseDamage { get; set; } = 10f;
-        [Export] public float FireRate { get; set; } = 0.1f;
-        [Export] public float Range { get; set; } = 100f;
-        [Export] public int MaxAmmo { get; set; } = 30;
+        [Export] public float Damage { get; set; } = 10f;
+        [Export] public float FireRate { get; set; } = 0.1f; // Time between shots
+        [Export] public int MagazineSize { get; set; } = 30;
         [Export] public float ReloadTime { get; set; } = 2f;
-        [Export] public ElementalType ElementType { get; set; } = ElementalType.Physical;
-        [Export] public bool IsAutomatic { get; set; } = false;
-
+        [Export] public float Range { get; set; } = 100f;
+        [Export] public float Accuracy { get; set; } = 0.95f; // 1.0 = perfect
+        [Export] public bool IsAutomatic { get; set; } = true;
+        
+        [Export] public PackedScene MuzzleFlashEffect { get; set; }
+        [Export] public PackedScene ImpactEffect { get; set; }
+        [Export] public AudioStream FireSound { get; set; }
+        [Export] public AudioStream ReloadSound { get; set; }
+        
         #endregion
-
+        
         #region Public Properties
-
+        
         public int CurrentAmmo { get; protected set; }
-        public bool IsReloading { get; protected set; } = false;
-        public bool CanFire => !IsReloading && CurrentAmmo > 0 && _fireCooldown <= 0;
-        public float ReloadProgress => IsReloading ? (_reloadTimer / ReloadTime) : 0f;
-
+        public bool IsReloading { get; protected set; }
+        public bool CanFire => !IsReloading && CurrentAmmo > 0 && _fireTimer <= 0;
+        
         #endregion
-
+        
         #region Protected Fields
-
-        protected float _fireCooldown = 0f;
-        protected float _reloadTimer = 0f;
+        
+        protected float _fireTimer;
+        protected float _reloadTimer;
+        protected Node3D _muzzlePoint;
         protected Camera3D _camera;
-        protected Node3D _muzzle;
-
+        
         #endregion
-
+        
         #region Godot Lifecycle
-
+        
         public override void _Ready()
         {
-            CurrentAmmo = MaxAmmo;
-            _muzzle = GetNodeOrNull<Node3D>("Muzzle");
+            CurrentAmmo = MagazineSize;
+            _muzzlePoint = GetNodeOrNull<Node3D>("MuzzlePoint");
+            _camera = GetViewport().GetCamera3D();
             
-            // Find camera in scene
-            CallDeferred(nameof(FindCamera));
+            GD.Print($"{WeaponName} initialized - Ammo: {CurrentAmmo}/{MagazineSize}");
         }
-
+        
         public override void _Process(double delta)
         {
-            float dt = (float)delta;
-
-            // Update fire cooldown
-            if (_fireCooldown > 0)
-            {
-                _fireCooldown -= dt;
-            }
-
-            // Update reload timer
+            float deltaF = (float)delta;
+            
+            if (_fireTimer > 0)
+                _fireTimer -= deltaF;
+            
             if (IsReloading)
             {
-                _reloadTimer += dt;
-                if (_reloadTimer >= ReloadTime)
+                _reloadTimer -= deltaF;
+                if (_reloadTimer <= 0)
                 {
                     FinishReload();
                 }
             }
         }
-
+        
         #endregion
-
+        
         #region Public Methods
-
-        /// <summary>
-        /// Attempt to fire the weapon
-        /// </summary>
-        public bool TryFire()
+        
+        public void Fire()
         {
             if (!CanFire)
-                return false;
-
+                return;
+            
             CurrentAmmo--;
-            _fireCooldown = FireRate;
-
-            // Call abstract method for weapon-specific firing
+            _fireTimer = FireRate;
+            
+            // Visual/audio feedback
+            PlayFireSound();
+            SpawnMuzzleFlash();
+            
+            // Apply recoil
+            ApplyRecoil();
+            
+            // Actual weapon-specific firing logic
             OnFire();
-
-            // Emit events
-            EventBus.Emit(EventBus.WeaponFired, new WeaponFiredData
+            
+            // Emit event
+            EventBus.Emit(EventBus.WeaponFired, WeaponName);
+            
+            // Auto-reload if empty
+            if (CurrentAmmo == 0)
             {
-                Weapon = null, // WeaponComponent reference not needed here
-                Damage = BaseDamage,
-                ElementType = ElementType,
-                RemainingAmmo = CurrentAmmo
-            });
-
-            EventBus.Emit(EventBus.AmmoChanged, new AmmoChangedData
-            {
-                CurrentAmmo = CurrentAmmo,
-                MaxAmmo = MaxAmmo
-            });
-
-            return true;
+                StartReload();
+            }
         }
-
-        /// <summary>
-        /// Start reloading the weapon
-        /// </summary>
+        
         public void StartReload()
         {
-            if (IsReloading || CurrentAmmo >= MaxAmmo)
+            if (IsReloading || CurrentAmmo == MagazineSize)
                 return;
-
+            
             IsReloading = true;
-            _reloadTimer = 0f;
+            _reloadTimer = ReloadTime;
             
-            OnReloadStart();
-        }
-
-        /// <summary>
-        /// Cancel reload
-        /// </summary>
-        public void CancelReload()
-        {
-            IsReloading = false;
-            _reloadTimer = 0f;
-        }
-
-        /// <summary>
-        /// Add ammo to weapon
-        /// </summary>
-        public void AddAmmo(int amount)
-        {
-            CurrentAmmo = Mathf.Min(MaxAmmo, CurrentAmmo + amount);
+            PlayReloadSound();
+            EventBus.Emit(EventBus.WeaponReloading, WeaponName);
             
-            EventBus.Emit(EventBus.AmmoChanged, new AmmoChangedData
-            {
-                CurrentAmmo = CurrentAmmo,
-                MaxAmmo = MaxAmmo
-            });
+            GD.Print($"{WeaponName} reloading...");
         }
-
+        
         #endregion
-
-        #region Abstract Methods
-
-        /// <summary>
-        /// Called when weapon fires - implement weapon-specific logic
-        /// </summary>
+        
+        #region Protected Abstract Methods
+        
         protected abstract void OnFire();
-
-        /// <summary>
-        /// Called when reload starts - override for custom effects
-        /// </summary>
-        protected virtual void OnReloadStart() { }
-
-        /// <summary>
-        /// Called when reload completes - override for custom effects
-        /// </summary>
-        protected virtual void OnReloadComplete() { }
-
+        
         #endregion
-
+        
         #region Protected Methods
-
-        protected void FindCamera()
-        {
-            var viewport = GetViewport();
-            _camera = viewport?.GetCamera3D();
-        }
-
-        protected void FinishReload()
-        {
-            IsReloading = false;
-            _reloadTimer = 0f;
-            CurrentAmmo = MaxAmmo;
-
-            EventBus.Emit(EventBus.WeaponReloaded, this);
-            EventBus.Emit(EventBus.AmmoChanged, new AmmoChangedData
-            {
-                CurrentAmmo = CurrentAmmo,
-                MaxAmmo = MaxAmmo
-            });
-
-            OnReloadComplete();
-        }
-
-        /// <summary>
-        /// Perform a raycast from camera to detect hits
-        /// </summary>
-        protected RaycastResult PerformRaycast()
-        {
-            if (_camera == null)
-                return new RaycastResult { Hit = false };
-
-            var spaceState = GetWorld3D().DirectSpaceState;
-            
-            // Raycast from camera center
-            Vector3 from = _camera.GlobalPosition;
-            Vector3 to = from + (-_camera.GlobalTransform.Basis.Z * Range);
-
-            var query = PhysicsRayQueryParameters3D.Create(from, to);
-            query.CollideWithAreas = true;
-            query.CollideWithBodies = true;
-
-            var result = spaceState.IntersectRay(query);
-
-            if (result.Count > 0)
-            {
-                return new RaycastResult
-                {
-                    Hit = true,
-                    Position = (Vector3)result["position"],
-                    Normal = (Vector3)result["normal"],
-                    Collider = (Node)result["collider"]
-                };
-            }
-
-            return new RaycastResult { Hit = false };
-        }
-
-        /// <summary>
-        /// Get muzzle position for projectile spawning
-        /// </summary>
-        protected Vector3 GetMuzzlePosition()
-        {
-            return _muzzle != null ? _muzzle.GlobalPosition : GlobalPosition;
-        }
-
-        /// <summary>
-        /// Get firing direction from camera
-        /// </summary>
-        protected Vector3 GetFiringDirection()
+        
+        protected Vector3 GetAimDirection()
         {
             if (_camera == null)
                 return -GlobalTransform.Basis.Z;
-
-            return -_camera.GlobalTransform.Basis.Z;
+            
+            var screenCenter = GetViewport().GetVisibleRect().Size / 2;
+            var from = _camera.ProjectRayOrigin(screenCenter);
+            var to = from + _camera.ProjectRayNormal(screenCenter) * Range;
+            
+            Vector3 direction = (to - from).Normalized();
+            
+            // Apply accuracy spread
+            if (Accuracy < 1.0f)
+            {
+                float spread = (1.0f - Accuracy) * 0.1f;
+                direction.X += GD.Randf() * spread - spread / 2;
+                direction.Y += GD.Randf() * spread - spread / 2;
+                direction = direction.Normalized();
+            }
+            
+            return direction;
         }
-
+        
+        protected void ApplyRecoil()
+        {
+            // Camera recoil is handled by RecoilController via EventBus
+            EventBus.Emit(EventBus.WeaponRecoil, Damage * 0.01f);
+        }
+        
+        protected void SpawnMuzzleFlash()
+        {
+            if (MuzzleFlashEffect != null && _muzzlePoint != null)
+            {
+                var flash = MuzzleFlashEffect.Instantiate<Node3D>();
+                _muzzlePoint.AddChild(flash);
+            }
+        }
+        
+        protected void PlayFireSound()
+        {
+            if (FireSound != null)
+            {
+                // Use simple AudioStreamPlayer3D for now
+                var player = new AudioStreamPlayer3D();
+                player.Stream = FireSound;
+                AddChild(player);
+                player.Play();
+                player.Finished += () => player.QueueFree();
+            }
+        }
+        
+        protected void PlayReloadSound()
+        {
+            if (ReloadSound != null)
+            {
+                var player = new AudioStreamPlayer3D();
+                player.Stream = ReloadSound;
+                AddChild(player);
+                player.Play();
+                player.Finished += () => player.QueueFree();
+            }
+        }
+        
+        private void FinishReload()
+        {
+            IsReloading = false;
+            CurrentAmmo = MagazineSize;
+            EventBus.Emit(EventBus.WeaponReloaded, WeaponName);
+            GD.Print($"{WeaponName} reloaded - {CurrentAmmo}/{MagazineSize}");
+        }
+        
         #endregion
     }
-
-    #region Helper Structures
-
-    /// <summary>
-    /// Result of a raycast operation
-    /// </summary>
-    public struct RaycastResult
-    {
-        public bool Hit;
-        public Vector3 Position;
-        public Vector3 Normal;
-        public Node Collider;
-    }
-
-    #endregion
 }
