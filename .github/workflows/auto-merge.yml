@@ -2,7 +2,7 @@ name: Auto-merge Pull Requests
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
   contents: write
@@ -11,7 +11,11 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'copilot[bot]' || github.actor == 'github-actions[bot]'
+    if: |
+      github.actor == 'Copilot' || 
+      github.actor == 'copilot[bot]' || 
+      github.actor == 'github-actions[bot]' ||
+      github.event.pull_request.user.login == 'Copilot'
     
     steps:
       - name: Enable auto-merge
