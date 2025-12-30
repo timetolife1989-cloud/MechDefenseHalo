@@ -12,8 +12,13 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Full history for merge operations
+
       - name: Enable auto-merge
         if: github.event.pull_request.draft == false
         run: gh pr merge --auto --squash --delete-branch "$PR_NUMBER"
