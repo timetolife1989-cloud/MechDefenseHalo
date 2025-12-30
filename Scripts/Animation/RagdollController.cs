@@ -62,6 +62,9 @@ namespace MechDefenseHalo.Animation
 
         /// <summary>
         /// Gravity scale for ragdoll physics.
+        /// Note: PhysicalBone3D in Godot 4.x does not directly support gravity scaling.
+        /// This property is preserved for API consistency and future use.
+        /// Gravity is controlled via project physics settings.
         /// </summary>
         [Export] public float GravityScale { get; set; } = 1f;
 

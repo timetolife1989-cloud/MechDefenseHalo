@@ -266,6 +266,9 @@ namespace MechDefenseHalo.Animation
 
         /// <summary>
         /// Set a 2D blend space parameter.
+        /// Note: This assumes the AnimationTree blend space uses standard parameter names
+        /// (blend_position_x and blend_position_y). If your blend space uses custom names,
+        /// use SetParameter() directly with the full parameter path.
         /// </summary>
         /// <param name="parameterName">Name of the blend space parameter</param>
         /// <param name="value">2D vector value</param>
