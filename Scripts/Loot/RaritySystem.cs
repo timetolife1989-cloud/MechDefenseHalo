@@ -6,7 +6,15 @@ namespace MechDefenseHalo.Items
     /// <summary>
     /// Centralized rarity system configuration
     /// Provides utilities for working with item rarities, colors, and drop rates
-    /// Note: This complements the existing RarityConfig in ItemRarity.cs
+    /// 
+    /// This class complements the existing RarityConfig in ItemRarity.cs by providing:
+    /// - Additional utility methods for rarity checks (IsRareOrAbove, IsEpicOrAbove, etc.)
+    /// - Visual feedback configuration (glow intensity, particle multipliers, scale)
+    /// - Extended display utilities (colored names, symbols, descriptions)
+    /// - Stat and sell value multipliers
+    /// 
+    /// Use RarityConfig for: Basic color/drop rate lookups and random rarity rolls
+    /// Use RaritySystem for: Extended utilities, visual effects config, and advanced operations
     /// </summary>
     public static class RaritySystem
     {

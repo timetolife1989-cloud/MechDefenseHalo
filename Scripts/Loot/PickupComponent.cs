@@ -175,7 +175,10 @@ namespace MechDefenseHalo.Loot
             _magneticArea = new Area3D();
             _magneticArea.Name = "MagneticArea";
             _magneticArea.CollisionLayer = 0;
-            _magneticArea.CollisionMask = 1; // Assuming loot is on layer 1
+            // CollisionMask should match the layer loot drops are on
+            // By default, loot drops are expected to be on layer 1
+            // Configure this in project settings if using different layers
+            _magneticArea.CollisionMask = 1;
             
             var shape = new SphereShape3D();
             shape.Radius = MagneticRange;

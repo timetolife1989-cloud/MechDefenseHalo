@@ -46,8 +46,9 @@ namespace MechDefenseHalo.Loot
             // Try to load default loot drop prefab if not set
             if (LootDropPrefab == null)
             {
-                // TODO: Load from res://Scenes/Loot/LootDrop.tscn when available
-                GD.Print("LootManager: No LootDropPrefab assigned. Loot will spawn but may not be visible.");
+                // Prefab loading can be set in Godot editor or loaded at runtime
+                // For now, LootDrop nodes will be created programmatically
+                GD.Print("LootManager: No LootDropPrefab assigned. Loot will spawn as basic LootDrop nodes.");
             }
 
             GD.Print("LootManager initialized");
@@ -153,7 +154,7 @@ namespace MechDefenseHalo.Loot
                 cumulative += entry.DropChance;
                 if (roll <= cumulative)
                 {
-                    // Notify modifiers about the drop
+                    // Notify LootModifiers about the drop for bad luck protection tracking
                     LootModifiers.NotifyDrop(entry.Rarity);
                     return entry.ItemId;
                 }
@@ -265,8 +266,8 @@ namespace MechDefenseHalo.Loot
     /// </summary>
     public class LootTableEntry
     {
-        public string ItemId;
-        public float DropChance;
-        public ItemRarity Rarity;
+        public string ItemId { get; set; }
+        public float DropChance { get; set; }
+        public ItemRarity Rarity { get; set; }
     }
 }

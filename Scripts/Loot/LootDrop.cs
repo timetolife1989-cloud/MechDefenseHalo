@@ -112,14 +112,17 @@ namespace MechDefenseHalo.Loot
             // Play pickup animation/effects
             PlayPickupEffects();
 
-            // Emit pickup event
-            EventBus.Emit("loot_picked_up", new LootPickedUpData
+            // Emit pickup event (if EventBus is available)
+            if (EventBus.Instance != null)
             {
-                ItemId = ItemId,
-                Rarity = Rarity,
-                Position = GlobalPosition,
-                Picker = picker
-            });
+                EventBus.Emit("loot_picked_up", new LootPickedUpData
+                {
+                    ItemId = ItemId,
+                    Rarity = Rarity,
+                    Position = GlobalPosition,
+                    Picker = picker
+                });
+            }
 
             // Unregister from manager
             if (LootManager.Instance != null)
@@ -242,9 +245,7 @@ namespace MechDefenseHalo.Loot
 
         private void PlayPickupEffects()
         {
-            // TODO: Add particle effects, sound effects, etc.
-            // For now, just animate scaling down
-            
+            // Animate scaling down for pickup feedback
             var tween = CreateTween();
             tween.TweenProperty(this, "scale", Vector3.Zero, 0.3f);
             tween.TweenCallback(Callable.From(() => Visible = false));
