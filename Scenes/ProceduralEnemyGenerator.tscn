@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://k0lp6n7q8sr3t"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/ProceduralEnemyGenerator.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyStatMixer.cs" id="2"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyVisualMutator.cs" id="3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EliteAbilitySystem.cs" id="4"]
+
+[node name="ProceduralEnemyGenerator" type="Node"]
+script = ExtResource("1")
+
+[node name="StatMixer" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="VisualMutator" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="AbilitySystem" type="Node" parent="."]
+script = ExtResource("4")
