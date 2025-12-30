@@ -642,6 +642,71 @@ namespace MechDefenseHalo.Core
 
         #endregion
 
+        #region Generic Dictionary Storage Methods
+
+        /// <summary>
+        /// Get a dictionary from player data storage
+        /// </summary>
+        public static Dictionary<string, Godot.Collections.Dictionary> GetDict(string key)
+        {
+            if (Instance?.CurrentPlayerData == null) 
+                return new Dictionary<string, Godot.Collections.Dictionary>();
+
+            // Initialize DictStore if it's null
+            if (Instance.CurrentPlayerData.DictStore == null)
+            {
+                Instance.CurrentPlayerData.DictStore = new Dictionary<string, Dictionary<string, object>>();
+                return new Dictionary<string, Godot.Collections.Dictionary>();
+            }
+            
+            if (!Instance.CurrentPlayerData.DictStore.ContainsKey(key))
+                return new Dictionary<string, Godot.Collections.Dictionary>();
+
+            var storedData = Instance.CurrentPlayerData.DictStore[key];
+            var result = new Dictionary<string, Godot.Collections.Dictionary>();
+            
+            foreach (var kvp in storedData)
+            {
+                var godotDict = new Godot.Collections.Dictionary();
+                if (kvp.Value is Dictionary<string, object> innerDict)
+                {
+                    foreach (var innerKvp in innerDict)
+                    {
+                        godotDict[innerKvp.Key] = innerKvp.Value;
+                    }
+                }
+                result[kvp.Key] = godotDict;
+            }
+            
+            return result;
+        }
+
+        /// <summary>
+        /// Set a dictionary in player data storage
+        /// </summary>
+        public static void SetDict(string key, Dictionary<string, Godot.Collections.Dictionary> value)
+        {
+            if (Instance?.CurrentPlayerData == null) return;
+
+            // Initialize DictStore if it's null
+            if (Instance.CurrentPlayerData.DictStore == null)
+            {
+                Instance.CurrentPlayerData.DictStore = new Dictionary<string, Dictionary<string, object>>();
+            }
+
+            var storeData = new Dictionary<string, object>();
+            foreach (var kvp in value)
+            {
+                var innerDict = new Dictionary<string, object>();
+                foreach (var innerKvp in kvp.Value)
+                {
+                    innerDict[innerKvp.Key.ToString()] = innerKvp.Value;
+                }
+                storeData[kvp.Key] = innerDict;
+            }
+
+            Instance.CurrentPlayerData.DictStore[key] = storeData;
+            Instance.SaveGame();
         #region Generic Key-Value Methods
 
         /// <summary>
@@ -727,6 +792,14 @@ namespace MechDefenseHalo.Core
         public bool TutorialCompleted { get; set; } = false;
         public bool IsFirstLaunch { get; set; } = true;
         public int LastCompletedTutorialStep { get; set; } = 0;
+
+        // Daily Missions
+        public List<Mission> DailyMissions { get; set; } = new List<Mission>();
+
+        // Generic storage for dictionary data
+        public Dictionary<string, Dictionary<string, object>> DictStore { get; set; } = new Dictionary<string, Dictionary<string, object>>();
+
+        // DateTime storage
         
         // Daily Missions
         public List<MechDefenseHalo.Notifications.Mission> DailyMissions { get; set; } = new List<MechDefenseHalo.Notifications.Mission>();
