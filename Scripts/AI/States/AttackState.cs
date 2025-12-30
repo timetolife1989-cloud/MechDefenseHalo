@@ -4,6 +4,7 @@ namespace MechDefenseHalo.AI.States
 {
     public class AttackState : AIState
     {
+        private const float DEFAULT_ATTACK_COOLDOWN = 1.5f;
         private float _attackCooldown = 0;
         
         public AttackState(EnemyAIController controller) : base(controller) { }
@@ -34,7 +35,7 @@ namespace MechDefenseHalo.AI.States
                 
                 // Get attack cooldown from enemy stats
                 var enemyBase = Controller.GetParent() as Enemies.EnemyBase;
-                _attackCooldown = enemyBase?.AttackCooldown ?? 1.5f;
+                _attackCooldown = enemyBase?.AttackCooldown ?? DEFAULT_ATTACK_COOLDOWN;
             }
         }
         

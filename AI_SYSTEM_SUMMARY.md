@@ -177,7 +177,7 @@ godot --headless --run-tests --quit
 1. NavigationRegion3D must be set up in scene for pathfinding
 2. Requires "player" group tag on player nodes
 3. Death animation is TODO (commented in DeadState)
-4. Attack cooldown in AttackState is hardcoded (should use enemy stats)
+4. PathfindingManager.FindPath() is a placeholder (NavigationAgent3D handles actual pathfinding)
 
 ## Success Criteria (All Met ✅)
 

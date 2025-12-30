@@ -28,12 +28,14 @@ namespace MechDefenseHalo.AI
         
         #region Private Fields
         
+        private const float DEFAULT_MOVE_SPEED = 5f;
+        
         private AIStateMachine _stateMachine;
         private NavigationAgent3D _navAgent;
         private HealthComponent _healthComponent;
         private CharacterBody3D _body;
         private float _pathUpdateTimer;
-        private Vector3 GlobalPosition => GetParent<Node3D>().GlobalPosition;
+        private Vector3 GlobalPosition => GetParent<Node3D>()?.GlobalPosition ?? Vector3.Zero;
         
         #endregion
         
@@ -158,7 +160,7 @@ namespace MechDefenseHalo.AI
                 return;
             
             var enemyBase = GetParent() as Enemies.EnemyBase;
-            float speed = enemyBase?.MoveSpeed ?? 5f;
+            float speed = enemyBase?.MoveSpeed ?? DEFAULT_MOVE_SPEED;
             
             Vector3 velocity = direction * speed;
             velocity.Y = _body.Velocity.Y; // Preserve vertical velocity
