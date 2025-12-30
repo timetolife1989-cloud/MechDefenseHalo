@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+WeaponName = "Railgun"
+Damage = 100.0
+FireRate = 2.0
+MagazineSize = 5
+ReloadTime = 4.0
+Range = 300.0
+Accuracy = 0.98
+IsAutomatic = false
+ProjectileSpeed = 500.0

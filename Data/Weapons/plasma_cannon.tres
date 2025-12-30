@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/WeaponData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+WeaponName = "Plasma Cannon"
+Damage = 35.0
+FireRate = 0.5
+MagazineSize = 10
+ReloadTime = 3.0
+Range = 150.0
+Accuracy = 0.85
+IsAutomatic = false
+ProjectileSpeed = 80.0

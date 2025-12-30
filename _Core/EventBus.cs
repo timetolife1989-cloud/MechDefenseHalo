@@ -160,8 +160,10 @@ namespace MechDefenseHalo.Core
         
         // Weapons
         public const string WeaponFired = "weapon_fired";
+        public const string WeaponReloading = "weapon_reloading";
         public const string WeaponReloaded = "weapon_reloaded";
         public const string WeaponSwitched = "weapon_switched";
+        public const string WeaponRecoil = "weapon_recoil";
         
         // Drones
         public const string DroneDeployed = "drone_deployed";
