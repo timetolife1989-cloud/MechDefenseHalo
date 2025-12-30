@@ -157,6 +157,8 @@ namespace MechDefenseHalo.Core
         public const string HealthChanged = "health_changed";
         public const string EntityDied = "entity_died";
         public const string DamageDealt = "damage_dealt";
+        public const string EntityDamaged = "entity_damaged"; // (Node target, float damage, Vector3 position)
+        public const string EntityHealed = "entity_healed"; // (Node target, float amount)
         
         // Weapons
         public const string WeaponFired = "weapon_fired";
